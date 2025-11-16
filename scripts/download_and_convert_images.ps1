@@ -70,3 +70,33 @@ if ($magick) {
 }
 
 Write-Host "Done. Update HTML if you wish to change file names or locations."
+
+# If ImageMagick is available, also generate resized JPG and WebP variants for responsive srcset
+$magick = Get-Command magick -ErrorAction SilentlyContinue
+if ($magick) {
+    $sizes = @(320, 640, 1024)
+    Write-Host "Generating resized JPEG and WebP variants: $($sizes -join ', ')"
+    foreach ($item in $images) {
+        $out = $item.out
+        if (-not (Test-Path $out)) { continue }
+        $dir = Split-Path $out -Parent
+        $base = [System.IO.Path]::GetFileNameWithoutExtension($out)
+        $ext = [System.IO.Path]::GetExtension($out)
+        foreach ($s in $sizes) {
+            $resizedJpg = Join-Path $dir ("{0}-{1}{2}" -f $base, $s, $ext)
+            $resizedWebp = Join-Path $dir ("{0}-{1}.webp" -f $base, $s)
+            try {
+                # Resize to width s, keep aspect ratio. Use best practice quality settings.
+                & magick $out -resize "${s}x" -quality 80 $resizedJpg
+                Write-Host "Created $resizedJpg"
+                & magick $resizedJpg -quality 80 $resizedWebp
+                Write-Host "Created $resizedWebp"
+            } catch {
+                Write-Warning "Failed to create resized variants for $out at ${s}px: $_"
+            }
+        }
+    }
+    Write-Host "Resized variants generation complete."
+} else {
+    Write-Host "ImageMagick not available; resized variants not generated."
+}
