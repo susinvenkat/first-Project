@@ -2136,6 +2136,41 @@ textarea:focus {
     .topbar-right { width: 100%; justify-content: space-between; }
 }
 
+/* Employee login icon in topbar */
+.topbar-login { padding: 0.5rem; min-width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Login modal styles */
+.login-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2200;
+    padding: 1rem;
+}
+.login-modal[aria-hidden="false"] { display: flex; }
+.login-modal-content {
+    width: 100%;
+    max-width: 420px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    overflow: hidden;
+}
+.login-modal-header { display:flex; align-items:center; justify-content:space-between; padding: 0.75rem 1rem; background: linear-gradient(90deg,var(--primary-color),var(--secondary-color)); color: #fff; }
+.login-modal-body { padding: 1rem; }
+.employee-login-form label { display:block; margin-top: 0.75rem; margin-bottom: 0.25rem; font-weight:600; }
+.employee-login-form input { width:100%; padding:0.6rem; border-radius:6px; border:1px solid var(--border-color); }
+.login-actions { display:flex; gap:0.5rem; margin-top:1rem; justify-content:flex-end; }
+.login-close { background:transparent; border:none; color:#fff; font-size:1.2rem; cursor:pointer; }
+.login-message { margin-top:0.75rem; color:var(--dark-color); }
+
+@media (max-width:480px) {
+    .login-modal-content { max-width: 92vw; }
+}
+
 /* Product search panel */
 .search-panel {
     position: fixed;

@@ -334,6 +334,52 @@ if (chatToggleTopBtn) {
     });
 }
 
+// Employee login modal logic
+const employeeLoginBtn = document.getElementById('employeeLoginBtn');
+const employeeLoginModal = document.getElementById('employeeLoginModal');
+const loginClose = document.getElementById('loginClose');
+const loginCancel = document.getElementById('loginCancel');
+const employeeLoginForm = document.getElementById('employeeLoginForm');
+const loginMessage = document.getElementById('loginMessage');
+
+function setLoginVisible(visible) {
+    if (!employeeLoginModal) return;
+    employeeLoginModal.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    employeeLoginModal.style.display = visible ? 'flex' : 'none';
+    if (visible) {
+        const user = document.getElementById('empUser');
+        if (user) user.focus();
+    }
+}
+
+if (employeeLoginBtn) {
+    employeeLoginBtn.addEventListener('click', () => setLoginVisible(true));
+}
+if (loginClose) loginClose.addEventListener('click', () => setLoginVisible(false));
+if (loginCancel) loginCancel.addEventListener('click', () => setLoginVisible(false));
+
+if (employeeLoginForm) {
+    employeeLoginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const user = document.getElementById('empUser').value.trim();
+        // Basic client-side check (no real auth)
+        if (!user) {
+            loginMessage.textContent = 'Please enter your username.';
+            return;
+        }
+        loginMessage.textContent = 'Signing in...';
+        setTimeout(() => {
+            loginMessage.textContent = 'Signed in (demo). Redirecting...';
+            // For demo: close modal after a moment
+            setTimeout(() => {
+                setLoginVisible(false);
+                loginMessage.textContent = '';
+                employeeLoginForm.reset();
+            }, 700);
+        }, 800);
+    });
+}
+
 if (chatForm) {
     chatForm.addEventListener('submit', (e) => {
         e.preventDefault();

@@ -58,6 +58,7 @@
                         <div class="topbar-actions">
                             <button id="openSearchTop" class="btn btn-secondary" aria-label="Open search"><i class="fas fa-search"></i></button>
                             <button id="chatToggleTop" class="btn btn-secondary" aria-label="Open chat"><i class="fas fa-headset"></i></button>
+                            <button id="employeeLoginBtn" class="btn btn-outline topbar-login" aria-label="Employee login"><i class="fas fa-user-lock"></i></button>
                         </div>
                     </div>
                 </div>
@@ -524,6 +525,29 @@
                 <input id="chatInput" type="text" placeholder="Describe your issue or ask a question..." aria-label="Chat input" required>
                 <button type="submit" class="btn btn-primary">Send</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Employee Login Modal -->
+    <div id="employeeLoginModal" class="login-modal" aria-hidden="true" role="dialog" aria-labelledby="employeeLoginTitle">
+        <div class="login-modal-content">
+            <header class="login-modal-header">
+                <h3 id="employeeLoginTitle">Employee Login</h3>
+                <button id="loginClose" class="login-close" aria-label="Close login">&times;</button>
+            </header>
+            <div class="login-modal-body">
+                <form id="employeeLoginForm" class="employee-login-form">
+                    <label for="empUser">Username</label>
+                    <input id="empUser" name="username" type="text" required>
+                    <label for="empPass">Password</label>
+                    <input id="empPass" name="password" type="password" required>
+                    <div class="login-actions">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                        <button type="button" id="loginCancel" class="btn btn-outline">Cancel</button>
+                    </div>
+                </form>
+                <div id="loginMessage" class="login-message" aria-live="polite"></div>
+            </div>
         </div>
     </div>
     <script src="js/main.js" defer></script>
