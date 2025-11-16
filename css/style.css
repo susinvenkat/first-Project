@@ -92,19 +92,20 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--white);
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     transition: opacity 0.3s;
+    padding: calc(var(--nav-padding-vertical) * 1.2) 0;
 }
 
 .logo:hover {
@@ -119,7 +120,7 @@ h2 {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 1.75rem;
     align-items: center;
 }
 
@@ -127,12 +128,12 @@ h2 {
     text-decoration: none;
     color: var(--white);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    padding: var(--nav-padding-vertical) 0;
+    padding: calc(var(--nav-padding-vertical) * 1.1) 0;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     font-family: 'Inter', 'Montserrat', sans-serif;
 }
 
@@ -144,10 +145,10 @@ h2 {
 .nav-menu a.active::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: -8px;
     left: 0;
     width: 100%;
-    height: calc(var(--ribbon-height));
+    height: calc(var(--ribbon-height) + 1px);
     background-color: var(--primary-color);
 }
 
@@ -164,10 +165,12 @@ h2 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
     transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
 }
 
 .lang-toggle:hover {
@@ -2116,12 +2119,13 @@ textarea:focus {
 
 /* Double-layer header (topbar + main nav) */
 .topbar {
-    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    font-size: 0.92rem;
+    background: var(--white);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    font-size: 0.9rem;
     height: var(--topbar-height);
     display: flex;
     align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .topbar-inner {
     display: flex;
@@ -2129,32 +2133,38 @@ textarea:focus {
     align-items: center;
     padding: 0 24px;
     width: 100%;
-    max-width: var(--container-width, 1280px);
+    max-width: 1400px;
     margin: 0 auto;
 }
-.topbar-left, .topbar-right { display: flex; gap: 0.8rem; align-items: center; }
-.topbar-contact { color: var(--dark-color); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
-.topbar-contact i { margin-right: 0.45rem; color: var(--primary-color); }
-.topbar-link { color: var(--text-color); text-decoration: none; padding: 0.2rem 0.5rem; font-size: 0.9rem; }
-.topbar-actions { display: flex; gap: 0.5rem; align-items: center; }
+.topbar-left, .topbar-right { display: flex; gap: 1rem; align-items: center; }
+.topbar-contact { color: var(--dark-color); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s ease; white-space: nowrap; }
+.topbar-contact:hover { color: var(--primary-color); }
+.topbar-contact i { margin-right: 0.4rem; color: var(--primary-color); }
+.topbar-link { color: var(--text-color); text-decoration: none; padding: 0.25rem 0.6rem; font-size: 0.88rem; transition: color 0.2s ease; }
+.topbar-link:hover { color: var(--primary-color); }
+.topbar-actions { display: flex; gap: 0.75rem; align-items: center; }
 
 /* subtle separators and spacing to match international layouts */
-.topbar .topbar-left a + a { margin-left: 1rem; padding-left: 0.85rem; border-left: 1px solid rgba(0,0,0,0.04); }
+.topbar .topbar-left a + a { margin-left: 0.5rem; padding-left: 1rem; border-left: 1px solid rgba(0,0,0,0.06); }
 
 /* language selector compact style */
-.lang-selector .lang-toggle { padding: 0.25rem 0.6rem; font-size: 0.9rem; background: transparent; color: var(--dark-color); }
+.lang-selector .lang-toggle { padding: 0.2rem 0.6rem; font-size: 0.88rem; background: transparent; color: var(--text-color); transition: all 0.2s ease; }
+.lang-selector .lang-toggle:hover { color: var(--primary-color); }
+.lang-selector .lang-toggle i:last-child { font-size: 0.75rem; margin-left: 0.3rem; }
 
 /* Make main nav visually distinct and slightly elevated */
-.navbar .nav-wrapper { padding-top: calc(var(--nav-padding-vertical) * 1.1); padding-bottom: calc(var(--nav-padding-vertical) * 1.1); }
-.navbar { position: sticky; top: calc(var(--topbar-height)); z-index: 1100; backdrop-filter: saturate(120%) blur(4px); }
+.navbar .nav-wrapper { padding: calc(var(--nav-padding-vertical) * 1.2) 24px; max-width: 1400px; margin: 0 auto; }
+.navbar { position: sticky; top: calc(var(--topbar-height)); z-index: 1100; background: var(--nav-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
 @media (max-width: 768px) {
-    .topbar-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 0.6rem 0; }
+    .topbar-inner { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.5rem 12px; }
+    .topbar-left { width: 100%; justify-content: space-between; order: 2; margin-top: 0.4rem; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.4rem; }
     .topbar-right { width: 100%; justify-content: space-between; }
+    .topbar-link { font-size: 0.85rem; }
 }
 
 /* Employee login icon in topbar */
-.topbar-login { padding: 0.4rem; min-width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; }
+.topbar-login { padding: 0.4rem; min-width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.9rem; }
 
 /* Login modal styles */
 .login-modal {
