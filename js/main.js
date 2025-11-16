@@ -165,3 +165,41 @@ document.querySelectorAll('.product-placeholder').forEach(placeholder => {
     });
 });
 
+// Handle image loading errors - show placeholder if image fails to load
+document.querySelectorAll('.product-img, .product-card-img').forEach(img => {
+    img.addEventListener('error', function() {
+        // Hide broken image
+        this.style.display = 'none';
+        
+        // Show placeholder icon if parent has product-icon class
+        const parent = this.closest('.product-icon');
+        if (parent) {
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-image';
+            icon.style.fontSize = '3rem';
+            icon.style.color = 'var(--primary-color)';
+            parent.appendChild(icon);
+        }
+        
+        // Show placeholder if parent has product-image class
+        const imageContainer = this.closest('.product-image');
+        if (imageContainer) {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'product-placeholder';
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-cog fa-5x';
+            placeholder.appendChild(icon);
+            imageContainer.appendChild(placeholder);
+        }
+    });
+    
+    // Add loading state
+    img.addEventListener('load', function() {
+        this.style.opacity = '1';
+    });
+    
+    // Set initial opacity for fade-in effect
+    img.style.opacity = '0';
+    img.style.transition = 'opacity 0.3s';
+});
+
