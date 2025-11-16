@@ -23,6 +23,11 @@
     --nav-bg: #2c2c2c;                /* Dark Gray for Nav */
     --hero-overlay: rgba(44, 44, 44, 0.85);
     --section-bg: #f8f8f8;            /* Light Gray Background */
+    /* Header sizing tokens */
+    --topbar-height: 40px;
+    --nav-padding-vertical: 0.5rem;
+    --logo-height: 44px;
+    --ribbon-height: 3px;
 }
 
 body {
@@ -107,14 +112,14 @@ h2 {
 }
 
 .logo img {
-    height: 50px;
+    height: var(--logo-height);
     width: auto;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
@@ -122,10 +127,10 @@ h2 {
     text-decoration: none;
     color: var(--white);
     font-weight: 500;
-    font-size: 0.9375rem;
+    font-size: 0.9rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    padding: 0.5rem 0;
+    padding: var(--nav-padding-vertical) 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-family: 'Inter', 'Montserrat', sans-serif;
@@ -139,10 +144,10 @@ h2 {
 .nav-menu a.active::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: calc(var(--ribbon-height));
     background-color: var(--primary-color);
 }
 
@@ -507,7 +512,7 @@ h2 {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: var(--ribbon-height);
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     transform: scaleX(0);
     transform-origin: left;
