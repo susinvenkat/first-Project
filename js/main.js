@@ -496,9 +496,23 @@ if (chatForm) {
             } else {
                 appendChat('Thanks — our technical team has received your message. We typically respond within one business day. For urgent support, please call +91 77080 97242.', 'bot');
             }
+            // Auto-focus input for next message
+            if (chatInput) chatInput.focus();
         }, 700);
 
         chatForm.reset();
     });
+}
+
+// Announce chat messages to screen readers
+if (chatMessages) {
+    const chatObserver = new MutationObserver(() => {
+        const lastMsg = chatMessages.lastElementChild;
+        if (lastMsg) {
+            lastMsg.setAttribute('role', 'status');
+            lastMsg.setAttribute('aria-live', 'polite');
+        }
+    });
+    chatObserver.observe(chatMessages, { childList: true });
 }
 
