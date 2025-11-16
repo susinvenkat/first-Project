@@ -247,6 +247,30 @@ function buildProductIndex() {
 
 let productIndex = buildProductIndex();
 
+// Try load sitewide search index and merge with page index (sitewide search)
+fetch('assets/search/search-index.json')
+    .then(resp => {
+        if (!resp.ok) throw new Error('no index');
+        return resp.json();
+    })
+    .then(json => {
+        // normalize json entries to match productIndex shape
+        const extras = json.map(item => ({
+            title: item.title || '',
+            subtitle: item.tags ? item.tags.join(', ') : (item.subtitle || ''),
+            id: null,
+            url: item.url || '#',
+            anchor: item.anchor || '' ,
+            excerpt: item.excerpt || ''
+        }));
+        productIndex = productIndex.concat(extras);
+        // update suggestions if search panel already rendered
+        if (productSearchInput && !productSearchInput.value) renderSuggestions(productIndex);
+    })
+    .catch(() => {
+        // silently ignore if index not found
+    });
+
 function renderSuggestions(list) {
     if (!searchSuggestions) return;
     searchSuggestions.innerHTML = '';
@@ -259,12 +283,20 @@ function renderSuggestions(list) {
     list.forEach(item => {
         const li = document.createElement('li');
         li.tabIndex = 0;
-        li.textContent = item.title + (item.subtitle ? ' — ' + item.subtitle : '');
+        // show title and optional subtitle/excerpt
+        li.innerHTML = '<strong>' + item.title + '</strong>' + (item.subtitle ? ' &mdash; <small>' + item.subtitle + '</small>' : '') + (item.excerpt ? '<div class="suggest-excerpt">' + item.excerpt + '</div>' : '');
         li.addEventListener('click', () => {
+            setSearchVisible(false);
+            // if this item refers to an anchor within the same page
             if (item.id) {
-                setSearchVisible(false);
                 const target = document.getElementById(item.id);
                 if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                return;
+            }
+            // if item has a url (sitewide index), navigate there
+            if (item.url) {
+                const dest = item.url + (item.anchor || '');
+                window.location.href = dest;
             }
         });
         li.addEventListener('keydown', (e) => {
@@ -278,13 +310,62 @@ if (productSearchInput) {
     productSearchInput.addEventListener('input', (e) => {
         const q = e.target.value.toLowerCase().trim();
         if (!q) return renderSuggestions(productIndex);
-        const matches = productIndex.filter(it =>
-            it.title.toLowerCase().includes(q) || it.subtitle.toLowerCase().includes(q)
-        );
+        const matches = productIndex.filter(it => {
+            const title = (it.title || '').toLowerCase();
+            const subtitle = (it.subtitle || '').toLowerCase();
+            const excerpt = (it.excerpt || '').toLowerCase();
+            return title.includes(q) || subtitle.includes(q) || excerpt.includes(q) || (it.tags && it.tags.join(' ').includes(q));
+        });
         renderSuggestions(matches);
     });
     // initial suggestions
     renderSuggestions(productIndex);
+}
+
+// Accessibility: close panels with Escape key and manage aria-expanded
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        // close search
+        if (productSearchPanel && productSearchPanel.getAttribute('aria-hidden') === 'false') setSearchVisible(false);
+        // close chat
+        if (chatWindow && !chatWindow.hidden) chatWindow.hidden = true;
+        // close login
+        if (employeeLoginModal && employeeLoginModal.getAttribute('aria-hidden') === 'false') setLoginVisible(false);
+    }
+});
+
+// enhance aria-expanded for toggles
+function setToggleAria(button, expanded) {
+    try { if (button) button.setAttribute('aria-expanded', expanded ? 'true' : 'false'); } catch (e) {}
+}
+
+// wrap setSearchVisible to update aria attributes
+const originalSetSearchVisible = setSearchVisible;
+setSearchVisible = function(visible) {
+    originalSetSearchVisible(visible);
+    setToggleAria(openSearch, visible);
+    setToggleAria(openSearchTop, visible);
+};
+
+// Chat toggle aria handling
+if (chatToggle) chatToggle.addEventListener('click', () => setToggleAria(chatToggle, chatWindow && !chatWindow.hidden));
+if (chatToggleTopBtn) chatToggleTopBtn.addEventListener('click', () => setToggleAria(chatToggleTopBtn, chatWindow && !chatWindow.hidden));
+
+// Employee login: if SITE_CONFIG has employeeLoginUrl, redirect instead of opening modal
+try {
+    if (window.SITE_CONFIG && window.SITE_CONFIG.employeeLoginUrl && window.SITE_CONFIG.employeeLoginUrl.trim() !== '') {
+        const loginUrl = window.SITE_CONFIG.employeeLoginUrl.trim();
+        if (employeeLoginBtn) {
+            employeeLoginBtn.addEventListener('click', () => {
+                window.location.href = loginUrl;
+            });
+        }
+        // topbar buttons that may exist
+        const btns = document.querySelectorAll('.topbar-actions .topbar-login');
+        btns.forEach(b => b.addEventListener('click', () => window.location.href = loginUrl));
+    }
+} catch (e) {
+    // ignore
 }
 
 /* Lightweight Chatbot — client-side, no server required */
