@@ -347,9 +347,7 @@ setSearchVisible = function(visible) {
     setToggleAria(openSearchTop, visible);
 };
 
-// Chat toggle aria handling
-if (chatToggle) chatToggle.addEventListener('click', () => setToggleAria(chatToggle, chatWindow && !chatWindow.hidden));
-if (chatToggleTopBtn) chatToggleTopBtn.addEventListener('click', () => setToggleAria(chatToggleTopBtn, chatWindow && !chatWindow.hidden));
+// Chat toggle aria handling is attached below after elements are defined
 
 // Employee login: if SITE_CONFIG has employeeLoginUrl, redirect instead of opening modal
 try {
@@ -395,13 +393,21 @@ function appendChat(message, from = 'bot') {
 if (chatToggle) {
     chatToggle.addEventListener('click', () => {
         if (!chatWindow) return;
-        chatWindow.hidden = !chatWindow.hidden;
-        if (!chatWindow.hidden && chatInput) chatInput.focus();
+        const nowOpen = chatWindow.hidden;
+        chatWindow.hidden = !nowOpen;
+        if (!chatWindow.hidden) {
+            chatWindow.classList.add('show');
+            if (chatInput) chatInput.focus();
+            setToggleAria(chatToggle, true);
+        } else {
+            chatWindow.classList.remove('show');
+            setToggleAria(chatToggle, false);
+        }
     });
 }
 if (chatClose) {
     chatClose.addEventListener('click', () => {
-        if (chatWindow) chatWindow.hidden = true;
+        if (chatWindow) { chatWindow.hidden = true; chatWindow.classList.remove('show'); setToggleAria(chatToggle, false); }
     });
 }
 
@@ -410,8 +416,16 @@ const chatToggleTopBtn = document.getElementById('chatToggleTop');
 if (chatToggleTopBtn) {
     chatToggleTopBtn.addEventListener('click', () => {
         if (!chatWindow) return;
-        chatWindow.hidden = !chatWindow.hidden;
-        if (!chatWindow.hidden && chatInput) chatInput.focus();
+        const nowOpen = chatWindow.hidden;
+        chatWindow.hidden = !nowOpen;
+        if (!chatWindow.hidden) {
+            chatWindow.classList.add('show');
+            if (chatInput) chatInput.focus();
+            setToggleAria(chatToggleTopBtn, true);
+        } else {
+            chatWindow.classList.remove('show');
+            setToggleAria(chatToggleTopBtn, false);
+        }
     });
 }
 
