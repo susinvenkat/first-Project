@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Industrial Actuators & Gearboxes</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Services | Industrial Actuators & Gearboxes</title>
+        <meta name="description" content="Services including installation, commissioning, maintenance, training, customization and spare parts for industrial actuators and gearboxes.">
+        <link rel="canonical" href="https://www.susingroup.com/services.html" />
+        <link rel="icon" href="logo.jpg">
+
+        <!-- Performance hints -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+        <link rel="preload" href="css/style.css" as="style">
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Open Graph / Twitter -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Services | Industrial Actuators & Gearboxes">
+        <meta property="og:description" content="Services including installation, commissioning, maintenance, training, customization and spare parts for industrial actuators and gearboxes.">
+        <meta property="og:url" content="https://www.susingroup.com/services.html">
+        <meta property="og:image" content="https://www.susingroup.com/assets/img/og-image.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <!-- Structured data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "provider": {
+                "@type": "Organization",
+                "name": "Susin Group",
+                "url": "https://www.susingroup.com"
+            },
+            "serviceType": "Industrial actuator & gearbox services"
+        }
+        </script>
+    </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="index.html" class="logo">
-                    <img src="logo.jpg" alt="Company Logo">
+                    <img src="logo.jpg" alt="Company Logo" loading="lazy">
                     <span class="logo-text">Industrial Solutions</span>
                 </a>
                 <ul class="nav-menu" id="navMenu">
@@ -98,12 +129,21 @@
             </div>
         </div>
     </nav>
+    
+        <main id="main-content">
 
-    <!-- Page Header -->
+        <!-- Page Header -->
     <section class="page-header">
         <div class="container">
             <h1>Our Services</h1>
             <p>Comprehensive support throughout the entire product lifecycle</p>
+
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">Services</li>
+                </ol>
+            </nav>
         </div>
     </section>
 
@@ -195,6 +235,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -247,7 +289,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
 

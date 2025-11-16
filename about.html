@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Industrial Actuators & Gearboxes</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us | Industrial Actuators & Gearboxes</title>
+        <meta name="description" content="About Susin Group — manufacturer of industrial actuators and gearboxes providing motion control solutions worldwide. Learn our history, mission, and certifications.">
+        <link rel="canonical" href="https://www.susingroup.com/about.html" />
+        <link rel="icon" href="logo.jpg">
+
+        <!-- Performance hints -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+        <link rel="preload" href="css/style.css" as="style">
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Open Graph / Twitter -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="About Us | Industrial Actuators & Gearboxes">
+        <meta property="og:description" content="About Susin Group — manufacturer of industrial actuators and gearboxes providing motion control solutions worldwide.">
+        <meta property="og:url" content="https://www.susingroup.com/about.html">
+        <meta property="og:image" content="https://www.susingroup.com/assets/img/og-image.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <!-- Structured data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "mainEntity": {
+                "@type": "Organization",
+                "name": "Susin Group",
+                "url": "https://www.susingroup.com",
+                "logo": "https://www.susingroup.com/assets/img/logo.png"
+            },
+            "description": "About Susin Group — manufacturer of industrial actuators and gearboxes."
+        }
+        </script>
+    </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="index.html" class="logo">
-                    <img src="logo.jpg" alt="Company Logo">
+                    <img src="logo.jpg" alt="Company Logo" loading="lazy" decoding="async">
                     <span class="logo-text">Industrial Solutions</span>
                 </a>
                 <ul class="nav-menu" id="navMenu">
@@ -98,12 +130,21 @@
             </div>
         </div>
     </nav>
+    
+        <main id="main-content">
 
-    <!-- Page Header -->
+        <!-- Page Header -->
     <section class="page-header">
         <div class="container">
             <h1>About Us</h1>
             <p>Leading the industry in motion control solutions</p>
+
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">About Us</li>
+                </ol>
+            </nav>
         </div>
     </section>
 
@@ -194,6 +235,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -246,7 +289,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
 
