@@ -5,23 +5,24 @@
     box-sizing: border-box;
 }
 
-/* Import Google Fonts - Rotork/Bray Style */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Rotork/Bray Color Palette */
-    --primary-color: #003a5d;        /* Dark Blue */
-    --secondary-color: #007da5;      /* Medium Blue */
-    --accent-color: #f9681b;         /* Orange */
-    --accent-green: #53af3b;          /* Green */
-    --dark-color: #1f2937;
-    --light-color: #c2c6c9;          /* Light Gray */
-    --text-color: #5b6770;            /* Dark Gray */
+    /* Red, Gray, White Color Palette */
+    --primary-color: #c41e3a;        /* Red */
+    --secondary-color: #dc3545;      /* Bright Red */
+    --accent-color: #c41e3a;         /* Red Accent */
+    --accent-green: #53af3b;          /* Green (kept for compatibility) */
+    --dark-color: #2c2c2c;           /* Dark Gray */
+    --light-color: #f5f5f5;          /* Light Gray */
+    --text-color: #4a4a4a;            /* Medium Gray */
     --white: #ffffff;
     --gray: #6b7280;
-    --border-color: #e5e7eb;
-    --nav-bg: #003a5d;                /* Dark Blue for Nav */
-    --hero-overlay: rgba(0, 58, 93, 0.85);
+    --border-color: #e0e0e0;
+    --nav-bg: #2c2c2c;                /* Dark Gray for Nav */
+    --hero-overlay: rgba(44, 44, 44, 0.85);
+    --section-bg: #f8f8f8;            /* Light Gray Background */
 }
 
 body {
@@ -51,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 20px;
 }
 
-/* Navigation - Rotork/Bray Style */
+/* Navigation - Red, Gray, White Style */
 .navbar {
     background-color: var(--nav-bg);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -104,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .nav-menu a.active::after {
@@ -114,7 +115,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
 }
 
 .dropdown {
@@ -177,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 2px;
 }
 
-/* Hero Section - Rotork/Bray Style */
+/* Hero Section - Red, Gray, White Style */
 .hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--white);
@@ -193,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--hero-overlay);
+    background: rgba(196, 30, 58, 0.9);
     z-index: 1;
 }
 
@@ -240,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-wrap: wrap;
 }
 
-/* Buttons - Rotork/Bray Style */
+/* Buttons - Red, Gray, White Style */
 .btn {
     display: inline-block;
     padding: 0.875rem 2.25rem;
@@ -258,16 +259,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: var(--white);
-    border-color: var(--accent-color);
+    border-color: var(--primary-color);
 }
 
 .btn-primary:hover {
-    background-color: #e55a0a;
-    border-color: #e55a0a;
+    background-color: #a0172e;
+    border-color: #a0172e;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(249, 104, 27, 0.4);
+    box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
 }
 
 .btn-secondary {
@@ -293,7 +294,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--primary-color);
     color: var(--white);
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 58, 93, 0.3);
+    box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
 }
 
 .btn-large {
@@ -326,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Products Preview */
 .products-preview {
     padding: 100px 0;
-    background-color: #f8f9fa;
+    background-color: var(--section-bg);
 }
 
 .products-grid {
@@ -348,8 +349,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(0, 58, 93, 0.15);
-    border-color: var(--secondary-color);
+    box-shadow: 0 12px 32px rgba(196, 30, 58, 0.15);
+    border-color: var(--primary-color);
 }
 
 .product-icon {
@@ -421,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
 .industry-item {
     text-align: center;
     padding: 2.5rem 2rem;
-    background-color: #f8f9fa;
+    background-color: var(--section-bg);
     border-radius: 12px;
     transition: all 0.3s ease;
     border: 1px solid var(--border-color);
@@ -429,14 +430,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .industry-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 24px rgba(0, 58, 93, 0.12);
-    border-color: var(--secondary-color);
+    box-shadow: 0 8px 24px rgba(196, 30, 58, 0.12);
+    border-color: var(--primary-color);
     background-color: var(--white);
 }
 
 .industry-item i {
     font-size: 3rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 1.25rem;
     transition: transform 0.3s;
 }
@@ -466,7 +467,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Features */
 .features {
     padding: 100px 0;
-    background-color: #f8f9fa;
+    background-color: var(--section-bg);
 }
 
 .features-grid {
@@ -487,13 +488,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .feature-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 58, 93, 0.12);
-    border-color: var(--secondary-color);
+    box-shadow: 0 8px 24px rgba(196, 30, 58, 0.12);
+    border-color: var(--primary-color);
 }
 
 .feature-item i {
     font-size: 3.5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 1.25rem;
     transition: transform 0.3s;
 }
@@ -515,7 +516,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.95rem;
 }
 
-/* CTA Section - Rotork/Bray Style */
+/* CTA Section - Red, Gray, White Style */
 .cta {
     padding: 100px 0;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -532,7 +533,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--hero-overlay);
+    background: rgba(196, 30, 58, 0.9);
     z-index: 1;
 }
 
@@ -557,7 +558,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.8;
 }
 
-/* Page Header - Rotork/Bray Style */
+/* Page Header - Red, Gray, White Style */
 .page-header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--white);
@@ -574,7 +575,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--hero-overlay);
+    background: rgba(196, 30, 58, 0.9);
     z-index: 1;
 }
 
@@ -605,7 +606,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-section.alt {
-    background-color: var(--light-color);
+    background-color: var(--section-bg);
 }
 
 .product-detail {
@@ -637,14 +638,14 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    background-color: var(--light-color);
+    background-color: var(--section-bg);
     min-height: 300px;
     object-fit: cover;
 }
 
 .product-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(196, 30, 58, 0.2);
 }
 
 .product-img:not([src]),
@@ -659,7 +660,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-placeholder {
-    background-color: var(--light-color);
+    background-color: var(--section-bg);
     padding: 4rem;
     border-radius: 10px;
     color: var(--primary-color);
@@ -670,9 +671,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     margin-bottom: 1rem;
     padding: 0.75rem;
-    background-color: var(--light-color);
+    background-color: var(--section-bg);
     border-radius: 5px;
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--primary-color);
 }
 
 .product-content h2 {
@@ -713,7 +714,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-list i {
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin-top: 0.35rem;
     font-size: 1.1rem;
 }
@@ -726,16 +727,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app-item {
-    background-color: var(--light-color);
+    background-color: var(--section-bg);
     padding: 1rem;
     border-radius: 5px;
     text-align: center;
     font-weight: 500;
-    color: var(--dark-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .specs-table {
-    background-color: #f8f9fa;
+    background-color: var(--section-bg);
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 2rem;
@@ -1259,9 +1261,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
 }
 
-/* Footer - Rotork/Bray Style */
+/* Footer - Red, Gray, White Style */
 .footer {
-    background-color: var(--primary-color);
+    background-color: var(--nav-bg);
     color: var(--white);
     padding: 80px 0 30px;
 }
@@ -1298,13 +1300,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-col a:hover {
-    color: var(--accent-color);
+    color: var(--primary-color);
     padding-left: 5px;
 }
 
 .footer-col i {
     margin-right: 0.75rem;
-    color: var(--accent-color);
+    color: var(--primary-color);
     font-size: 1.1rem;
 }
 
@@ -1356,7 +1358,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .dropdown-menu a:hover {
         background-color: rgba(255, 255, 255, 0.1);
-        color: var(--accent-color);
+        color: var(--primary-color);
     }
 
     .hero-content h1 {
