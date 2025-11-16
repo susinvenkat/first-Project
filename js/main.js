@@ -369,6 +369,7 @@ try {
 /* Lightweight Chatbot — client-side, no server required */
 const chatToggle = document.getElementById('chatToggle');
 const chatWindow = document.getElementById('chatWindow');
+const chatbotWrap = document.getElementById('chatbot');
 const chatClose = document.getElementById('chatClose');
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
@@ -399,15 +400,17 @@ if (chatToggle) {
             chatWindow.classList.add('show');
             if (chatInput) chatInput.focus();
             setToggleAria(chatToggle, true);
+            if (chatbotWrap) chatbotWrap.setAttribute('aria-hidden', 'false');
         } else {
             chatWindow.classList.remove('show');
             setToggleAria(chatToggle, false);
+            if (chatbotWrap) chatbotWrap.setAttribute('aria-hidden', 'true');
         }
     });
 }
 if (chatClose) {
     chatClose.addEventListener('click', () => {
-        if (chatWindow) { chatWindow.hidden = true; chatWindow.classList.remove('show'); setToggleAria(chatToggle, false); }
+        if (chatWindow) { chatWindow.hidden = true; chatWindow.classList.remove('show'); setToggleAria(chatToggle, false); if (chatbotWrap) chatbotWrap.setAttribute('aria-hidden', 'true'); }
     });
 }
 
@@ -422,9 +425,11 @@ if (chatToggleTopBtn) {
             chatWindow.classList.add('show');
             if (chatInput) chatInput.focus();
             setToggleAria(chatToggleTopBtn, true);
+            if (chatbotWrap) chatbotWrap.setAttribute('aria-hidden', 'false');
         } else {
             chatWindow.classList.remove('show');
             setToggleAria(chatToggleTopBtn, false);
+            if (chatbotWrap) chatbotWrap.setAttribute('aria-hidden', 'true');
         }
     });
 }
