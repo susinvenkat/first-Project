@@ -2109,6 +2109,33 @@ textarea:focus {
     }
 }
 
+/* Double-layer header (topbar + main nav) */
+.topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 0;
+}
+.topbar-left, .topbar-right { display: flex; gap: 1rem; align-items: center; }
+.topbar-contact { color: var(--dark-color); text-decoration: none; font-weight: 600; }
+.topbar-contact i { margin-right: 0.45rem; color: var(--primary-color); }
+.topbar-link { color: var(--text-color); text-decoration: none; padding: 0.25rem 0.5rem; }
+.topbar-actions { display: flex; gap: 0.5rem; align-items: center; }
+
+/* Make main nav visually distinct and slightly elevated */
+.navbar .nav-wrapper { padding-top: 0.6rem; padding-bottom: 0.6rem; }
+.navbar { position: sticky; top: 0; z-index: 1000; }
+
+@media (max-width: 768px) {
+    .topbar-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 0.6rem 0; }
+    .topbar-right { width: 100%; justify-content: space-between; }
+}
+
 /* Product search panel */
 .search-panel {
     position: fixed;

@@ -224,6 +224,12 @@ if (closeSearch && productSearchPanel) {
     closeSearch.addEventListener('click', () => setSearchVisible(false));
 }
 
+// Topbar search button (if present) should open the same panel
+const openSearchTop = document.getElementById('openSearchTop');
+if (openSearchTop) {
+    openSearchTop.addEventListener('click', () => setSearchVisible(true));
+}
+
 // Build suggestion index from product sections
 function buildProductIndex() {
     const sections = document.querySelectorAll('.product-section');
@@ -315,6 +321,16 @@ if (chatToggle) {
 if (chatClose) {
     chatClose.addEventListener('click', () => {
         if (chatWindow) chatWindow.hidden = true;
+    });
+}
+
+// Topbar chat toggle
+const chatToggleTopBtn = document.getElementById('chatToggleTop');
+if (chatToggleTopBtn) {
+    chatToggleTopBtn.addEventListener('click', () => {
+        if (!chatWindow) return;
+        chatWindow.hidden = !chatWindow.hidden;
+        if (!chatWindow.hidden && chatInput) chatInput.focus();
     });
 }
 
