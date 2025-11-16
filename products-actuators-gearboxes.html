@@ -124,6 +124,9 @@
                             <li><a href="index.html#recent-projects">Recent Projects</a></li>
                         </ul>
                     </li>
+                    <li class="nav-search">
+                        <button id="openSearch" class="btn btn-secondary" aria-label="Search products"><i class="fas fa-search"></i></button>
+                    </li>
                     <li class="dropdown">
                         <a href="contact-support-sales.html">Contact <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
@@ -477,6 +480,35 @@
         </div>
     </footer>
 
+    <!-- Product Search Panel -->
+    <div id="productSearchPanel" class="search-panel" aria-hidden="true">
+        <div class="search-panel-inner">
+            <div class="search-header">
+                <h3>Search Products</h3>
+                <button id="closeSearch" class="btn btn-outline" aria-label="Close search">Close</button>
+            </div>
+            <div class="search-body">
+                <input id="productSearchInput" class="search-input" type="search" placeholder="Search products, series, features..." aria-label="Search products">
+                <ul id="searchSuggestions" class="search-suggestions" role="listbox"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot / Technical Support Widget -->
+    <div id="chatbot" class="chatbot" aria-hidden="false">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open technical support chat"><i class="fas fa-headset"></i></button>
+        <div id="chatWindow" class="chat-window" hidden>
+            <header class="chat-header">
+                <div class="chat-title">Technical Support</div>
+                <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+            </header>
+            <div id="chatMessages" class="chat-messages" role="log" aria-live="polite"></div>
+            <form id="chatForm" class="chat-form">
+                <input id="chatInput" type="text" placeholder="Describe your issue or ask a question..." aria-label="Chat input" required>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
     <script src="js/main.js" defer></script>
 </body>
 </html>

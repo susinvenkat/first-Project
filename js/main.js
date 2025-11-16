@@ -203,3 +203,140 @@ document.querySelectorAll('.product-img, .product-card-img').forEach(img => {
     img.style.transition = 'opacity 0.3s';
 });
 
+/* Product Search Panel Logic */
+const openSearch = document.getElementById('openSearch');
+const closeSearch = document.getElementById('closeSearch');
+const productSearchPanel = document.getElementById('productSearchPanel');
+const productSearchInput = document.getElementById('productSearchInput');
+const searchSuggestions = document.getElementById('searchSuggestions');
+
+function setSearchVisible(visible) {
+    if (!productSearchPanel) return;
+    productSearchPanel.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    productSearchPanel.style.display = visible ? 'block' : 'none';
+    if (visible && productSearchInput) productSearchInput.focus();
+}
+
+if (openSearch && productSearchPanel) {
+    openSearch.addEventListener('click', () => setSearchVisible(true));
+}
+if (closeSearch && productSearchPanel) {
+    closeSearch.addEventListener('click', () => setSearchVisible(false));
+}
+
+// Build suggestion index from product sections
+function buildProductIndex() {
+    const sections = document.querySelectorAll('.product-section');
+    const items = [];
+    sections.forEach(sec => {
+        const titleEl = sec.querySelector('h2');
+        const subtitle = sec.querySelector('.product-series');
+        const id = sec.id || null;
+        const title = titleEl ? titleEl.textContent.trim() : '';
+        const desc = sec.textContent.trim().slice(0, 200);
+        items.push({title, subtitle: subtitle ? subtitle.textContent.trim() : '', id});
+    });
+    return items;
+}
+
+let productIndex = buildProductIndex();
+
+function renderSuggestions(list) {
+    if (!searchSuggestions) return;
+    searchSuggestions.innerHTML = '';
+    if (list.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'No results';
+        searchSuggestions.appendChild(li);
+        return;
+    }
+    list.forEach(item => {
+        const li = document.createElement('li');
+        li.tabIndex = 0;
+        li.textContent = item.title + (item.subtitle ? ' — ' + item.subtitle : '');
+        li.addEventListener('click', () => {
+            if (item.id) {
+                setSearchVisible(false);
+                const target = document.getElementById(item.id);
+                if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
+            }
+        });
+        li.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') li.click();
+        });
+        searchSuggestions.appendChild(li);
+    });
+}
+
+if (productSearchInput) {
+    productSearchInput.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        if (!q) return renderSuggestions(productIndex);
+        const matches = productIndex.filter(it =>
+            it.title.toLowerCase().includes(q) || it.subtitle.toLowerCase().includes(q)
+        );
+        renderSuggestions(matches);
+    });
+    // initial suggestions
+    renderSuggestions(productIndex);
+}
+
+/* Lightweight Chatbot — client-side, no server required */
+const chatToggle = document.getElementById('chatToggle');
+const chatWindow = document.getElementById('chatWindow');
+const chatClose = document.getElementById('chatClose');
+const chatForm = document.getElementById('chatForm');
+const chatInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
+
+const cannedFaq = [
+    {q: 'installation', a: 'Installation guides and commissioning procedures are available in the Resources section. Which product are you installing?' },
+    {q: 'warranty', a: 'Standard product warranty details are listed in the product datasheet. We can share the exact terms for your model.' },
+    {q: 'datasheet', a: 'You can download datasheets from the product page or Resources -> Datasheets. Tell me the product series.' },
+    {q: 'troubleshoot', a: 'Describe the symptom (error, vibration, leak) and I will suggest checks and next steps.' }
+];
+
+function appendChat(message, from = 'bot') {
+    if (!chatMessages) return;
+    const el = document.createElement('div');
+    el.className = 'chat-msg ' + (from === 'user' ? 'user' : 'bot');
+    el.textContent = message;
+    chatMessages.appendChild(el);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+if (chatToggle) {
+    chatToggle.addEventListener('click', () => {
+        if (!chatWindow) return;
+        chatWindow.hidden = !chatWindow.hidden;
+        if (!chatWindow.hidden && chatInput) chatInput.focus();
+    });
+}
+if (chatClose) {
+    chatClose.addEventListener('click', () => {
+        if (chatWindow) chatWindow.hidden = true;
+    });
+}
+
+if (chatForm) {
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+        appendChat(text, 'user');
+
+        // Try match canned FAQ
+        const q = text.toLowerCase();
+        const match = cannedFaq.find(f => q.includes(f.q));
+        setTimeout(() => {
+            if (match) {
+                appendChat(match.a, 'bot');
+            } else {
+                appendChat('Thanks — our technical team has received your message. We typically respond within one business day. For urgent support, please call +91 77080 97242.', 'bot');
+            }
+        }, 700);
+
+        chatForm.reset();
+    });
+}
+
