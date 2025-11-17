@@ -32,27 +32,50 @@
   </url>
   <url>
     <loc>https://www.susingroup.com/industries.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.susingroup.com/resources.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.susingroup.com/contact.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.susingroup.com/about.html</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.susingroup.com/careers.html</loc>
     <lastmod>2025-11-17</lastmod>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.susingroup.com/global-presence/susin-itork-india.html</loc>
     <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.susingroup.com/products-actuators-gearboxes.html</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.susingroup.com/services-installation-maintenance.html</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

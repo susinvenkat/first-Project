@@ -1,4 +1,37 @@
-// Mobile Navigation Toggle
+// Performance optimizations
+document.addEventListener('DOMContentLoaded', () => {
+    // Lazy loading for images with Intersection Observer
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    // Observe all lazy images
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        imageObserver.observe(img);
+    });
+
+    // Animate on scroll optimization
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Observe animation elements
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        animationObserver.observe(el);
+    });
+});
+
+// Mobile Navigation Toggle with performance optimization
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
@@ -6,8 +39,10 @@ if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        // Prevent body scroll when menu is open with requestAnimationFrame
+        requestAnimationFrame(() => {
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
     });
 
     // Close menu when clicking on a link
