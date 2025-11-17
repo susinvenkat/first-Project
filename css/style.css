@@ -42,6 +42,13 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+/* Prevent body scroll when mobile menu is open */
+body[style*="overflow: hidden"] {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', 'Inter', sans-serif;
     font-weight: 700;
@@ -328,25 +335,45 @@ h2 {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.hamburger:hover {
+    opacity: 0.8;
 }
 
 .hamburger span {
     width: 25px;
     height: 3px;
     background-color: var(--white);
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
     border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(11px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-11px);
 }
 
 /* Mobile nav active state uses transform for smooth GPU-accelerated transitions */
 .nav-menu {
-    transition: transform 260ms cubic-bezier(0.2,0.9,0.2,1), opacity 200ms ease;
+    transition: left 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
+
 .nav-menu.active {
-    transform: translateY(0);
-    opacity: 1;
+    left: 0;
 }
-.nav-menu { will-change: transform, opacity; }
+
+.nav-menu { 
+    will-change: left;
+}
 
 /* Hero Section - Red, Gray, White Style */
 .hero {
@@ -2080,14 +2107,18 @@ textarea:focus {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: var(--header-height, 70px);
         flex-direction: column;
         background-color: var(--nav-bg);
         width: 100%;
+        height: calc(100vh - var(--header-height, 70px));
         text-align: center;
-        transition: 0.3s;
+        transition: left 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.2);
         padding: 2rem 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -2107,6 +2138,8 @@ textarea:focus {
     
     .dropdown-menu a {
         color: rgba(255, 255, 255, 0.9);
+        display: block;
+        padding: 0.75rem 1rem;
     }
     
     .dropdown-menu a:hover {
@@ -2132,6 +2165,8 @@ textarea:focus {
     
     .lang-dropdown a {
         color: rgba(255, 255, 255, 0.9);
+        display: block;
+        padding: 0.75rem 1rem;
     }
     
     .lang-dropdown a:hover {

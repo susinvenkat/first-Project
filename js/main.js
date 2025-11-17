@@ -6,6 +6,8 @@ if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
 
     // Close menu when clicking on a link
@@ -13,6 +15,7 @@ if (hamburger && navMenu) {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 }
@@ -24,15 +27,28 @@ document.addEventListener('click', (e) => {
     if (!withinNav && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
         hamburger.classList.remove('active');
+        document.body.style.overflow = '';
     }
 });
+
+// Close mobile nav when scrolling (improved mobile UX)
+window.addEventListener('scroll', () => {
+    if (navMenu && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}, { passive: true });
 
 // Ensure nav is reset on resize (avoid mobile menu stuck open)
 window.addEventListener('resize', () => {
     try {
         if (window.innerWidth > 768) {
-            if (navMenu.classList.contains('active')) navMenu.classList.remove('active');
-            if (hamburger.classList.contains('active')) hamburger.classList.remove('active');
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         }
     } catch (e) {}
 });
