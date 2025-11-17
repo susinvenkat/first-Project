@@ -17,6 +17,26 @@ if (hamburger && navMenu) {
     });
 }
 
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navMenu || !hamburger) return;
+    const withinNav = navMenu.contains(e.target) || hamburger.contains(e.target);
+    if (!withinNav && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
+});
+
+// Ensure nav is reset on resize (avoid mobile menu stuck open)
+window.addEventListener('resize', () => {
+    try {
+        if (window.innerWidth > 768) {
+            if (navMenu.classList.contains('active')) navMenu.classList.remove('active');
+            if (hamburger.classList.contains('active')) hamburger.classList.remove('active');
+        }
+    } catch (e) {}
+});
+
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -97,23 +117,31 @@ if (contactForm) {
     });
 }
 
-// Navbar Scroll Effect
-let lastScroll = 0;
+// Navbar Scroll Effect (optimized with requestAnimationFrame to avoid layout thrash)
+let lastKnownScroll = 0;
+let ticking = false;
 const navbar = document.querySelector('.navbar');
 
-if (navbar) {
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-        } else {
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        }
-        
-        lastScroll = currentScroll;
-    });
+function updateNavbar(scrollY) {
+    if (!navbar) return;
+    // Use a simple threshold for elevated shadow when scrolled
+    if (scrollY > 80) {
+        navbar.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.14)';
+    } else {
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
+    }
 }
+
+window.addEventListener('scroll', () => {
+    lastKnownScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            updateNavbar(lastKnownScroll);
+            ticking = false;
+        });
+        ticking = true;
+    }
+}, { passive: true });
 
 // Active Navigation Link Highlighting
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';

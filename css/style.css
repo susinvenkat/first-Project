@@ -276,6 +276,16 @@ h2 {
     border-radius: 2px;
 }
 
+/* Mobile nav active state uses transform for smooth GPU-accelerated transitions */
+.nav-menu {
+    transition: transform 260ms cubic-bezier(0.2,0.9,0.2,1), opacity 200ms ease;
+}
+.nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+.nav-menu { will-change: transform, opacity; }
+
 /* Hero Section - Red, Gray, White Style */
 .hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -2091,6 +2101,34 @@ textarea:focus {
 
     .hero-buttons .btn {
         width: 100%;
+    }
+}
+
+/* Mobile navigation: keep off-canvas using transform to avoid reflow */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: absolute;
+        top: calc(var(--topbar-height) + var(--logo-height) + 8px);
+        right: 12px;
+        left: 12px;
+        background: linear-gradient(180deg, rgba(44,44,44,0.98), rgba(36,36,36,0.98));
+        border-radius: 12px;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        transform: translateY(-10px) scale(0.995);
+        opacity: 0;
+        pointer-events: none;
+    }
+    .nav-menu.active {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .nav-menu a {
+        padding: 0.65rem 0.75rem;
+        display: block;
+        color: var(--white);
     }
 }
 
