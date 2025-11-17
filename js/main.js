@@ -389,10 +389,11 @@ function initializeMobileNav() {
 // Notification System
 function initializeNotifications() {
     // Create notification system for updates, alerts, etc.
+    // Notifications disabled - uncomment below to enable
     const notifications = [
-        { id: 1, type: 'info', message: 'New product catalog available', link: 'resources.html#catalog' },
-        { id: 2, type: 'success', message: 'Enhanced mobile experience now live', link: null },
-        { id: 3, type: 'alert', message: 'Upcoming maintenance window', link: 'contact.html#support' }
+        // { id: 1, type: 'info', message: 'New product catalog available', link: 'resources.html#catalog' },
+        // { id: 2, type: 'success', message: 'Enhanced mobile experience now live', link: null },
+        // { id: 3, type: 'alert', message: 'Upcoming maintenance window', link: 'contact.html#support' }
     ];
     
     // Display notifications if user hasn't seen them
