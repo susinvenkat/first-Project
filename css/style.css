@@ -294,6 +294,16 @@ h2 {
 .submenu-actions { margin-top: 8px; display:flex; gap:8px; align-items:center; }
 .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.85rem; border-radius: 6px; }
 
+/* Thumbnail inside submenu panel */
+.submenu-panel .submenu-thumb {
+    width: 72px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    float: left;
+    margin-right: 10px;
+}
+
 /* Mobile: make submenu panel flow inside the dropdown (stacked) */
 @media (max-width: 768px) {
     .submenu-panel {
