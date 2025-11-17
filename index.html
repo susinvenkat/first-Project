@@ -15,6 +15,7 @@
         <meta name="twitter:creator" content="@susingroup">
         <title>Industrial Actuators & Gearboxes | Advanced Motion Control Solutions</title>
         <meta name="description" content="Leading manufacturer of actuators and gearboxes — Pneumatic, Electro-Hydraulic and Electrical actuators for critical industrial applications worldwide.">
+        <meta name="keywords" content="industrial actuators, pneumatic actuators, gearboxes, electro-hydraulic actuators, electrical actuators, motion control, automation">
         <link rel="canonical" href="https://www.susingroup.com/index.html" />
         <link rel="icon" href="logo.jpg">
 
@@ -38,9 +39,44 @@
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Susin Group",
-            "url": "https://www.susingroup.com"
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "name": "Susin Group",
+                    "url": "https://www.susingroup.com",
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": {
+                            "@type": "EntryPoint",
+                            "urlTemplate": "https://www.susingroup.com/search?q={search_term_string}"
+                        }
+                    }
+                },
+                {
+                    "@type": "Organization",
+                    "name": "Susin Group",
+                    "url": "https://www.susingroup.com",
+                    "logo": "https://www.susingroup.com/assets/img/logo.png",
+                    "description": "Leading manufacturer of industrial actuators and gearboxes for global automation and control applications",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Coimbatore",
+                        "addressRegion": "TN",
+                        "addressCountry": "IN"
+                    },
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91-77080-97242",
+                        "contactType": "Sales"
+                    },
+                    "sameAs": [
+                        "https://www.linkedin.com/company/susin-group",
+                        "https://www.facebook.com/susingroup",
+                        "https://twitter.com/susingroup",
+                        "https://www.youtube.com/@susingroup"
+                    ]
+                }
+            ]
         }
         </script>
     </head>
@@ -188,9 +224,9 @@
     </section>
 
     <!-- Key Products Section -->
-    <section class="products-preview">
+    <section class="products-preview" aria-labelledby="products-heading">
         <div class="container">
-            <h2 class="section-title">Our Product Range</h2>
+            <h2 id="products-heading" class="section-title">Our Product Range</h2>
             <p class="section-subtitle">Comprehensive solutions for industrial automation and control</p>
             <div class="products-grid">
                 <div class="product-card">
@@ -245,9 +281,9 @@
     </section>
 
     <!-- Industries Served -->
-    <section class="industries">
+    <section class="industries" aria-labelledby="industries-heading">
         <div class="container">
-            <h2 class="section-title">Industries We Serve</h2>
+            <h2 id="industries-heading" class="section-title">Industries We Serve</h2>
             <div class="industries-grid">
                 <div class="industry-item">
                     <i class="fas fa-industry"></i>
@@ -287,9 +323,9 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section class="features">
+    <section class="features" aria-labelledby="features-heading">
         <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
+            <h2 id="features-heading" class="section-title">Why Choose Us</h2>
             <div class="features-grid">
                 <div class="feature-item">
                     <i class="fas fa-certificate"></i>
@@ -316,10 +352,10 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="cta" aria-labelledby="cta-heading">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Find the Right Solution?</h2>
+                <h2 id="cta-heading">Ready to Find the Right Solution?</h2>
                 <p>Our expert team is here to help you select the perfect actuator or gearbox for your application</p>
                 <a href="contact.html" class="btn btn-primary btn-large">Contact Our Experts</a>
             </div>
