@@ -2216,7 +2216,7 @@ textarea:focus {
 
 /* Make main nav visually distinct and slightly elevated */
 .navbar .nav-wrapper { padding: calc(var(--nav-padding-vertical) * 1.2) 24px; max-width: 1400px; margin: 0 auto; }
-.navbar { position: sticky; top: 0; z-index: 1100; background: var(--nav-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.navbar { position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1100; background: var(--nav-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
 @media (max-width: 768px) {
     .topbar-inner { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.5rem 12px; }
@@ -2401,6 +2401,34 @@ textarea:focus {
 
 .chat-toggle {
     animation: chatbot-pulse 3s ease-in-out infinite;
+}
+
+/* Ensure main content is offset below the fixed header; value set by JS into --header-height */
+main#main-content {
+    padding-top: var(--header-height, 0px);
+    transition: padding-top 160ms ease;
+}
+
+/* Skip link - visible on focus for keyboard users */
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transform: translateY(-120%);
+    transition: transform 160ms ease, opacity 160ms ease;
+    z-index: 9999;
+}
+.skip-link:focus {
+    transform: translateY(0);
+    outline: 3px solid rgba(255,255,255,0.12);
+}
+
+@media (max-width: 480px) {
+    .skip-link { left: 6px; top: 6px; }
 }
 
 /* Compact header on scroll: reduce topbar/nav sizes and add subtle separator */

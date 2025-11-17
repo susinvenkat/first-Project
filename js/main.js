@@ -37,18 +37,58 @@ window.addEventListener('resize', () => {
     } catch (e) {}
 });
 
-// Smooth Scrolling for Anchor Links
+// Helper to return current header height in pixels (number)
+function getHeaderHeightNumber() {
+    try {
+        // Prefer CSS var if set
+        const cssVar = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
+        if (cssVar) {
+            const px = parseInt(cssVar.trim().replace('px', ''), 10);
+            if (!isNaN(px)) return px;
+        }
+
+        // Fallback: measure topbar + navbar
+        let headerHeight = 0;
+        const topbar = document.querySelector('.topbar');
+        const navbarEl = document.querySelector('.navbar');
+        if (topbar && topbar.offsetHeight) headerHeight += topbar.offsetHeight;
+        if (navbarEl) {
+            const navWrapper = navbarEl.querySelector('.nav-wrapper');
+            headerHeight += navWrapper && navWrapper.offsetHeight ? navWrapper.offsetHeight : navbarEl.offsetHeight;
+        }
+        return Math.ceil(headerHeight) || 0;
+    } catch (e) {
+        return 0;
+    }
+}
+
+// Smooth Scrolling for Anchor Links (accounts for fixed header offset)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href !== '#' && href.length > 1) {
-            e.preventDefault();
+        if (href && href !== '#' && href.length > 1) {
             const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                e.preventDefault();
+
+                const headerOffset = getHeaderHeightNumber() || 0;
+                const additionalGap = 8; // small breathing room
+                const targetRect = target.getBoundingClientRect();
+                const targetY = window.pageYOffset + targetRect.top - headerOffset - additionalGap;
+
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+
+                // Ensure the element is focusable so keyboard users land on it
+                const needsTabIndex = !target.hasAttribute('tabindex');
+                if (needsTabIndex) target.setAttribute('tabindex', '-1');
+                target.focus({ preventScroll: true });
+
+                // Clean up temporary tabindex after a delay
+                if (needsTabIndex) {
+                    setTimeout(() => {
+                        try { target.removeAttribute('tabindex'); } catch (e) {}
+                    }, 2000);
+                }
             }
         }
     });
@@ -165,12 +205,64 @@ function adjustMainPadding() {
 }
 
 // Call adjustMainPadding on load and resize
+// Observe header size changes (ResizeObserver + MutationObserver fallback)
+function observeHeaderSize() {
+    try {
+        const topbar = document.querySelector('.topbar');
+        const navbarEl = document.querySelector('.navbar');
+
+        // Use ResizeObserver when available
+        if (window.ResizeObserver) {
+            // Disconnect previous observer
+            if (window.__headerResizeObserver) try { window.__headerResizeObserver.disconnect(); } catch (e) {}
+            const ro = new ResizeObserver(() => adjustMainPadding());
+            if (topbar) ro.observe(topbar);
+            if (navbarEl) ro.observe(navbarEl);
+            // keep reference
+            window.__headerResizeObserver = ro;
+        }
+
+        // Use MutationObserver to catch structural changes that can affect height
+        if (window.MutationObserver) {
+            if (window.__headerMutationObserver) try { window.__headerMutationObserver.disconnect(); } catch (e) {}
+            const mo = new MutationObserver(() => {
+                clearTimeout(window.__headerMutationTimer);
+                window.__headerMutationTimer = setTimeout(adjustMainPadding, 60);
+            });
+            const target = document.querySelector('header') || document.querySelector('.site-header') || document.querySelector('.navbar') || document.body;
+            mo.observe(target, { attributes: true, childList: true, subtree: true, characterData: true });
+            window.__headerMutationObserver = mo;
+        }
+    } catch (e) {
+        // silent
+    }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     adjustMainPadding();
     // allow a small delay after fonts/images load
     setTimeout(adjustMainPadding, 250);
+    // start observing header size changes
+    observeHeaderSize();
 });
-window.addEventListener('load', () => adjustMainPadding());
+window.addEventListener('load', () => {
+    adjustMainPadding();
+    observeHeaderSize();
+
+    // If the page was loaded with a hash, adjust the initial scroll to account for fixed header
+    try {
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                const y = window.pageYOffset + target.getBoundingClientRect().top - getHeaderHeightNumber() - 8;
+                window.scrollTo(0, y);
+                try { target.focus({ preventScroll: true }); } catch (e) {
+                    try { target.setAttribute('tabindex', '-1'); target.focus(); } catch (ee) {}
+                }
+            }
+        }
+    } catch (e) {}
+});
 window.addEventListener('resize', () => {
     // debounce resize quickly
     clearTimeout(window.__adjustMainPaddingTimer);
