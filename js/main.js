@@ -1430,3 +1430,291 @@ if (chatMessages) {
     chatObserver.observe(chatMessages, { childList: true });
 }
 
+/* ============================================
+   VIDEO FLASH SLIDER - VALVE INDUSTRY
+   ============================================ */
+
+// Video Flash Slider Functionality
+(function() {
+    const sliderWrapper = document.querySelector('.video-slider-wrapper');
+    const slides = document.querySelectorAll('.video-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevButton = document.querySelector('.slider-prev');
+    const nextButton = document.querySelector('.slider-next');
+    const progressBar = document.querySelector('.progress-bar');
+    
+    if (!sliderWrapper || slides.length === 0) return;
+    
+    let currentSlide = 0;
+    let autoplayInterval;
+    let progressInterval;
+    const slideDuration = 2000; // 2 seconds per slide
+    const progressUpdateInterval = 30; // Update progress every 30ms for smooth animation
+    
+    // Initialize slider
+    function initSlider() {
+        showSlide(0);
+        startAutoplay();
+        
+        // Add event listeners
+        if (prevButton) prevButton.addEventListener('click', previousSlide);
+        if (nextButton) nextButton.addEventListener('click', nextSlide);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Pause autoplay on hover
+        sliderWrapper.addEventListener('mouseenter', pauseAutoplay);
+        sliderWrapper.addEventListener('mouseleave', startAutoplay);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', handleKeyboardNavigation);
+        
+        // Pause videos when not active
+        pauseInactiveVideos();
+    }
+    
+    function showSlide(index) {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+            const video = slide.querySelector('.slide-video');
+            if (video) video.pause();
+        });
+        
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current slide and dot
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        
+        // Play video for active slide
+        const activeVideo = slides[index].querySelector('.slide-video');
+        if (activeVideo) {
+            activeVideo.currentTime = 0;
+            activeVideo.play().catch(err => {
+                console.log('Video autoplay prevented:', err);
+            });
+        }
+        
+        currentSlide = index;
+        
+        // Reset progress bar
+        resetProgressBar();
+    }
+    
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+        resetAutoplay();
+    }
+    
+    function previousSlide() {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+        resetAutoplay();
+    }
+    
+    function goToSlide(index) {
+        if (index !== currentSlide) {
+            showSlide(index);
+            resetAutoplay();
+        }
+    }
+    
+    function startAutoplay() {
+        stopAutoplay(); // Clear any existing intervals
+        autoplayInterval = setInterval(nextSlide, slideDuration);
+        startProgressBar();
+    }
+    
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+        stopProgressBar();
+    }
+    
+    function pauseAutoplay() {
+        stopAutoplay();
+    }
+    
+    function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+    }
+    
+    function startProgressBar() {
+        if (!progressBar) return;
+        
+        stopProgressBar();
+        
+        let progress = 0;
+        const increment = (100 / slideDuration) * progressUpdateInterval;
+        
+        progressInterval = setInterval(() => {
+            progress += increment;
+            if (progress >= 100) {
+                progress = 100;
+            }
+            progressBar.style.width = progress + '%';
+        }, progressUpdateInterval);
+    }
+    
+    function stopProgressBar() {
+        if (progressInterval) {
+            clearInterval(progressInterval);
+            progressInterval = null;
+        }
+    }
+    
+    function resetProgressBar() {
+        if (progressBar) {
+            progressBar.style.width = '0%';
+        }
+        stopProgressBar();
+        startProgressBar();
+    }
+    
+    function handleKeyboardNavigation(e) {
+        // Only handle if slider is visible
+        const sliderSection = document.querySelector('.video-flash-slider');
+        if (!sliderSection || !isElementInViewport(sliderSection)) return;
+        
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            previousSlide();
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextSlide();
+        }
+    }
+    
+    function pauseInactiveVideos() {
+        slides.forEach((slide, index) => {
+            const video = slide.querySelector('.slide-video');
+            if (video && index !== currentSlide) {
+                video.pause();
+            }
+        });
+    }
+    
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    // Handle visibility change (pause when tab is not active)
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            pauseAutoplay();
+            slides.forEach(slide => {
+                const video = slide.querySelector('.slide-video');
+                if (video) video.pause();
+            });
+        } else {
+            startAutoplay();
+            const activeVideo = slides[currentSlide].querySelector('.slide-video');
+            if (activeVideo) activeVideo.play().catch(() => {});
+        }
+    });
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Ensure videos are properly sized after resize
+            slides.forEach(slide => {
+                const video = slide.querySelector('.slide-video');
+                if (video) {
+                    video.style.width = 'auto';
+                    video.style.height = 'auto';
+                }
+            });
+        }, 250);
+    });
+    
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSlider);
+    } else {
+        initSlider();
+    }
+    
+    // Intersection Observer to pause slider when not in view
+    if ('IntersectionObserver' in window) {
+        const sliderObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startAutoplay();
+                } else {
+                    pauseAutoplay();
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+        
+        const sliderSection = document.querySelector('.video-flash-slider');
+        if (sliderSection) {
+            sliderObserver.observe(sliderSection);
+        }
+    }
+    
+    // Touch/Swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50;
+    
+    if (sliderWrapper) {
+        sliderWrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        sliderWrapper.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+    }
+    
+    function handleSwipe() {
+        const swipeDistance = touchStartX - touchEndX;
+        
+        if (Math.abs(swipeDistance) > minSwipeDistance) {
+            if (swipeDistance > 0) {
+                // Swipe left - next slide
+                nextSlide();
+            } else {
+                // Swipe right - previous slide
+                previousSlide();
+            }
+        }
+    }
+    
+    // Preload next video for smoother transitions
+    function preloadNextVideo() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        const nextVideo = slides[nextIndex].querySelector('.slide-video');
+        if (nextVideo) {
+            nextVideo.load();
+        }
+    }
+    
+    // Preload on slide change
+    slides.forEach((slide, index) => {
+        slide.addEventListener('transitionend', () => {
+            if (index === currentSlide) {
+                preloadNextVideo();
+            }
+        });
+    });
+})();
+
