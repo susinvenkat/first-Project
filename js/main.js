@@ -130,7 +130,60 @@ function updateNavbar(scrollY) {
     } else {
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
     }
+    // Compact header: toggle a class on the document element for CSS to shrink header
+    try {
+        document.documentElement.classList.toggle('header-compact', scrollY > 120);
+    } catch (e) {}
 }
+
+// Ensure `main#main-content` has a top padding equal to the header height to avoid overlap
+function adjustMainPadding() {
+    try {
+        const main = document.getElementById('main-content');
+        if (!main) return;
+        // measure banner/header: topbar + navbar combined
+        const topbar = document.querySelector('.topbar');
+        const navbarEl = document.querySelector('.navbar');
+
+        // compute visible header height: prefer topbar + nav-wrapper height if present
+        let headerHeight = 0;
+        if (topbar && topbar.offsetHeight) headerHeight += topbar.offsetHeight;
+        if (navbarEl) {
+            // If nav-wrapper is inside navbar, measure its height; otherwise navbar itself
+            const navWrapper = navbarEl.querySelector('.nav-wrapper');
+            headerHeight += navWrapper && navWrapper.offsetHeight ? navWrapper.offsetHeight : navbarEl.offsetHeight;
+        }
+
+        // set padding-top to headerHeight (plus small safety 4px)
+        const safe = Math.ceil(headerHeight) + 4;
+        main.style.paddingTop = safe + 'px';
+        // also set a CSS variable for consumers
+        document.documentElement.style.setProperty('--header-height', safe + 'px');
+    } catch (e) {
+        // ignore
+    }
+}
+
+// Call adjustMainPadding on load and resize
+window.addEventListener('DOMContentLoaded', () => {
+    adjustMainPadding();
+    // allow a small delay after fonts/images load
+    setTimeout(adjustMainPadding, 250);
+});
+window.addEventListener('load', () => adjustMainPadding());
+window.addEventListener('resize', () => {
+    // debounce resize quickly
+    clearTimeout(window.__adjustMainPaddingTimer);
+    window.__adjustMainPaddingTimer = setTimeout(adjustMainPadding, 120);
+});
+
+// Ensure adjustments when header-compact toggles via updateNavbar (call adjustMainPadding from update loop)
+// updateNavbar runs inside rAF; it toggles the class — call adjustMainPadding after toggling
+const originalUpdateNavbar = updateNavbar;
+updateNavbar = function(scrollY) {
+    originalUpdateNavbar(scrollY);
+    adjustMainPadding();
+};
 
 window.addEventListener('scroll', () => {
     lastKnownScroll = window.pageYOffset || document.documentElement.scrollTop;
