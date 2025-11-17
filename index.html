@@ -152,9 +152,9 @@
                         <a href="index.html#recent-projects" class="topbar-link">Recent Projects</a>
                         <a href="#" class="topbar-link">Global Presence</a>
                         <div class="topbar-actions">
-                            <button id="openSearchTop" class="btn btn-secondary" aria-label="Open search"><i class="fas fa-search"></i></button>
-                            <button id="chatToggleTop" class="btn btn-secondary" aria-label="Open chat"><i class="fas fa-headset"></i></button>
-                            <button id="employeeLoginBtn" class="btn btn-outline topbar-login" aria-label="Employee login"><i class="fas fa-user-lock"></i></button>
+                            <button id="openSearchTop" class="btn btn-secondary" aria-label="Open search" title="Search products and resources"><i class="fas fa-search"></i></button>
+                            <button id="chatToggleTop" class="btn btn-secondary" aria-label="Open chat" title="Live technical support"><i class="fas fa-headset"></i></button>
+                            <button id="employeeLoginBtn" class="btn btn-outline topbar-login" aria-label="Employee login" title="Employee portal access"><i class="fas fa-user-lock"></i></button>
                         </div>
                     </div>
                 </div>
@@ -165,16 +165,16 @@
                     <span class="logo-text">SUSIN</span>
                 </a>
                 <ul class="nav-menu" id="navMenu">
-                    <li class="lang-selector">
-                        <a href="#" class="lang-toggle">
+                    <li class="lang-selector" role="menuitem">
+                        <button type="button" class="lang-toggle" aria-haspopup="menu" aria-expanded="false" id="langToggle">
                             <i class="fas fa-globe"></i> EN <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <ul class="lang-dropdown">
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">中文</a></li>
-                            <li><a href="#">العربية</a></li>
-                            <li><a href="#">Deutsch</a></li>
-                            <li><a href="#">Français</a></li>
+                        </button>
+                        <ul class="lang-dropdown" role="menu" aria-labelledby="langToggle" id="langDropdown">
+                            <li role="none"><a href="#" role="menuitem" data-lang="en" class="active"><i class="fas fa-flag-usa"></i> English</a></li>
+                            <li role="none"><a href="#" role="menuitem" data-lang="zh"><i class="fas fa-flag"></i> 中文</a></li>
+                            <li role="none"><a href="#" role="menuitem" data-lang="ar"><i class="fas fa-flag"></i> العربية</a></li>
+                            <li role="none"><a href="#" role="menuitem" data-lang="de"><i class="fas fa-flag"></i> Deutsch</a></li>
+                            <li role="none"><a href="#" role="menuitem" data-lang="fr"><i class="fas fa-flag"></i> Français</a></li>
                         </ul>
                     </li>
                     <li><a href="index.html" class="active">Home</a></li>
@@ -272,10 +272,17 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="nav-controls">
+                    <div class="notification-badge" id="notificationBadge" title="New updates available">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count">3</span>
+                    </div>
+                    <button type="button" class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-text">Menu</span>
+                    </button>
                 </div>
             </div>
         </div>

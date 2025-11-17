@@ -1,5 +1,8 @@
-// Performance optimizations
+// Enhanced Menu Functionality and Performance Optimizations
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize enhanced menu features
+    initializeMenuFeatures();
+    
     // Lazy loading for images with Intersection Observer
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -30,6 +33,443 @@ document.addEventListener('DOMContentLoaded', () => {
         animationObserver.observe(el);
     });
 });
+
+// Enhanced Menu Features Function
+function initializeMenuFeatures() {
+    // Enhanced Search Functionality
+    initializeSearch();
+    
+    // Enhanced Dropdown Menus
+    initializeDropdowns();
+    
+    // Active Menu State Management
+    initializeActiveStates();
+    
+    // Enhanced Mobile Navigation
+    initializeMobileNav();
+    
+    // Notification System
+    initializeNotifications();
+    
+    // Language Selector
+    initializeLanguageSelector();
+}
+
+// Enhanced Search with Live Suggestions
+function initializeSearch() {
+    const searchBtn = document.getElementById('openSearchTop');
+    const chatBtn = document.getElementById('chatToggleTop');
+    const loginBtn = document.getElementById('employeeLoginBtn');
+    
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () => {
+            showSearchModal();
+        });
+    }
+    
+    if (chatBtn) {
+        chatBtn.addEventListener('click', () => {
+            showChatWidget();
+        });
+    }
+    
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => {
+            showLoginModal();
+        });
+    }
+}
+
+// Enhanced Dropdown Menu Interactions
+function initializeDropdowns() {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('a');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        
+        if (!trigger || !menu) return;
+        
+        // Add hover delay for better UX
+        let hoverTimeout;
+        
+        dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            dropdown.classList.add('hover');
+            trigger.setAttribute('aria-expanded', 'true');
+        });
+        
+        dropdown.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                dropdown.classList.remove('hover');
+                trigger.setAttribute('aria-expanded', 'false');
+            }, 150);
+        });
+        
+        // Keyboard navigation
+        trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                dropdown.classList.toggle('hover');
+                const isExpanded = dropdown.classList.contains('hover');
+                trigger.setAttribute('aria-expanded', isExpanded);
+                
+                if (isExpanded) {
+                    const firstLink = menu.querySelector('a');
+                    if (firstLink) firstLink.focus();
+                }
+            }
+        });
+    });
+}
+
+// Active Menu State Management
+function initializeActiveStates() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const menuLinks = document.querySelectorAll('.nav-menu a');
+    
+    menuLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.includes(currentPage)) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        }
+    });
+}
+
+// Enhanced Mobile Navigation
+function initializeMobileNav() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            const isActive = navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isActive);
+            
+            // Enhanced body scroll prevention
+            if (isActive) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+            } else {
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            }
+        });
+    }
+}
+
+// Notification System
+function initializeNotifications() {
+    // Create notification system for updates, alerts, etc.
+    const notifications = [
+        { id: 1, type: 'info', message: 'New product catalog available', link: 'resources.html#catalog' },
+        { id: 2, type: 'success', message: 'Enhanced mobile experience now live', link: null },
+        { id: 3, type: 'alert', message: 'Upcoming maintenance window', link: 'contact.html#support' }
+    ];
+    
+    // Display notifications if user hasn't seen them
+    showNotifications(notifications);
+}
+
+// Language Selector Enhancement
+function initializeLanguageSelector() {
+    // Placeholder for future multi-language support
+    const langToggle = document.querySelector('.lang-toggle');
+    if (langToggle) {
+        langToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Future: implement language switching
+            console.log('Language selection feature - coming soon!');
+        });
+    }
+}
+
+// Modal Functions
+function showSearchModal() {
+    const searchModal = createSearchModal();
+    document.body.appendChild(searchModal);
+    searchModal.style.display = 'flex';
+    setTimeout(() => searchModal.classList.add('active'), 10);
+}
+
+function showChatWidget() {
+    // Create chat widget
+    const chatWidget = createChatWidget();
+    document.body.appendChild(chatWidget);
+    setTimeout(() => chatWidget.classList.add('active'), 10);
+}
+
+function showLoginModal() {
+    // Create login modal
+    const loginModal = createLoginModal();
+    document.body.appendChild(loginModal);
+    loginModal.style.display = 'flex';
+    setTimeout(() => loginModal.classList.add('active'), 10);
+}
+
+// Create Search Modal
+function createSearchModal() {
+    const modal = document.createElement('div');
+    modal.className = 'search-modal';
+    modal.innerHTML = `
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h3><i class="fas fa-search"></i> Search Products & Resources</h3>
+                <button class="modal-close" onclick="this.closest('.search-modal').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-modal-body">
+                <div class="search-box-large">
+                    <input type="search" placeholder="Search actuators, gearboxes, industries..." class="search-input-large" autofocus>
+                    <button class="search-submit-large"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="search-categories">
+                    <h4>Popular Searches</h4>
+                    <div class="search-tags">
+                        <a href="products.html#pneumatic" class="search-tag">Pneumatic Actuators</a>
+                        <a href="products.html#gearboxes" class="search-tag">Gearboxes</a>
+                        <a href="industries.html#oil-gas" class="search-tag">Oil & Gas</a>
+                        <a href="resources.html#datasheets" class="search-tag">Datasheets</a>
+                        <a href="services.html#maintenance" class="search-tag">Maintenance</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop" onclick="this.closest('.search-modal').remove()"></div>
+    `;
+    return modal;
+}
+
+// Create Chat Widget
+function createChatWidget() {
+    const widget = document.createElement('div');
+    widget.className = 'chat-widget';
+    widget.innerHTML = `
+        <div class="chat-header">
+            <h4><i class="fas fa-headset"></i> Technical Support</h4>
+            <button class="chat-close" onclick="this.closest('.chat-widget').remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot">
+                <div class="message-content">
+                    <p>Hello! How can we help you with actuators and gearboxes today?</p>
+                </div>
+            </div>
+            <div class="chat-options">
+                <button class="chat-option" onclick="selectChatOption('technical')">Technical Support</button>
+                <button class="chat-option" onclick="selectChatOption('sales')">Sales Inquiry</button>
+                <button class="chat-option" onclick="selectChatOption('quote')">Request Quote</button>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <p><small>Connect with our technical team: <a href="tel:+917708097242">+91 77080 97242</a></small></p>
+        </div>
+    `;
+    return widget;
+}
+
+// Create Login Modal
+function createLoginModal() {
+    const modal = document.createElement('div');
+    modal.className = 'login-modal';
+    modal.innerHTML = `
+        <div class="login-modal-content">
+            <div class="login-modal-header">
+                <h3><i class="fas fa-user-lock"></i> Employee Access</h3>
+                <button class="modal-close" onclick="this.closest('.login-modal').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="login-modal-body">
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="employeeId">Employee ID</label>
+                        <input type="text" id="employeeId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <div class="login-help">
+                    <a href="#forgot">Forgot Password?</a> | 
+                    <a href="contact.html#support">Need Help?</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop" onclick="this.closest('.login-modal').remove()"></div>
+    `;
+    return modal;
+}
+
+// Show Notifications
+function showNotifications(notifications) {
+    if (notifications.length === 0) return;
+    
+    const notificationContainer = document.createElement('div');
+    notificationContainer.className = 'notification-container';
+    
+    notifications.forEach(notification => {
+        const notif = document.createElement('div');
+        notif.className = `notification notification-${notification.type}`;
+        notif.innerHTML = `
+            <div class="notification-content">
+                <i class="fas fa-${notification.type === 'info' ? 'info-circle' : notification.type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+                <span>${notification.message}</span>
+                ${notification.link ? `<a href="${notification.link}" class="notification-link">View</a>` : ''}
+            </div>
+            <button class="notification-close" onclick="this.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        notificationContainer.appendChild(notif);
+    });
+    
+    document.body.appendChild(notificationContainer);
+    
+    // Auto-hide notifications after 8 seconds
+    setTimeout(() => {
+        if (notificationContainer.parentElement) {
+            notificationContainer.remove();
+        }
+    }, 8000);
+}
+
+// Enhanced Menu Visibility Features
+function initializeMenuVisibility() {
+    // Highlight current page in navigation
+    highlightCurrentPage();
+    
+    // Add keyboard shortcuts
+    addKeyboardShortcuts();
+    
+    // Initialize breadcrumbs
+    initializeBreadcrumbs();
+    
+    // Add menu item indicators
+    addMenuIndicators();
+}
+
+function highlightCurrentPage() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && currentPath.includes(href.replace('.html', ''))) {
+            link.classList.add('active', 'current-page');
+            link.setAttribute('aria-current', 'page');
+        }
+    });
+}
+
+function addKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // Ctrl/Cmd + K for search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            showSearchModal();
+        }
+        
+        // Ctrl/Cmd + M for menu toggle (mobile)
+        if ((e.ctrlKey || e.metaKey) && e.key === 'm' && window.innerWidth <= 768) {
+            e.preventDefault();
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) hamburger.click();
+        }
+        
+        // Escape to close modals
+        if (e.key === 'Escape') {
+            const modals = document.querySelectorAll('.search-modal, .login-modal');
+            modals.forEach(modal => modal.remove());
+            
+            const chatWidget = document.querySelector('.chat-widget');
+            if (chatWidget) chatWidget.remove();
+        }
+    });
+}
+
+function initializeBreadcrumbs() {
+    const breadcrumbWrapper = document.getElementById('breadcrumbWrapper');
+    if (!breadcrumbWrapper) return;
+    
+    const path = window.location.pathname;
+    const segments = path.split('/').filter(segment => segment !== '' && segment !== 'index.html');
+    
+    if (segments.length > 0) {
+        breadcrumbWrapper.style.display = 'block';
+        // Update breadcrumb based on current page
+        updateBreadcrumb(segments);
+    }
+}
+
+function addMenuIndicators() {
+    // Add "NEW" badge to recently added menu items
+    const newItems = [
+        'careers.html',
+        'global-presence/susin-itork-india.html'
+    ];
+    
+    newItems.forEach(item => {
+        const link = document.querySelector(`a[href="${item}"]`);
+        if (link) {
+            link.classList.add('new-feature');
+        }
+    });
+    
+    // Add update indicators to frequently updated sections
+    const updatedItems = [
+        'resources.html',
+        'products.html'
+    ];
+    
+    updatedItems.forEach(item => {
+        const link = document.querySelector(`a[href="${item}"]`);
+        if (link) {
+            link.classList.add('has-updates');
+        }
+    });
+}
+
+// Initialize all enhanced features when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initializeMenuVisibility();
+});
+
+// Chat option selection
+function selectChatOption(option) {
+    const chatBody = document.querySelector('.chat-body');
+    if (!chatBody) return;
+    
+    const responses = {
+        technical: "I'll connect you with our technical support team. What specific technical issue can we help you with?",
+        sales: "Great! I'll connect you with our sales team. What products are you interested in?", 
+        quote: "I'll help you get a quote. Please provide details about your actuator or gearbox requirements."
+    };
+    
+    const userMessage = document.createElement('div');
+    userMessage.className = 'chat-message user';
+    userMessage.innerHTML = `<div class="message-content"><p>${option.charAt(0).toUpperCase() + option.slice(1)}</p></div>`;
+    
+    const botMessage = document.createElement('div');
+    botMessage.className = 'chat-message bot';
+    botMessage.innerHTML = `<div class="message-content"><p>${responses[option]}</p></div>`;
+    
+    chatBody.appendChild(userMessage);
+    setTimeout(() => chatBody.appendChild(botMessage), 1000);
+    
+    // Remove options after selection
+    const options = document.querySelector('.chat-options');
+    if (options) options.remove();
+}
 
 // Mobile Navigation Toggle with performance optimization
 const hamburger = document.getElementById('hamburger');
