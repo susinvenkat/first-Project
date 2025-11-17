@@ -2154,7 +2154,7 @@ textarea:focus {
 
 /* Make main nav visually distinct and slightly elevated */
 .navbar .nav-wrapper { padding: calc(var(--nav-padding-vertical) * 1.2) 24px; max-width: 1400px; margin: 0 auto; }
-.navbar { position: sticky; top: calc(var(--topbar-height)); z-index: 1100; background: var(--nav-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.navbar { position: sticky; top: 0; z-index: 1100; background: var(--nav-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
 @media (max-width: 768px) {
     .topbar-inner { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.5rem 12px; }
