@@ -1,3 +1,21 @@
 User-agent: *
 Allow: /
+
+# Disallow common crawl-heavy directories
+Disallow: /assets/search/
+Disallow: /scripts/
+Disallow: /*.json$
+
+# Allow important crawling
+Allow: /assets/img/
+Allow: /css/
+Allow: /js/
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://www.susingroup.com/sitemap.xml
+
+# Additional sitemaps (if any)
+# Sitemap: https://www.susingroup.com/sitemap-images.xml

@@ -1,12 +1,52 @@
-/* Reset and Base Styles */
+/* Reset and Base Styles - Mobile First */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Import Google Fonts - International Professional Typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+/* Critical CSS - Above the fold optimization */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent layout shifts and optimize images */
+img, 
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Image loading optimization */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Progressive image enhancement */
+img {
+    background-color: var(--light-color);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Optimize for mobile viewport */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Font Loading Optimization - Google Fonts with font-display swap */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700&display=swap&font-display=swap');
 
 :root {
     /* Red, Gray, White Color Palette */
@@ -36,10 +76,13 @@ body {
     color: var(--text-color);
     background-color: var(--white);
     font-weight: 400;
-    font-size: 16px;
+    font-size: clamp(14px, 2.5vw, 16px);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    overflow-x: hidden;
 }
 
 /* Prevent body scroll when mobile menu is open */
@@ -2786,10 +2829,169 @@ main#main-content {
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-/* Respect reduced motion preference */
+/* Mobile UX & Performance Optimizations */
+
+/* Touch target optimization - minimum 44px for accessibility */
+.btn, 
+.topbar-actions .btn,
+.nav-menu a,
+.hamburger,
+button,
+[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+}
+
+/* Improve mobile form controls */
+input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 8px;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    transition: border-color 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Advanced Mobile Breakpoint System */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+    h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
+    h3 { font-size: clamp(1.3rem, 5vw, 1.75rem); }
+    
+    /* Improve mobile navigation spacing */
+    .nav-menu a {
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+    
+    /* Better mobile button sizing */
+    .btn {
+        padding: 14px 24px;
+        font-size: 16px;
+        min-height: 48px;
+    }
+    
+    /* Mobile grid adjustments */
+    .products-grid,
+    .industries-grid,
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Mobile card spacing */
+    .product-card,
+    .industry-item,
+    .feature-item {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    body {
+        font-size: 14px;
+    }
+    
+    /* Mobile-specific button styles */
+    .btn {
+        padding: 16px 20px;
+        font-size: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    /* Improve mobile forms */
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px; /* Prevent iOS zoom */
+        padding: 16px;
+    }
+    
+    /* Mobile card optimization */
+    .product-card,
+    .industry-item {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 12px;
+    }
+    
+    .btn {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Performance optimizations */
+.product-card,
+.industry-item,
+.feature-item {
+    contain: layout;
+    will-change: transform;
+}
+
+/* Smooth scrolling with performance consideration */
+html {
+    scroll-behavior: smooth;
+}
+
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
     .header-compact .topbar,
     .header-compact .logo img,
-    .header-compact .nav-wrapper { transition: none; }
+    .header-compact .nav-wrapper { 
+        transition: none; 
+    }
 }
 

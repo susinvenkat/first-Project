@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.susingroup.com/index.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://www.susingroup.com/</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.susingroup.com/assets/img/hero-large.jpg</image:loc>
+      <image:caption>Industrial actuators and gearboxes</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.susingroup.com/about.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.susingroup.com/products.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.susingroup.com/services.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.susingroup.com/industries.html</loc>
