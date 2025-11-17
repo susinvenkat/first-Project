@@ -43,6 +43,20 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    touch-action: manipulation;
+}
+
+/* Mobile Touch Optimization */
+a, button, .btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(196, 30, 58, 0.2);
+}
+
+button, .btn {
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 44px;
 }
 
 /* Font Loading Optimization - Google Fonts with font-display swap */
@@ -2315,19 +2329,65 @@ textarea:focus {
         background-color: rgba(0, 0, 0, 0.2);
         margin-top: 0.5rem;
         border-radius: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        padding: 0;
+    }
+    
+    .dropdown.mobile-open .dropdown-menu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+    
+    .dropdown > a::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        margin-left: 0.5rem;
+        font-size: 0.8em;
+        transition: transform 0.3s ease;
+    }
+    
+    .dropdown.mobile-open > a::after {
+        transform: rotate(180deg);
     }
     
     .dropdown-menu a {
         color: rgba(255, 255, 255, 0.9);
         display: block;
-        padding: 0.75rem 1rem;
+        padding: 1rem 1.5rem;
+        min-height: 44px;
+        line-height: 1.5;
+        font-size: 0.95rem;
     }
     
-    .dropdown-menu a:hover {
+    .dropdown-menu a:hover,
+    .dropdown-menu a:active {
         background-color: rgba(255, 255, 255, 0.1);
         color: var(--primary-color);
     }
     
+    .submenu-panel {
+        display: none;
+        position: static;
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 0;
+    }
+    
+    .dropdown.mobile-open .has-panel .submenu-panel {
+        display: block;
+    }
+    
+    .submenu-thumb {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
     .lang-selector {
         margin-right: 0;
         margin-bottom: 1rem;
@@ -2353,6 +2413,29 @@ textarea:focus {
     .lang-dropdown a:hover {
         background-color: rgba(255, 255, 255, 0.1);
         color: var(--primary-color);
+    }
+    
+    /* Submenu panel mobile responsiveness */
+    .submenu-panel {
+        display: none;
+        position: static;
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .dropdown.mobile-open .has-panel .submenu-panel {
+        display: block;
+    }
+    
+    .submenu-thumb {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 4px;
     }
 
     .hero-content h1 {
