@@ -144,44 +144,265 @@
     </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <!-- Top utility bar (double-layer header) -->
-            <div class="topbar" role="region" aria-label="Top utility bar">
-                <div class="topbar-inner">
-                    <div class="topbar-left">
-                        <a href="tel:+917708097242" class="topbar-contact"><i class="fas fa-phone"></i> +91 77080 97242</a>
-                        <a href="mailto:info@susin.in" class="topbar-contact"><i class="fas fa-envelope"></i> info@susin.in</a>
+    
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <!-- Top Info Bar -->
+        <div class="header-top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="header-info-left">
+                        <span class="info-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>ISO 9001 Certified</span>
+                        </span>
+                        <span class="info-item">
+                            <i class="fas fa-award"></i>
+                            <span>32+ Years Excellence</span>
+                        </span>
+                        <span class="info-item">
+                            <i class="fas fa-globe-americas"></i>
+                            <span>Global Presence</span>
+                        </span>
                     </div>
-                    <div class="topbar-right">
-                        <a href="index.html#recent-projects" class="topbar-link">Recent Projects</a>
-                        <div class="topbar-actions">
-                            <button id="openSearchTop" class="btn btn-secondary" aria-label="Open search" title="Search products and resources"><i class="fas fa-search"></i></button>
-                            <button id="chatToggleTop" class="btn btn-secondary" aria-label="Open chat" title="Live technical support"><i class="fas fa-headset"></i></button>
-                            <button id="employeeLoginBtn" class="btn btn-outline topbar-login" aria-label="Employee login" title="Employee portal access"><i class="fas fa-user-lock"></i></button>
+                    <div class="header-info-right">
+                        <a href="tel:+917708097242" class="header-contact-link">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 77080 97242</span>
+                        </a>
+                        <a href="mailto:info@susin.in" class="header-contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@susin.in</span>
+                        </a>
+                        <div class="header-lang-selector">
+                            <button class="lang-btn" id="headerLangBtn">
+                                <i class="fas fa-globe"></i>
+                                <span>EN</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="lang-dropdown" id="headerLangDropdown">
+                                <li><a href="#" data-lang="en" class="active"><i class="fas fa-flag-usa"></i> English</a></li>
+                                <li><a href="#" data-lang="zh"><i class="fas fa-flag"></i> 中文</a></li>
+                                <li><a href="#" data-lang="ar"><i class="fas fa-flag"></i> العربية</a></li>
+                                <li><a href="#" data-lang="de"><i class="fas fa-flag"></i> Deutsch</a></li>
+                                <li><a href="#" data-lang="fr"><i class="fas fa-flag"></i> Français</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+            <div class="container">
+                <div class="nav-container">
+                    <!-- Logo Section -->
+                    <div class="brand-section">
+                        <a href="index.html" class="brand-logo">
+                            <img src="logo.jpg" alt="Susin Group Logo" loading="lazy" decoding="async">
+                            <div class="brand-text">
+                                <span class="brand-name">SUSIN GROUP</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Navigation Menu -->
+                    <div class="nav-menu-wrapper">
+                        <ul class="primary-nav" id="primaryNav">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link active">
+                                    <i class="fas fa-home"></i>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="products-actuators-gearboxes.html" class="nav-link">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>Products</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Actuator Solutions</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="products.html#pneumatic"><i class="fas fa-wind"></i> Pneumatic Actuators</a></li>
+                                                <li><a href="products.html#electro-hydraulic"><i class="fas fa-tint"></i> Electro-Hydraulic Actuators</a></li>
+                                                <li><a href="products.html#electrical"><i class="fas fa-bolt"></i> Electrical Actuators</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Motion Control</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="products.html#gearboxes"><i class="fas fa-cog"></i> Gearboxes</a></li>
+                                                <li><a href="products.html#accessories"><i class="fas fa-puzzle-piece"></i> Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown-column dropdown-featured">
+                                            <div class="featured-product">
+                                                <i class="fas fa-star"></i>
+                                                <h5>Featured Solution</h5>
+                                                <p>High-Performance Pneumatic Actuators</p>
+                                                <a href="products.html" class="featured-link">Explore Now →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    <span>Global Presence</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Our Locations</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="global-presence/susin-itork-india.html"><i class="fas fa-map-marker-alt"></i> India</a></li>
+                                                <li><a href="index.html#middle-east"><i class="fas fa-map-marker-alt"></i> Middle East</a></li>
+                                                <li><a href="index.html#europe"><i class="fas fa-map-marker-alt"></i> Europe</a></li>
+                                                <li><a href="index.html#far-east"><i class="fas fa-map-marker-alt"></i> Far East</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Showcase</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="index.html#recent-projects"><i class="fas fa-project-diagram"></i> Recent Projects</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="industries-served.html" class="nav-link">
+                                    <i class="fas fa-industry"></i>
+                                    <span>Industries</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Sectors We Serve</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="industries.html#oil-gas"><i class="fas fa-fire"></i> Oil & Gas</a></li>
+                                                <li><a href="industries.html#water-treatment"><i class="fas fa-water"></i> Water Treatment</a></li>
+                                                <li><a href="industries.html#power-generation"><i class="fas fa-bolt"></i> Power Generation</a></li>
+                                                <li><a href="industries.html#chemical"><i class="fas fa-flask"></i> Chemical Processing</a></li>
+                                                <li><a href="industries.html#marine"><i class="fas fa-ship"></i> Marine & Offshore</a></li>
+                                                <li><a href="industries.html#pharmaceutical"><i class="fas fa-pills"></i> Pharmaceutical</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="services-installation-maintenance.html" class="nav-link">
+                                    <i class="fas fa-tools"></i>
+                                    <span>Services</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Expert Services</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="services.html#installation"><i class="fas fa-wrench"></i> Installation & Commissioning</a></li>
+                                                <li><a href="services.html#maintenance"><i class="fas fa-toolbox"></i> Maintenance & Support</a></li>
+                                                <li><a href="services.html#training"><i class="fas fa-graduation-cap"></i> Training Programs</a></li>
+                                                <li><a href="services.html#customization"><i class="fas fa-sliders-h"></i> Customization Services</a></li>
+                                                <li><a href="services.html#spare-parts"><i class="fas fa-boxes"></i> Spare Parts & Components</a></li>
+                                                <li><a href="services.html#technical-support"><i class="fas fa-headset"></i> Technical Support</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="about-industrial-actuators.html" class="nav-link">
+                                    <i class="fas fa-building"></i>
+                                    <span>About</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Company</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="about.html#story"><i class="fas fa-book"></i> Our Story</a></li>
+                                                <li><a href="about.html#mission"><i class="fas fa-bullseye"></i> Mission & Values</a></li>
+                                                <li><a href="about.html#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+                                                <li><a href="about.html#why-choose"><i class="fas fa-check-circle"></i> Why Choose Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="careers.html" class="nav-link">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Careers</span>
+                                </a>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="resources-technical-docs.html" class="nav-link">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>Resources</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Technical Resources</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="resources.html#datasheets"><i class="fas fa-file-pdf"></i> Datasheets</a></li>
+                                                <li><a href="resources.html#manuals"><i class="fas fa-book"></i> Manuals</a></li>
+                                                <li><a href="resources.html#sizing-programs"><i class="fas fa-calculator"></i> Sizing Programs</a></li>
+                                                <li><a href="resources.html#faq"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                                                <li><a href="resources.html#blog"><i class="fas fa-rss"></i> Blog & News</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="nav-actions">
+                        <button class="action-btn search-btn" id="headerSearchBtn" aria-label="Search" title="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <a href="contact.html" class="action-btn contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                        <button class="action-btn quote-btn" id="quoteBtn">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Get Quote</span>
+                        </button>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Old Navigation (Hidden, keeping structure for compatibility) -->
+    <nav class="navbar" style="display: none;">
+        <div class="container">
             <div class="nav-wrapper">
                 <a href="index.html" class="logo">
                     <img src="logo.jpg" alt="Company Logo" loading="lazy" decoding="async">
                     <span class="logo-text">SUSIN</span>
                 </a>
                 <ul class="nav-menu" id="navMenu">
-                    <li class="lang-selector" role="menuitem">
-                        <button type="button" class="lang-toggle" aria-haspopup="menu" aria-expanded="false" id="langToggle">
-                            <i class="fas fa-globe"></i> EN
-                        </button>
-                        <ul class="lang-dropdown" role="menu" aria-labelledby="langToggle" id="langDropdown">
-                            <li role="none"><a href="#" role="menuitem" data-lang="en" class="active"><i class="fas fa-flag-usa"></i> English</a></li>
-                            <li role="none"><a href="#" role="menuitem" data-lang="zh"><i class="fas fa-flag"></i> 中文</a></li>
-                            <li role="none"><a href="#" role="menuitem" data-lang="ar"><i class="fas fa-flag"></i> العربية</a></li>
-                            <li role="none"><a href="#" role="menuitem" data-lang="de"><i class="fas fa-flag"></i> Deutsch</a></li>
-                            <li role="none"><a href="#" role="menuitem" data-lang="fr"><i class="fas fa-flag"></i> Français</a></li>
-                        </ul>
-                    </li>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li class="dropdown">
                         <a href="products-actuators-gearboxes.html" aria-haspopup="true" aria-expanded="false">Products</a>
@@ -391,6 +612,191 @@
                         <span>Learn More</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Quality Standards Section -->
+    <section class="certifications-section" id="certifications">
+        <div class="container">
+            <div class="certifications-header">
+                <h2 class="section-title">Certifications & Quality Standards</h2>
+                <p class="section-subtitle">Committed to Excellence Through International Quality Standards</p>
+            </div>
+            
+            <div class="certifications-grid">
+                <!-- ISO 9001:2015 -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <img src="assets/img/certifications/iso-9001.svg" 
+                             alt="ISO 9001:2015 Certification" 
+                             loading="lazy">
+                    </div>
+                    <div class="cert-content">
+                        <h3>ISO 9001:2015</h3>
+                        <p class="cert-category">Quality Management System</p>
+                        <p class="cert-description">International standard for quality management systems ensuring consistent quality in our manufacturing and service delivery processes.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CE Marking -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <img src="assets/img/certifications/ce-mark.svg" 
+                             alt="CE Marking Certification" 
+                             loading="lazy">
+                    </div>
+                    <div class="cert-content">
+                        <h3>CE Marking</h3>
+                        <p class="cert-category">European Conformity</p>
+                        <p class="cert-description">Products meet EU safety, health, and environmental protection standards for sale in the European Economic Area.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ATEX -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <img src="assets/img/certifications/atex.svg" 
+                             alt="ATEX Certification" 
+                             loading="lazy">
+                    </div>
+                    <div class="cert-content">
+                        <h3>ATEX Directive</h3>
+                        <p class="cert-category">Explosive Atmospheres</p>
+                        <p class="cert-description">Equipment and protective systems intended for use in potentially explosive atmospheres meeting ATEX standards.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <img src="assets/img/certifications/api.svg" 
+                             alt="API Standards Compliance" 
+                             loading="lazy">
+                    </div>
+                    <div class="cert-content">
+                        <h3>API Standards</h3>
+                        <p class="cert-category">Petroleum Industry Standards</p>
+                        <p class="cert-description">Products comply with American Petroleum Institute standards for oil and gas industry applications.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Compliant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIL -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-icon-placeholder">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <h3>SIL Rated</h3>
+                        <p class="cert-category">Safety Integrity Level</p>
+                        <p class="cert-description">Safety-rated actuators designed for critical safety applications with SIL 2/3 capability for process safety requirements.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>SIL 2/3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ISO 14001 -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <img src="assets/img/certifications/iso-14001.svg" 
+                             alt="ISO 14001 Environmental Management" 
+                             loading="lazy">
+                    </div>
+                    <div class="cert-content">
+                        <h3>ISO 14001</h3>
+                        <p class="cert-category">Environmental Management</p>
+                        <p class="cert-description">Environmental management system standard ensuring sustainable manufacturing practices and minimal environmental impact.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-leaf"></i>
+                            <span>Eco-Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PED -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-icon-placeholder">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <h3>PED Directive</h3>
+                        <p class="cert-category">Pressure Equipment Directive</p>
+                        <p class="cert-description">Compliance with EU Pressure Equipment Directive for safe design and manufacture of pressure equipment.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Compliant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NACE -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-icon-placeholder">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <h3>NACE MR0175</h3>
+                        <p class="cert-category">Corrosion Resistance</p>
+                        <p class="cert-description">Materials meet NACE standards for sulfide stress cracking resistance in sour oil and gas environments.</p>
+                        <div class="cert-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Commitment Statement -->
+            <div class="quality-commitment">
+                <div class="commitment-content">
+                    <i class="fas fa-award commitment-icon"></i>
+                    <div>
+                        <h3>Our Quality Commitment</h3>
+                        <p>At Susin Group, we maintain the highest standards of quality across all our products and services. Our certifications reflect our dedication to excellence, safety, and environmental responsibility. Every product undergoes rigorous testing and quality assurance to ensure it meets or exceeds international standards.</p>
+                    </div>
+                </div>
+                <div class="commitment-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Quality Tested</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">32+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Global</div>
+                        <div class="stat-label">Standards</div>
+                    </div>
                 </div>
             </div>
         </div>
