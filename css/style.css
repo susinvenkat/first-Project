@@ -6314,3 +6314,44 @@ html {
     }
 }
 
+/* ============================================
+   Global Presence Section Styles
+   ============================================ */
+
+.global-presence-section {
+    position: relative;
+    z-index: 1;
+}
+
+.location-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(196, 30, 58, 0.2) !important;
+}
+
+/* Responsive adjustments for Global Presence */
+@media (max-width: 768px) {
+    .global-presence-section {
+        padding: 3rem 0 !important;
+    }
+
+    .global-locations-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .location-card h3 {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+    .global-locations-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+
