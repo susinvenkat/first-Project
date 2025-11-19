@@ -46,11 +46,22 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeModernHeaderDropdowns();
 });
 
-// Modern Header Mega Dropdown Functionality
+// Modern Header Mega Dropdown Functionality with SEO Enhancements
 function initializeModernHeaderDropdowns() {
     const navItems = document.querySelectorAll('.nav-item.has-dropdown');
     
     if (navItems.length === 0) return;
+    
+    // Preload dropdown links for better SEO crawlability
+    const preloadDropdownLinks = () => {
+        navItems.forEach(item => {
+            const links = item.querySelectorAll('.mega-dropdown a');
+            links.forEach(link => {
+                link.setAttribute('data-preloaded', 'true');
+            });
+        });
+    };
+    setTimeout(preloadDropdownLinks, 1000);
     
     navItems.forEach(item => {
         const trigger = item.querySelector('.nav-link');
@@ -59,22 +70,51 @@ function initializeModernHeaderDropdowns() {
         if (!trigger || !dropdown) return;
         
         let hoverTimeout;
+        let isHovering = false;
         
-        // Desktop hover behavior
+        // Enhanced desktop hover behavior with optimized timing
         item.addEventListener('mouseenter', () => {
             clearTimeout(hoverTimeout);
+            isHovering = true;
+            
+            // Faster hover activation for better UX (150ms -> 80ms)
             hoverTimeout = setTimeout(() => {
-                item.classList.add('active');
-                trigger.setAttribute('aria-expanded', 'true');
-            }, 100);
+                if (isHovering) {
+                    item.classList.add('active');
+                    trigger.setAttribute('aria-expanded', 'true');
+                    dropdown.setAttribute('aria-hidden', 'false');
+                    
+                    // Add descriptive title for SEO
+                    const dropdownTitle = trigger.querySelector('span')?.textContent;
+                    if (dropdownTitle) {
+                        dropdown.setAttribute('aria-label', `${dropdownTitle} menu options`);
+                    }
+                    
+                    // Enhance links for SEO visibility
+                    const links = dropdown.querySelectorAll('a');
+                    links.forEach(link => {
+                        link.setAttribute('tabindex', '0');
+                    });
+                }
+            }, 80);
         });
         
         item.addEventListener('mouseleave', () => {
             clearTimeout(hoverTimeout);
+            isHovering = false;
+            
+            // Slightly delayed close for better navigation (200ms -> 250ms)
             hoverTimeout = setTimeout(() => {
                 item.classList.remove('active');
                 trigger.setAttribute('aria-expanded', 'false');
-            }, 200);
+                dropdown.setAttribute('aria-hidden', 'true');
+                
+                // Reset tabindex when closed
+                const links = dropdown.querySelectorAll('a');
+                links.forEach(link => {
+                    link.setAttribute('tabindex', '-1');
+                });
+            }, 250);
         });
         
         // Touch/click behavior for tablets

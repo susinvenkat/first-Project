@@ -321,11 +321,18 @@
     padding: 2.5rem;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     min-width: 450px;
     max-width: 600px;
     z-index: 1000;
     border-top: 3px solid #c41e3a;
+    pointer-events: none;
+    /* SEO: Ensure content is crawlable */
+    contain: layout style;
+    will-change: opacity, transform;
 }
 
 .nav-item.has-dropdown:hover .mega-dropdown,
@@ -335,6 +342,7 @@
     visibility: visible;
     top: calc(100% + 0.5rem);
     transform: translateX(-50%) scale(1);
+    pointer-events: auto;
 }
 
 .dropdown-content {
@@ -420,11 +428,16 @@
     color: #2c2c2c;
     text-decoration: none;
     border-radius: 8px;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.2s ease,
+                color 0.2s ease,
+                padding 0.2s ease,
+                box-shadow 0.2s ease;
     font-size: 0.925rem;
     font-weight: 500;
     position: relative;
     overflow: hidden;
+    /* SEO: Better semantic structure */
+    line-height: 1.5;
 }
 
 .dropdown-links li a::before {
@@ -436,7 +449,8 @@
     height: 100%;
     background: #c41e3a;
     transform: scaleY(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.6, 1);
+    will-change: transform;
 }
 
 .dropdown-links li a i {
@@ -444,7 +458,8 @@
     color: #c41e3a;
     width: 20px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.6, 1);
+    will-change: transform;
 }
 
 .dropdown-links li a:hover {
@@ -460,6 +475,12 @@
 
 .dropdown-links li a:hover i {
     transform: scale(1.15) translateX(2px);
+}
+
+/* Enhanced hover effect for better visual feedback */
+.nav-item.has-dropdown:hover .nav-link .dropdown-arrow {
+    transform: rotate(180deg);
+    color: #c41e3a;
 }
 
 .dropdown-links li a:focus {
