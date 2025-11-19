@@ -576,13 +576,13 @@
             <p class="section-subtitle">Use the form below to submit your CV and a short message. Our recruitment team will review applications and follow up.</p>
 
             <div class="contact-form-wrapper">
-                <form id="careerForm">
+                <form id="careerForm" action="backend/api/submit_application.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="appName">Full name</label>
+                        <label for="appName">Full name <span style="color: #c41e3a;">*</span></label>
                         <input id="appName" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="appEmail">Email</label>
+                        <label for="appEmail">Email <span style="color: #c41e3a;">*</span></label>
                         <input id="appEmail" name="email" type="email" required>
                     </div>
                     <div class="form-group">
@@ -590,8 +590,9 @@
                         <input id="appPhone" name="phone" type="tel">
                     </div>
                     <div class="form-group">
-                        <label for="appRole">Role of interest</label>
-                        <select id="appRole" name="role">
+                        <label for="appRole">Role of interest <span style="color: #c41e3a;">*</span></label>
+                        <select id="appRole" name="role" required>
+                            <option value="">-- Select a role --</option>
                             <option>Senior Human Resources (STPHR001)</option>
                             <option>Application Engineer (SIT-R24E006)</option>
                             <option>Design Engineer (STDE001)</option>
@@ -606,19 +607,26 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="appResume">Resume (PDF)</label>
+                        <label for="appResume">Resume (PDF, max 5MB)</label>
                         <input id="appResume" name="resume" type="file" accept="application/pdf">
+                        <small style="display: block; margin-top: 0.5rem; color: #666;">Only PDF files are accepted. Maximum file size: 5MB</small>
                     </div>
                     <div class="form-group">
                         <label for="appMessage">Short message</label>
-                        <textarea id="appMessage" name="message" rows="4"></textarea>
+                        <textarea id="appMessage" name="message" rows="4" placeholder="Tell us why you're interested in this position..."></textarea>
                     </div>
+                    <div id="formMessage" style="display: none; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;"></div>
                     <div class="login-actions">
-                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
                         <button type="reset" class="btn btn-outline">Reset</button>
                     </div>
                 </form>
-                <p class="contact-note">Note: This form is client-side only in the demo. To accept applications, configure a server endpoint or third-party form handler to receive submissions.</p>
+                <p class="contact-note" style="margin-top: 1.5rem; padding: 1rem; background: #e3f2fd; border-left: 4px solid #1976d2; border-radius: 4px;">
+                    <i class="fas fa-info-circle" style="color: #1976d2; margin-right: 0.5rem;"></i>
+                    <strong>Application Process:</strong> After submission, our HR team will review your application within 3-5 business days. Shortlisted candidates will be contacted via email for further interview rounds.
+                </p>
             </div>
         </section>
 
@@ -687,11 +695,64 @@
     </footer>
 
     <script>
-    // Basic client-side handling for careers form (demo only)
+    // Career form submission with AJAX
     document.getElementById('careerForm')?.addEventListener('submit', function(e){
         e.preventDefault();
-        alert('Thank you — your application has been captured (demo). Configure a server endpoint to receive real submissions.');
-        this.reset();
+        
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+        const formData = new FormData(this);
+        
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        
+        // Hide previous messages
+        formMessage.style.display = 'none';
+        
+        // Submit form via AJAX
+        fetch('backend/api/submit_application.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show success message
+                formMessage.style.display = 'block';
+                formMessage.style.background = '#e8f5e9';
+                formMessage.style.color = '#2e7d32';
+                formMessage.style.border = '1px solid #66bb6a';
+                formMessage.innerHTML = '<i class="fas fa-check-circle"></i> ' + data.message;
+                
+                // Reset form
+                document.getElementById('careerForm').reset();
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                // Show error message
+                formMessage.style.display = 'block';
+                formMessage.style.background = '#ffebee';
+                formMessage.style.color = '#c62828';
+                formMessage.style.border = '1px solid #ef5350';
+                formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + data.message;
+            }
+        })
+        .catch(error => {
+            // Show error message
+            formMessage.style.display = 'block';
+            formMessage.style.background = '#ffebee';
+            formMessage.style.color = '#c62828';
+            formMessage.style.border = '1px solid #ef5350';
+            formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> An error occurred. Please try again or contact HR directly at hr@susin.in';
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+        });
     });
     </script>
     <script src="js/main.js" defer></script>
