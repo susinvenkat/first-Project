@@ -147,7 +147,7 @@ function initializeHeaderSearch() {
         });
     }
     
-    // Mobile menu toggle for modern header
+    // Enhanced Mobile menu toggle for modern header
     if (mobileMenuToggle && primaryNav) {
         mobileMenuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -155,30 +155,80 @@ function initializeHeaderSearch() {
             mobileMenuToggle.classList.toggle('active', isActive);
             mobileMenuToggle.setAttribute('aria-expanded', isActive);
             
-            // Prevent body scroll when menu is open
+            // Prevent body scroll when menu is open with smooth transition
             if (isActive) {
                 document.body.style.overflow = 'hidden';
+                // Add backdrop
+                const backdrop = document.createElement('div');
+                backdrop.className = 'mobile-menu-backdrop';
+                backdrop.style.cssText = `
+                    position: fixed;
+                    top: 115px;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.5);
+                    z-index: 9998;
+                    animation: fadeIn 0.3s ease;
+                `;
+                document.body.appendChild(backdrop);
+                
+                // Close on backdrop click
+                backdrop.addEventListener('click', () => {
+                    closeMobileMenu();
+                });
             } else {
-                document.body.style.overflow = '';
+                closeMobileMenu();
             }
         });
         
-        // Handle dropdown clicks in mobile view
+        // Function to close mobile menu
+        function closeMobileMenu() {
+            primaryNav.classList.remove('mobile-active');
+            mobileMenuToggle.classList.remove('active');
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            
+            // Remove backdrop
+            const backdrop = document.querySelector('.mobile-menu-backdrop');
+            if (backdrop) {
+                backdrop.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => backdrop.remove(), 300);
+            }
+            
+            // Close all open dropdowns
+            primaryNav.querySelectorAll('.nav-item.mobile-open').forEach(item => {
+                item.classList.remove('mobile-open');
+            });
+        }
+        
+        // Enhanced dropdown clicks in mobile view
         primaryNav.querySelectorAll('.nav-item.has-dropdown > .nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 if (primaryNav.classList.contains('mobile-active')) {
                     e.preventDefault();
                     const parentItem = link.closest('.nav-item');
+                    const isOpen = parentItem.classList.contains('mobile-open');
                     
-                    // Close other dropdowns
+                    // Close other dropdowns with animation
                     primaryNav.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
-                        if (item !== parentItem) {
+                        if (item !== parentItem && item.classList.contains('mobile-open')) {
                             item.classList.remove('mobile-open');
                         }
                     });
                     
                     // Toggle current dropdown
                     parentItem.classList.toggle('mobile-open');
+                    
+                    // Smooth scroll to show dropdown if opened
+                    if (!isOpen) {
+                        setTimeout(() => {
+                            const dropdown = parentItem.querySelector('.mega-dropdown');
+                            if (dropdown) {
+                                dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                        }, 100);
+                    }
                 }
             });
         });
@@ -187,27 +237,55 @@ function initializeHeaderSearch() {
         document.addEventListener('click', (e) => {
             if (primaryNav && !primaryNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                 if (primaryNav.classList.contains('mobile-active')) {
-                    primaryNav.classList.remove('mobile-active');
-                    mobileMenuToggle.classList.remove('active');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
+                    closeMobileMenu();
                 }
             }
         });
         
-        // Close mobile menu on submenu link click (not parent dropdown links)
+        // Close mobile menu on submenu link click
         if (primaryNav) {
             primaryNav.querySelectorAll('.mega-dropdown a').forEach(link => {
                 link.addEventListener('click', () => {
-                    primaryNav.classList.remove('mobile-active');
-                    mobileMenuToggle.classList.remove('active');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
+                    closeMobileMenu();
                 });
+            });
+        }
+        
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 768 && primaryNav.classList.contains('mobile-active')) {
+                    closeMobileMenu();
+                }
+            }, 250);
+        });
+        
+        // Keyboard navigation for mobile menu
+        if (primaryNav.classList.contains('mobile-active')) {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
             });
         }
     }
 }
+
+// Add CSS animation for backdrop
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
 
 // Smooth Scroll for Anchor Links
 function initializeSmoothScroll() {
