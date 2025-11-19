@@ -202,16 +202,50 @@
             </div>
         </section>
 
+        <!-- Stats Overview -->
+        <section style="background: #fff; padding: 3rem 0; border-bottom: 1px solid #e0e0e0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <div style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #c41e3a, #8b1428); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">18+</div>
+                        <div style="font-size: 0.95rem; color: #666; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Years of Excellence</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <div style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #c41e3a, #8b1428); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">5000+</div>
+                        <div style="font-size: 0.95rem; color: #666; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Actuators Delivered</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <div style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #c41e3a, #8b1428); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">100%</div>
+                        <div style="font-size: 0.95rem; color: #666; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Export Quality</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <div style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #c41e3a, #8b1428); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">50+</div>
+                        <div style="font-size: 0.95rem; color: #666; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Team Members</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Main Content -->
         <section class="container" style="padding: 4rem 1.5rem;">
-            <div style="display: grid; grid-template-columns: 1fr; lg-grid-template-columns: 2fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto;">
+                <style>
+                    @media (max-width: 992px) {
+                        .container > div[style*="grid-template-columns: 2fr 1fr"] {
+                            grid-template-columns: 1fr !important;
+                        }
+                    }
+                </style>
                 
                 <!-- Main Column -->
                 <div>
                     <!-- About Section -->
-                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem; margin-bottom: 2rem;">
+                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem; margin-bottom: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
                         <h2 style="color: #c41e3a; font-size: 1.75rem; margin: 0 0 1.5rem 0; display: flex; align-items: center; gap: 0.75rem;">
-                            <i class="fas fa-building"></i> About Susin I-Tork India
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #c41e3a, #8b1428); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-building" style="color: #fff; font-size: 1.25rem;"></i>
+                            </div>
+                            <span>About Susin I-Tork India</span>
                         </h2>
                         <p style="line-height: 1.8; color: #2c2c2c; margin-bottom: 1rem;">
                             Susin I-Tork India specialises in providing reliable <strong>flow-control and valve automation solutions</strong> in challenging industrial environments. Founded in <strong>2007</strong> as a strategic joint venture with <strong>I-TORK Controls (South Korea)</strong>, the organisation initially focused on marketing I-TORK actuators and later transitioned to manufacturing pneumatic actuators locally.
@@ -228,9 +262,12 @@
                     </div>
 
                     <!-- Milestones Timeline -->
-                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem; margin-bottom: 2rem;">
+                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem; margin-bottom: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
                         <h2 style="color: #c41e3a; font-size: 1.75rem; margin: 0 0 2rem 0; display: flex; align-items: center; gap: 0.75rem;">
-                            <i class="fas fa-history"></i> Growth Milestones
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #c41e3a, #8b1428); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-history" style="color: #fff; font-size: 1.25rem;"></i>
+                            </div>
+                            <span>Growth Milestones</span>
                         </h2>
                         <div style="position: relative; padding-left: 2.5rem;">
                             <!-- Timeline line -->
@@ -274,10 +311,46 @@
                         </div>
                     </div>
 
-                    <!-- Projects Section -->
-                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem; margin-bottom: 2rem;">
+                    <!-- Facility Highlights -->
+                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; border: 2px solid #e0e0e0;">
                         <h2 style="color: #c41e3a; font-size: 1.75rem; margin: 0 0 1.5rem 0; display: flex; align-items: center; gap: 0.75rem;">
-                            <i class="fas fa-project-diagram"></i> Selected Projects & Highlights
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #c41e3a, #8b1428); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-industry" style="color: #fff; font-size: 1.25rem;"></i>
+                            </div>
+                            <span>Manufacturing Facility</span>
+                        </h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                            <div style="background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                                    <i class="fas fa-cogs" style="color: #1976d2; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="margin: 0 0 0.5rem 0; color: #1a1a1a; font-size: 1.05rem;">Modern Production Line</h4>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.6;">State-of-the-art manufacturing equipment for precision actuator production</p>
+                            </div>
+                            <div style="background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #f3e5f5, #e1bee7); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                                    <i class="fas fa-check-double" style="color: #7b1fa2; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="margin: 0 0 0.5rem 0; color: #1a1a1a; font-size: 1.05rem;">Quality Assurance</h4>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.6;">ISO certified testing and quality control processes</p>
+                            </div>
+                            <div style="background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                                    <i class="fas fa-shipping-fast" style="color: #388e3c; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="margin: 0 0 0.5rem 0; color: #1a1a1a; font-size: 1.05rem;">Global Logistics</h4>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.6;">Efficient export operations to international markets</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projects Section -->
+                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem; margin-bottom: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+                        <h2 style="color: #c41e3a; font-size: 1.75rem; margin: 0 0 1.5rem 0; display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #c41e3a, #8b1428); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-project-diagram" style="color: #fff; font-size: 1.25rem;"></i>
+                            </div>
+                            <span>Selected Projects & Highlights</span>
                         </h2>
                         <p style="line-height: 1.8; color: #2c2c2c; margin-bottom: 1.5rem;">
                             Susin I-Tork India has successfully delivered actuator solutions for numerous high-profile projects across diverse industrial sectors:
@@ -311,40 +384,104 @@
                     </div>
 
                     <!-- Operations Team -->
-                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem;">
+                    <div style="background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
                         <h2 style="color: #c41e3a; font-size: 1.75rem; margin: 0 0 1.5rem 0; display: flex; align-items: center; gap: 0.75rem;">
-                            <i class="fas fa-users"></i> Operations Team
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #c41e3a, #8b1428); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-users" style="color: #fff; font-size: 1.25rem;"></i>
+                            </div>
+                            <span>Operations Team</span>
                         </h2>
                         <div style="display: grid; gap: 1rem;">
                             <!-- Team Member -->
-                            <div style="background: #f8f9fa; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #c41e3a; transition: all 0.3s ease;">
-                                <div style="font-weight: 700; color: #1a1a1a; font-size: 1.05rem; margin-bottom: 0.25rem;">Dooshan K</div>
-                                <div style="color: #666; font-size: 0.9rem; margin-bottom: 0.75rem;">Head, OEM & Project Sales</div>
-                                <a href="mailto:techsales@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <div style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #c41e3a; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 16px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)'">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #c41e3a, #8b1428); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-user" style="color: #fff; font-size: 1.25rem;"></i>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 700; color: #1a1a1a; font-size: 1.1rem;">Dooshan K</div>
+                                        <div style="color: #666; font-size: 0.85rem;">Head, OEM & Project Sales</div>
+                                    </div>
+                                </div>
+                                <a href="mailto:techsales@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border-radius: 6px; transition: background 0.2s;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='#fff'">
                                     <i class="fas fa-envelope"></i> techsales@susinitork.in
                                 </a>
                             </div>
                             
-                            <div style="background: #f8f9fa; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #c41e3a; transition: all 0.3s ease;">
-                                <div style="font-weight: 700; color: #1a1a1a; font-size: 1.05rem; margin-bottom: 0.25rem;">Nimal Kingsker D</div>
-                                <div style="color: #666; font-size: 0.9rem; margin-bottom: 0.75rem;">Head - Sales (DNA & Special Projects)</div>
-                                <a href="mailto:nimalk@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <div style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #c41e3a; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 16px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)'">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #4a5568, #2d3748); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-user" style="color: #fff; font-size: 1.25rem;"></i>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 700; color: #1a1a1a; font-size: 1.1rem;">Nimal Kingsker D</div>
+                                        <div style="color: #666; font-size: 0.85rem;">Head - Sales (DNA & Special Projects)</div>
+                                    </div>
+                                </div>
+                                <a href="mailto:nimalk@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border-radius: 6px; transition: background 0.2s;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='#fff'">
                                     <i class="fas fa-envelope"></i> nimalk@susinitork.in
                                 </a>
                             </div>
                             
-                            <div style="background: #f8f9fa; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #c41e3a; transition: all 0.3s ease;">
-                                <div style="font-weight: 700; color: #1a1a1a; font-size: 1.05rem; margin-bottom: 0.25rem;">Mohana S</div>
-                                <div style="color: #666; font-size: 0.9rem; margin-bottom: 0.75rem;">Sales Co-Ordinator (DNA & Special Projects)</div>
-                                <a href="mailto:specialprojects@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <div style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #c41e3a; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 16px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)'">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #d946ef, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-user" style="color: #fff; font-size: 1.25rem;"></i>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 700; color: #1a1a1a; font-size: 1.1rem;">Mohana S</div>
+                                        <div style="color: #666; font-size: 0.85rem;">Sales Co-Ordinator (DNA & Special Projects)</div>
+                                    </div>
+                                </div>
+                                <a href="mailto:specialprojects@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border-radius: 6px; transition: background 0.2s;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='#fff'">
                                     <i class="fas fa-envelope"></i> specialprojects@susinitork.in
                                 </a>
                             </div>
                             
-                            <div style="background: #f8f9fa; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #c41e3a; transition: all 0.3s ease;">
-                                <div style="font-weight: 700; color: #1a1a1a; font-size: 1.05rem; margin-bottom: 0.25rem;">Selva Ganesh V</div>
-                                <div style="color: #666; font-size: 0.9rem; margin-bottom: 0.75rem;">Inside Sales & Application Engineer</div>
-                                <a href="mailto:sales2@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <div style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #c41e3a; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 16px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)'">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #0891b2, #0e7490); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-user" style="color: #fff; font-size: 1.25rem;"></i>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 700; color: #1a1a1a; font-size: 1.1rem;">Selva Ganesh V</div>
+                                        <div style="color: #666; font-size: 0.85rem;">Inside Sales & Application Engineer</div>
+                                    </div>
+                                </div>
+                                <a href="mailto:sales2@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border-radius: 6px; transition: background 0.2s;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='#fff'">
+                                    <i class="fas fa-envelope"></i> sales2@susinitork.in
+                                </a>
+                            </div>
+                            
+                            <div style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #c41e3a; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 16px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)'">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #059669, #047857); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-user" style="color: #fff; font-size: 1.25rem;"></i>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 700; color: #1a1a1a; font-size: 1.1rem;">Rajesh Rajan</div>
+                                        <div style="color: #666; font-size: 0.85rem;">Inside Sales & Application Engineer</div>
+                                    </div>
+                                </div>
+                                <a href="mailto:sales@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border-radius: 6px; transition: background 0.2s;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='#fff'">
+                                    <i class="fas fa-envelope"></i> sales@susinitork.in
+                                </a>
+                            </div>
+                            
+                            <div style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #c41e3a; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 16px rgba(196,30,58,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.05)'">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ea580c, #dc2626); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-user" style="color: #fff; font-size: 1.25rem;"></i>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 700; color: #1a1a1a; font-size: 1.1rem;">Karthikeyan S</div>
+                                        <div style="color: #666; font-size: 0.85rem;">Inside Sales & Application Engineer</div>
+                                    </div>
+                                </div>
+                                <a href="mailto:sales1@susinitork.in" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border-radius: 6px; transition: background 0.2s;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='#fff'">
+                                    <i class="fas fa-envelope"></i> sales1@susinitork.in
+                                </a>
+                            </div>>
                                     <i class="fas fa-envelope"></i> sales2@susinitork.in
                                 </a>
                             </div>
