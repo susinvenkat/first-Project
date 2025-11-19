@@ -645,6 +645,10 @@
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> High Flow Capacity</div>
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Tight Shut-off</div>
                                 </div>
+                                <div class="slide-cta">
+                                    <a href="products.html#pneumatic" class="btn btn-primary">View Products</a>
+                                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -666,6 +670,10 @@
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Space-Saving Design</div>
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Low Operating Torque</div>
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Cost-Effective</div>
+                                </div>
+                                <div class="slide-cta">
+                                    <a href="products.html#pneumatic" class="btn btn-primary">View Products</a>
+                                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -689,6 +697,10 @@
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> High Pressure Rating</div>
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Zero Leakage</div>
                                 </div>
+                                <div class="slide-cta">
+                                    <a href="products.html#electro-hydraulic" class="btn btn-primary">View Products</a>
+                                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -710,6 +722,10 @@
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Precise Flow Control</div>
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Throttling Service</div>
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> 4-20mA Control</div>
+                                </div>
+                                <div class="slide-cta">
+                                    <a href="products.html#electrical" class="btn btn-primary">View Products</a>
+                                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -733,6 +749,10 @@
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Fail-Safe Options</div>
                                     <div class="feature-badge"><i class="fas fa-check-circle"></i> Custom Engineering</div>
                                 </div>
+                                <div class="slide-cta">
+                                    <a href="products.html" class="btn btn-primary">View All Products</a>
+                                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -752,6 +772,19 @@
                     </div>
                     <button class="slider-arrow slider-next" aria-label="Next slide">
                         <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Slider Control Panel -->
+                <div class="slider-controls">
+                    <button class="slider-play-pause" id="sliderPlayPause" aria-label="Pause slideshow">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <div class="slider-counter">
+                        <span class="current-slide">1</span> / <span class="total-slides">5</span>
+                    </div>
+                    <button class="slider-fullscreen" id="sliderFullscreen" aria-label="Toggle fullscreen">
+                        <i class="fas fa-expand"></i>
                     </button>
                 </div>
 
@@ -1158,6 +1191,22 @@
             </div>
         </div>
     </footer>
+
+    <!-- Chatbot / Technical Support Widget -->
+    <div id="chatbot" class="chatbot" aria-hidden="false">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open technical support chat" aria-expanded="false"><i class="fas fa-headset"></i></button>
+        <div id="chatWindow" class="chat-window" hidden>
+            <header class="chat-header">
+                <div class="chat-title">Technical Support</div>
+                <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+            </header>
+            <div id="chatMessages" class="chat-messages" role="log" aria-live="polite"></div>
+            <form id="chatForm" class="chat-form">
+                <input id="chatInput" type="text" placeholder="Describe your issue or ask a question..." aria-label="Chat input" required>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
 
     <script src="js/main.js" defer></script>
 </body>

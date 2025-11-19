@@ -1636,19 +1636,35 @@ if (chatMessages) {
 // Video Flash Slider Functionality
 (function() {
     const sliderWrapper = document.querySelector('.video-slider-wrapper');
+    const sliderContainer = document.querySelector('.video-flash-slider');
     const slides = document.querySelectorAll('.video-slide');
     const dots = document.querySelectorAll('.slider-dot');
     const prevButton = document.querySelector('.slider-prev');
     const nextButton = document.querySelector('.slider-next');
     const progressBar = document.querySelector('.progress-bar');
+    const playPauseBtn = document.getElementById('sliderPlayPause');
+    const fullscreenBtn = document.getElementById('sliderFullscreen');
+    const currentSlideCounter = document.querySelector('.current-slide');
+    const totalSlidesCounter = document.querySelector('.total-slides');
     
     if (!sliderWrapper || slides.length === 0) return;
     
     let currentSlide = 0;
     let autoplayInterval;
     let progressInterval;
+    let isPlaying = true;
+    let isFullscreen = false;
     const slideDuration = 2000; // 2 seconds per slide
     const progressUpdateInterval = 30; // Update progress every 30ms for smooth animation
+    
+    // Set total slides counter
+    if (totalSlidesCounter) {
+        totalSlidesCounter.textContent = slides.length;
+    }
+    
+    // Touch events for swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     // Initialize slider
     function initSlider() {
@@ -1663,9 +1679,25 @@ if (chatMessages) {
             dot.addEventListener('click', () => goToSlide(index));
         });
         
+        // Play/Pause button
+        if (playPauseBtn) {
+            playPauseBtn.addEventListener('click', togglePlayPause);
+        }
+        
+        // Fullscreen button
+        if (fullscreenBtn) {
+            fullscreenBtn.addEventListener('click', toggleFullscreen);
+        }
+        
         // Pause autoplay on hover
-        sliderWrapper.addEventListener('mouseenter', pauseAutoplay);
-        sliderWrapper.addEventListener('mouseleave', startAutoplay);
+        sliderWrapper.addEventListener('mouseenter', pauseOnHover);
+        sliderWrapper.addEventListener('mouseleave', resumeOnLeave);
+        
+        // Touch/Swipe events
+        if (sliderContainer) {
+            sliderContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+            sliderContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+        }
         
         // Keyboard navigation
         document.addEventListener('keydown', handleKeyboardNavigation);
@@ -1699,6 +1731,11 @@ if (chatMessages) {
         
         currentSlide = index;
         
+        // Update counter
+        if (currentSlideCounter) {
+            currentSlideCounter.textContent = index + 1;
+        }
+        
         // Reset progress bar
         resetProgressBar();
     }
@@ -1722,7 +1759,82 @@ if (chatMessages) {
         }
     }
     
+    function togglePlayPause() {
+        if (isPlaying) {
+            stopAutoplay();
+            isPlaying = false;
+            if (playPauseBtn) {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playPauseBtn.setAttribute('aria-label', 'Play slideshow');
+            }
+        } else {
+            startAutoplay();
+            isPlaying = true;
+            if (playPauseBtn) {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                playPauseBtn.setAttribute('aria-label', 'Pause slideshow');
+            }
+        }
+    }
+    
+    function toggleFullscreen() {
+        if (!isFullscreen) {
+            if (sliderContainer.requestFullscreen) {
+                sliderContainer.requestFullscreen();
+            } else if (sliderContainer.webkitRequestFullscreen) {
+                sliderContainer.webkitRequestFullscreen();
+            } else if (sliderContainer.msRequestFullscreen) {
+                sliderContainer.msRequestFullscreen();
+            }
+            isFullscreen = true;
+            sliderContainer.classList.add('fullscreen');
+            if (fullscreenBtn) {
+                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                fullscreenBtn.setAttribute('aria-label', 'Exit fullscreen');
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+            isFullscreen = false;
+            sliderContainer.classList.remove('fullscreen');
+            if (fullscreenBtn) {
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                fullscreenBtn.setAttribute('aria-label', 'Toggle fullscreen');
+            }
+        }
+    }
+    
+    function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }
+    
+    function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swiped left - next slide
+                nextSlide();
+            } else {
+                // Swiped right - previous slide
+                previousSlide();
+            }
+        }
+    }
+    
     function startAutoplay() {
+        if (!isPlaying) return;
         stopAutoplay(); // Clear any existing intervals
         autoplayInterval = setInterval(nextSlide, slideDuration);
         startProgressBar();
@@ -1736,17 +1848,28 @@ if (chatMessages) {
         stopProgressBar();
     }
     
-    function pauseAutoplay() {
-        stopAutoplay();
+    function pauseOnHover() {
+        if (isPlaying) {
+            stopAutoplay();
+        }
+    }
+    
+    function resumeOnLeave() {
+        if (isPlaying) {
+            startAutoplay();
+        }
     }
     
     function resetAutoplay() {
-        stopAutoplay();
-        startAutoplay();
+        if (isPlaying) {
+            stopAutoplay();
+            startAutoplay();
+        }
     }
     
     function startProgressBar() {
         if (!progressBar) return;
+        if (!isPlaying) return;
         
         stopProgressBar();
         
@@ -1774,7 +1897,9 @@ if (chatMessages) {
             progressBar.style.width = '0%';
         }
         stopProgressBar();
-        startProgressBar();
+        if (isPlaying) {
+            startProgressBar();
+        }
     }
     
     function handleKeyboardNavigation(e) {
@@ -1788,6 +1913,12 @@ if (chatMessages) {
         } else if (e.key === 'ArrowRight') {
             e.preventDefault();
             nextSlide();
+        } else if (e.key === ' ') {
+            e.preventDefault();
+            togglePlayPause();
+        } else if (e.key === 'f' || e.key === 'F') {
+            e.preventDefault();
+            toggleFullscreen();
         }
     }
     
@@ -1810,16 +1941,40 @@ if (chatMessages) {
         );
     }
     
+    // Listen for fullscreen change events
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('msfullscreenchange', handleFullscreenChange);
+    
+    function handleFullscreenChange() {
+        const fullscreenElement = document.fullscreenElement || 
+                                 document.webkitFullscreenElement || 
+                                 document.msFullscreenElement;
+        
+        if (!fullscreenElement) {
+            isFullscreen = false;
+            if (sliderContainer) {
+                sliderContainer.classList.remove('fullscreen');
+            }
+            if (fullscreenBtn) {
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                fullscreenBtn.setAttribute('aria-label', 'Toggle fullscreen');
+            }
+        }
+    }
+    
     // Handle visibility change (pause when tab is not active)
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-            pauseAutoplay();
+            stopAutoplay();
             slides.forEach(slide => {
                 const video = slide.querySelector('.slide-video');
                 if (video) video.pause();
             });
         } else {
-            startAutoplay();
+            if (isPlaying) {
+                startAutoplay();
+            }
             const activeVideo = slides[currentSlide].querySelector('.slide-video');
             if (activeVideo) activeVideo.play().catch(() => {});
         }
@@ -1853,9 +2008,11 @@ if (chatMessages) {
         const sliderObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    startAutoplay();
+                    if (isPlaying) {
+                        startAutoplay();
+                    }
                 } else {
-                    pauseAutoplay();
+                    stopAutoplay();
                 }
             });
         }, {
@@ -1868,35 +2025,7 @@ if (chatMessages) {
         }
     }
     
-    // Touch/Swipe support for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const minSwipeDistance = 50;
-    
-    if (sliderWrapper) {
-        sliderWrapper.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        sliderWrapper.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-    }
-    
-    function handleSwipe() {
-        const swipeDistance = touchStartX - touchEndX;
-        
-        if (Math.abs(swipeDistance) > minSwipeDistance) {
-            if (swipeDistance > 0) {
-                // Swipe left - next slide
-                nextSlide();
-            } else {
-                // Swipe right - previous slide
-                previousSlide();
-            }
-        }
-    }
+    // Touch/Swipe support for mobile - REMOVED (already handled in main slider code)
     
     // Preload next video for smoother transitions
     function preloadNextVideo() {
