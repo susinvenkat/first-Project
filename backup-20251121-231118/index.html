@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
         <meta charset="UTF-8">
@@ -63,7 +63,6 @@
         <link rel="dns-prefetch" href="//www.googletagmanager.com">
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
         <link rel="stylesheet" href="css/style.css" fetchpriority="high">
-    <link rel="stylesheet" href="css/navigation.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" crossorigin>
         <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
@@ -241,347 +240,294 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
     
     <!-- Modern Header -->
-    <!-- 
-    SUSIN GROUP - REDESIGNED NAVIGATION HEADER
-    Modern, Functional, Accessible Navigation System
-    Last Updated: November 21, 2025
--->
-
-<header class="susin-header" id="mainHeader" role="banner">
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-to-content">Skip to main content</a>
-    
-    <!-- ARIA live region for screen readers -->
-    <div role="status" aria-live="polite" aria-atomic="true" class="sr-only" id="navStatus"></div>
-    
-    <!-- Top Bar with Contact & Quick Links -->
-    <div class="header-topbar">
-        <div class="container-fluid">
-            <div class="topbar-wrapper">
-                <div class="topbar-left">
-                    <span class="topbar-item">
-                        <i class="fas fa-shield-check"></i>
-                        <span>ISO 9001:2015 Certified</span>
-                    </span>
-                    <span class="topbar-item">
-                        <i class="fas fa-award"></i>
-                        <span>32+ Years of Excellence</span>
-                    </span>
-                </div>
-                <div class="topbar-right">
-                    <a href="tel:+917708097242" class="topbar-link">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 77080 97242</span>
-                    </a>
-                    <a href="mailto:info@susin.in" class="topbar-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>info@susin.in</span>
-                    </a>
-                    <div class="language-selector">
-                        <button class="lang-toggle" aria-label="Select language" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-globe"></i>
-                            <span>EN</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <ul class="lang-menu" role="menu">
-                            <li><a href="#" data-lang="en" role="menuitem"><span class="flag-icon">🇺🇸</span> English</a></li>
-                            <li><a href="#" data-lang="ar" role="menuitem"><span class="flag-icon">🇦🇪</span> العربية</a></li>
-                            <li><a href="#" data-lang="zh" role="menuitem"><span class="flag-icon">🇨🇳</span> 中文</a></li>
-                        </ul>
+    <header class="modern-header" role="banner">
+        <!-- ARIA live region for navigation status -->
+        <div role="status" aria-live="polite" aria-atomic="true" class="sr-only" id="nav-status"></div>
+        
+        <!-- Top Info Bar -->
+        <div class="header-top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="header-info-left">
+                        <span class="info-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>ISO 9001 Certified</span>
+                        </span>
+                        <span class="info-item">
+                            <i class="fas fa-award"></i>
+                            <span>32+ Years Excellence</span>
+                        </span>
+                        <span class="info-item">
+                            <i class="fas fa-globe-americas"></i>
+                            <span>Global Presence</span>
+                        </span>
+                    </div>
+                    <div class="header-info-right">
+                        <a href="tel:+917708097242" class="header-contact-link">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 77080 97242</span>
+                        </a>
+                        <a href="mailto:info@susin.in" class="header-contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@susin.in</span>
+                        </a>
+                        <div class="header-lang-selector">
+                            <button class="lang-btn" id="headerLangBtn">
+                                <i class="fas fa-globe"></i>
+                                <span>EN</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="lang-dropdown" id="headerLangDropdown">
+                                <li><a href="#" data-lang="en" class="active"><i class="fas fa-flag-usa"></i> English</a></li>
+                                <li><a href="#" data-lang="zh"><i class="fas fa-flag"></i> ä¸­æ–‡</a></li>
+                                <li><a href="#" data-lang="ar"><i class="fas fa-flag"></i> Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©</a></li>
+                                <li><a href="#" data-lang="de"><i class="fas fa-flag"></i> Deutsch</a></li>
+                                <li><a href="#" data-lang="fr"><i class="fas fa-flag"></i> FranÃ§ais</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Main Navigation -->
-    <nav class="header-navbar" role="navigation" aria-label="Main navigation">
-        <div class="container-fluid">
-            <div class="navbar-wrapper">
-                <!-- Logo/Brand -->
-                <div class="navbar-brand">
-                    <a href="index.html" class="brand-link" aria-label="Susin Group Home">
-                        <img src="logo.jpg" alt="Susin Group Logo" class="brand-logo" width="60" height="60">
-                        <div class="brand-text">
-                            <span class="brand-name">SUSIN GROUP</span>
-                            <span class="brand-tagline">Valve Automation Solutions</span>
-                        </div>
-                    </a>
-                </div>
+        <!-- Main Navigation Bar -->
+        <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+            <div class="container">
+                <div class="nav-container">
+                    <!-- Logo Section -->
+                    <div class="brand-section">
+                        <a href="index.html" class="brand-logo">
+                            <img src="logo.jpg" alt="Susin Group Logo" loading="lazy" decoding="async">
+                            <div class="brand-text">
+                                <span class="brand-name">SUSIN GROUP</span>
+                            </div>
+                        </a>
+                    </div>
 
-                <!-- Desktop Navigation Menu -->
-                <ul class="navbar-menu" id="mainMenu" role="menubar">
-                    <li class="menu-item" role="none">
-                        <a href="index.html" class="menu-link" role="menuitem">
-                            <i class="fas fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    
-                    <li class="menu-item has-mega" role="none">
-                        <a href="products.html" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-cogs"></i>
-                            <span>Products</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu" aria-label="Products submenu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Actuators</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="products.html#pneumatic" role="menuitem"><i class="fas fa-wind"></i> Pneumatic Actuators</a></li>
-                                        <li><a href="products.html#electro-hydraulic" role="menuitem"><i class="fas fa-tint"></i> Electro-Hydraulic</a></li>
-                                        <li><a href="products.html#electrical" role="menuitem"><i class="fas fa-bolt"></i> Electrical Actuators</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Motion Control</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="products.html#gearboxes" role="menuitem"><i class="fas fa-cog"></i> Gearboxes</a></li>
-                                        <li><a href="products.html#accessories" role="menuitem"><i class="fas fa-puzzle-piece"></i> Accessories</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-col mega-featured">
-                                    <div class="featured-box">
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <h5>New Product</h5>
-                                        <p>Smart Digital Actuators with IoT</p>
-                                        <a href="products.html" class="btn-featured">Explore →</a>
+                    <!-- Navigation Menu -->
+                    <div class="nav-menu-wrapper">
+                        <ul class="primary-nav" id="primaryNav">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link active">
+                                    <i class="fas fa-home"></i>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="products-actuators-gearboxes.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>Products</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Actuator Solutions</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="products.html#pneumatic"><i class="fas fa-wind"></i> Pneumatic Actuators</a></li>
+                                                <li><a href="products.html#electro-hydraulic"><i class="fas fa-tint"></i> Electro-Hydraulic Actuators</a></li>
+                                                <li><a href="products.html#electrical"><i class="fas fa-bolt"></i> Electrical Actuators</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Motion Control</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="products.html#gearboxes"><i class="fas fa-cog"></i> Gearboxes</a></li>
+                                                <li><a href="products.html#accessories"><i class="fas fa-puzzle-piece"></i> Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown-column dropdown-featured">
+                                            <div class="featured-product">
+                                                <i class="fas fa-star"></i>
+                                                <h5>Featured Solution</h5>
+                                                <p>High-Performance Pneumatic Actuators</p>
+                                                <a href="products.html" class="featured-link">Explore Now â†’</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menu-item has-mega" role="none">
-                        <a href="industries.html" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-industry"></i>
-                            <span>Industries</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Sectors</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="industries.html#oil-gas" role="menuitem"><i class="fas fa-fire"></i> Oil & Gas</a></li>
-                                        <li><a href="industries.html#water" role="menuitem"><i class="fas fa-water"></i> Water Treatment</a></li>
-                                        <li><a href="industries.html#power" role="menuitem"><i class="fas fa-plug"></i> Power Generation</a></li>
-                                        <li><a href="industries.html#chemical" role="menuitem"><i class="fas fa-flask"></i> Chemical</a></li>
-                                        <li><a href="industries.html#marine" role="menuitem"><i class="fas fa-ship"></i> Marine & Offshore</a></li>
-                                        <li><a href="industries.html#pharma" role="menuitem"><i class="fas fa-pills"></i> Pharmaceutical</a></li>
-                                    </ul>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    <span>Global Presence</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Our Locations</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="global-presence/susin-itork-india.html"><i class="fas fa-map-marker-alt"></i> India</a></li>
+                                                <li><a href="global-presence/susin-itork-uae.html"><i class="fas fa-map-marker-alt"></i> UAE</a></li>
+                                                <li><a href="global-presence/susin-itork-qatar.html"><i class="fas fa-map-marker-alt"></i> Qatar</a></li>
+                                                <li><a href="index.html#middle-east"><i class="fas fa-map-marker-alt"></i> Middle East Overview</a></li>
+                                                <li><a href="index.html#europe"><i class="fas fa-map-marker-alt"></i> Europe</a></li>
+                                                <li><a href="index.html#far-east"><i class="fas fa-map-marker-alt"></i> Far East</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Showcase</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="index.html#recent-projects"><i class="fas fa-project-diagram"></i> Recent Projects</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menu-item has-mega" role="none">
-                        <a href="services.html" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-tools"></i>
-                            <span>Services</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Expert Services</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="services.html#installation" role="menuitem"><i class="fas fa-wrench"></i> Installation</a></li>
-                                        <li><a href="services.html#maintenance" role="menuitem"><i class="fas fa-toolbox"></i> Maintenance</a></li>
-                                        <li><a href="services.html#training" role="menuitem"><i class="fas fa-graduation-cap"></i> Training</a></li>
-                                        <li><a href="services.html#customization" role="menuitem"><i class="fas fa-sliders-h"></i> Customization</a></li>
-                                    </ul>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="industries-served.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-industry"></i>
+                                    <span>Industries</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Sectors We Serve</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="industries.html#oil-gas"><i class="fas fa-fire"></i> Oil & Gas</a></li>
+                                                <li><a href="industries.html#water-treatment"><i class="fas fa-water"></i> Water Treatment</a></li>
+                                                <li><a href="industries.html#power-generation"><i class="fas fa-bolt"></i> Power Generation</a></li>
+                                                <li><a href="industries.html#chemical"><i class="fas fa-flask"></i> Chemical Processing</a></li>
+                                                <li><a href="industries.html#marine"><i class="fas fa-ship"></i> Marine & Offshore</a></li>
+                                                <li><a href="industries.html#pharmaceutical"><i class="fas fa-pills"></i> Pharmaceutical</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menu-item has-mega" role="none">
-                        <a href="#" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <span>Global</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Our Locations</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="global-presence/susin-itork-india.html" role="menuitem"><i class="fas fa-map-marker-alt"></i> India</a></li>
-                                        <li><a href="global-presence/susin-itork-uae.html" role="menuitem"><i class="fas fa-map-marker-alt"></i> UAE</a></li>
-                                        <li><a href="global-presence/susin-itork-qatar.html" role="menuitem"><i class="fas fa-map-marker-alt"></i> Qatar</a></li>
-                                    </ul>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="services-installation-maintenance.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-tools"></i>
+                                    <span>Services</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Expert Services</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="services.html#installation"><i class="fas fa-wrench"></i> Installation & Commissioning</a></li>
+                                                <li><a href="services.html#maintenance"><i class="fas fa-toolbox"></i> Maintenance & Support</a></li>
+                                                <li><a href="services.html#training"><i class="fas fa-graduation-cap"></i> Training Programs</a></li>
+                                                <li><a href="services.html#customization"><i class="fas fa-sliders-h"></i> Customization Services</a></li>
+                                                <li><a href="services.html#spare-parts"><i class="fas fa-boxes"></i> Spare Parts & Components</a></li>
+                                                <li><a href="services.html#technical-support"><i class="fas fa-headset"></i> Technical Support</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="about-industrial-actuators.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-building"></i>
+                                    <span>About</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Company</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="about.html#story"><i class="fas fa-book"></i> Our Story</a></li>
+                                                <li><a href="about.html#mission"><i class="fas fa-bullseye"></i> Mission & Values</a></li>
+                                                <li><a href="about.html#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+                                                <li><a href="about.html#why-choose"><i class="fas fa-check-circle"></i> Why Choose Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="careers.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Careers</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Join Our Team</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="careers.html#openings"><i class="fas fa-user-plus"></i> Open Positions</a></li>
+                                                <li><a href="careers.html#life"><i class="fas fa-users"></i> Life at Susin</a></li>
+                                                <li><a href="careers.html#benefits"><i class="fas fa-gift"></i> Benefits</a></li>
+                                                <li><a href="careers.html#internships"><i class="fas fa-graduation-cap"></i> Internships</a></li>
+                                                <li><a href="careers.html#apply"><i class="fas fa-paper-plane"></i> How to Apply</a></li>
+                                                <li><a href="careers.html#contact-hr"><i class="fas fa-phone"></i> Contact HR</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="resources-technical-docs.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>Resources</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Technical Resources</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="resources.html#datasheets"><i class="fas fa-file-pdf"></i> Datasheets</a></li>
+                                                <li><a href="resources.html#manuals"><i class="fas fa-book"></i> Manuals</a></li>
+                                                <li><a href="resources.html#sizing-programs"><i class="fas fa-calculator"></i> Sizing Programs</a></li>
+                                                <li><a href="resources.html#faq"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                                                <li><a href="resources.html#blog"><i class="fas fa-rss"></i> Blog & News</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="contact-support-sales.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>Contact</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Get in Touch</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="contact.html#contact-form"><i class="fas fa-envelope"></i> Contact Form</a></li>
+                                                <li><a href="contact.html#sales"><i class="fas fa-handshake"></i> Sales Inquiry</a></li>
+                                                <li><a href="contact.html#support"><i class="fas fa-headset"></i> Technical Support</a></li>
+                                                <li><a href="contact.html#locations"><i class="fas fa-map-marker-alt"></i> Office Locations</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                    <li class="menu-item" role="none">
-                        <a href="about.html" class="menu-link" role="menuitem">
-                            <i class="fas fa-building"></i>
-                            <span>About</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-item" role="none">
-                        <a href="careers.html" class="menu-link" role="menuitem">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Careers</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-item" role="none">
-                        <a href="contact.html" class="menu-link" role="menuitem">
+                    <!-- Action Buttons -->
+                    <div class="nav-actions">
+                        <button class="action-btn search-btn" id="headerSearchBtn" aria-label="Search" title="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <a href="contact.html" class="action-btn contact-btn">
                             <i class="fas fa-envelope"></i>
                             <span>Contact</span>
                         </a>
-                    </li>
-                </ul>
-
-                <!-- Action Buttons -->
-                <div class="navbar-actions">
-                    <button class="btn-action btn-search" id="searchToggle" aria-label="Open search" title="Search">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <a href="contact.html#quote" class="btn-action btn-quote">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <span class="btn-text">Get Quote</span>
-                    </a>
-                    <button class="btn-mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Search Overlay -->
-    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden>
-        <div class="search-container">
-            <div class="search-header">
-                <h2 id="searchTitle">Search Susin Products & Services</h2>
-                <button class="search-close" id="searchClose" aria-label="Close search">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="search-body">
-                <form class="search-form" role="search" id="searchForm">
-                    <div class="search-input-wrapper">
-                        <i class="fas fa-search search-icon"></i>
-                        <input 
-                            type="search" 
-                            id="searchInput" 
-                            class="search-input" 
-                            placeholder="Search actuators, gearboxes, industries, resources..."
-                            autocomplete="off"
-                            aria-label="Search"
-                            aria-describedby="searchSuggestions"
-                        >
-                        <button type="submit" class="search-submit" aria-label="Submit search">
-                            <i class="fas fa-arrow-right"></i>
+                        <button class="action-btn quote-btn" id="quoteBtn">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Get Quote</span>
+                        </button>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </button>
                     </div>
-                    <div class="search-suggestions" id="searchSuggestions" role="listbox" hidden></div>
-                </form>
-                <div class="search-quick-links">
-                    <h3>Popular Searches</h3>
-                    <div class="quick-tags">
-                        <a href="products.html#pneumatic" class="tag">Pneumatic Actuators</a>
-                        <a href="products.html#gearboxes" class="tag">Gearboxes</a>
-                        <a href="industries.html#oil-gas" class="tag">Oil & Gas</a>
-                        <a href="services.html#maintenance" class="tag">Maintenance</a>
-                        <a href="resources.html#datasheets" class="tag">Datasheets</a>
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="search-backdrop" aria-hidden="true"></div>
-    </div>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle" hidden>
-        <div class="mobile-menu-container">
-            <div class="mobile-menu-header">
-                <h2 id="mobileMenuTitle" class="sr-only">Mobile Navigation Menu</h2>
-                <img src="logo.jpg" alt="Susin Group" class="mobile-logo" width="50" height="50">
-                <button class="mobile-close" id="mobileClose" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <nav class="mobile-nav" role="navigation">
-                <ul class="mobile-menu-list">
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-cogs"></i> Products
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="products.html#pneumatic">Pneumatic Actuators</a></li>
-                            <li><a href="products.html#electro-hydraulic">Electro-Hydraulic</a></li>
-                            <li><a href="products.html#electrical">Electrical Actuators</a></li>
-                            <li><a href="products.html#gearboxes">Gearboxes</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-industry"></i> Industries
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="industries.html#oil-gas">Oil & Gas</a></li>
-                            <li><a href="industries.html#water">Water Treatment</a></li>
-                            <li><a href="industries.html#power">Power Generation</a></li>
-                            <li><a href="industries.html#chemical">Chemical</a></li>
-                            <li><a href="industries.html#marine">Marine & Offshore</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-tools"></i> Services
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="services.html#installation">Installation</a></li>
-                            <li><a href="services.html#maintenance">Maintenance</a></li>
-                            <li><a href="services.html#training">Training</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-map-marked-alt"></i> Global Presence
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="global-presence/susin-itork-india.html">India</a></li>
-                            <li><a href="global-presence/susin-itork-uae.html">UAE</a></li>
-                            <li><a href="global-presence/susin-itork-qatar.html">Qatar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html"><i class="fas fa-building"></i> About Us</a></li>
-                    <li><a href="careers.html"><i class="fas fa-briefcase"></i> Careers</a></li>
-                    <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
-                <div class="mobile-menu-footer">
-                    <a href="tel:+917708097242" class="mobile-contact">
-                        <i class="fas fa-phone"></i>
-                        +91 77080 97242
-                    </a>
-                    <a href="mailto:info@susin.in" class="mobile-contact">
-                        <i class="fas fa-envelope"></i>
-                        info@susin.in
-                    </a>
-                </div>
-            </nav>
-        </div>
-        <div class="mobile-backdrop" aria-hidden="true"></div>
-    </div>
-</header>
-
+        </nav>
+    </header>
 
     <!-- Main Content -->
     <main id="main-content" role="main">
@@ -1412,347 +1358,10 @@
     <div id="chatbot" class="chatbot" aria-hidden="false">
         <button id="chatToggle" class="chat-toggle" aria-label="Open technical support chat" aria-expanded="false"><i class="fas fa-headset"></i></button>
         <div id="chatWindow" class="chat-window" hidden>
-            <!-- 
-    SUSIN GROUP - REDESIGNED NAVIGATION HEADER
-    Modern, Functional, Accessible Navigation System
-    Last Updated: November 21, 2025
--->
-
-<header class="susin-header" id="mainHeader" role="banner">
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-to-content">Skip to main content</a>
-    
-    <!-- ARIA live region for screen readers -->
-    <div role="status" aria-live="polite" aria-atomic="true" class="sr-only" id="navStatus"></div>
-    
-    <!-- Top Bar with Contact & Quick Links -->
-    <div class="header-topbar">
-        <div class="container-fluid">
-            <div class="topbar-wrapper">
-                <div class="topbar-left">
-                    <span class="topbar-item">
-                        <i class="fas fa-shield-check"></i>
-                        <span>ISO 9001:2015 Certified</span>
-                    </span>
-                    <span class="topbar-item">
-                        <i class="fas fa-award"></i>
-                        <span>32+ Years of Excellence</span>
-                    </span>
-                </div>
-                <div class="topbar-right">
-                    <a href="tel:+917708097242" class="topbar-link">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 77080 97242</span>
-                    </a>
-                    <a href="mailto:info@susin.in" class="topbar-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>info@susin.in</span>
-                    </a>
-                    <div class="language-selector">
-                        <button class="lang-toggle" aria-label="Select language" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-globe"></i>
-                            <span>EN</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <ul class="lang-menu" role="menu">
-                            <li><a href="#" data-lang="en" role="menuitem"><span class="flag-icon">🇺🇸</span> English</a></li>
-                            <li><a href="#" data-lang="ar" role="menuitem"><span class="flag-icon">🇦🇪</span> العربية</a></li>
-                            <li><a href="#" data-lang="zh" role="menuitem"><span class="flag-icon">🇨🇳</span> 中文</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Navigation -->
-    <nav class="header-navbar" role="navigation" aria-label="Main navigation">
-        <div class="container-fluid">
-            <div class="navbar-wrapper">
-                <!-- Logo/Brand -->
-                <div class="navbar-brand">
-                    <a href="index.html" class="brand-link" aria-label="Susin Group Home">
-                        <img src="logo.jpg" alt="Susin Group Logo" class="brand-logo" width="60" height="60">
-                        <div class="brand-text">
-                            <span class="brand-name">SUSIN GROUP</span>
-                            <span class="brand-tagline">Valve Automation Solutions</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation Menu -->
-                <ul class="navbar-menu" id="mainMenu" role="menubar">
-                    <li class="menu-item" role="none">
-                        <a href="index.html" class="menu-link" role="menuitem">
-                            <i class="fas fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    
-                    <li class="menu-item has-mega" role="none">
-                        <a href="products.html" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-cogs"></i>
-                            <span>Products</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu" aria-label="Products submenu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Actuators</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="products.html#pneumatic" role="menuitem"><i class="fas fa-wind"></i> Pneumatic Actuators</a></li>
-                                        <li><a href="products.html#electro-hydraulic" role="menuitem"><i class="fas fa-tint"></i> Electro-Hydraulic</a></li>
-                                        <li><a href="products.html#electrical" role="menuitem"><i class="fas fa-bolt"></i> Electrical Actuators</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Motion Control</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="products.html#gearboxes" role="menuitem"><i class="fas fa-cog"></i> Gearboxes</a></li>
-                                        <li><a href="products.html#accessories" role="menuitem"><i class="fas fa-puzzle-piece"></i> Accessories</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-col mega-featured">
-                                    <div class="featured-box">
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <h5>New Product</h5>
-                                        <p>Smart Digital Actuators with IoT</p>
-                                        <a href="products.html" class="btn-featured">Explore →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menu-item has-mega" role="none">
-                        <a href="industries.html" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-industry"></i>
-                            <span>Industries</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Sectors</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="industries.html#oil-gas" role="menuitem"><i class="fas fa-fire"></i> Oil & Gas</a></li>
-                                        <li><a href="industries.html#water" role="menuitem"><i class="fas fa-water"></i> Water Treatment</a></li>
-                                        <li><a href="industries.html#power" role="menuitem"><i class="fas fa-plug"></i> Power Generation</a></li>
-                                        <li><a href="industries.html#chemical" role="menuitem"><i class="fas fa-flask"></i> Chemical</a></li>
-                                        <li><a href="industries.html#marine" role="menuitem"><i class="fas fa-ship"></i> Marine & Offshore</a></li>
-                                        <li><a href="industries.html#pharma" role="menuitem"><i class="fas fa-pills"></i> Pharmaceutical</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menu-item has-mega" role="none">
-                        <a href="services.html" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-tools"></i>
-                            <span>Services</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Expert Services</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="services.html#installation" role="menuitem"><i class="fas fa-wrench"></i> Installation</a></li>
-                                        <li><a href="services.html#maintenance" role="menuitem"><i class="fas fa-toolbox"></i> Maintenance</a></li>
-                                        <li><a href="services.html#training" role="menuitem"><i class="fas fa-graduation-cap"></i> Training</a></li>
-                                        <li><a href="services.html#customization" role="menuitem"><i class="fas fa-sliders-h"></i> Customization</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menu-item has-mega" role="none">
-                        <a href="#" class="menu-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <span>Global</span>
-                            <i class="fas fa-chevron-down arrow"></i>
-                        </a>
-                        <div class="mega-menu" role="menu">
-                            <div class="mega-menu-container">
-                                <div class="mega-col">
-                                    <h4 class="mega-title">Our Locations</h4>
-                                    <ul class="mega-list">
-                                        <li><a href="global-presence/susin-itork-india.html" role="menuitem"><i class="fas fa-map-marker-alt"></i> India</a></li>
-                                        <li><a href="global-presence/susin-itork-uae.html" role="menuitem"><i class="fas fa-map-marker-alt"></i> UAE</a></li>
-                                        <li><a href="global-presence/susin-itork-qatar.html" role="menuitem"><i class="fas fa-map-marker-alt"></i> Qatar</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="menu-item" role="none">
-                        <a href="about.html" class="menu-link" role="menuitem">
-                            <i class="fas fa-building"></i>
-                            <span>About</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-item" role="none">
-                        <a href="careers.html" class="menu-link" role="menuitem">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Careers</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-item" role="none">
-                        <a href="contact.html" class="menu-link" role="menuitem">
-                            <i class="fas fa-envelope"></i>
-                            <span>Contact</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Action Buttons -->
-                <div class="navbar-actions">
-                    <button class="btn-action btn-search" id="searchToggle" aria-label="Open search" title="Search">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <a href="contact.html#quote" class="btn-action btn-quote">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <span class="btn-text">Get Quote</span>
-                    </a>
-                    <button class="btn-mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Search Overlay -->
-    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden>
-        <div class="search-container">
-            <div class="search-header">
-                <h2 id="searchTitle">Search Susin Products & Services</h2>
-                <button class="search-close" id="searchClose" aria-label="Close search">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="search-body">
-                <form class="search-form" role="search" id="searchForm">
-                    <div class="search-input-wrapper">
-                        <i class="fas fa-search search-icon"></i>
-                        <input 
-                            type="search" 
-                            id="searchInput" 
-                            class="search-input" 
-                            placeholder="Search actuators, gearboxes, industries, resources..."
-                            autocomplete="off"
-                            aria-label="Search"
-                            aria-describedby="searchSuggestions"
-                        >
-                        <button type="submit" class="search-submit" aria-label="Submit search">
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="search-suggestions" id="searchSuggestions" role="listbox" hidden></div>
-                </form>
-                <div class="search-quick-links">
-                    <h3>Popular Searches</h3>
-                    <div class="quick-tags">
-                        <a href="products.html#pneumatic" class="tag">Pneumatic Actuators</a>
-                        <a href="products.html#gearboxes" class="tag">Gearboxes</a>
-                        <a href="industries.html#oil-gas" class="tag">Oil & Gas</a>
-                        <a href="services.html#maintenance" class="tag">Maintenance</a>
-                        <a href="resources.html#datasheets" class="tag">Datasheets</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="search-backdrop" aria-hidden="true"></div>
-    </div>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle" hidden>
-        <div class="mobile-menu-container">
-            <div class="mobile-menu-header">
-                <h2 id="mobileMenuTitle" class="sr-only">Mobile Navigation Menu</h2>
-                <img src="logo.jpg" alt="Susin Group" class="mobile-logo" width="50" height="50">
-                <button class="mobile-close" id="mobileClose" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <nav class="mobile-nav" role="navigation">
-                <ul class="mobile-menu-list">
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-cogs"></i> Products
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="products.html#pneumatic">Pneumatic Actuators</a></li>
-                            <li><a href="products.html#electro-hydraulic">Electro-Hydraulic</a></li>
-                            <li><a href="products.html#electrical">Electrical Actuators</a></li>
-                            <li><a href="products.html#gearboxes">Gearboxes</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-industry"></i> Industries
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="industries.html#oil-gas">Oil & Gas</a></li>
-                            <li><a href="industries.html#water">Water Treatment</a></li>
-                            <li><a href="industries.html#power">Power Generation</a></li>
-                            <li><a href="industries.html#chemical">Chemical</a></li>
-                            <li><a href="industries.html#marine">Marine & Offshore</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-tools"></i> Services
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="services.html#installation">Installation</a></li>
-                            <li><a href="services.html#maintenance">Maintenance</a></li>
-                            <li><a href="services.html#training">Training</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <button class="submenu-toggle" aria-expanded="false">
-                            <i class="fas fa-map-marked-alt"></i> Global Presence
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <ul class="submenu">
-                            <li><a href="global-presence/susin-itork-india.html">India</a></li>
-                            <li><a href="global-presence/susin-itork-uae.html">UAE</a></li>
-                            <li><a href="global-presence/susin-itork-qatar.html">Qatar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html"><i class="fas fa-building"></i> About Us</a></li>
-                    <li><a href="careers.html"><i class="fas fa-briefcase"></i> Careers</a></li>
-                    <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
-                <div class="mobile-menu-footer">
-                    <a href="tel:+917708097242" class="mobile-contact">
-                        <i class="fas fa-phone"></i>
-                        +91 77080 97242
-                    </a>
-                    <a href="mailto:info@susin.in" class="mobile-contact">
-                        <i class="fas fa-envelope"></i>
-                        info@susin.in
-                    </a>
-                </div>
-            </nav>
-        </div>
-        <div class="mobile-backdrop" aria-hidden="true"></div>
-    </div>
-</header>
-
+            <header class="chat-header">
+                <div class="chat-title">Technical Support</div>
+                <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+            </header>
             <div id="chatMessages" class="chat-messages" role="log" aria-live="polite"></div>
             <form id="chatForm" class="chat-form">
                 <input id="chatInput" type="text" placeholder="Describe your issue or ask a question..." aria-label="Chat input" required>
@@ -1762,6 +1371,5 @@
     </div>
 
     <script src="js/main.js" defer></script>
-    <script src="js/navigation.js"></script>
 </body>
 </html>

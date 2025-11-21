@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test - Susin Group</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding-top: 150px; }
+        .test-section {
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .test-result {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #4CAF50;
+            background: white;
+        }
+        .test-instructions {
+            background: #fff3cd;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header (copied from index.html) -->
+    <header class="modern-header">
+        <div class="header-top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="header-info-left">
+                        <span class="info-item"><i class="fas fa-shield-alt"></i> ISO 9001 Certified</span>
+                    </div>
+                    <div class="header-info-right">
+                        <a href="tel:+917708097242" class="header-contact-link">
+                            <i class="fas fa-phone-alt"></i> +91 77080 97242
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-navigation">
+            <div class="container">
+                <div class="nav-container">
+                    <div class="brand-section">
+                        <a href="index.html" class="brand-logo">
+                            <img src="logo.jpg" alt="Susin Group Logo">
+                            <div class="brand-text"><span class="brand-name">SUSIN GROUP</span></div>
+                        </a>
+                    </div>
+
+                    <div class="nav-menu-wrapper">
+                        <ul class="primary-nav" id="primaryNav">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link active">
+                                    <i class="fas fa-home"></i><span>Home</span>
+                                </a>
+                            </li>
+                            <li class="nav-item has-dropdown">
+                                <a href="products-actuators-gearboxes.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-cogs"></i><span>Products</span>
+                                    <i class="fas fa-angle-down dropdown-arrow"></i>
+                                </a>
+                                <div class="mega-dropdown" role="menu" aria-hidden="true">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-column">
+                                            <h4 class="dropdown-title">Actuator Solutions</h4>
+                                            <ul class="dropdown-links">
+                                                <li><a href="products.html#pneumatic"><i class="fas fa-wind"></i> Pneumatic Actuators</a></li>
+                                                <li><a href="products.html#electrical"><i class="fas fa-bolt"></i> Electrical Actuators</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="about.html" class="nav-link">
+                                    <i class="fas fa-info-circle"></i><span>About</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contact.html" class="nav-link">
+                                    <i class="fas fa-envelope"></i><span>Contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                            <span></span><span></span><span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="test-section">
+            <h1><i class="fas fa-flask"></i> Navigation Functionality Test Page</h1>
+            
+            <div class="test-instructions">
+                <h2><i class="fas fa-clipboard-list"></i> Test Instructions</h2>
+                <p><strong>Desktop Test (screen width > 1024px):</strong></p>
+                <ol>
+                    <li>Hover over "Products" menu item → Dropdown should appear</li>
+                    <li>Click "Products" → Should navigate to products-actuators-gearboxes.html</li>
+                    <li>Click dropdown links → Should navigate to respective pages</li>
+                    <li>Click "Home", "About", "Contact" → Should navigate immediately</li>
+                </ol>
+                
+                <p><strong>Tablet/Mobile Test (screen width ≤ 1024px or use mobile menu):</strong></p>
+                <ol>
+                    <li>Click hamburger menu (☰) → Mobile menu should open</li>
+                    <li>Click "Products" (first time) → Dropdown should expand</li>
+                    <li>Click "Products" (second time) → Should navigate to products page</li>
+                    <li>Click dropdown links → Should navigate and close menu</li>
+                    <li>Click "Home", "About", "Contact" → Should navigate immediately</li>
+                </ol>
+                
+                <p><strong>Back Navigation Test:</strong></p>
+                <ol>
+                    <li>Navigate to any page using the menu</li>
+                    <li>Click browser back button → Should return to this page</li>
+                    <li>Test browser forward/back buttons → Should work normally</li>
+                </ol>
+            </div>
+
+            <div class="test-result">
+                <h3><i class="fas fa-check-circle"></i> Expected Behavior</h3>
+                <ul>
+                    <li>✅ Desktop: Hover shows dropdown, click navigates</li>
+                    <li>✅ Tablet: First click shows dropdown, second click navigates</li>
+                    <li>✅ Mobile menu: Hamburger opens menu, dropdowns expand/collapse correctly</li>
+                    <li>✅ Links without dropdowns navigate immediately on first click</li>
+                    <li>✅ Browser back/forward buttons work normally</li>
+                    <li>✅ No JavaScript console errors</li>
+                </ul>
+            </div>
+
+            <div class="test-result">
+                <h3><i class="fas fa-bug"></i> Check Console for Errors</h3>
+                <p>Open Developer Tools (F12) and check the Console tab. There should be no errors.</p>
+                <button onclick="console.log('✅ Console test - If you see this, JavaScript is working!');" class="btn btn-primary">
+                    Test Console
+                </button>
+            </div>
+
+            <div class="test-result">
+                <h3><i class="fas fa-mobile-alt"></i> Responsive Test</h3>
+                <p>Resize your browser window or use Developer Tools device emulation to test different screen sizes:</p>
+                <ul>
+                    <li><strong>Desktop:</strong> > 1024px - Hover interactions</li>
+                    <li><strong>Tablet:</strong> 768px - 1024px - Click interactions</li>
+                    <li><strong>Mobile:</strong> < 768px - Hamburger menu</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js" defer></script>
+    <script>
+        // Additional test logging
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ Page loaded successfully');
+            console.log('✅ Navigation initialized');
+            
+            // Log when dropdowns are clicked
+            document.querySelectorAll('.nav-item.has-dropdown .nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    console.log('Dropdown clicked:', link.textContent.trim());
+                });
+            });
+            
+            // Log when mobile menu is toggled
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    console.log('Mobile menu toggled');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
