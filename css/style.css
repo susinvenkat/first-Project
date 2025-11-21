@@ -25,6 +25,29 @@
     margin-bottom: 4rem;
 }
 
+/* Product Section Headers */
+.product-section .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.product-section .section-header h2 {
+    font-size: 2.5rem;
+    color: #1a2942;
+    margin-bottom: 1rem;
+}
+
+.product-section .section-header p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.product-section .section-header .hero-highlights {
+    margin-top: 1.5rem;
+}
+
 .certifications-section .section-title {
     color: #1a1a1a;
 }
@@ -169,6 +192,83 @@
 .hero-highlights {
     justify-content: center;
     margin-bottom: 1rem;
+}
+
+/* Text Utilities */
+.text-center {
+    text-align: center;
+}
+
+.industries .text-center {
+    margin-top: 3rem;
+}
+
+.industries .text-center .btn-primary {
+    padding: 1rem 2.5rem;
+    font-size: 1.05rem;
+}
+
+/* Customers Section */
+.customers-section {
+    padding: 5rem 0;
+    background: #fff;
+}
+
+.customers-section .section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.customers-section p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.customers-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* FAQ Section */
+.product-section.faq-section {
+    background: #f8f9fa;
+    padding: 3rem 0;
+}
+
+.product-section.faq-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1a2942;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item-box {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.faq-item-box h4 {
+    color: #2c5aa0;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item-box p {
+    color: #666;
+    margin: 0;
 }
 
 .hero-highlights i {
