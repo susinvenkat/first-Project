@@ -2,21 +2,43 @@
 <html lang="en">
 <head>
         <meta charset="UTF-8">
+        
+        <!-- Mobile & Viewport Optimization -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
         <meta name="HandheldFriendly" content="true">
         <meta name="MobileOptimized" content="width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="theme-color" content="#c41e3a">
+        <meta name="apple-mobile-web-app-title" content="Susin Group">
+        <meta name="format-detection" content="telephone=yes, address=yes, email=yes">
+        
+        <!-- Theme & Brand Colors -->
+        <meta name="theme-color" content="#c41e3a" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#1a2942" media="(prefers-color-scheme: dark)">
         <meta name="msapplication-TileColor" content="#c41e3a">
         <meta name="msapplication-navbutton-color" content="#c41e3a">
-        <link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
-        <meta name="robots" content="index, follow">
+        <meta name="msapplication-TileImage" content="assets/img/icons/mstile-144x144.png">
+        
+        <!-- Touch Icons & App Icons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16x16.png">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="mask-icon" href="assets/img/icons/safari-pinned-tab.svg" color="#c41e3a">
+        
+        <!-- SEO & Indexing -->
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="googlebot" content="index, follow">
+        <meta name="google" content="notranslate">
+        <link rel="alternate" hreflang="en" href="https://www.susingroup.com/">
+        <link rel="alternate" hreflang="x-default" href="https://www.susingroup.com/">
+        
+        <!-- Social Media & Brand -->
         <meta property="og:site_name" content="Susin Group">
         <meta name="twitter:site" content="@susingroup">
         <meta name="twitter:creator" content="@susingroup">
+        
         <title>Industrial Actuators & Gearboxes | Advanced Motion Control Solutions | Susin Group</title>
         <meta name="description" content="Leading manufacturer of industrial actuators, gearboxes & motion control solutions since 1992. Pneumatic, electro-hydraulic & electrical actuators for critical automation applications worldwide. âœ“ 32+ Years Experience âœ“ Global Presence âœ“ ISO 9001 Certified">
         <meta name="keywords" content="industrial actuators, pneumatic actuators, scotch yoke actuators, gearboxes, electro-hydraulic actuators, electrical actuators, motion control, valve automation, automation solutions, rotary actuators, linear actuators, quarter turn actuators, multi-turn actuators, valve actuators, process automation">
@@ -504,8 +526,11 @@
         </nav>
     </header>
 
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+
     <!-- Old Navigation (Hidden, keeping structure for compatibility) -->
-    <nav class="navbar" style="display: none;">
+    <nav class="navbar" style="display: none;" aria-hidden="true">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="index.html" class="logo">
@@ -796,13 +821,13 @@
             </div>
         </section>
 
-        <!-- Advanced Hero Section -->
-        <section class="hero-advanced">
+        <!-- Company Overview Hero -->
+        <section class="hero-advanced" aria-labelledby="hero-heading">
             <div class="container">
                 <div class="hero-grid">
-                    <div class="hero-panel">
+                    <article class="hero-panel">
                         <p class="eyebrow">Valve Automation Solutions • Trusted for 32+ Years</p>
-                        <h1>Leading Provider of Industrial Actuators & Valve Automation</h1>
+                        <h1 id="hero-heading">Leading Provider of Industrial Actuators & Valve Automation</h1>
                         <p class="lead">SUSIN has proudly provided steadfast support to the Asian power and oil & gas industries for over 32 years, earning approvals from esteemed organizations such as BHEL, NTPC, and major refineries. With over 100 actuators in successful operation within FPSO projects, we deliver reliable valve automation solutions across upstream, midstream, and downstream sectors.</p>
 
                         <div class="hero-cta">
@@ -815,16 +840,16 @@
                             <li><strong>32+</strong><span>Years of Experience</span></li>
                             <li><strong>100+</strong><span>FPSO Actuators Operating</span></li>
                         </ul>
-                    </div>
-                    <div class="hero-media" aria-hidden="true">
+                    </article>
+                    <aside class="hero-media" aria-hidden="true">
                         <picture>
                             <source srcset="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80" type="image/webp">
                             <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80" alt="Actuators and gearboxes in industrial setting" loading="lazy" class="hero-image">
                         </picture>
-                    </div>
+                    </aside>
                 </div>
 
-                <div class="features-grid">
+                <div class="features-grid" role="list">
                     <article class="feature-card">
                         <i class="fas fa-cogs feature-icon"></i>
                         <h3>Engineered Reliability</h3>
