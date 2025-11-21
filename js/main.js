@@ -120,27 +120,22 @@ function initializeModernHeaderDropdowns() {
             }, 250);
         });
         
-        // Touch/click behavior for tablets
+        // Touch/click behavior for tablets and mobile
         trigger.addEventListener('click', (e) => {
             const isActive = item.classList.contains('active');
             const primaryNav = document.getElementById('primaryNav');
             const triggerHref = trigger.getAttribute('href');
             const isValidLink = triggerHref && triggerHref !== '#' && !triggerHref.startsWith('javascript:');
             
-            // On mobile, prevent default and toggle
-            if (primaryNav && primaryNav.classList.contains('mobile-active')) {
-                return; // Mobile click handled by other function
-            }
-            
             // Desktop behavior: Allow navigation on click
-            if (window.innerWidth > 1024) {
+            if (window.innerWidth > 1024 && (!primaryNav || !primaryNav.classList.contains('mobile-active'))) {
                 // On desktop, let the link work normally (navigation)
                 // Dropdown shown via hover, not click
                 return;
             }
             
-            // Tablet behavior (1024px and below)
-            if (window.innerWidth <= 1024) {
+            // Mobile/Tablet behavior (1024px and below, or when mobile menu is active)
+            if (window.innerWidth <= 1024 || (primaryNav && primaryNav.classList.contains('mobile-active'))) {
                 // If dropdown is already open, allow navigation
                 if (isActive && isValidLink) {
                     // Second click - navigate
@@ -149,7 +144,12 @@ function initializeModernHeaderDropdowns() {
                 }
                 
                 // First click - show dropdown if it exists and has content
-                if (!isActive && dropdown && dropdown.children.length > 0) {
+                const hasDropdownContent = dropdown && (
+                    dropdown.querySelector('.dropdown-content') || 
+                    dropdown.children.length > 0
+                );
+                
+                if (!isActive && hasDropdownContent) {
                     e.preventDefault();
                     
                     // Close other dropdowns
@@ -278,6 +278,12 @@ function initializeHeaderSearch() {
                     const linkHref = link.getAttribute('href');
                     const isValidLink = linkHref && linkHref !== '#' && !linkHref.startsWith('javascript:');
                     
+                    // Check if dropdown has actual content
+                    const hasDropdownContent = megaDropdown && (
+                        megaDropdown.querySelector('.dropdown-content') || 
+                        megaDropdown.children.length > 0
+                    );
+                    
                     // If dropdown is already open and link is valid, navigate
                     if (isOpen && isValidLink) {
                         // Second click - navigate
@@ -287,7 +293,7 @@ function initializeHeaderSearch() {
                     }
                     
                     // Only prevent default if there's a dropdown to show
-                    if (megaDropdown && megaDropdown.children.length > 0 && !isOpen) {
+                    if (hasDropdownContent && !isOpen) {
                         e.preventDefault();
                         
                         // Close other dropdowns with animation
@@ -307,7 +313,7 @@ function initializeHeaderSearch() {
                                 dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                             }
                         }, 100);
-                    } else if (isValidLink && (!megaDropdown || megaDropdown.children.length === 0)) {
+                    } else if (isValidLink && !hasDropdownContent) {
                         // No dropdown - navigate immediately
                         closeMobileMenu();
                         window.location.href = linkHref;
