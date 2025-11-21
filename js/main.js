@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize enhanced menu features
     initializeMenuFeatures();
     
+    // Mute and pause all media when tab is closed or navigating away
+    initializeMediaCleanup();
+    
     // Lazy loading for images with Intersection Observer
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -121,25 +124,48 @@ function initializeModernHeaderDropdowns() {
         trigger.addEventListener('click', (e) => {
             const isActive = item.classList.contains('active');
             const primaryNav = document.getElementById('primaryNav');
+            const triggerHref = trigger.getAttribute('href');
+            const isValidLink = triggerHref && triggerHref !== '#' && !triggerHref.startsWith('javascript:');
             
             // On mobile, prevent default and toggle
             if (primaryNav && primaryNav.classList.contains('mobile-active')) {
                 return; // Mobile click handled by other function
             }
             
-            // On tablet/small desktop
-            if (window.innerWidth <= 1024 && !isActive) {
-                e.preventDefault();
+            // Desktop behavior: Allow navigation on click
+            if (window.innerWidth > 1024) {
+                // On desktop, let the link work normally (navigation)
+                // Dropdown shown via hover, not click
+                return;
+            }
+            
+            // Tablet behavior (1024px and below)
+            if (window.innerWidth <= 1024) {
+                // If dropdown is already open, allow navigation
+                if (isActive && isValidLink) {
+                    // Second click - navigate
+                    window.location.href = triggerHref;
+                    return;
+                }
                 
-                // Close other dropdowns
-                navItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                item.classList.add('active');
-                trigger.setAttribute('aria-expanded', 'true');
+                // First click - show dropdown if it exists and has content
+                if (!isActive && dropdown && dropdown.children.length > 0) {
+                    e.preventDefault();
+                    
+                    // Close other dropdowns
+                    navItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.classList.remove('click-to-open');
+                        }
+                    });
+                    
+                    item.classList.add('active');
+                    trigger.setAttribute('aria-expanded', 'true');
+                } else if (isValidLink) {
+                    // No dropdown or empty dropdown - navigate immediately
+                    window.location.href = triggerHref;
+                }
             }
         });
         
@@ -246,28 +272,45 @@ function initializeHeaderSearch() {
         primaryNav.querySelectorAll('.nav-item.has-dropdown > .nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 if (primaryNav.classList.contains('mobile-active')) {
-                    e.preventDefault();
                     const parentItem = link.closest('.nav-item');
                     const isOpen = parentItem.classList.contains('mobile-open');
+                    const megaDropdown = parentItem.querySelector('.mega-dropdown');
+                    const linkHref = link.getAttribute('href');
+                    const isValidLink = linkHref && linkHref !== '#' && !linkHref.startsWith('javascript:');
                     
-                    // Close other dropdowns with animation
-                    primaryNav.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
-                        if (item !== parentItem && item.classList.contains('mobile-open')) {
-                            item.classList.remove('mobile-open');
-                        }
-                    });
+                    // If dropdown is already open and link is valid, navigate
+                    if (isOpen && isValidLink) {
+                        // Second click - navigate
+                        closeMobileMenu();
+                        window.location.href = linkHref;
+                        return;
+                    }
                     
-                    // Toggle current dropdown
-                    parentItem.classList.toggle('mobile-open');
-                    
-                    // Smooth scroll to show dropdown if opened
-                    if (!isOpen) {
+                    // Only prevent default if there's a dropdown to show
+                    if (megaDropdown && megaDropdown.children.length > 0 && !isOpen) {
+                        e.preventDefault();
+                        
+                        // Close other dropdowns with animation
+                        primaryNav.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+                            if (item !== parentItem && item.classList.contains('mobile-open')) {
+                                item.classList.remove('mobile-open');
+                            }
+                        });
+                        
+                        // Open current dropdown
+                        parentItem.classList.add('mobile-open');
+                        
+                        // Smooth scroll to show dropdown if opened
                         setTimeout(() => {
                             const dropdown = parentItem.querySelector('.mega-dropdown');
                             if (dropdown) {
                                 dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                             }
                         }, 100);
+                    } else if (isValidLink && (!megaDropdown || megaDropdown.children.length === 0)) {
+                        // No dropdown - navigate immediately
+                        closeMobileMenu();
+                        window.location.href = linkHref;
                     }
                 }
             });
@@ -544,6 +587,7 @@ function initializeDropdowns() {
         trigger.addEventListener('click', (e) => {
             if (window.innerWidth <= 1024) {
                 const isOpen = dropdown.classList.contains('hover');
+                const hasValidHref = trigger.getAttribute('href') && !trigger.getAttribute('href').startsWith('#');
                 
                 // Close all other dropdowns
                 dropdowns.forEach(d => {
@@ -552,7 +596,8 @@ function initializeDropdowns() {
                     }
                 });
                 
-                if (!isOpen) {
+                // Only prevent default if opening dropdown, allow navigation if link has valid href
+                if (!isOpen && (!hasValidHref || dropdown.querySelector('.dropdown-menu'))) {
                     e.preventDefault();
                     dropdown.classList.add('hover');
                     trigger.setAttribute('aria-expanded', 'true');
@@ -2161,6 +2206,64 @@ if (chatMessages) {
                 preloadNextVideo();
             }
         });
+    });
+}
+
+// Media Cleanup - Mute and pause all audio/video when closing tab or navigating away
+function initializeMediaCleanup() {
+    // Function to stop all media
+    function stopAllMedia() {
+        // Stop all video elements
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.muted = true;
+            video.pause();
+            video.currentTime = 0;
+        });
+        
+        // Stop all audio elements
+        const audios = document.querySelectorAll('audio');
+        audios.forEach(audio => {
+            audio.muted = true;
+            audio.pause();
+            audio.currentTime = 0;
+        });
+        
+        // Stop any Web Audio API contexts
+        if (window.audioContext) {
+            window.audioContext.suspend();
+        }
+    }
+    
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', (e) => {
+        stopAllMedia();
+    });
+    
+    // Cleanup when user navigates away
+    window.addEventListener('pagehide', (e) => {
+        stopAllMedia();
+    });
+    
+    // Cleanup when tab becomes hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            // Mute but don't stop when tab is hidden
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.muted = true;
+            });
+            
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(audio => {
+                audio.muted = true;
+            });
+        }
+    });
+    
+    // Emergency cleanup - catches most cases
+    window.addEventListener('unload', () => {
+        stopAllMedia();
     });
 })();
 

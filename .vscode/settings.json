@@ -1,4 +1,8 @@
 {
     "editor.aiStats.enabled": true,
-    "chat.agent.maxRequests": 50
+    "chat.agent.maxRequests": 50,
+    "terminal.integrated.autoApprove": true,
+    "terminal.integrated.enablePersistentSessions": true,
+    "terminal.integrated.confirmOnExit": "never",
+    "terminal.integrated.confirmOnKill": "never"
 }
