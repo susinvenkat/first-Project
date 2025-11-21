@@ -221,27 +221,57 @@ function initializeHeaderSearch() {
             mobileMenuToggle.classList.toggle('active', isActive);
             mobileMenuToggle.setAttribute('aria-expanded', isActive);
             
+            // Announce state change to screen readers
+            const navStatus = document.getElementById('nav-status');
+            if (navStatus) {
+                navStatus.textContent = isActive ? 'Navigation menu opened' : 'Navigation menu closed';
+            }
+            
             // Prevent body scroll when menu is open with smooth transition
             if (isActive) {
                 document.body.style.overflow = 'hidden';
-                // Add backdrop
+                // Add backdrop - FIXED: Dynamic header height calculation
+                const header = document.querySelector('.modern-header');
+                const headerHeight = header ? header.offsetHeight : 115;
+                
                 const backdrop = document.createElement('div');
                 backdrop.className = 'mobile-menu-backdrop';
                 backdrop.style.cssText = `
                     position: fixed;
-                    top: 115px;
+                    top: ${headerHeight}px;
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background: rgba(0, 0, 0, 0.5);
+                    background: rgba(0, 0, 0, 0.6);
                     z-index: 9998;
-                    animation: fadeIn 0.3s ease;
+                    backdrop-filter: blur(4px);
+                    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 `;
+                backdrop.setAttribute('role', 'presentation');
+                backdrop.setAttribute('aria-hidden', 'true');
                 document.body.appendChild(backdrop);
                 
                 // Close on backdrop click
                 backdrop.addEventListener('click', () => {
                     closeMobileMenu();
+                });
+                
+                // Swipe down to close gesture
+                let startY = 0;
+                let currentY = 0;
+                
+                backdrop.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                backdrop.addEventListener('touchmove', (e) => {
+                    currentY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                backdrop.addEventListener('touchend', () => {
+                    if (currentY - startY > 100) { // Swiped down more than 100px
+                        closeMobileMenu();
+                    }
                 });
             } else {
                 closeMobileMenu();
