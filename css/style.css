@@ -6,6 +6,274 @@
 }
 
 /* ============================================
+   UTILITY CLASSES - REMOVE INLINE STYLES
+   ============================================ */
+
+/* Display utilities */
+.d-none { display: none; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+/* Certification Section Styles */
+.certifications-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+    padding: 5rem 0;
+}
+
+.certifications-section .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.certifications-section .section-title {
+    color: #1a1a1a;
+}
+
+.certifications-section .section-subtitle {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.cert-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+}
+
+.cert-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.cert-icon.iso-cert {
+    background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
+}
+
+.cert-icon.atex-cert {
+    background: linear-gradient(135deg, #FF6B6B 0%, #C92A2A 100%);
+}
+
+.cert-icon.sil-cert {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+}
+
+.cert-icon.iso5211-cert {
+    background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);
+}
+
+.cert-icon.api-cert {
+    background: linear-gradient(135deg, #FF9800 0%, #E65100 100%);
+}
+
+.cert-icon.ip-cert {
+    background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%);
+}
+
+.cert-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+.cert-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.compliance-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.badge-item i {
+    color: #4CAF50;
+    font-size: 1.5rem;
+}
+
+.badge-item span {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Product Badge Colors */
+.product-badge.badge-blue {
+    background: #2196F3;
+}
+
+.product-badge.badge-orange {
+    background: #FF9800;
+}
+
+.product-badge.badge-green {
+    background: #4CAF50;
+}
+
+/* Industry Highlights */
+.industry-highlights {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.industry-highlights li i {
+    color: #4CAF50;
+    margin-right: 0.5rem;
+}
+
+.industries .section-subtitle {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+/* Hero Highlights */
+.hero-highlights {
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.hero-highlights i {
+    color: #c41e3a;
+    margin-right: 0.5rem;
+}
+
+/* Product Specs */
+.product-specs {
+    margin: 1rem 0;
+}
+
+.product-specs .spec-item i {
+    color: #c41e3a;
+    width: 20px;
+}
+
+/* Social Media */
+.social-media {
+    margin-top: 1.5rem;
+}
+
+/* Resources Section Utilities */
+.resources-section .section-subtitle {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.sizing-tool-content {
+    margin-top: 1.5rem;
+}
+
+.sizing-tool-list {
+    text-align: left;
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.sizing-tool-actions .btn {
+    margin-top: 1.5rem;
+}
+
+.sizing-tool-actions .btn-outline {
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.sizing-instructions {
+    background-color: var(--section-bg);
+    padding: 3rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+    border: 1px solid var(--border-color);
+}
+
+.sizing-instructions h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.sizing-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.sizing-step h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.sizing-step h4 i {
+    margin-right: 0.5rem;
+}
+
+.sizing-step p {
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.sizing-help {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.sizing-help h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.sizing-help h4 i {
+    margin-right: 0.5rem;
+}
+
+.sizing-help p {
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
    MODERN HEADER STYLES
    ============================================ */
 

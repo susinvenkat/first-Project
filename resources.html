@@ -367,7 +367,7 @@
             <!-- Sizing Programs Tab -->
             <div class="tab-content" id="sizing-programs">
                 <h2>Actuators Sizing Programs</h2>
-                <p class="section-subtitle" style="text-align: center; margin-bottom: 3rem;">Interactive sizing tools to help you select the right actuator or gearbox for your application</p>
+                <p class="section-subtitle resources-section">Interactive sizing tools to help you select the right actuator or gearbox for your application</p>
                 
                 <div class="download-grid">
                     <div class="download-item">
@@ -383,8 +383,10 @@
                                 <li>Model selection guide</li>
                             </ul>
                         </div>
-                        <a href="https://www.susingroup.com/tools/pneumatic-actuator-sizing" target="_blank" class="btn btn-primary" style="margin-top: 1.5rem;">Launch Sizing Tool</a>
-                        <a href="https://www.susingroup.com/downloads/sizing-programs/pneumatic-actuator-sizing-guide.pdf" target="_blank" class="btn btn-outline" style="margin-top: 0.5rem; display: block;">Download Guide</a>
+                        <div class="sizing-tool-actions">
+                        <a href="https://www.susingroup.com/tools/pneumatic-actuator-sizing" target="_blank" class="btn btn-primary">Launch Sizing Tool</a>
+                        <a href="https://www.susingroup.com/downloads/sizing-programs/pneumatic-actuator-sizing-guide.pdf" target="_blank" class="btn btn-outline">Download Guide</a>
+                        </div>
                     </div>
                     
                     <div class="download-item">
@@ -400,36 +402,38 @@
                                 <li>Mounting configuration selection</li>
                             </ul>
                         </div>
-                        <a href="https://www.susingroup.com/tools/gearbox-sizing" target="_blank" class="btn btn-primary" style="margin-top: 1.5rem;">Launch Sizing Tool</a>
-                        <a href="https://www.susingroup.com/downloads/sizing-programs/gearbox-sizing-guide.pdf" target="_blank" class="btn btn-outline" style="margin-top: 0.5rem; display: block;">Download Guide</a>
-                    </div>
-                </div>
-
-                <div style="background-color: var(--section-bg); padding: 3rem; border-radius: 12px; margin-top: 3rem; border: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; text-align: center;">How to Use the Sizing Programs</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-list-ol" style="margin-right: 0.5rem;"></i>Step 1: Gather Information</h4>
-                            <p style="color: var(--text-color); line-height: 1.7;">Collect your application requirements including valve size, torque requirements, operating pressure, and environmental conditions.</p>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-keyboard" style="margin-right: 0.5rem;"></i>Step 2: Enter Parameters</h4>
-                            <p style="color: var(--text-color); line-height: 1.7;">Input your application data into the sizing program. The tool will guide you through each required parameter.</p>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-calculator" style="margin-right: 0.5rem;"></i>Step 3: Review Results</h4>
-                            <p style="color: var(--text-color); line-height: 1.7;">The program will calculate and recommend the optimal actuator or gearbox size based on your inputs.</p>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>Step 4: Verify Selection</h4>
-                            <p style="color: var(--text-color); line-height: 1.7;">Review the recommendations and consult with our technical team if you need assistance with final selection.</p>
+                        <div class="sizing-tool-actions">
+                        <a href="https://www.susingroup.com/tools/gearbox-sizing" target="_blank" class="btn btn-primary">Launch Sizing Tool</a>
+                        <a href="https://www.susingroup.com/downloads/sizing-programs/gearbox-sizing-guide.pdf" target="_blank" class="btn btn-outline">Download Guide</a>
                         </div>
                     </div>
                 </div>
 
-                <div style="background-color: var(--white); padding: 2rem; border-radius: 12px; margin-top: 2rem; border-left: 4px solid var(--primary-color);">
-                    <h4 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>Need Help?</h4>
-                    <p style="color: var(--text-color); line-height: 1.7; margin-bottom: 1rem;">If you're unsure about any parameters or need assistance with sizing, our technical support team is ready to help. Contact us for personalized sizing assistance.</p>
+                <div class="sizing-instructions">
+                    <h3>How to Use the Sizing Programs</h3>
+                    <div class="sizing-steps">
+                        <div class="sizing-step">
+                            <h4><i class="fas fa-list-ol"></i>Step 1: Gather Information</h4>
+                            <p>Collect your application requirements including valve size, torque requirements, operating pressure, and environmental conditions.</p>
+                        </div>
+                        <div class="sizing-step">
+                            <h4><i class="fas fa-keyboard"></i>Step 2: Enter Parameters</h4>
+                            <p>Input your application data into the sizing program. The tool will guide you through each required parameter.</p>
+                        </div>
+                        <div class="sizing-step">
+                            <h4><i class="fas fa-calculator"></i>Step 3: Review Results</h4>
+                            <p>The program will calculate and recommend the optimal actuator or gearbox size based on your inputs.</p>
+                        </div>
+                        <div class="sizing-step">
+                            <h4><i class="fas fa-check-circle"></i>Step 4: Verify Selection</h4>
+                            <p>Review the recommendations and consult with our technical team if you need assistance with final selection.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sizing-help">
+                    <h4><i class="fas fa-info-circle"></i>Need Help?</h4>
+                    <p>If you're unsure about any parameters or need assistance with sizing, our technical support team is ready to help. Contact us for personalized sizing assistance.</p>
                     <a href="contact.html" class="btn btn-primary">Contact Technical Support</a>
                 </div>
             </div>
@@ -562,7 +566,7 @@
                         <li><i class="fas fa-envelope"></i> info@susin.in</li>
                         <li><i class="fas fa-map-marker-alt"></i> Coimbatore - 641 022, INDIA</li>
                     </ul>
-                    <div class="social-media" style="margin-top: 1.5rem;">
+                    <div class="social-media">
                         <a href="https://www.linkedin.com/company/susin-group" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://www.facebook.com/susingroup" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://twitter.com/susingroup" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
