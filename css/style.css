@@ -236,6 +236,23 @@
     margin: 0 auto;
 }
 
+.customer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    will-change: transform;
+}
+
+.customer-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
 /* FAQ Section */
 .product-section.faq-section {
     background: #f8f9fa;
@@ -387,6 +404,12 @@
     background: var(--white);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
+}
+
+/* Main content offset for fixed header */
+main#main-content,
+#main-content {
+    margin-top: 140px;
 }
 
 .modern-header.scrolled {
@@ -548,6 +571,8 @@
 /* Brand Section */
 .brand-section {
     flex-shrink: 0;
+    z-index: 10;
+    position: relative;
 }
 
 .brand-logo {
@@ -556,6 +581,8 @@
     gap: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
 }
 
 .brand-logo:hover {
@@ -1051,10 +1078,7 @@
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Sticky Header Effect */
-body {
-    padding-top: 140px; /* Adjust based on header height */
-}
+/* Sticky Header Effect - Removed excessive padding */
 
 /* Responsive Design */
 @media (max-width: 1200px) {
@@ -1462,6 +1486,7 @@ button, .btn {
     --bg-secondary: #fafafa;
     --bg-tertiary: #f5f5f5;
     --section-bg: #f8f9fa;
+    --nav-bg: #1a2942;  /* Navigation and footer background */
     
     /* Border Colors */
     --border-light: #f0f0f0;
@@ -4903,8 +4928,6 @@ li {
 }
 
 /* Footer - Red, Gray, White Style */
-.footer {
-
 /* ============================================
    PREMIUM CERTIFICATIONS & QUALITY EXCELLENCE SECTION
    ============================================ */
