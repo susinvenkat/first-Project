@@ -4,5 +4,45 @@
     "terminal.integrated.autoApprove": true,
     "terminal.integrated.enablePersistentSessions": true,
     "terminal.integrated.confirmOnExit": "never",
-    "terminal.integrated.confirmOnKill": "never"
+    "terminal.integrated.confirmOnKill": "never",
+    "audioCues.lineHasBreakpoint": "off",
+    "audioCues.lineHasError": "off",
+    "audioCues.lineHasWarning": "off",
+    "audioCues.lineHasInlineSuggestion": "off",
+    "audioCues.noInlayHints": "off",
+    "audioCues.onDebugBreak": "off",
+    "audioCues.notebookCellCompleted": "off",
+    "audioCues.notebookCellFailed": "off",
+    "audioCues.taskCompleted": "off",
+    "audioCues.taskFailed": "off",
+    "audioCues.terminalQuickFix": "off",
+    "audioCues.terminalCommandFailed": "off",
+    "audioCues.chatRequestSent": "off",
+    "audioCues.chatResponseReceived": "off",
+    "accessibility.signals.lineHasBreakpoint": {
+        "sound": "off"
+    },
+    "accessibility.signals.lineHasError": {
+        "sound": "off"
+    },
+    "accessibility.signals.lineHasWarning": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalCommandFailed": {
+        "sound": "off"
+    },
+    "accessibility.signals.notebookCellCompleted": {
+        "sound": "off"
+    },
+    "accessibility.signals.notebookCellFailed": {
+        "sound": "off"
+    },
+    "accessibility.signals.chatRequestSent": {
+        "sound": "off"
+    },
+    "accessibility.signals.chatResponseReceived": {
+        "sound": "off"
+    },
+    "workbench.colorTheme": "Default Dark+",
+    "editor.inlayHints.enabled": "off"
 }
