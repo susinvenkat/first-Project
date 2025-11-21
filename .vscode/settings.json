@@ -43,6 +43,36 @@
     "accessibility.signals.chatResponseReceived": {
         "sound": "off"
     },
-    "workbench.colorTheme": "Default Dark+",
-    "editor.inlayHints.enabled": "off"
+  "workbench.colorTheme": "Default Dark+",
+  "editor.inlayHints.enabled": "off",
+  
+  // File Organization
+  "explorer.sortOrder": "type",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.html": "${capture}.css, ${capture}.js",
+    "*.js": "${capture}.js.map",
+    "*.css": "${capture}.css.map",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/*.log": true
+  },
+  
+  // Search Exclusions
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/uploads/resumes": true,
+    "**/*.min.js": true,
+    "**/*.min.css": true
+  },
+  
+  // File Associations
+  "files.associations": {
+    "*.html": "html",
+    ".htaccess": "apacheconf"
+  }
 }

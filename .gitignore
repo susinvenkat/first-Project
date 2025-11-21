@@ -1,0 +1,41 @@
+# Development Environment
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Temporary Files
+*.tmp
+*.temp
+~$*
+
+# User Uploads (optional - uncomment if you don't want to track resumes)
+# uploads/resumes/*
+# !uploads/resumes/.gitkeep
+
+# Database Credentials (if using config file)
+# backend/config/database.php
+
+# Backup Files
+*.bak
+*.backup
+*.old
+
+# Compressed Files
+*.zip
+*.rar
+*.7z
+
+# IDE
+.vscode/settings.json
