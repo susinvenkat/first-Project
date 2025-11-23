@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-white text-lg font-bold mb-4">SUSIN GROUP</h3>
-            <p className="text-sm mb-4">Leading MEP contracting and engineering solutions provider with global presence.</p>
+            <p className="text-sm mb-4">Leading provider of industrial actuators and valve automation solutions since 1992.</p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-primary"><i className="fab fa-facebook-f"></i></a>
               <a href="#" className="hover:text-primary"><i className="fab fa-twitter"></i></a>
@@ -24,21 +24,23 @@ export default function Footer() {
             <h3 className="text-white text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/" className="hover:text-primary">Home</Link></li>
-              <li><Link to="/products/mep" className="hover:text-primary">Products</Link></li>
+              <li><Link to="/about" className="hover:text-primary">About Us</Link></li>
+              <li><Link to="/products" className="hover:text-primary">Products</Link></li>
+              <li><Link to="/industries" className="hover:text-primary">Industries</Link></li>
               <li><Link to="/careers" className="hover:text-primary">Careers</Link></li>
               <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Products */}
           <div>
-            <h3 className="text-white text-lg font-bold mb-4">Our Services</h3>
+            <h3 className="text-white text-lg font-bold mb-4">Products</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/products/mep" className="hover:text-primary">MEP Contracting</Link></li>
-              <li><Link to="/products/hvac" className="hover:text-primary">HVAC Systems</Link></li>
-              <li><Link to="/products/fire-fighting" className="hover:text-primary">Fire Fighting Systems</Link></li>
-              <li><Link to="/products/plumbing" className="hover:text-primary">Plumbing Services</Link></li>
-              <li><Link to="/products/electrical" className="hover:text-primary">Electrical Works</Link></li>
+              <li><Link to="/products#pneumatic" className="hover:text-primary">Pneumatic Actuators</Link></li>
+              <li><Link to="/products#electro-hydraulic" className="hover:text-primary">Electro-Hydraulic</Link></li>
+              <li><Link to="/products#electrical" className="hover:text-primary">Electrical Actuators</Link></li>
+              <li><Link to="/products#gearboxes" className="hover:text-primary">Gearboxes</Link></li>
+              <li><Link to="/products#accessories" className="hover:text-primary">Accessories</Link></li>
             </ul>
           </div>
 
@@ -48,11 +50,11 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-start">
                 <i className="fas fa-map-marker-alt mt-1 mr-2"></i>
-                <span>UAE Office: Dubai, United Arab Emirates</span>
+                <span>Coimbatore, Tamil Nadu, India</span>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-phone mt-1 mr-2"></i>
-                <span>+971 54 307 4131</span>
+                <span>+91 77080 97242</span>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-envelope mt-1 mr-2"></i>
@@ -63,7 +65,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-          <p>&copy; {currentYear} Susin Group. All rights reserved.</p>
+          <p>&copy; {currentYear} SUSIN iTORK India Pvt. Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

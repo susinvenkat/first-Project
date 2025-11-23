@@ -1,115 +1,351 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const slides = [
+    {
+      title: "Quarter-Turn Ball Valve Automation",
+      subtitle: "Precision Control for Critical Applications",
+      features: ["90° Rotation", "High Flow Capacity", "Tight Shut-off"],
+      image: "/assets/img/heroes/ball-valve.jpg"
+    },
+    {
+      title: "Efficient Butterfly Valve Solutions",
+      subtitle: "Compact Design, Maximum Performance",
+      features: ["Space-Saving Design", "Low Operating Torque", "Cost-Effective"],
+      image: "/assets/img/heroes/butterfly-valve.jpg"
+    },
+    {
+      title: "Multi-Turn Gate Valve Actuators",
+      subtitle: "Heavy-Duty Performance for Harsh Environments",
+      features: ["Multi-Turn Operation", "High Pressure Rating", "Zero Leakage"],
+      image: "/assets/img/heroes/gate-valve.jpg"
+    },
+    {
+      title: "Precision Globe Valve Control",
+      subtitle: "Advanced Flow Regulation Technology",
+      features: ["Precise Flow Control", "Throttling Service", "4-20mA Control"],
+      image: "/assets/img/heroes/globe-valve.jpg"
+    },
+    {
+      title: "Automated Check & Specialty Valves",
+      subtitle: "Custom Engineering Solutions",
+      features: ["Backflow Prevention", "Fail-Safe Options", "Custom Engineering"],
+      image: "/assets/img/heroes/check-valve.jpg"
+    }
+  ];
+
+  useEffect(() => {
+    if (!isPlaying) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isPlaying, slides.length]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary to-primary-dark text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold mb-4">Engineering Excellence</h1>
-            <p className="text-xl mb-8">Leading MEP Contracting and Engineering Solutions Provider</p>
-            <div className="flex space-x-4">
-              <button className="btn-primary bg-white text-primary hover:bg-gray-100">Our Services</button>
-              <button className="btn-secondary border-2 border-white">Contact Us</button>
+    <div className="min-h-screen">
+      {/* Hero Slider */}
+      <section className="relative h-[600px] overflow-hidden">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${slide.image})` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+            </div>
+            <div className="relative container mx-auto px-4 h-full flex items-center">
+              <div className="max-w-2xl text-white">
+                <span className="inline-block bg-primary px-4 py-1 rounded-full text-sm font-medium mb-4">
+                  Valve Automation Solutions
+                </span>
+                <h1 className="text-5xl font-bold mb-4 leading-tight">{slide.title}</h1>
+                <p className="text-xl mb-6 text-gray-200">{slide.subtitle}</p>
+                <div className="flex flex-wrap gap-4 mb-8">
+                  {slide.features.map((feature, i) => (
+                    <span key={i} className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
+                      <i className="fas fa-check-circle text-green-400 mr-2"></i>
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-4">
+                  <Link to="/products" className="bg-primary hover:bg-primary-dark px-6 py-3 rounded-lg font-medium inline-flex items-center">
+                    <i className="fas fa-cogs mr-2"></i>
+                    View Products
+                  </Link>
+                  <Link to="/contact" className="bg-white text-gray-900 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium inline-flex items-center">
+                    <i className="fas fa-envelope mr-2"></i>
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Slider Controls */}
+        <div className="absolute bottom-8 left-0 right-0 container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <button onClick={prevSlide} className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center text-white">
+                <i className="fas fa-chevron-left"></i>
+              </button>
+              <button onClick={() => setIsPlaying(!isPlaying)} className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center text-white">
+                <i className={`fas fa-${isPlaying ? 'pause' : 'play'}`}></i>
+              </button>
+              <button onClick={nextSlide} className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 flex items-center justify-center text-white">
+                <i className="fas fa-chevron-right"></i>
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 bg-gray-50">
+      {/* Company Overview */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">About Susin Group</h2>
-              <p className="text-gray-600 mb-4">
-                Established in 2000, Susin Group has been at the forefront of MEP contracting 
-                and engineering solutions across India, UAE, and Qatar.
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <span className="text-primary font-semibold text-lg mb-2 block">Since 1992</span>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Leading Provider of Industrial Actuators & Valve Automation
+            </h2>
+            <p className="text-xl text-gray-700 leading-relaxed">
+              SUSIN has proudly provided steadfast support to the Asian power and oil & gas industries for over 32 years, 
+              delivering engineered reliability and precision motion control solutions across the globe.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center">
+              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-industry text-4xl text-primary"></i>
+              </div>
+              <h3 className="text-5xl font-bold text-primary mb-2">100+</h3>
+              <p className="text-gray-600 font-medium">Power Industries Supported</p>
+            </div>
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center">
+              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-calendar-check text-4xl text-primary"></i>
+              </div>
+              <h3 className="text-5xl font-bold text-primary mb-2">32+</h3>
+              <p className="text-gray-600 font-medium">Years of Experience</p>
+            </div>
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center">
+              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-ship text-4xl text-primary"></i>
+              </div>
+              <h3 className="text-5xl font-bold text-primary mb-2">100+</h3>
+              <p className="text-gray-600 font-medium">FPSO Actuators Operating</p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link to="/products" className="btn-primary inline-flex items-center">
+              <i className="fas fa-arrow-right mr-2"></i>
+              Explore Our Products
+            </Link>
+            <Link to="/contact#quote" className="btn-secondary ml-4 inline-flex items-center">
+              <i className="fas fa-file-invoice-dollar mr-2"></i>
+              Request Quote
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-certificate text-5xl text-blue-600"></i>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Engineered Reliability</h3>
+              <p className="text-gray-600">
+                ISO 9001:2015 certified manufacturing with rigorous quality control. Approved by BHEL, NTPC, and major refineries.
               </p>
-              <p className="text-gray-600 mb-4">
-                With over two decades of experience, we specialize in HVAC systems, fire fighting 
-                systems, plumbing services, and electrical works for commercial and residential projects.
+            </div>
+            <div className="text-center">
+              <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-globe-asia text-5xl text-green-600"></i>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Global Delivery</h3>
+              <p className="text-gray-600">
+                Strategic presence in India, UAE, and Qatar. Worldwide shipping with local support and service centers.
               </p>
-              <div className="grid grid-cols-3 gap-4 mt-8">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">500+</div>
-                  <div className="text-sm text-gray-600">Projects</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">20+</div>
-                  <div className="text-sm text-gray-600">Years</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">3</div>
-                  <div className="text-sm text-gray-600">Countries</div>
-                </div>
-              </div>
             </div>
-            <div>
-              <img 
-                src="/images/about.jpg" 
-                alt="About Susin Group" 
-                className="rounded-lg shadow-lg"
-              />
+            <div className="text-center">
+              <div className="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-tools text-5xl text-purple-600"></i>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Service & Commissioning</h3>
+              <p className="text-gray-600">
+                Complete lifecycle support from installation to maintenance. Expert technical training and 24/7 emergency support.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16">
+      {/* Products Preview */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { icon: 'fa-tools', title: 'MEP Contracting', desc: 'Complete MEP solutions for all types of buildings' },
-              { icon: 'fa-wind', title: 'HVAC Systems', desc: 'Energy-efficient heating, ventilation, and air conditioning' },
-              { icon: 'fa-fire-extinguisher', title: 'Fire Fighting', desc: 'Advanced fire protection and safety systems' },
-              { icon: 'fa-faucet', title: 'Plumbing Services', desc: 'Professional plumbing installation and maintenance' },
-              { icon: 'fa-bolt', title: 'Electrical Works', desc: 'Comprehensive electrical solutions and automation' },
-              { icon: 'fa-building', title: 'Building Management', desc: 'Smart building automation and control systems' },
-            ].map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                <div className="text-4xl text-primary mb-4">
-                  <i className={`fas ${service.icon}`}></i>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.desc}</p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Product Range</h2>
+            <p className="text-xl text-gray-600">Comprehensive valve automation solutions for every application</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
+              <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                <i className="fas fa-wind text-8xl text-white/90"></i>
               </div>
-            ))}
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Pneumatic Actuators</h3>
+                <p className="text-gray-600 text-sm mb-4">Torque range: 10 Nm - 120,867 Nm</p>
+                <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>PDS Series</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>HD Series</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>PLDS Series</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>MPLDS Series</li>
+                </ul>
+                <Link to="/products#pneumatic" className="text-primary font-medium group-hover:underline">
+                  Learn More <i className="fas fa-arrow-right ml-1"></i>
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
+              <div className="h-48 bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center">
+                <i className="fas fa-tint text-8xl text-white/90"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Electro-Hydraulic</h3>
+                <p className="text-gray-600 text-sm mb-4">Precision control for heavy-duty applications</p>
+                <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>High Torque Output</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Compact Design</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Remote Control</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>ATEX Certified</li>
+                </ul>
+                <Link to="/products#electro-hydraulic" className="text-primary font-medium group-hover:underline">
+                  Learn More <i className="fas fa-arrow-right ml-1"></i>
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
+              <div className="h-48 bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center">
+                <i className="fas fa-bolt text-8xl text-white/90"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Electrical Actuators</h3>
+                <p className="text-gray-600 text-sm mb-4">Smart digital control with IoT integration</p>
+                <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Modbus/HART</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>4-20mA Control</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Position Feedback</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Explosion Proof</li>
+                </ul>
+                <Link to="/products#electrical" className="text-primary font-medium group-hover:underline">
+                  Learn More <i className="fas fa-arrow-right ml-1"></i>
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group">
+              <div className="h-48 bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
+                <i className="fas fa-cog text-8xl text-white/90"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Gearboxes</h3>
+                <p className="text-gray-600 text-sm mb-4">Precision motion control solutions</p>
+                <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Worm Gearboxes</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Bevel Gearboxes</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Custom Ratios</li>
+                  <li><i className="fas fa-check text-green-500 mr-2"></i>Marine Grade</li>
+                </ul>
+                <Link to="/products#gearboxes" className="text-primary font-medium group-hover:underline">
+                  Learn More <i className="fas fa-arrow-right ml-1"></i>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Global Presence */}
-      <section className="py-16 bg-gray-900 text-white">
+      {/* Industries Served */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Global Presence</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
+            <p className="text-xl text-gray-600">Trusted by leading companies worldwide</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
-              { country: 'India', city: 'Multiple Cities', icon: 'fa-landmark' },
-              { country: 'UAE', city: 'Dubai', icon: 'fa-building' },
-              { country: 'Qatar', city: 'Doha', icon: 'fa-city' },
-            ].map((location, index) => (
-              <div key={index} className="text-center p-6 bg-gray-800 rounded-lg">
-                <div className="text-5xl mb-4">
-                  <i className={`fas ${location.icon}`}></i>
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{location.country}</h3>
-                <p className="text-gray-400">{location.city}</p>
-              </div>
+              { name: "Oil & Gas", icon: "fa-fire", link: "#oil-gas" },
+              { name: "Water Treatment", icon: "fa-water", link: "#water" },
+              { name: "Power Generation", icon: "fa-plug", link: "#power" },
+              { name: "Chemical", icon: "fa-flask", link: "#chemical" },
+              { name: "Marine", icon: "fa-ship", link: "#marine" },
+              { name: "Pharmaceutical", icon: "fa-pills", link: "#pharma" }
+            ].map((industry, index) => (
+              <Link
+                key={index}
+                to={`/industries${industry.link}`}
+                className="bg-gray-50 hover:bg-primary hover:text-white rounded-lg p-6 text-center transition-all group"
+              >
+                <i className={`fas ${industry.icon} text-4xl mb-3 text-primary group-hover:text-white`}></i>
+                <h3 className="font-semibold">{industry.name}</h3>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-20 bg-gradient-to-r from-primary to-red-700 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
-          <p className="text-xl mb-8">Contact us today for a consultation</p>
-          <button className="btn-primary bg-white text-primary hover:bg-gray-100 text-lg px-8 py-3">
-            Get in Touch
-          </button>
+          <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Contact our engineering team to discuss your valve automation requirements
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/contact#quote" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center">
+              <i className="fas fa-file-invoice-dollar mr-2"></i>
+              Request Quote
+            </Link>
+            <Link to="/contact" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center">
+              <i className="fas fa-phone mr-2"></i>
+              Contact Sales
+            </Link>
+          </div>
         </div>
       </section>
     </div>
