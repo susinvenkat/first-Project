@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/layout/Layout';
-import Home from './pages/Home';
-import Products from './pages/Products';
+import Home from './pages/Home_New';
+import Products from './pages/Products_Enhanced';
 import Industries from './pages/Industries';
 import About from './pages/About';
 import Careers from './pages/Careers';
