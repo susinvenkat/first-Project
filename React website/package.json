@@ -1,8 +1,10 @@
 {
-  "name": "susin",
+  "name": "susin-itork-india",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Industrial Actuators & Valve Automation Solutions - React Website",
+  "author": "SUSIN iTORK India Pvt. Ltd.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

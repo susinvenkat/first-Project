@@ -93,17 +93,21 @@ export default function About() {
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { name: "ISO 9001:2015", desc: "Quality Management", icon: "fa-certificate" },
+              { name: "ISO 9001:2015", desc: "Quality Management", img: "/assets/img/certifications/iso-9001.svg" },
+              { name: "ISO 14001", desc: "Environmental Management", img: "/assets/img/certifications/iso-14001.svg" },
+              { name: "API 609", desc: "Butterfly Valves", img: "/assets/img/certifications/api.svg" },
+              { name: "ATEX / IECEx", desc: "Explosion Proof", img: "/assets/img/certifications/atex.svg" },
+              { name: "CE Marked", desc: "European Standards", img: "/assets/img/certifications/ce-mark.svg" },
               { name: "BHEL Approved", desc: "Power Sector", icon: "fa-plug" },
               { name: "NTPC Approved", desc: "Thermal Plants", icon: "fa-industry" },
-              { name: "API 609", desc: "Butterfly Valves", icon: "fa-check-circle" },
-              { name: "ATEX / IECEx", desc: "Explosion Proof", icon: "fa-fire-extinguisher" },
-              { name: "SIL 2/3", desc: "Safety Systems", icon: "fa-shield-alt" },
-              { name: "ABS / DNV GL", desc: "Marine Approved", icon: "fa-ship" },
-              { name: "CE Marked", desc: "European Standards", icon: "fa-flag" }
+              { name: "SIL 2/3", desc: "Safety Systems", icon: "fa-shield-alt" }
             ].map((cert, i) => (
               <div key={i} className="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-                <i className={`fas ${cert.icon} text-4xl text-primary mb-4`}></i>
+                {cert.img ? (
+                  <img src={cert.img} alt={cert.name} className="h-16 w-16 mx-auto mb-4 object-contain" />
+                ) : (
+                  <i className={`fas ${cert.icon} text-4xl text-primary mb-4`}></i>
+                )}
                 <h4 className="font-bold text-gray-900 mb-2">{cert.name}</h4>
                 <p className="text-sm text-gray-600">{cert.desc}</p>
               </div>

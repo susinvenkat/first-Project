@@ -7,34 +7,34 @@ export default function Home() {
 
   const slides = [
     {
-      title: "Quarter-Turn Ball Valve Automation",
-      subtitle: "Precision Control for Critical Applications",
-      features: ["90° Rotation", "High Flow Capacity", "Tight Shut-off"],
-      image: "/assets/img/heroes/ball-valve.jpg"
+      title: "HD Series Pneumatic Actuators",
+      subtitle: "High-Performance Spring Return Solutions",
+      features: ["Torque up to 120,867 Nm", "ISO 5211 Mounting", "Fail-Safe Design"],
+      image: "/assets/img/products/pneumatic/hd-actuator-main.png"
     },
     {
-      title: "Efficient Butterfly Valve Solutions",
-      subtitle: "Compact Design, Maximum Performance",
-      features: ["Space-Saving Design", "Low Operating Torque", "Cost-Effective"],
-      image: "/assets/img/heroes/butterfly-valve.jpg"
+      title: "PD Series Pneumatic Actuators",
+      subtitle: "Compact Double-Acting Performance",
+      features: ["Space-Saving Design", "Low Air Consumption", "High Efficiency"],
+      image: "/assets/img/products/pneumatic/PD-actuator.jpg"
     },
     {
-      title: "Multi-Turn Gate Valve Actuators",
-      subtitle: "Heavy-Duty Performance for Harsh Environments",
-      features: ["Multi-Turn Operation", "High Pressure Rating", "Zero Leakage"],
-      image: "/assets/img/heroes/gate-valve.jpg"
+      title: "Heavy Duty Actuator Range",
+      subtitle: "Industry-Leading Torque Capacity",
+      features: ["10 Nm to 120,867 Nm", "All Valve Types", "32+ Years Proven"],
+      image: "/assets/img/HD Actuator Image.png"
     },
     {
-      title: "Precision Globe Valve Control",
-      subtitle: "Advanced Flow Regulation Technology",
-      features: ["Precise Flow Control", "Throttling Service", "4-20mA Control"],
-      image: "/assets/img/heroes/globe-valve.jpg"
+      title: "Manual Gearbox Solutions",
+      subtitle: "Precision Manual Override Systems",
+      features: ["Emergency Override", "Torque Multiplication", "Robust Design"],
+      image: "/assets/img/products/gearboxes/MAB Series.jpg"
     },
     {
-      title: "Automated Check & Specialty Valves",
-      subtitle: "Custom Engineering Solutions",
-      features: ["Backflow Prevention", "Fail-Safe Options", "Custom Engineering"],
-      image: "/assets/img/heroes/check-valve.jpg"
+      title: "Complete Valve Automation",
+      subtitle: "Trusted by 100+ Power & Oil Industries",
+      features: ["ISO 9001:2015", "Global Presence", "24/7 Support"],
+      image: "/assets/img/heroes/hero-large.jpg"
     }
   ];
 

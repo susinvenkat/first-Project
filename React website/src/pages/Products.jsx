@@ -41,44 +41,50 @@ export default function Products() {
                 series: "PDS Series",
                 torque: "10 - 5,425 Nm",
                 features: ["Double Acting", "Spring Return Options", "NAMUR Mounting", "ISO 5211 Compatible"],
-                icon: "fa-wind"
+                image: "/assets/img/products/pneumatic/PD-actuator.jpg"
               },
               {
                 series: "HD Series",
                 torque: "200 - 120,867 Nm",
                 features: ["Heavy Duty Design", "High Pressure Rating", "Extended Life Cycle", "Custom Configurations"],
-                icon: "fa-industry"
+                image: "/assets/img/products/pneumatic/hd-actuator-main.png"
               },
               {
                 series: "PLDS Series",
                 torque: "50 - 15,000 Nm",
                 features: ["Modular Design", "Easy Maintenance", "Compact Footprint", "Multiple Control Options"],
-                icon: "fa-cogs"
+                image: "/assets/img/products/pneumatic/hd-series-detail.jpg"
               },
               {
                 series: "MPLDS Series",
                 torque: "100 - 30,000 Nm",
                 features: ["Multi-Positional", "Fail-Safe Design", "ATEX Certified", "Position Feedback"],
-                icon: "fa-tachometer-alt"
+                image: "/assets/img/HD Actuator Image.png"
               }
             ].map((product, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <i className={`fas ${product.icon} text-3xl text-white`}></i>
+              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                <div className="h-48 overflow-hidden bg-gray-100">
+                  <img 
+                    src={product.image} 
+                    alt={product.series}
+                    className="w-full h-full object-contain hover:scale-110 transition-transform duration-300"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{product.series}</h3>
-                <p className="text-blue-700 font-semibold mb-4">{product.torque}</p>
-                <ul className="space-y-2">
-                  {product.features.map((feature, i) => (
-                    <li key={i} className="flex items-start text-sm text-gray-700">
-                      <i className="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact#quote" className="mt-6 inline-flex items-center text-blue-700 font-semibold hover:underline">
-                  Request Quote <i className="fas fa-arrow-right ml-2"></i>
-                </Link>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{product.series}</h3>
+                  <p className="text-primary font-semibold mb-4">{product.torque}</p>
+                  <ul className="space-y-2">
+                    {product.features.map((feature, i) => (
+                      <li key={i} className="flex items-start text-sm text-gray-700">
+                        <i className="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/contact#quote" className="mt-6 inline-flex items-center text-primary font-semibold hover:underline">
+                    Request Quote <i className="fas fa-arrow-right ml-2"></i>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -252,38 +258,44 @@ export default function Products() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                type: "Worm Gearboxes",
+                type: "LSB Series Gearbox",
                 ratio: "10:1 to 120:1",
                 features: ["Self-Locking", "High Efficiency", "Compact Design", "Low Noise"],
-                icon: "fa-cog"
+                image: "/assets/img/products/gearboxes/LSB-001.png"
               },
               {
-                type: "Bevel Gearboxes",
+                type: "MAB Series Manual",
                 ratio: "1:1 to 5:1",
                 features: ["90° Drive", "Heavy Duty", "High Torque", "Modular Design"],
-                icon: "fa-cogs"
+                image: "/assets/img/products/gearboxes/MAB Series.jpg"
               },
               {
-                type: "Custom Gearboxes",
+                type: "Custom Solutions",
                 ratio: "As Required",
                 features: ["Engineered Solutions", "Special Ratios", "Marine Grade", "Extreme Conditions"],
-                icon: "fa-drafting-compass"
+                image: "/assets/img/products/gearboxes/LSB-003.png"
               }
             ].map((gearbox, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-                <div className="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <i className={`fas ${gearbox.icon} text-4xl text-white`}></i>
+              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                <div className="h-56 bg-gray-50 flex items-center justify-center p-4">
+                  <img 
+                    src={gearbox.image} 
+                    alt={gearbox.type}
+                    className="max-h-full w-auto object-contain hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold text-center mb-2">{gearbox.type}</h3>
-                <p className="text-center text-primary font-semibold mb-6">Ratio: {gearbox.ratio}</p>
-                <ul className="space-y-2">
-                  {gearbox.features.map((feature, i) => (
-                    <li key={i} className="flex items-center text-gray-700">
-                      <i className="fas fa-check text-green-500 mr-3"></i>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-center mb-2">{gearbox.type}</h3>
+                  <p className="text-center text-primary font-semibold mb-6">Ratio: {gearbox.ratio}</p>
+                  <ul className="space-y-2">
+                    {gearbox.features.map((feature, i) => (
+                      <li key={i} className="flex items-center text-gray-700">
+                        <i className="fas fa-check text-green-500 mr-3"></i>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>

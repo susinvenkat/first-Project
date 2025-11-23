@@ -1,6 +1,6 @@
-# Susin Group - React Website
+# SUSIN iTORK India - React Website
 
-Modern React website for Susin Group - MEP Contracting and Engineering Solutions.
+Modern React website for SUSIN iTORK India Pvt. Ltd. - Industrial Actuators & Valve Automation Solutions.
 
 ## 🚀 Technology Stack
 
@@ -40,14 +40,18 @@ npm run preview
 src/
 ├── components/
 │   ├── layout/          # Header, Footer, Layout
-│   │   ├── Header.jsx
+│   │   ├── Header.jsx   # Navigation with text-based logo
 │   │   ├── Footer.jsx
 │   │   └── Layout.jsx
 │   └── common/          # Reusable components
-├── pages/               # Page components
-│   ├── Home.jsx
-│   ├── Careers.jsx
-│   └── ...
+├── pages/               # Page components (9 routes)
+│   ├── Home.jsx         # Hero slider + company overview
+│   ├── Products.jsx     # 4 product categories with images
+│   ├── Industries.jsx   # 6 industry sectors
+│   ├── About.jsx        # Company history + certifications
+│   ├── Contact.jsx      # Contact & quote forms
+│   ├── Careers.jsx      # Job application form
+│   └── global/          # India, UAE, Qatar pages
 ├── context/             # React Context
 │   └── AuthContext.jsx  # Authentication state
 ├── services/            # API services
@@ -55,19 +59,45 @@ src/
 ├── hooks/               # Custom React hooks
 ├── utils/               # Helper functions
 └── assets/              # Images, fonts, icons
+
+public/
+└── assets/
+    └── img/
+        ├── products/         # 24 pneumatic, 5 gearbox images
+        ├── certifications/   # 5 SVG certification badges
+        ├── heroes/           # Hero slider images
+        └── industries/       # Industry-specific images
 ```
+
+## 📸 Asset Documentation
+
+**Comprehensive Asset Guides:**
+- **[ASSET_INVENTORY.md](ASSET_INVENTORY.md)** - Complete catalog of 36+ images and their locations
+- **[ASSET_UPDATE_SUMMARY.md](ASSET_UPDATE_SUMMARY.md)** - Implementation details and visual enhancements
+- **[MIGRATION_COMPLETE.md](MIGRATION_COMPLETE.md)** - Full migration documentation with all features
+
+**Image Assets Available:**
+- 24 pneumatic actuator product photos
+- 5 gearbox product photos  
+- 5 SVG certification badges (ISO, API, ATEX, CE)
+- Hero slider images
+- Text-based logo with brand styling
 
 ## ✨ Features
 
 - ✅ Modern responsive design with Tailwind CSS
+- ✅ **5-slide hero carousel** with auto-play (real product images)
+- ✅ **Complete product catalog** with actual photos (Pneumatic, Electro-Hydraulic, Electrical, Gearboxes)
+- ✅ **6 industry sector pages** (Oil & Gas, Power, Water, Chemical, Marine, Pharmaceutical)
+- ✅ **Certification badges** (ISO 9001, ISO 14001, API, ATEX, CE)
 - ✅ User authentication system
-- ✅ Career application submission
-- ✅ Global presence pages (India, UAE, Qatar)
-- ✅ Product/Services showcase
-- ✅ Contact forms
+- ✅ Career application submission with resume upload
+- ✅ Global presence pages (India HQ, UAE, Qatar)
+- ✅ Contact & quote request forms (backend integrated)
 - ✅ Dashboard for authenticated users
-- ✅ Mobile-first responsive design
+- ✅ Mobile-first responsive design with hover effects
 - ✅ Fast page navigation (SPA)
+- ✅ **17+ real product images** with zoom effects
 
 ## 🔌 Backend Integration
 
@@ -176,12 +206,17 @@ Use in components:
 
 ## 📝 Migration from Static HTML
 
-This React app replaces the previous static HTML website with:
-- Component-based architecture
-- Client-side routing (no page reloads)
-- State management with React Context
-- Modern build tooling
-- Improved developer experience
+This React SPA successfully converted the static HTML website for **SUSIN iTORK India** with:
+- ✅ Component-based architecture (9 pages, reusable components)
+- ✅ Client-side routing (no page reloads, instant navigation)
+- ✅ State management with React Context (authentication, user state)
+- ✅ Modern build tooling (Vite with HMR, <625ms startup)
+- ✅ **17+ real product images** extracted from existing assets
+- ✅ **5-slide hero carousel** with auto-play and product photos
+- ✅ **Certification badges** (ISO, API, ATEX, CE) as SVG images
+- ✅ Improved developer experience (hot reload, ESLint, organized structure)
+- ✅ Mobile-responsive with hover effects and transitions
+- ✅ Brand colors applied (#c41e3a primary red)
 
 ## 🔐 Authentication Flow
 
@@ -212,10 +247,13 @@ npm install
 
 ## 📄 License
 
-© 2025 Susin Group. All rights reserved.
+© 2025 SUSIN iTORK India Pvt. Ltd. All rights reserved.
 
 ---
 
-**Developed with:** React + Vite + Tailwind CSS  
+**Company:** SUSIN iTORK India - Industrial Actuators & Valve Automation  
+**Established:** 1992 (32+ years of excellence)  
+**Developed with:** React 18 + Vite 7 + Tailwind CSS 3  
 **Backend:** PHP + MySQL  
-**Version:** 1.0.0
+**Version:** 1.0.0  
+**Assets:** 17+ real product images implemented

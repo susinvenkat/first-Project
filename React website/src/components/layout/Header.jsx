@@ -48,7 +48,9 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between py-4">
           <Link to="/" className="flex items-center space-x-3">
-            <img src="/logo.jpg" alt="Susin Group" className="h-14" />
+            <div className="h-14 w-14 bg-gradient-to-br from-primary to-red-700 rounded-lg flex items-center justify-center shadow-md">
+              <span className="text-white font-bold text-2xl">Si</span>
+            </div>
             <div>
               <h1 className="text-2xl font-bold text-primary">SUSIN GROUP</h1>
               <p className="text-xs text-gray-600">Valve Automation Solutions</p>
