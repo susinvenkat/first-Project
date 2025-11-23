@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Pneumatic Scotch Yoke Rotary Actuators (PDS)",
+    "url": "products-actuators-gearboxes.html",
+    "anchor": "#pneumatic",
+    "excerpt": "High-performance pneumatic actuators featuring the scotch yoke mechanism for reliable rotary motion control.",
+    "tags": ["pneumatic","actuator","pds"]
+  },
+  {
+    "title": "Gearboxes — ITG Series",
+    "url": "products-actuators-gearboxes.html",
+    "anchor": "#gearboxes",
+    "excerpt": "Robust and efficient gearbox solutions engineered for various torque requirements and speed reduction applications.",
+    "tags": ["gearbox","mechanical","itg"]
+  },
+  {
+    "title": "Electro-Hydraulic Actuators",
+    "url": "products-actuators-gearboxes.html",
+    "anchor": "#electro-hydraulic",
+    "excerpt": "Advanced actuators that combine electrical control with hydraulic power, delivering high-force output.",
+    "tags": ["hydraulic","electro-hydraulic"]
+  },
+  {
+    "title": "Electrical Actuators — ITQ Series",
+    "url": "products-actuators-gearboxes.html",
+    "anchor": "#electrical",
+    "excerpt": "Clean, efficient electric actuators offering precise linear and rotary motion control.",
+    "tags": ["electrical","actuator","itq"]
+  }
+]

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect fill="#FFFFFF" width="200" height="200"/>
+  <circle cx="65" cy="100" r="45" fill="none" stroke="#003DA5" stroke-width="12"/>
+  <circle cx="135" cy="100" r="45" fill="none" stroke="#003DA5" stroke-width="12"/>
+  <text x="100" y="180" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#003DA5" text-anchor="middle">CE</text>
+</svg>
