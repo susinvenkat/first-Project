@@ -49,6 +49,46 @@ function getDBConnection() {
 function initializeDatabase() {
     $pdo = getDBConnection();
     
+    // Create users table
+    $sql = "CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        full_name VARCHAR(255) NOT NULL,
+        employee_id VARCHAR(50),
+        role ENUM('admin', 'hr', 'manager', 'employee') DEFAULT 'employee',
+        department VARCHAR(100),
+        phone VARCHAR(50),
+        status ENUM('active', 'inactive', 'suspended') DEFAULT 'active',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        last_login TIMESTAMP NULL,
+        password_changed_at TIMESTAMP NULL,
+        failed_login_attempts INT DEFAULT 0,
+        locked_until TIMESTAMP NULL,
+        INDEX idx_username (username),
+        INDEX idx_email (email),
+        INDEX idx_status (status),
+        INDEX idx_role (role)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+    
+    $pdo->exec($sql);
+    
+    // Create login_attempts table
+    $sql = "CREATE TABLE IF NOT EXISTS login_attempts (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) NOT NULL,
+        success TINYINT(1) DEFAULT 0,
+        ip_address VARCHAR(45),
+        user_agent VARCHAR(500),
+        attempt_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        INDEX idx_username (username),
+        INDEX idx_time (attempt_time),
+        INDEX idx_ip (ip_address)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+    
+    $pdo->exec($sql);
+    
     // Create applications table
     $sql = "CREATE TABLE IF NOT EXISTS applications (
         id INT AUTO_INCREMENT PRIMARY KEY,
