@@ -1,11 +1,21 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -14,30 +24,38 @@ export default function Header() {
     navigate('/');
   };
 
+  const isActivePath = (path) => location.pathname === path;
+
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-xl' : 'bg-white shadow-md'
+    }`}>
       {/* Top Bar */}
-      <div className="bg-gray-900 text-white text-sm">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-2">
-            <div className="flex items-center space-x-4">
-              <span className="flex items-center">
-                <i className="fas fa-shield-check mr-2"></i>
-                ISO 9001:2015 Certified
+      <div className="bg-gradient-to-r from-secondary-900 via-secondary-800 to-secondary-900 text-white text-sm">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="flex items-center justify-between py-2.5">
+            <div className="flex items-center space-x-6">
+              <span className="flex items-center group cursor-default">
+                <i className="fas fa-certificate mr-2 text-primary-400 group-hover:rotate-12 transition-transform"></i>
+                <span className="hidden sm:inline">ISO 9001:2015 Certified</span>
               </span>
-              <span className="hidden md:flex items-center">
-                <i className="fas fa-award mr-2"></i>
+              <span className="hidden md:flex items-center group cursor-default">
+                <i className="fas fa-award mr-2 text-primary-400 group-hover:scale-110 transition-transform"></i>
                 32+ Years of Excellence
+              </span>
+              <span className="hidden lg:flex items-center group cursor-default">
+                <i className="fas fa-globe mr-2 text-primary-400 group-hover:rotate-12 transition-transform"></i>
+                Global Presence: India • UAE • Qatar
               </span>
             </div>
             <div className="flex items-center space-x-4">
-              <a href="tel:+917708097242" className="hover:text-primary-light">
-                <i className="fas fa-phone mr-2"></i>
-                <span className="hidden sm:inline">+91 77080 97242</span>
+              <a href="tel:+917708097242" className="hover:text-primary-300 transition-colors flex items-center group">
+                <i className="fas fa-phone mr-2 group-hover:animate-pulse"></i>
+                <span className="hidden sm:inline font-medium">+91 77080 97242</span>
               </a>
-              <a href="mailto:info@susin.in" className="hover:text-primary-light">
-                <i className="fas fa-envelope mr-2"></i>
-                <span className="hidden sm:inline">info@susin.in</span>
+              <a href="mailto:info@susin.in" className="hover:text-primary-300 transition-colors flex items-center group">
+                <i className="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
+                <span className="hidden sm:inline font-medium">info@susin.in</span>
               </a>
             </div>
           </div>
@@ -45,15 +63,15 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 lg:px-6">
         <nav className="flex items-center justify-between py-4">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="h-14 w-14 bg-gradient-to-br from-primary to-red-700 rounded-lg flex items-center justify-center shadow-md">
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="h-14 w-14 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-glow transition-all duration-300 group-hover:scale-105">
               <span className="text-white font-bold text-2xl">Si</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-primary">SUSIN GROUP</h1>
-              <p className="text-xs text-gray-600">Valve Automation Solutions</p>
+              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">SUSIN iTORK</h1>
+              <p className="text-xs text-secondary-600 font-medium">Industrial Actuators & Automation</p>
             </div>
           </Link>
 
