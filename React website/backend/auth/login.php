@@ -49,7 +49,8 @@ try {
     
     // Find user
     $stmt = $pdo->prepare("
-        SELECT id, username, password, email, full_name, role, status, last_login 
+        SELECT id, username, password, email, full_name, role, status, last_login, 
+               locked_until, failed_login_attempts
         FROM users 
         WHERE username = ? OR email = ?
     ");
@@ -57,18 +58,26 @@ try {
     $user = $stmt->fetch();
     
     if (!$user) {
+        // Log failed attempt (no user found)
+        logLoginAttempt($pdo, $username, null, false, 'User not found', $_SERVER['REMOTE_ADDR']);
         throw new Exception('Invalid username or password');
+    }
+    
+    // Check if account is locked
+    if ($user['locked_until'] && strtotime($user['locked_until']) > time()) {
+        $timeLeft = ceil((strtotime($user['locked_until']) - time()) / 60);
+        throw new Exception("Account is locked. Please try again in {$timeLeft} minutes.");
     }
     
     // Check if account is active
     if ($user['status'] !== 'active') {
-        throw new Exception('Your account has been disabled. Please contact HR.');
+        throw new Exception('Your account has been disabled. Please contact administrator.');
     }
     
     // Verify password
     if (!password_verify($password, $user['password'])) {
         // Log failed attempt
-        logLoginAttempt($pdo, $username, false, $_SERVER['REMOTE_ADDR']);
+        logLoginAttempt($pdo, $username, $user['id'], false, 'Invalid password', $_SERVER['REMOTE_ADDR']);
         throw new Exception('Invalid username or password');
     }
     
@@ -81,12 +90,18 @@ try {
     $_SESSION['logged_in'] = true;
     $_SESSION['login_time'] = time();
     
-    // Update last login
-    $updateStmt = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
+    // Update last login and reset failed attempts
+    $updateStmt = $pdo->prepare("
+        UPDATE users 
+        SET last_login = NOW(), 
+            failed_login_attempts = 0,
+            locked_until = NULL
+        WHERE id = ?
+    ");
     $updateStmt->execute([$user['id']]);
     
     // Log successful login
-    logLoginAttempt($pdo, $username, true, $_SERVER['REMOTE_ADDR']);
+    logLoginAttempt($pdo, $username, $user['id'], true, null, $_SERVER['REMOTE_ADDR']);
     
     // Return success response
     echo json_encode([
@@ -112,18 +127,35 @@ try {
 /**
  * Log login attempt
  */
-function logLoginAttempt($pdo, $username, $success, $ip) {
+function logLoginAttempt($pdo, $username, $userId, $success, $failureReason, $ip) {
     try {
         $stmt = $pdo->prepare("
-            INSERT INTO login_attempts (username, success, ip_address, user_agent, attempt_time) 
-            VALUES (?, ?, ?, ?, NOW())
+            INSERT INTO login_attempts (username, user_id, success, failure_reason, ip_address, user_agent, attempt_time) 
+            VALUES (?, ?, ?, ?, ?, ?, NOW())
         ");
         $stmt->execute([
             $username,
+            $userId,
             $success ? 1 : 0,
+            $failureReason,
             $ip,
             $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown'
         ]);
+        
+        // If failed login, increment failed_login_attempts
+        if (!$success && $userId) {
+            $stmt = $pdo->prepare("
+                UPDATE users 
+                SET failed_login_attempts = failed_login_attempts + 1,
+                    locked_until = CASE 
+                        WHEN failed_login_attempts + 1 >= 5 
+                        THEN DATE_ADD(NOW(), INTERVAL 30 MINUTE)
+                        ELSE locked_until
+                    END
+                WHERE id = ?
+            ");
+            $stmt->execute([$userId]);
+        }
     } catch (Exception $e) {
         error_log("Failed to log login attempt: " . $e->getMessage());
     }
@@ -135,15 +167,14 @@ function logLoginAttempt($pdo, $username, $success, $ip) {
 function getDashboardUrl($role) {
     switch ($role) {
         case 'admin':
-            return '/backend/admin/index.php';
         case 'hr':
-            return '/backend/admin/index.php';
+            return '/backend/admin/dashboard.php';
         case 'manager':
-            return '/backend/dashboard/manager.php';
+            return '/backend/admin/dashboard.php';
         case 'employee':
-            return '/backend/dashboard/employee.php';
-        default:
             return '/backend/dashboard/index.php';
+        default:
+            return '/backend/admin/dashboard.php';
     }
 }
 ?>

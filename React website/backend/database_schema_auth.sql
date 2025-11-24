@@ -1,6 +1,10 @@
--- Susin Group Authentication Database Schema
--- User Management and Login System
--- Run this SQL script to create authentication tables
+-- ================================================
+-- SUSIN GROUP - ADMIN AUTHENTICATION SYSTEM
+-- Database Schema for User Management & Authentication
+-- ================================================
+-- Run this SQL script to create all authentication tables
+-- Default Admin User: admin / Admin@2025
+-- ================================================
 
 USE susin_careers;
 
