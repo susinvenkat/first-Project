@@ -19,14 +19,41 @@
 }
 
 @layer utilities {
+  /* Existing Animations */
   .animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
   }
   
   .animate-slide-in {
-    animation: slideIn 0.4s ease-out;
+    animation: slideIn 0.6s ease-out;
   }
   
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out;
+  }
+  
+  /* Advanced Animations for Modern Home Page */
+  .animate-float {
+    animation: float 15s ease-in-out infinite;
+  }
+  
+  .animate-scroll {
+    animation: scroll 2s ease-in-out infinite;
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 10px 50px rgba(0, 0, 0, 0.2);
+  }
+  
+  .shadow-glow-lg {
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.6), 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Keyframes */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -45,5 +72,76 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.1;
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-40px) translateX(-10px);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.3;
+    }
+  }
+  
+  @keyframes scroll {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+  
+  /* Backdrop Blur Fix */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-xl {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
   }
 }
