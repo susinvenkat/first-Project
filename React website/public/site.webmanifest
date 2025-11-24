@@ -1,0 +1,27 @@
+{
+  "name": "SUSIN iTORK - Industrial Actuators & Valve Automation",
+  "short_name": "SUSIN iTORK",
+  "description": "Leading manufacturer of industrial actuators and valve automation solutions. ISO 9001:2015 certified since 1992.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "industrial", "manufacturing"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

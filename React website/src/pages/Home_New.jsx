@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/common/SEO';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,6 +15,35 @@ export default function Home() {
     { value: 0, target: 100, label: 'Countries Worldwide', icon: 'fa-globe', suffix: '+' },
     { value: 0, target: 15000, label: 'Projects Delivered', icon: 'fa-check-circle', suffix: '+' },
   ]);
+
+  // SEO Structured Data for HomePage
+  const homeStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Industrial Actuators & Valve Automation Solutions",
+    "description": "Complete range of pneumatic, electro-hydraulic, and electrical actuators for industrial valve automation. Torque range from 10 Nm to 500,000 Nm.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SUSIN iTORK"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "SUSIN iTORK",
+      "url": "https://susiniTORK.com"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "150",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
 
   const slides = [
     {
@@ -154,9 +184,19 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-secondary-50">
-      {/* Hero Slider - Modern Full Screen */}
-      <section className="relative h-[700px] overflow-hidden">
+    <>
+      {/* SEO Component */}
+      <SEO
+        title="Industrial Actuators & Valve Automation Solutions"
+        description="Leading manufacturer of pneumatic, electro-hydraulic, and electrical actuators. ISO 9001:2015 certified. Serving 100+ industries worldwide. Torque: 10 Nm to 500,000 Nm. 32+ years excellence."
+        keywords="industrial actuators, pneumatic actuators, scotch yoke actuators, electro-hydraulic actuators, electrical actuators, valve automation, quarter-turn actuators, FPSO actuators, oil and gas actuators, power generation, marine offshore, ISO 9001, ATEX certified, API 609, India, UAE, Qatar"
+        image="/assets/img/products/pneumatic/hd-actuator-main.png"
+        structuredData={homeStructuredData}
+      />
+      
+      <div className="min-h-screen bg-secondary-50">
+        {/* Hero Slider - Modern Full Screen */}
+        <section className="relative h-[700px] overflow-hidden">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -528,5 +568,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }

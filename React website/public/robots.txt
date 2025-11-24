@@ -1,0 +1,59 @@
+# robots.txt for SUSIN iTORK Website
+# https://susiniTORK.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin and backend directories
+Disallow: /backend/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /dashboard/
+
+# Disallow private files
+Disallow: /*.sql$
+Disallow: /*.md$
+Disallow: /package.json
+Disallow: /vite.config.js
+Disallow: /tailwind.config.js
+Disallow: /*.bat$
+
+# Allow CSS and JS
+Allow: /*.css$
+Allow: /*.js$
+
+# Allow images
+Allow: /assets/img/
+
+# Sitemap location
+Sitemap: https://susiniTORK.com/sitemap.xml
+
+# Crawl-delay for politeness (optional)
+Crawl-delay: 1
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /

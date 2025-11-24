@@ -5,16 +5,63 @@
 @layer base {
   body {
     @apply m-0 font-sans text-secondary-900;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Mobile-Friendly Tap Targets */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent text size adjustment on mobile */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-300;
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 min-h-[44px] inline-flex items-center justify-center;
   }
   
   .btn-secondary {
-    @apply bg-secondary-700 hover:bg-secondary-600 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-300;
+    @apply bg-secondary-700 hover:bg-secondary-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 min-h-[44px] inline-flex items-center justify-center;
+  }
+  
+  /* Mobile-optimized touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] inline-flex items-center justify-center;
+  }
+  
+  /* Responsive images */
+  .img-responsive {
+    @apply max-w-full h-auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Container with safe area insets for mobile notches */
+  .safe-area-container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
   }
 }
 
