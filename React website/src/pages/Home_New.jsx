@@ -1,14 +1,18 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState({});
+  const observerRefs = useRef([]);
+  
   const [stats, setStats] = useState([
-    { value: 0, target: 100, label: 'Power Industries', icon: 'fa-plug' },
-    { value: 0, target: 32, label: 'Years Excellence', icon: 'fa-award' },
-    { value: 0, target: 100, label: 'FPSO Actuators', icon: 'fa-ship' },
-    { value: 0, target: 15000, label: 'Projects Completed', icon: 'fa-check-circle' },
+    { value: 0, target: 100, label: 'Power Industries Served', icon: 'fa-industry', suffix: '+' },
+    { value: 0, target: 32, label: 'Years of Excellence', icon: 'fa-award', suffix: '+' },
+    { value: 0, target: 100, label: 'Countries Worldwide', icon: 'fa-globe', suffix: '+' },
+    { value: 0, target: 15000, label: 'Projects Delivered', icon: 'fa-check-circle', suffix: '+' },
   ]);
 
   const slides = [
@@ -62,34 +66,34 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [isPlaying, slides.length]);
 
-  const animateStats = useCallback(() => {
-    stats.forEach((stat, index) => {
-      const duration = 2000;
-      const steps = 60;
-      const increment = stat.target / steps;
-      let current = 0;
-
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= stat.target) {
-          current = stat.target;
-          clearInterval(timer);
-        }
-        setStats(prev => {
-          const newStats = [...prev];
-          newStats[index] = { ...newStats[index], value: Math.floor(current) };
-          return newStats;
-        });
-      }, duration / steps);
-    });
-  }, [stats]);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            animateStats();
+            // Animate stats when section comes into view
+            setStats(prev => prev.map((stat, index) => {
+              const duration = 2000;
+              const steps = 60;
+              const increment = stat.target / steps;
+              let current = 0;
+
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= stat.target) {
+                  current = stat.target;
+                  clearInterval(timer);
+                }
+                setStats(prevStats => {
+                  const newStats = [...prevStats];
+                  newStats[index] = { ...newStats[index], value: Math.floor(current) };
+                  return newStats;
+                });
+              }, duration / steps);
+
+              return stat;
+            }));
+            observer.disconnect(); // Only animate once
           }
         });
       },
@@ -100,7 +104,7 @@ export default function Home() {
     if (statsSection) observer.observe(statsSection);
 
     return () => observer.disconnect();
-  }, [animateStats]);
+  }, []); // Run once on mount
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
