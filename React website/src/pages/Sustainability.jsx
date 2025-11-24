@@ -1,4 +1,12 @@
+import { Link } from 'react-router-dom';
+
 export default function Sustainability() {
+  const handleDownloadReport = (year) => {
+    // Trigger download (in production, this would download actual PDFs)
+    console.log(`Downloading Sustainability Report ${year}`);
+    alert(`Sustainability Report ${year} download will start shortly`);
+  };
+
   const achievements = [
     { value: '37%', label: 'GHG Emissions Reduction', sublabel: 'Since 2020 baseline', icon: 'fa-leaf' },
     { value: '56%', label: 'Renewable Energy', sublabel: 'Of total electricity', icon: 'fa-solar-panel' },
@@ -257,7 +265,10 @@ export default function Sustainability() {
                   <h4 className="text-xl font-bold text-secondary-900 mb-2">
                     Sustainability Report {year}
                   </h4>
-                  <button className="mt-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg font-semibold transition-all w-full">
+                  <button 
+                    onClick={() => handleDownloadReport(year)}
+                    className="mt-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg font-semibold transition-all w-full"
+                  >
                     <i className="fas fa-download mr-2"></i>
                     Download PDF
                   </button>
@@ -278,20 +289,20 @@ export default function Sustainability() {
             Partner with us for environmentally responsible flow control solutions
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="bg-white text-green-700 hover:bg-secondary-50 px-8 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all inline-flex items-center"
             >
               <i className="fas fa-envelope mr-2"></i>
               Contact Our ESG Team
-            </a>
-            <a 
-              href="/resources" 
+            </Link>
+            <Link 
+              to="/resources" 
               className="bg-green-800 hover:bg-green-900 px-8 py-4 rounded-xl font-bold text-lg border-2 border-white/30 transition-all inline-flex items-center"
             >
               <i className="fas fa-book mr-2"></i>
               Learn More
-            </a>
+            </Link>
           </div>
         </div>
       </section>

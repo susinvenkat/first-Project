@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 
 export default function Resources() {
   const [activeTab, setActiveTab] = useState('catalogs');
+  const [dataSheetFilter, setDataSheetFilter] = useState('All');
+
+  const handleDownload = (item) => {
+    console.log(`Downloading: ${item}`);
+    alert(`${item} download will start shortly`);
+  };
 
   const catalogs = [
     {
@@ -239,7 +245,10 @@ export default function Resources() {
                       </div>
                     </div>
                   </div>
-                  <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg">
+                  <button 
+                    onClick={() => handleDownload(catalog.title)}
+                    className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+                  >
                     <i className="fas fa-download mr-2"></i>
                     Download Catalog
                   </button>
@@ -268,7 +277,12 @@ export default function Resources() {
                 {['All', 'Pneumatic', 'Electrical', 'Gearbox', 'Controls'].map((category) => (
                   <button
                     key={category}
-                    className="px-4 py-2 rounded-lg bg-white border-2 border-secondary-200 hover:border-primary-500 hover:bg-primary-50 transition-all font-semibold text-secondary-700"
+                    onClick={() => setDataSheetFilter(category)}
+                    className={`px-4 py-2 rounded-lg border-2 transition-all font-semibold ${
+                      dataSheetFilter === category
+                        ? 'bg-primary-600 text-white border-primary-600'
+                        : 'bg-white text-secondary-700 border-secondary-200 hover:border-primary-500 hover:bg-primary-50'
+                    }`}
                   >
                     {category}
                   </button>
@@ -291,7 +305,10 @@ export default function Resources() {
                             </p>
                           </div>
                         </div>
-                        <button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-semibold transition-all">
+                        <button 
+                          onClick={() => handleDownload(sheet.name)}
+                          className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-semibold transition-all"
+                        >
                           <i className="fas fa-download mr-2"></i>
                           Download
                         </button>
@@ -372,7 +389,10 @@ export default function Resources() {
                   </div>
                   <h3 className="text-2xl font-bold text-secondary-900 mb-2">{cert.title}</h3>
                   <p className="text-secondary-600 mb-6">{cert.description}</p>
-                  <button className="text-primary-600 hover:text-primary-700 font-semibold">
+                  <button 
+                    onClick={() => alert(`${cert.title} certificate will be displayed`)}
+                    className="text-primary-600 hover:text-primary-700 font-semibold"
+                  >
                     View Certificate <i className="fas fa-arrow-right ml-2"></i>
                   </button>
                 </div>
@@ -420,7 +440,10 @@ export default function Resources() {
                       </p>
                       <p className="text-secondary-700">{study.results}</p>
                     </div>
-                    <button className="mt-4 text-primary-600 hover:text-primary-700 font-semibold">
+                    <button 
+                      onClick={() => alert(`${study.title} - Full case study will open`)}
+                      className="mt-4 text-primary-600 hover:text-primary-700 font-semibold"
+                    >
                       Read Full Case Study <i className="fas fa-arrow-right ml-2"></i>
                     </button>
                   </div>

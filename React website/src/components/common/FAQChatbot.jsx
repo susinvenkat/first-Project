@@ -1,12 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function FAQChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { type: 'bot', text: 'Hello! 👋 I\'m here to help answer your questions about Susin Group products and services. How can I assist you today?' }
+    { 
+      type: 'bot', 
+      text: 'Hello! 👋 Welcome to Susin Group. I\'m your virtual assistant, ready to help you with products, quotes, technical support, and more!',
+      suggestions: ['View Products', 'Get Quote', 'Industries', 'Support']
+    }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [showCategories, setShowCategories] = useState(true);
   const messagesEndRef = useRef(null);
   const chatRef = useRef(null);
 
