@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
+import DigitalSizingTool from '../common/DigitalSizingTool';
 
 export default function Layout({ children }) {
   return (
@@ -9,6 +10,7 @@ export default function Layout({ children }) {
         {children}
       </main>
       <Footer />
+      <DigitalSizingTool />
     </div>
   );
 }
