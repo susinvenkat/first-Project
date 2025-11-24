@@ -30,12 +30,17 @@ export default function Header() {
   const isActivePath = (path) => location.pathname === path;
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-xl' : 'bg-white shadow-md'
-    }`}>
+    <header className={`sticky top-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-primary-100/50' : 'bg-white shadow-md'
+    }`} style={isScrolled ? { 
+      backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(255,255,255,0.95))',
+      backdropFilter: 'blur(20px) saturate(180%)'
+    } : {}}>      
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-secondary-900 via-secondary-800 to-secondary-900 text-white text-sm">
-        <div className="container mx-auto px-4 lg:px-6">
+      <div className="relative bg-gradient-to-r from-secondary-900 via-secondary-800 to-secondary-900 text-white text-sm overflow-hidden">
+        {/* Animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-primary-500/20 to-primary-600/10 animate-gradient-x"></div>
+        <div className="container mx-auto px-4 lg:px-6 relative z-10">
           <div className="flex items-center justify-between py-2.5">
             <div className="flex items-center space-x-6">
               <span className="flex items-center group cursor-default">
@@ -68,15 +73,22 @@ export default function Header() {
       {/* Main Navigation */}
       <div className="container mx-auto px-4 lg:px-6">
         <nav className="flex items-center justify-between py-4">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <img 
-              src="/assets/img/susin-logo.svg" 
-              alt="Susin Group Logo" 
-              className="h-14 w-14 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-lg"
-            />
+          <Link to="/" className="flex items-center space-x-3 group relative">
+            <div className="relative">
+              {/* Glow effect background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full blur-md opacity-0 group-hover:opacity-60 transition-all duration-500 animate-pulse-slow"></div>
+              <img 
+                src="/assets/img/susin-logo.svg" 
+                alt="Susin Group Logo" 
+                className="h-14 w-14 relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 drop-shadow-lg group-hover:drop-shadow-2xl"
+                style={{ filter: 'drop-shadow(0 0 8px rgba(37, 99, 235, 0.3))' }}
+              />
+            </div>
             <div>
-              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">Susin Group</h1>
-              <p className="text-xs text-secondary-600 font-medium">Industrial Actuators & Automation</p>
+              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 bg-clip-text text-transparent group-hover:from-primary-500 group-hover:via-primary-600 group-hover:to-primary-700 transition-all duration-300">
+                Susin Group
+              </h1>
+              <p className="text-xs text-secondary-600 font-medium group-hover:text-primary-600 transition-colors duration-300">Industrial Actuators & Automation</p>
             </div>
           </Link>
 

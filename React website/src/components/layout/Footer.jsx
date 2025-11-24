@@ -9,20 +9,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/assets/img/susin-logo.svg" 
-                alt="Susin Group Logo" 
-                className="h-12 w-12"
-              />
-              <h3 className="text-white text-lg font-bold">SUSIN GROUP</h3>
+            <div className="flex items-center space-x-3 mb-4 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                <img 
+                  src="/assets/img/susin-logo.svg" 
+                  alt="Susin Group Logo" 
+                  className="h-12 w-12 relative z-10 transition-transform duration-300 group-hover:scale-110"
+                  style={{ filter: 'drop-shadow(0 0 6px rgba(37, 99, 235, 0.4))' }}
+                />
+              </div>
+              <h3 className="text-white text-lg font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text">SUSIN GROUP</h3>
             </div>
             <p className="text-sm mb-4">Leading provider of industrial actuators and valve automation solutions since 1992.</p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-primary"><i className="fab fa-facebook-f"></i></a>
-              <a href="#" className="hover:text-primary"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="hover:text-primary"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" className="hover:text-primary"><i className="fab fa-instagram"></i></a>
+              <a href="#" className="hover:text-primary transition-colors"><i className="fab fa-facebook-f"></i></a>
+              <a href="#" className="hover:text-primary transition-colors"><i className="fab fa-twitter"></i></a>
+              <a href="#" className="hover:text-primary transition-colors"><i className="fab fa-linkedin-in"></i></a>
+              <a href="#" className="hover:text-primary transition-colors"><i className="fab fa-instagram"></i></a>
             </div>
           </div>
 
