@@ -291,8 +291,8 @@ export default function Home() {
               <h2 className="text-5xl font-heading font-bold text-secondary-900 mb-6">
                 Pioneering Valve Automation Excellence
               </h2>
-              <p className="text-xl text-secondary-600 mb-8 leading-relaxed">
-                SUSIN iTORK India has been at the forefront of industrial actuator manufacturing for over three decades. Our commitment to innovation, quality, and customer satisfaction has made us a trusted partner for industries worldwide.
+              <p className="text-lg text-secondary-700 leading-relaxed">
+                Susin Group has been at the forefront of industrial actuator manufacturing for over three decades. Our commitment to innovation, quality, and customer satisfaction has made us a trusted partner for industries worldwide.
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start group">

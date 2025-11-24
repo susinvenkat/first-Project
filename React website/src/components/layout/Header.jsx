@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import ProductSearch from '../common/ProductSearch';
+import LanguageSelector from '../common/LanguageSelector';
+import FAQChatbot from '../common/FAQChatbot';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,11 +69,13 @@ export default function Header() {
       <div className="container mx-auto px-4 lg:px-6">
         <nav className="flex items-center justify-between py-4">
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="h-14 w-14 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-glow transition-all duration-300 group-hover:scale-105">
-              <span className="text-white font-bold text-2xl">Si</span>
-            </div>
+            <img 
+              src="/assets/img/susin-logo.svg" 
+              alt="Susin Group Logo" 
+              className="h-14 w-14 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-lg"
+            />
             <div>
-              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">SUSIN iTORK</h1>
+              <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">Susin Group</h1>
               <p className="text-xs text-secondary-600 font-medium">Industrial Actuators & Automation</p>
             </div>
           </Link>
@@ -195,6 +200,44 @@ export default function Header() {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
+            {/* Product Search */}
+            <ProductSearch />
+
+            {/* Language Selector */}
+            <LanguageSelector />
+
+            {/* Login/User Menu */}
+            {user ? (
+              <div className="relative group">
+                <button className="flex items-center space-x-2 text-secondary-700 hover:text-primary-600 transition-colors p-2">
+                  <i className="fas fa-user-circle text-xl"></i>
+                  <span className="text-sm font-medium">{user.full_name}</span>
+                  <i className="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border-2 border-primary-500 z-50">
+                  <div className="p-2">
+                    <Link to="/dashboard" className="block px-4 py-2 hover:bg-primary-50 rounded-lg transition-colors">
+                      <i className="fas fa-tachometer-alt mr-2 text-primary-600"></i>Dashboard
+                    </Link>
+                    <button onClick={handleLogout} className="w-full text-left px-4 py-2 hover:bg-primary-50 rounded-lg transition-colors">
+                      <i className="fas fa-sign-out-alt mr-2 text-red-600"></i>Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                to="/backend/auth/login.php"
+                className="flex items-center space-x-2 text-secondary-700 hover:text-primary-600 transition-colors p-2"
+                title="Login"
+              >
+                <i className="fas fa-user-circle text-xl"></i>
+                <span className="text-sm font-medium hidden xl:inline">Login</span>
+              </Link>
+            )}
+
+            <div className="h-8 w-px bg-secondary-300"></div>
+
             <Link to="/contact#quote" className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-5 py-2.5 rounded-lg flex items-center shadow-md hover:shadow-lg transition-all font-semibold">
               <i className="fas fa-file-invoice-dollar mr-2"></i>
               Get Quote
@@ -203,18 +246,6 @@ export default function Header() {
               <i className="fas fa-phone-alt mr-2"></i>
               <span className="hidden xl:inline">+91 77080 97242</span>
             </a>
-            {user && (
-              <div className="relative group">
-                <button className="flex items-center space-x-2 text-gray-700 hover:text-primary">
-                  <i className="fas fa-user-circle text-xl"></i>
-                  <span className="text-sm">{user.full_name}</span>
-                </button>
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                  <Link to="/dashboard" className="block px-4 py-2 hover:bg-gray-100"><i className="fas fa-tachometer-alt mr-2"></i>Dashboard</Link>
-                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 hover:bg-gray-100"><i className="fas fa-sign-out-alt mr-2"></i>Logout</button>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -230,16 +261,31 @@ export default function Header() {
               <li><Link to="/" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-home mr-2"></i>Home</Link></li>
               <li><Link to="/products" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-cogs mr-2"></i>Products</Link></li>
               <li><Link to="/industries" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-industry mr-2"></i>Industries</Link></li>
+              <li><Link to="/services" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-tools mr-2"></i>Services</Link></li>
+              <li><Link to="/resources" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-book mr-2"></i>Resources</Link></li>
               <li><Link to="/global/india" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-map-marker-alt mr-2"></i>India</Link></li>
               <li><Link to="/global/uae" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-map-marker-alt mr-2"></i>UAE</Link></li>
               <li><Link to="/global/qatar" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-map-marker-alt mr-2"></i>Qatar</Link></li>
               <li><Link to="/about" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-building mr-2"></i>About</Link></li>
+              <li><Link to="/sustainability" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-leaf mr-2"></i>Sustainability</Link></li>
               <li><Link to="/careers" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-briefcase mr-2"></i>Careers</Link></li>
               <li><Link to="/contact" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-envelope mr-2"></i>Contact</Link></li>
+              {!user && (
+                <li><Link to="/backend/auth/login.php" className="block py-2 text-primary-700 font-semibold" onClick={toggleMenu}><i className="fas fa-user-circle mr-2"></i>Login</Link></li>
+              )}
+              {user && (
+                <>
+                  <li><Link to="/dashboard" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-tachometer-alt mr-2"></i>Dashboard</Link></li>
+                  <li><button onClick={() => { handleLogout(); toggleMenu(); }} className="w-full text-left py-2 text-red-600"><i className="fas fa-sign-out-alt mr-2"></i>Logout</button></li>
+                </>
+              )}
             </ul>
           </div>
         )}
       </div>
+
+      {/* FAQ Chatbot - Global Component */}
+      <FAQChatbot />
     </header>
   );
 }

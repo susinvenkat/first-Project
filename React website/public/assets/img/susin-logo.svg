@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#1e40af" stroke="#1e3a8a" stroke-width="3"/>
+  
+  <!-- Inner Circle -->
+  <circle cx="100" cy="100" r="75" fill="#2563eb" opacity="0.9"/>
+  
+  <!-- S Letter Design -->
+  <g transform="translate(100, 100)">
+    <!-- Modern S Shape -->
+    <path d="M -15 -40 Q -35 -40 -35 -25 Q -35 -10 -15 -5 L 15 5 Q 35 10 35 25 Q 35 40 15 40" 
+          fill="none" 
+          stroke="white" 
+          stroke-width="12" 
+          stroke-linecap="round"/>
+    
+    <!-- Accent Lines -->
+    <line x1="-25" y1="-35" x2="-45" y2="-35" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+    <line x1="25" y1="35" x2="45" y2="35" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Gear Icon Element (for industrial theme) -->
+    <circle cx="0" cy="0" r="8" fill="#fbbf24" opacity="0.8"/>
+  </g>
+  
+  <!-- Subtle Gradient Overlay -->
+  <defs>
+    <radialGradient id="shine" cx="50%" cy="30%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:white;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#shine)"/>
+</svg>

@@ -98,7 +98,7 @@ export default function About() {
                 Engineering the Future Since 1992
               </h2>
               <p className="text-lg text-secondary-700 mb-4 leading-relaxed">
-                SUSIN iTORK India Pvt. Ltd. (formerly known as SUSIN INDIA) was established in 1992, bringing 
+                Susin Group (formerly known as SUSIN INDIA) was established in 1992, bringing 
                 advanced valve automation technology to the Asian market. Over three decades, we have grown from 
                 a regional supplier to a globally recognized manufacturer of industrial actuators and motion control systems.
               </p>

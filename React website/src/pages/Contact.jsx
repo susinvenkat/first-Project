@@ -178,7 +178,7 @@ export default function Contact() {
                     <i className="fas fa-map-marker-alt text-primary mr-2"></i>
                     India Headquarters
                   </h4>
-                  <p className="text-gray-700 mb-2">SUSIN iTORK India Pvt. Ltd.</p>
+                  <p className="text-gray-700 mb-2">Susin Group</p>
                   <p className="text-gray-600 text-sm">Coimbatore, Tamil Nadu, India</p>
                   <p className="text-gray-600 text-sm mt-2">Phone: +91 77080 97242</p>
                   <p className="text-gray-600 text-sm">Email: info@susin.in</p>

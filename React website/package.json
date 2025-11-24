@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Industrial Actuators & Valve Automation Solutions - React Website",
-  "author": "SUSIN iTORK India Pvt. Ltd.",
+  "author": "Susin Group",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

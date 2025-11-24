@@ -3,7 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home_New';
 import Products from './pages/Products_Enhanced';
-import Industries from './pages/Industries';
+import Industries from './pages/Industries_Enhanced';
 import About from './pages/About_Enhanced';
 import Careers from './pages/Careers_Enhanced';
 import Contact from './pages/Contact';

@@ -14,7 +14,7 @@ export default function India() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold mb-6">SUSIN iTORK India Pvt. Ltd.</h2>
+              <h2 className="text-3xl font-bold mb-6">Susin Group - India</h2>
               <p className="text-lg text-gray-700 mb-6">
                 Our Indian facility serves as the global headquarters and main manufacturing center, 
                 equipped with state-of-the-art production lines and quality control systems.
