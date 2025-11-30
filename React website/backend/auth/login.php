@@ -6,6 +6,9 @@
 
 session_start();
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
 
 // Enable error logging
 ini_set('display_errors', 0);
@@ -144,7 +147,7 @@ function logLoginAttempt($pdo, $username, $userId, $success, $failureReason, $ip
         
         // If failed login, increment failed_login_attempts
         if (!$success && $userId) {
-            $stmt = $pdo->prepare("
+            $lockStmt = $pdo->prepare("
                 UPDATE users 
                 SET failed_login_attempts = failed_login_attempts + 1,
                     locked_until = CASE 
@@ -154,7 +157,7 @@ function logLoginAttempt($pdo, $username, $userId, $success, $failureReason, $ip
                     END
                 WHERE id = ?
             ");
-            $stmt->execute([$userId]);
+            $lockStmt->execute([$userId]);
         }
     } catch (Exception $e) {
         error_log("Failed to log login attempt: " . $e->getMessage());

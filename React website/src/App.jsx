@@ -4,7 +4,8 @@ import { AuthProvider } from './context/AuthContext';
 import Layout from './components/layout/Layout';
 
 // Eager load Home for better initial experience
-import Home from './pages/Home_New';
+import Home from './pages/Home_Advanced';
+import Login from './pages/Login';
 
 // Lazy load other pages for better performance
 const Products = lazy(() => import('./pages/Products_Enhanced'));
@@ -52,6 +53,7 @@ function App() {
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/products" element={<Products />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/services" element={<Services />} />

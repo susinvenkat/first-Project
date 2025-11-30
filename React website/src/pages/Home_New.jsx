@@ -6,14 +6,15 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [scrollY, setScrollY] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState({});
   const observerRefs = useRef([]);
   
   const [stats, setStats] = useState([
-    { value: 0, target: 100, label: 'Power Industries Served', icon: 'fa-industry', suffix: '+' },
-    { value: 0, target: 32, label: 'Years of Excellence', icon: 'fa-award', suffix: '+' },
-    { value: 0, target: 100, label: 'Countries Worldwide', icon: 'fa-globe', suffix: '+' },
-    { value: 0, target: 15000, label: 'Projects Delivered', icon: 'fa-check-circle', suffix: '+' },
+    { value: 0, target: 100, label: 'Industries', icon: 'fa-industry', suffix: '+' },
+    { value: 0, target: 32, label: 'Years', icon: 'fa-award', suffix: '+' },
+    { value: 0, target: 3, label: 'Global', icon: 'fa-globe', suffix: '' },
+    { value: 0, target: 15000, label: 'Projects', icon: 'fa-check-circle', suffix: '+' },
   ]);
 
   // SEO Structured Data for HomePage

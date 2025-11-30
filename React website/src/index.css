@@ -145,20 +145,37 @@
   
   @keyframes float {
     0%, 100% {
-      transform: translateY(0) translateX(0);
-      opacity: 0.1;
+      transform: translateY(0px) translateX(0px);
     }
     25% {
-      transform: translateY(-20px) translateX(10px);
-      opacity: 0.3;
+      transform: translateY(-30px) translateX(15px);
     }
     50% {
-      transform: translateY(-40px) translateX(-10px);
-      opacity: 0.5;
+      transform: translateY(-60px) translateX(-15px);
     }
     75% {
-      transform: translateY(-20px) translateX(10px);
-      opacity: 0.3;
+      transform: translateY(-30px) translateX(15px);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 0 80px rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 20px rgba(59, 130, 246, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
     }
   }
   
@@ -190,5 +207,26 @@
   .backdrop-blur-2xl {
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
+  }
+
+  /* Advanced Animations */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 1.5s ease-in-out infinite;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  }
+
+  .shadow-glow-lg {
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.6), 0 20px 60px rgba(0, 0, 0, 0.3);
   }
 }
