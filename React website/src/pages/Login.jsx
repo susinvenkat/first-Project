@@ -46,7 +46,26 @@ export default function Login() {
         })
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content-type');
+      let data;
+      
+      try {
+        data = await response.json();
+      } catch (parseError) {
+        // If response is not JSON, it's likely a PHP error or the backend isn't running
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error(
+            '⚠️ Backend server not configured.\n\n' +
+            'To use the login system:\n' +
+            '1. Start XAMPP/WAMP/Laragon\n' +
+            '2. Ensure Apache & MySQL are running\n' +
+            '3. Place backend folder in your web root\n' +
+            '4. Visit: http://localhost/backend/setup_admin.php\n\n' +
+            'Development: For testing, use the demo credentials displayed'
+          );
+        }
+        throw new Error('Invalid response from server. Please check backend configuration.');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Login failed. Please try again.');
