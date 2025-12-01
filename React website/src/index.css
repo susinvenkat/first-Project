@@ -229,4 +229,118 @@
   .shadow-glow-lg {
     box-shadow: 0 0 50px rgba(59, 130, 246, 0.6), 0 20px 60px rgba(0, 0, 0, 0.3);
   }
+
+  /* Accessibility Utilities */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only-focusable:active,
+  .sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: auto;
+    margin: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Focus Styles for Accessibility */
+  .focus-ring {
+    @apply outline-none ring-2 ring-offset-2 ring-primary-500;
+  }
+
+  /* Responsive Typography */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-4xl md:text-5xl;
+    }
+    h2 {
+      @apply text-3xl md:text-4xl;
+    }
+    h3 {
+      @apply text-2xl md:text-3xl;
+    }
+  }
+
+  /* Mobile-First Responsive Grid */
+  .responsive-grid {
+    @apply grid grid-cols-1 gap-4;
+  }
+
+  @media (min-width: 640px) {
+    .responsive-grid {
+      @apply grid-cols-2 gap-6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-grid {
+      @apply grid-cols-3 gap-8;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .responsive-grid {
+      @apply grid-cols-4 gap-8;
+    }
+  }
+
+  /* Better Mobile Menu */
+  @media (max-width: 1024px) {
+    .mobile-menu-hidden {
+      @apply hidden;
+    }
+  }
+
+  /* Reduced Motion for Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Dark Mode Support */
+  @media (prefers-color-scheme: dark) {
+    body {
+      @apply bg-secondary-900 text-secondary-100;
+    }
+  }
+
+  /* High Contrast Mode */
+  @media (prefers-contrast: more) {
+    body {
+      @apply border border-secondary-900;
+    }
+
+    button,
+    a,
+    [role="button"] {
+      @apply border border-secondary-900;
+    }
+  }
+
+  /* Touch Device Optimization */
+  @media (hover: none) and (pointer: coarse) {
+    button:hover,
+    a:hover {
+      @apply opacity-80;
+    }
+  }
 }
+

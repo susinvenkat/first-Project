@@ -48,7 +48,6 @@ export const useFocusTrap = (ref) => {
     };
   }, [ref]);
 };
-};
 
 export const useAriaLive = (message, priority = 'polite', timeout = 3000) => {
   useEffect(() => {
