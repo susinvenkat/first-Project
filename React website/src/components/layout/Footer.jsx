@@ -231,15 +231,6 @@ export default function Footer() {
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-600 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-600 rounded-full blur-3xl"></div>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-600 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-600 rounded-full blur-3xl"></div>
-      </div>
-    </footer>
-  );
-}
     </footer>
   );
 }
