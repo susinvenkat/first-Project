@@ -6,7 +6,7 @@
 
 ## 1. Hero Section Animations
 
-### On Page Load:
+### On Page Load
 ```
 Badge (ISO Certified)
 ├─ Delay: 200ms
@@ -39,14 +39,14 @@ CTA Buttons
 └─ Duration: 700ms
 ```
 
-### Continuous Animations:
+### Continuous Animations
 - **Floating Particles**: 20 elements, 15s loop, random positions
 - **Scroll Indicator**: Bounce animation, 2s loop
 - **Badge Pulse**: Dot pulses continuously
 - **Background Parallax**: Moves at 0.5x scroll speed
 - **Mouse Parallax**: Content shifts based on cursor position
 
-### Carousel:
+### Carousel
 - **Auto-Advance**: Every 6 seconds
 - **Transition**: 1000ms cross-fade
 - **Manual Control**: Previous/Next buttons
@@ -82,7 +82,7 @@ Glow Effect:
 └─ Duration: 500ms
 ```
 
-### 4 Stat Cards:
+### 4 Stat Cards
 1. **Industries**: Blue gradient glow
 2. **Years**: Amber gradient glow
 3. **Countries**: Green gradient glow
@@ -92,7 +92,7 @@ Glow Effect:
 
 ## 3. Why Choose Us Cards
 
-### 6 Feature Cards, Each With:
+### 6 Feature Cards, Each With
 
 ```
 Card Container:
@@ -125,7 +125,7 @@ Decorative Corner:
 
 ## 4. Product Showcase Cards
 
-### 4 Product Cards in Dark Section:
+### 4 Product Cards in Dark Section
 
 ```
 Card Container:
@@ -163,7 +163,7 @@ Full Card Glow:
 
 ## 5. Industries Grid Cards
 
-### 6 Industry Cards:
+### 6 Industry Cards
 
 ```
 Card Container:
@@ -201,7 +201,7 @@ Decorative Corner:
 
 ## 6. Testimonials Carousel
 
-### Auto-Rotation:
+### Auto-Rotation
 ```
 Testimonial Transition:
 ├─ Interval: 5000ms (5 seconds)
@@ -210,7 +210,7 @@ Testimonial Transition:
 └─ 3 testimonials in rotation
 ```
 
-### Manual Control:
+### Manual Control
 ```
 Dot Indicators:
 ├─ Active: w-16 h-4, primary-500
@@ -223,7 +223,7 @@ Dot Indicators:
 
 ## 7. CTA Section
 
-### Background Animation:
+### Background Animation
 ```
 Floating Blur Circles (2):
 ├─ Animation: Pulse
@@ -232,7 +232,7 @@ Floating Blur Circles (2):
 └─ Effect: Opacity pulse
 ```
 
-### Button Animations:
+### Button Animations
 ```
 Primary CTA (White):
 ├─ Base: White bg, shadow-2xl
@@ -251,7 +251,7 @@ Secondary CTA (Glass):
 
 ## 8. Certifications Banner
 
-### 5 Certification Cards:
+### 5 Certification Cards
 
 ```
 Each Card:
@@ -269,7 +269,7 @@ Icon Container:
 
 ## Global Interaction Patterns
 
-### Link Hover Pattern:
+### Link Hover Pattern
 ```css
 Standard Link:
 ├─ Base: Underline offset
@@ -287,7 +287,7 @@ Card Link:
 └─ Duration: 500ms
 ```
 
-### Scroll Behaviors:
+### Scroll Behaviors
 ```
 Parallax Elements:
 ├─ Background Images: 0.5x scroll speed
@@ -304,17 +304,17 @@ Intersection Animations:
 
 ## Performance Optimizations
 
-### GPU-Accelerated Properties:
+### GPU-Accelerated Properties
 - `transform` (translate, scale, rotate)
 - `opacity`
 - `filter` (blur, backdrop-filter)
 
-### Avoided (CPU-Heavy):
+### Avoided (CPU-Heavy)
 - ❌ `width`/`height` animations
 - ❌ `margin`/`padding` animations
 - ❌ `box-shadow` on animation (only on state change)
 
-### Best Practices Applied:
+### Best Practices Applied
 - ✅ `will-change` implied by transforms
 - ✅ Debounced scroll listeners
 - ✅ Intersection observers for visibility
@@ -332,7 +332,7 @@ linear: Constant speed (counter animations)
 cubic-bezier: Custom curves (future enhancements)
 ```
 
-### Applied Durations:
+### Applied Durations
 - **Instant**: 200ms (color changes)
 - **Quick**: 300ms (hover effects)
 - **Standard**: 500ms (card interactions)
@@ -345,7 +345,7 @@ cubic-bezier: Custom curves (future enhancements)
 
 ## Testing Checklist
 
-### Animation Testing:
+### Animation Testing
 - [ ] Hero loads with staggered animations
 - [ ] Carousel auto-advances every 6 seconds
 - [ ] Stats counter triggers on scroll
@@ -356,7 +356,7 @@ cubic-bezier: Custom curves (future enhancements)
 - [ ] Mouse parallax responds to cursor
 - [ ] All transitions are smooth (60fps)
 
-### Interaction Testing:
+### Interaction Testing
 - [ ] Hero prev/next buttons work
 - [ ] Play/pause toggles carousel
 - [ ] Dot indicators change slides
@@ -365,7 +365,7 @@ cubic-bezier: Custom curves (future enhancements)
 - [ ] Hover states don't flicker
 - [ ] Focus states visible for keyboard navigation
 
-### Responsive Testing:
+### Responsive Testing
 - [ ] Mobile: 2-column stats grid
 - [ ] Tablet: Adjusted product grid
 - [ ] Desktop: Full effects enabled
@@ -377,7 +377,7 @@ cubic-bezier: Custom curves (future enhancements)
 
 ## Browser DevTools Tips
 
-### Chrome DevTools:
+### Chrome DevTools
 ```
 Performance Tab:
 - Record page load
@@ -394,7 +394,7 @@ Console:
 - Monitor state changes
 ```
 
-### Firefox DevTools:
+### Firefox DevTools
 ```
 Inspector:
 - Animation timeline view
@@ -408,7 +408,7 @@ Performance:
 
 ## Customization Guide
 
-### To Change Animation Speeds:
+### To Change Animation Speeds
 ```jsx
 // In Home_New.jsx
 const timer = setInterval(() => {
@@ -416,14 +416,14 @@ const timer = setInterval(() => {
 }, 6000); // ← Change this number (milliseconds)
 ```
 
-### To Add New Floating Particles:
+### To Add New Floating Particles
 ```jsx
 {[...Array(20)].map((_, i) => ( // ← Change array length
   // Particle code
 ))}
 ```
 
-### To Modify Transition Delays:
+### To Modify Transition Delays
 ```jsx
 style={{ transitionDelay: '400ms' }} // ← Adjust timing
 ```
