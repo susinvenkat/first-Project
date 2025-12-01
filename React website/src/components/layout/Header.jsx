@@ -8,6 +8,8 @@ import FAQChatbot from '../common/FAQChatbot';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [searchActive, setSearchActive] = useState(false);
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,6 +22,11 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setOpenDropdown(null);
+  }, [location]);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleLogout = async () => {
@@ -28,6 +35,10 @@ export default function Header() {
   };
 
   const isActivePath = (path) => location.pathname === path;
+
+  const handleDropdownOpen = (name) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-500 ${

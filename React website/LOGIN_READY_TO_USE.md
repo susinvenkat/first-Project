@@ -20,7 +20,7 @@ I've created a **production-ready, secure login system** for your React website 
 
 Visit this URL in your browser:
 
-```
+```bash
 http://localhost/backend/setup_admin.php
 ```
 
@@ -30,18 +30,18 @@ You should see: ✅ **"Setup completed successfully!"**
 
 Run this in your terminal:
 
-```powershell
+```bash
 npm run dev
 ```
 
-You should see: ✅ **"ready in XXX ms"** and **"<http://localhost:5175>"**
+You should see: ✅ **"ready in XXX ms"** and **"http://localhost:5173"**
 
 ### Step 3️⃣: Visit Login Page
 
 Open your browser to:
 
-```
-http://localhost:5175/login
+```bash
+http://localhost:5173/login
 ```
 
 ---
@@ -67,7 +67,7 @@ http://localhost:5175/login
 
 ### New Files Created
 
-```
+```text
 ✨ src/pages/Login.jsx (427 lines)
    └─ Beautiful login UI with all features
 
@@ -83,7 +83,7 @@ http://localhost:5175/login
 
 ### Files Modified
 
-```
+```text
 📝 src/context/AuthContext.jsx
    └─ Updated to handle login/logout
 
@@ -96,7 +96,7 @@ http://localhost:5175/login
 
 ### Files Already Present (No Changes Needed)
 
-```
+```text
 ✓ backend/auth/check_session.php
 ✓ backend/auth/logout.php
 ✓ backend/config/database.php
@@ -145,10 +145,10 @@ http://localhost:5175/login
 
 ## 📊 Architecture Overview
 
-```
+```text
 ┌─────────────────────────────────────────────────────┐
 │  User Browser (React)                               │
-│  http://localhost:5175/login                        │
+│  http://localhost:5173/login                        │
 │                                                     │
 │  ┌─────────────────────────────────────────────┐   │
 │  │ Login.jsx Component                         │   │
@@ -226,8 +226,8 @@ http://localhost:5175/login
 
 ### Test 1: Successful Login ✅
 
-```
-1. Visit http://localhost:5175/login
+```bash
+1. Visit http://localhost:5173/login
 2. Click "Admin" demo button (or type credentials)
 3. Username: admin
 4. Password: Admin@2025
@@ -238,7 +238,7 @@ http://localhost:5175/login
 
 ### Test 2: Account Lockout ✅
 
-```
+```bash
 1. Try logging in with wrong password
 2. Repeat 5 times
 3. On 5th attempt: "Account is locked. Try again in 30 minutes."
@@ -249,7 +249,7 @@ http://localhost:5175/login
 
 ### Test 3: Session Persistence ✅
 
-```
+```bash
 1. Log in successfully
 2. Refresh page (Ctrl+R or Cmd+R)
 ✓ Still logged in
@@ -260,7 +260,7 @@ http://localhost:5175/login
 
 ### Test 4: Error Messages ✅
 
-```
+```bash
 1. Try empty username/password
    → "Please enter both username and password"
 2. Try wrong password
@@ -353,7 +353,7 @@ Everything is mobile responsive and works on all devices!
 
 ## 🔄 User Flow
 
-```
+```text
 Start
   ↓
 Visit /login
