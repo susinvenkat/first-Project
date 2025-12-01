@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-
+import { mockCheckSession, mockLogout, isMockMode } from '../utils/mockAuth';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -14,16 +14,26 @@ export function AuthProvider({ children }) {
 
   const checkAuth = async () => {
     try {
-      const response = await fetch('/backend/auth/check_session.php', {
-        method: 'GET',
-        credentials: 'include'
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
+      if (isMockMode()) {
+        // Use mock session check
+        const data = await mockCheckSession();
         if (data.logged_in) {
           setUser(data.user);
           setIsAuthenticated(true);
+        }
+      } else {
+        // Use real backend session check
+        const response = await fetch('/backend/auth/check_session.php', {
+          method: 'GET',
+          credentials: 'include'
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.logged_in) {
+            setUser(data.user);
+            setIsAuthenticated(true);
+          }
         }
       }
     } catch (error) {
@@ -42,10 +52,14 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
-      await fetch('/backend/auth/logout.php', {
-        method: 'POST',
-        credentials: 'include'
-      });
+      if (isMockMode()) {
+        await mockLogout();
+      } else {
+        await fetch('/backend/auth/logout.php', {
+          method: 'POST',
+          credentials: 'include'
+        });
+      }
     } catch (error) {
       console.error('Logout failed:', error);
     } finally {

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import SEO from '../components/common/SEO';
+import { mockLogin, isMockMode, toggleMockMode } from '../utils/mockAuth';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [useMock, setUseMock] = useState(isMockMode());
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,50 +35,54 @@ export default function Login() {
         throw new Error('Please enter both username and password');
       }
 
-      // Call backend login API
-      const response = await fetch('/backend/auth/login.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          username: formData.username.trim(),
-          password: formData.password
-        })
-      });
-
-      const contentType = response.headers.get('content-type');
       let data;
-      
-      try {
-        data = await response.json();
-      } catch (parseError) {
-        // If response is not JSON, it's likely a PHP error or the backend isn't running
-        if (!contentType || !contentType.includes('application/json')) {
-          throw new Error(
-            '⚠️ Backend server not configured.\n\n' +
-            'To use the login system:\n' +
-            '1. Start XAMPP/WAMP/Laragon\n' +
-            '2. Ensure Apache & MySQL are running\n' +
-            '3. Place backend folder in your web root\n' +
-            '4. Visit: http://localhost/backend/setup_admin.php\n\n' +
-            'Development: For testing, use the demo credentials displayed'
-          );
-        }
-        throw new Error('Invalid response from server. Please check backend configuration.');
-      }
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed. Please try again.');
+      // Use mock authentication if in mock mode
+      if (useMock) {
+        data = await mockLogin(formData.username.trim(), formData.password);
+      } else {
+        // Call real backend login API
+        const response = await fetch('/backend/auth/login.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            username: formData.username.trim(),
+            password: formData.password
+          })
+        });
+
+        const contentType = response.headers.get('content-type');
+        
+        try {
+          data = await response.json();
+        } catch (parseError) {
+          // If response is not JSON, backend isn't running - suggest mock mode
+          if (!contentType || !contentType.includes('application/json')) {
+            throw new Error(
+              '⚠️ Backend server not running.\n\n' +
+              'Options:\n' +
+              '1. Enable "Mock Mode" below for UI testing\n' +
+              '2. Start XAMPP/WAMP and visit: http://localhost/backend/setup_admin.php\n\n' +
+              'Mock mode uses demo credentials for testing only.'
+            );
+          }
+          throw new Error('Invalid response from server. Please check backend configuration.');
+        }
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Login failed. Please try again.');
+        }
       }
 
       if (data.success) {
         // Update auth context
         login(data.user);
         
-        // Redirect to dashboard
-        navigate(data.redirect || '/backend/admin/dashboard.php');
+        // Navigate to home page (backend dashboards are PHP files)
+        navigate('/');
       } else {
         throw new Error(data.message || 'Login failed');
       }
@@ -135,9 +141,34 @@ export default function Login() {
                 </div>
               )}
 
+              {/* Mock mode toggle */}
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-amber-100 text-xs font-semibold uppercase">
+                    {useMock ? '🧪 Mock Mode (Testing)' : '🔌 Backend Mode'}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newMode = !useMock;
+                      setUseMock(newMode);
+                      toggleMockMode(newMode);
+                    }}
+                    className="text-xs px-3 py-1 bg-amber-600 hover:bg-amber-700 text-white rounded transition-colors"
+                  >
+                    {useMock ? 'Use Backend' : 'Use Mock'}
+                  </button>
+                </div>
+                <p className="text-xs text-slate-400">
+                  {useMock 
+                    ? 'Testing with demo data. No backend required.' 
+                    : 'Connecting to PHP backend. Requires XAMPP/WAMP.'}
+                </p>
+              </div>
+
               {/* Demo credentials info */}
               <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-                <p className="text-blue-100 text-xs font-semibold mb-2 uppercase">Demo Credentials Available</p>
+                <p className="text-blue-100 text-xs font-semibold mb-2 uppercase">Demo Credentials</p>
                 <div className="space-y-2 text-xs">
                   <button
                     type="button"
@@ -153,6 +184,15 @@ export default function Login() {
                   >
                     <span className="text-blue-300">HR Manager:</span> <span className="text-slate-300">hr_manager / HR@2025</span>
                   </button>
+                  {useMock && (
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ username: 'demo', password: 'demo123' })}
+                      className="block w-full text-left hover:text-blue-300 transition-colors"
+                    >
+                      <span className="text-blue-300">Demo User:</span> <span className="text-slate-300">demo / demo123</span>
+                    </button>
+                  )}
                 </div>
               </div>
 
