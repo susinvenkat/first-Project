@@ -516,6 +516,7 @@ export default function AccessibleForm() {
 ## Best Practices
 
 ### 1. Always Validate Forms
+
 ```jsx
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -530,6 +531,7 @@ const handleSubmit = (e) => {
 ```
 
 ### 2. Show Loading States
+
 ```jsx
 <Button loading={isSubmitting} disabled={isSubmitting}>
   Save Changes
@@ -537,12 +539,14 @@ const handleSubmit = (e) => {
 ```
 
 ### 3. Provide Feedback
+
 ```jsx
 {success && <Alert type="success" message="Saved successfully!" />}
 {error && <Alert type="error" message={error} />}
 ```
 
 ### 4. Use Proper ARIA Labels
+
 ```jsx
 <Modal
   isOpen={isOpen}
@@ -552,6 +556,7 @@ const handleSubmit = (e) => {
 ```
 
 ### 5. Handle Accessibility
+
 ```jsx
 <FormInput
   label="Product"
@@ -567,7 +572,9 @@ const handleSubmit = (e) => {
 ## Common Issues & Solutions
 
 ### Issue: Form Validation Not Working
+
 **Solution**: Ensure errors are cleared after successful submission
+
 ```jsx
 const handleSubmit = async () => {
   setErrors({}); // Clear errors first
@@ -576,13 +583,17 @@ const handleSubmit = async () => {
 ```
 
 ### Issue: Modal Not Closing
+
 **Solution**: Check if state is properly updated
+
 ```jsx
 <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
 ```
 
 ### Issue: Accessibility Score Low
-**Solution**: 
+
+**Solution**:
+
 - Add aria-labels to all interactive elements
 - Use semantic HTML
 - Test with screen readers
@@ -593,6 +604,7 @@ const handleSubmit = async () => {
 ## Testing Components
 
 ### Unit Test Example
+
 ```jsx
 import { render, screen } from '@testing-library/react';
 import Button from '../components/common/Button';
@@ -615,6 +627,6 @@ test('Button calls onClick handler', () => {
 ## Resources
 
 - Full component documentation: `UI_IMPROVEMENTS_GUIDE.md`
-- Tailwind CSS: https://tailwindcss.com/docs
-- React Documentation: https://react.dev
-- WCAG Guidelines: https://www.w3.org/WAI/WCAG21/quickref/
+- Tailwind CSS: <https://tailwindcss.com/docs>
+- React Documentation: <https://react.dev>
+- WCAG Guidelines: <https://www.w3.org/WAI/WCAG21/quickref/>

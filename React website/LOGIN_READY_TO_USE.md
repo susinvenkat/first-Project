@@ -34,7 +34,7 @@ Run this in your terminal:
 npm run dev
 ```
 
-You should see: ✅ **"ready in XXX ms"** and **"http://localhost:5173"**
+You should see: ✅ **"ready in XXX ms"** and **"<http://localhost:5173>"**
 
 ### Step 3️⃣: Visit Login Page
 

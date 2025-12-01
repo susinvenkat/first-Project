@@ -1,6 +1,7 @@
 # UI/UX Improvements Documentation
 
 ## Overview
+
 This document outlines all UI/UX improvements implemented across the Susin Group website to enhance functionality, accessibility, and user experience.
 
 ---
@@ -10,6 +11,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ### New Reusable Components
 
 #### FormInput
+
 - **Location**: `src/components/common/FormInput.jsx`
 - **Features**:
   - Built-in error states with validation messages
@@ -20,6 +22,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Support for all HTML input types
 
 **Usage**:
+
 ```jsx
 <FormInput
   label="Email"
@@ -33,6 +36,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### FormTextarea
+
 - **Location**: `src/components/common/FormTextarea.jsx`
 - **Features**:
   - Character count display
@@ -42,6 +46,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Disabled state
 
 **Usage**:
+
 ```jsx
 <FormTextarea
   label="Message"
@@ -53,6 +58,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### FormSelect
+
 - **Location**: `src/components/common/FormSelect.jsx`
 - **Features**:
   - Accessible dropdown with ARIA labels
@@ -62,6 +68,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Keyboard navigation support
 
 **Usage**:
+
 ```jsx
 <FormSelect
   label="Product Type"
@@ -75,6 +82,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### Button
+
 - **Location**: `src/components/common/Button.jsx`
 - **Features**:
   - Multiple variants (primary, secondary, outline, danger, ghost)
@@ -85,6 +93,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Focus ring accessibility
 
 **Usage**:
+
 ```jsx
 <Button variant="primary" size="md" icon="send" loading={isSubmitting}>
   Submit
@@ -92,6 +101,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### Modal
+
 - **Location**: `src/components/common/Modal.jsx`
 - **Features**:
   - Smooth animations (slide-up)
@@ -102,6 +112,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Accessible close button
 
 **Usage**:
+
 ```jsx
 <Modal
   isOpen={isOpen}
@@ -114,6 +125,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### Card
+
 - **Location**: `src/components/common/Card.jsx`
 - **Features**:
   - Hover effects with elevation
@@ -123,6 +135,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Smooth transitions
 
 **Usage**:
+
 ```jsx
 <Card hover shadow="lg" onClick={handleClick}>
   <h3>Product Title</h3>
@@ -131,6 +144,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### Alert
+
 - **Location**: `src/components/common/Alert.jsx`
 - **Features**:
   - Four types (info, success, warning, error)
@@ -140,11 +154,13 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Accessibility compliant
 
 **Usage**:
+
 ```jsx
 <Alert type="success" title="Success" message="Operation completed" />
 ```
 
 #### Badge
+
 - **Location**: `src/components/common/Badge.jsx`
 - **Features**:
   - Multiple variants (primary, success, warning, error, info, secondary)
@@ -153,6 +169,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Border styling
 
 **Usage**:
+
 ```jsx
 <Badge variant="primary" size="md" icon="star">
   Featured
@@ -160,6 +177,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### Tabs
+
 - **Location**: `src/components/common/Tabs.jsx`
 - **Features**:
   - Keyboard navigation
@@ -169,6 +187,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - onChange callback
 
 **Usage**:
+
 ```jsx
 <Tabs
   tabs={[
@@ -179,6 +198,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### Breadcrumb
+
 - **Location**: `src/components/common/Breadcrumb.jsx`
 - **Features**:
   - Semantic navigation
@@ -187,6 +207,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Accessibility attributes
 
 **Usage**:
+
 ```jsx
 <Breadcrumb items={[
   { label: 'Home', href: '/' },
@@ -196,6 +217,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ```
 
 #### SkeletonLoader
+
 - **Location**: `src/components/common/SkeletonLoader.jsx`
 - **Features**:
   - Three types: card, text, table
@@ -204,11 +226,13 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Responsive grid layout
 
 **Usage**:
+
 ```jsx
 <SkeletonLoader type="card" count={3} />
 ```
 
 #### EmptyState
+
 - **Location**: `src/components/common/EmptyState.jsx`
 - **Features**:
   - Icon display
@@ -217,6 +241,7 @@ This document outlines all UI/UX improvements implemented across the Susin Group
   - Centered layout
 
 **Usage**:
+
 ```jsx
 <EmptyState
   icon="inbox"
@@ -232,9 +257,11 @@ This document outlines all UI/UX improvements implemented across the Susin Group
 ## 2. Accessibility Hooks
 
 ### useKeyboardNavigation
+
 - **Location**: `src/hooks/useAccessibility.js`
 - **Purpose**: Handle Enter and Escape key events
 - **Usage**:
+
 ```jsx
 useKeyboardNavigation(
   () => handleSubmit(),
@@ -243,18 +270,22 @@ useKeyboardNavigation(
 ```
 
 ### useFocusTrap
+
 - **Location**: `src/hooks/useAccessibility.js`
 - **Purpose**: Trap focus within modal/popup
 - **Usage**:
+
 ```jsx
 const modalRef = useRef();
 useFocusTrap(modalRef);
 ```
 
 ### useAriaLive
+
 - **Location**: `src/hooks/useAccessibility.js`
 - **Purpose**: Announce screen reader messages
 - **Usage**:
+
 ```jsx
 useAriaLive('Item added to cart', 'polite', 3000);
 ```
@@ -264,7 +295,9 @@ useAriaLive('Item added to cart', 'polite', 3000);
 ## 3. Enhanced Components
 
 ### Header/Navigation
+
 **Improvements**:
+
 - Better mobile menu with smooth animations
 - Dropdown hover/focus states
 - Active link highlighting
@@ -275,7 +308,9 @@ useAriaLive('Item added to cart', 'polite', 3000);
 - Responsive breakpoints
 
 ### Footer
+
 **Improvements**:
+
 - Newsletter subscription form
 - Enhanced grid layout (5 columns on desktop, responsive on mobile)
 - Social media icons with hover effects
@@ -292,17 +327,20 @@ useAriaLive('Item added to cart', 'polite', 3000);
 ### New CSS Classes
 
 #### Accessibility
+
 - `.sr-only` - Screen reader only content
 - `.sr-only-focusable` - Hidden until focused
 - `.focus-ring` - Accessible focus indicator
 - `.touch-target` - Minimum tap target size (44x44px)
 
 #### Responsive
+
 - `.responsive-grid` - Mobile-first responsive grid
 - `.safe-area-container` - Notch-aware safe area
 - `.img-responsive` - Responsive image
 
 #### Animations
+
 - `.animate-fade-in` - Fade in effect
 - `.animate-slide-up` - Slide up from bottom
 - `.animate-float` - Floating motion
@@ -310,11 +348,13 @@ useAriaLive('Item added to cart', 'polite', 3000);
 - `.animate-pulse-ring` - Ring pulse animation
 
 #### Shadows & Effects
+
 - `.shadow-glow` - Glowing shadow effect
 - `.shadow-glow-lg` - Large glowing shadow
 - `.glow-effect` - General glow effect
 
 ### Media Queries
+
 - **Mobile**: < 640px
 - **Tablet**: 640px - 1024px
 - **Desktop**: > 1024px
@@ -328,6 +368,7 @@ useAriaLive('Item added to cart', 'polite', 3000);
 ## 5. Responsive Design Improvements
 
 ### Mobile Optimization
+
 - 44x44px minimum touch targets
 - Mobile-first grid system
 - Safe area insets for notches
@@ -336,12 +377,14 @@ useAriaLive('Item added to cart', 'polite', 3000);
 - Improved mobile menu
 
 ### Tablet Optimization
+
 - 2-column layouts
 - Better spacing
 - Adjusted typography
 - Improved navigation
 
 ### Desktop Optimization
+
 - 3+ column layouts
 - Full featured layouts
 - Hover states
@@ -352,6 +395,7 @@ useAriaLive('Item added to cart', 'polite', 3000);
 ## 6. Form Validation & Error Handling
 
 ### Integrated Features
+
 - Real-time validation feedback
 - Error message display
 - Hint text support
@@ -361,6 +405,7 @@ useAriaLive('Item added to cart', 'polite', 3000);
 - Disabled states
 
 ### Best Practices
+
 ```jsx
 const [formData, setFormData] = useState({});
 const [errors, setErrors] = useState({});
@@ -382,6 +427,7 @@ const handleSubmit = async (e) => {
 ## 7. Loading States & Placeholders
 
 ### SkeletonLoader Patterns
+
 ```jsx
 // Cards
 <SkeletonLoader type="card" count={3} />
@@ -394,6 +440,7 @@ const handleSubmit = async (e) => {
 ```
 
 ### EmptyState Patterns
+
 ```jsx
 <EmptyState
   icon="search"
@@ -409,6 +456,7 @@ const handleSubmit = async (e) => {
 ## 8. Navigation & Breadcrumbs
 
 ### Breadcrumb Usage
+
 ```jsx
 <Breadcrumb items={[
   { label: 'Home', href: '/' },
@@ -423,6 +471,7 @@ const handleSubmit = async (e) => {
 ## 9. Performance Optimizations
 
 ### Implemented
+
 - Lazy loading of images
 - Skeleton placeholders during load
 - Smooth animations (not janky)
@@ -431,6 +480,7 @@ const handleSubmit = async (e) => {
 - Memoized callbacks
 
 ### Future Enhancements
+
 - Virtual scrolling for large lists
 - Image compression
 - Code splitting
@@ -441,6 +491,7 @@ const handleSubmit = async (e) => {
 ## 10. Browser Support
 
 ### Tested On
+
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
@@ -448,6 +499,7 @@ const handleSubmit = async (e) => {
 - Mobile browsers (iOS Safari, Chrome Android)
 
 ### Fallbacks
+
 - Backdrop blur with fallbacks
 - CSS Grid with fallback layouts
 - Modern CSS with vendor prefixes
@@ -457,6 +509,7 @@ const handleSubmit = async (e) => {
 ## 11. Implementation Checklist
 
 ### For Developers
+
 - [ ] Use FormInput/FormTextarea/FormSelect for all forms
 - [ ] Implement error handling with Alert component
 - [ ] Use Button component for all CTAs
@@ -469,6 +522,7 @@ const handleSubmit = async (e) => {
 - [ ] Optimize images
 
 ### For Designers
+
 - [ ] Review color contrast ratios
 - [ ] Verify typography hierarchy
 - [ ] Test mobile responsiveness
@@ -483,18 +537,21 @@ const handleSubmit = async (e) => {
 ## 12. Testing
 
 ### Accessibility Testing
+
 - Use axe DevTools
 - Test with NVDA/JAWS
 - Keyboard navigation testing
 - Color contrast verification
 
 ### Responsive Testing
+
 - Chrome DevTools responsive mode
 - Physical device testing
 - Breakpoint verification
 - Safe area testing
 
 ### Performance Testing
+
 - Lighthouse audits
 - PageSpeed Insights
 - Web Vitals monitoring
