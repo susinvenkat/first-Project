@@ -41,8 +41,8 @@ export default function Login() {
       if (useMock) {
         data = await mockLogin(formData.username.trim(), formData.password);
       } else {
-        // Call real backend login API
-        const response = await fetch('/backend/auth/login.php', {
+        // Call real Node.js backend login API
+        const response = await fetch('/api/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -65,7 +65,8 @@ export default function Login() {
               '⚠️ Backend server not running.\n\n' +
               'Options:\n' +
               '1. Enable "Mock Mode" below for UI testing\n' +
-              '2. Start XAMPP/WAMP and visit: http://localhost/backend/setup_admin.php\n\n' +
+              '2. Start backend: cd backend && npm run dev\n' +
+              '3. Initialize database: cd backend && npm run setup\n\n' +
               'Mock mode uses demo credentials for testing only.'
             );
           }
@@ -162,7 +163,7 @@ export default function Login() {
                 <p className="text-xs text-slate-400">
                   {useMock 
                     ? 'Testing with demo data. No backend required.' 
-                    : 'Connecting to PHP backend. Requires XAMPP/WAMP.'}
+                    : 'Connecting to Node.js backend (MongoDB). Port 3000.'}
                 </p>
               </div>
 

@@ -7,6 +7,7 @@
 ## 1. Hero Section Animations
 
 ### On Page Load
+
 ```
 Badge (ISO Certified)
 ├─ Delay: 200ms
@@ -40,6 +41,7 @@ CTA Buttons
 ```
 
 ### Continuous Animations
+
 - **Floating Particles**: 20 elements, 15s loop, random positions
 - **Scroll Indicator**: Bounce animation, 2s loop
 - **Badge Pulse**: Dot pulses continuously
@@ -47,6 +49,7 @@ CTA Buttons
 - **Mouse Parallax**: Content shifts based on cursor position
 
 ### Carousel
+
 - **Auto-Advance**: Every 6 seconds
 - **Transition**: 1000ms cross-fade
 - **Manual Control**: Previous/Next buttons
@@ -83,6 +86,7 @@ Glow Effect:
 ```
 
 ### 4 Stat Cards
+
 1. **Industries**: Blue gradient glow
 2. **Years**: Amber gradient glow
 3. **Countries**: Green gradient glow
@@ -202,6 +206,7 @@ Decorative Corner:
 ## 6. Testimonials Carousel
 
 ### Auto-Rotation
+
 ```
 Testimonial Transition:
 ├─ Interval: 5000ms (5 seconds)
@@ -211,6 +216,7 @@ Testimonial Transition:
 ```
 
 ### Manual Control
+
 ```
 Dot Indicators:
 ├─ Active: w-16 h-4, primary-500
@@ -224,6 +230,7 @@ Dot Indicators:
 ## 7. CTA Section
 
 ### Background Animation
+
 ```
 Floating Blur Circles (2):
 ├─ Animation: Pulse
@@ -233,6 +240,7 @@ Floating Blur Circles (2):
 ```
 
 ### Button Animations
+
 ```
 Primary CTA (White):
 ├─ Base: White bg, shadow-2xl
@@ -270,6 +278,7 @@ Icon Container:
 ## Global Interaction Patterns
 
 ### Link Hover Pattern
+
 ```css
 Standard Link:
 ├─ Base: Underline offset
@@ -288,6 +297,7 @@ Card Link:
 ```
 
 ### Scroll Behaviors
+
 ```
 Parallax Elements:
 ├─ Background Images: 0.5x scroll speed
@@ -305,16 +315,19 @@ Intersection Animations:
 ## Performance Optimizations
 
 ### GPU-Accelerated Properties
+
 - `transform` (translate, scale, rotate)
 - `opacity`
 - `filter` (blur, backdrop-filter)
 
 ### Avoided (CPU-Heavy)
+
 - ❌ `width`/`height` animations
 - ❌ `margin`/`padding` animations
 - ❌ `box-shadow` on animation (only on state change)
 
 ### Best Practices Applied
+
 - ✅ `will-change` implied by transforms
 - ✅ Debounced scroll listeners
 - ✅ Intersection observers for visibility
@@ -333,6 +346,7 @@ cubic-bezier: Custom curves (future enhancements)
 ```
 
 ### Applied Durations
+
 - **Instant**: 200ms (color changes)
 - **Quick**: 300ms (hover effects)
 - **Standard**: 500ms (card interactions)
@@ -346,6 +360,7 @@ cubic-bezier: Custom curves (future enhancements)
 ## Testing Checklist
 
 ### Animation Testing
+
 - [ ] Hero loads with staggered animations
 - [ ] Carousel auto-advances every 6 seconds
 - [ ] Stats counter triggers on scroll
@@ -357,6 +372,7 @@ cubic-bezier: Custom curves (future enhancements)
 - [ ] All transitions are smooth (60fps)
 
 ### Interaction Testing
+
 - [ ] Hero prev/next buttons work
 - [ ] Play/pause toggles carousel
 - [ ] Dot indicators change slides
@@ -366,6 +382,7 @@ cubic-bezier: Custom curves (future enhancements)
 - [ ] Focus states visible for keyboard navigation
 
 ### Responsive Testing
+
 - [ ] Mobile: 2-column stats grid
 - [ ] Tablet: Adjusted product grid
 - [ ] Desktop: Full effects enabled
@@ -378,6 +395,7 @@ cubic-bezier: Custom curves (future enhancements)
 ## Browser DevTools Tips
 
 ### Chrome DevTools
+
 ```
 Performance Tab:
 - Record page load
@@ -395,6 +413,7 @@ Console:
 ```
 
 ### Firefox DevTools
+
 ```
 Inspector:
 - Animation timeline view
@@ -409,6 +428,7 @@ Performance:
 ## Customization Guide
 
 ### To Change Animation Speeds
+
 ```jsx
 // In Home_New.jsx
 const timer = setInterval(() => {
@@ -417,6 +437,7 @@ const timer = setInterval(() => {
 ```
 
 ### To Add New Floating Particles
+
 ```jsx
 {[...Array(20)].map((_, i) => ( // ← Change array length
   // Particle code
@@ -424,6 +445,7 @@ const timer = setInterval(() => {
 ```
 
 ### To Modify Transition Delays
+
 ```jsx
 style={{ transitionDelay: '400ms' }} // ← Adjust timing
 ```
@@ -433,15 +455,19 @@ style={{ transitionDelay: '400ms' }} // ← Adjust timing
 ## Common Issues & Solutions
 
 ### Issue: Animations feel choppy
+
 **Solution**: Check browser hardware acceleration is enabled
 
 ### Issue: Stats don't animate
+
 **Solution**: Ensure element has id="stats-section"
 
 ### Issue: Hover effects don't work on mobile
+
 **Solution**: Expected behavior (touch devices don't have hover)
 
 ### Issue: Carousel doesn't auto-play
+
 **Solution**: Check isPlaying state, verify useEffect runs
 
 ---
