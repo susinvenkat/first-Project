@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Container from '../components/ui/Container';
+import Button from '../components/ui/Button';
 import SEO from '../components/common/SEO';
 
 export default function HomeAdvanced() {
@@ -141,7 +143,7 @@ export default function HomeAdvanced() {
           </div>
 
           {/* Content */}
-          <div className="container mx-auto px-4 lg:px-6 relative z-10">
+          <Container className="relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left - Text Content */}
               <div className="space-y-8">
@@ -162,25 +164,13 @@ export default function HomeAdvanced() {
                   Revolutionary actuator technology powering critical infrastructure across 100+ industries. Precision. Reliability. Innovation.
                 </p>
 
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <Link 
-                    to="/products" 
-                    className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 rounded-full font-bold text-lg overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-primary-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="relative flex items-center gap-2">
-                      Explore Products
-                      <i className="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                    </span>
-                  </Link>
-
-                  <Link 
-                    to="/contact" 
-                    className="group px-8 py-4 border-2 border-slate-400 rounded-full font-bold text-lg hover:bg-white/10 transition-all"
-                  >
-                    Get Consultation
-                    <i className="fas fa-phone ml-2 group-hover:scale-110 transition-transform inline-block"></i>
-                  </Link>
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <Button as={Link} to="/products" variant="primary" size="lg" className="gap-2">
+                    Explore Products <i className="fas fa-arrow-right"></i>
+                  </Button>
+                  <Button as={Link} to="/contact" variant="outline" size="lg" className="gap-2 border-slate-400 text-white hover:text-white/90">
+                    Get Consultation <i className="fas fa-phone"></i>
+                  </Button>
                 </div>
 
                 {/* Stats */}
@@ -219,7 +209,7 @@ export default function HomeAdvanced() {
                 </div>
               </div>
             </div>
-          </div>
+          </Container>
 
           {/* Scroll Indicator */}
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
