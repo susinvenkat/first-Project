@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Products() {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
@@ -114,26 +116,26 @@ export default function Products() {
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
               <i className="fas fa-certificate mr-2"></i>
-              ISO 9001:2015 & API Certified Products
+              {t('products.heroBadge')}
             </span>
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
-              Industrial Actuators & Motion Control
+              {t('products.heroTitle')}
             </h1>
             <p className="text-xl lg:text-2xl mb-8 text-secondary-200 leading-relaxed animate-slide-up">
-              Comprehensive valve automation solutions engineered for reliability, precision, and performance across all critical industries
+              {t('products.heroSubtitle')}
             </p>
             <div className="flex flex-wrap justify-center gap-6 animate-scale-in">
               <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
                 <div className="text-3xl font-bold text-primary-400">10 - 120,867 Nm</div>
-                <div className="text-sm text-secondary-300">Torque Range</div>
+                <div className="text-sm text-secondary-300">{t('products.statsTorque')}</div>
               </div>
               <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
                 <div className="text-3xl font-bold text-primary-400">32+ Years</div>
-                <div className="text-sm text-secondary-300">Experience</div>
+                <div className="text-sm text-secondary-300">{t('products.statsExperience')}</div>
               </div>
               <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
                 <div className="text-3xl font-bold text-primary-400">100+</div>
-                <div className="text-sm text-secondary-300">Industries</div>
+                <div className="text-sm text-secondary-300">{t('products.statsIndustries')}</div>
               </div>
             </div>
           </div>
@@ -145,10 +147,10 @@ export default function Products() {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              { id: 'pneumatic', icon: 'fa-wind', label: 'Pneumatic Actuators' },
-              { id: 'electro-hydraulic', icon: 'fa-tint', label: 'Electro-Hydraulic' },
-              { id: 'electrical', icon: 'fa-bolt', label: 'Electrical Actuators' },
-              { id: 'gearboxes', icon: 'fa-cogs', label: 'Gearboxes' }
+              { id: 'pneumatic', icon: 'fa-wind', label: t('products.quickNav.pneumatic') },
+              { id: 'electro-hydraulic', icon: 'fa-tint', label: t('products.quickNav.electroHydraulic') },
+              { id: 'electrical', icon: 'fa-bolt', label: t('products.quickNav.electrical') },
+              { id: 'gearboxes', icon: 'fa-cogs', label: t('products.quickNav.gearboxes') }
             ].map((item, index) => (
               <a
                 key={index}
@@ -169,27 +171,27 @@ export default function Products() {
           <div className="text-center mb-16 animate-fade-in">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              PNEUMATIC SOLUTIONS
+              {t('products.pneumaticLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Pneumatic Scotch Yoke Actuators
+              {t('products.pneumaticTitle')}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto mb-8">
-              Industry-leading scotch yoke design delivering reliable quarter-turn automation for critical applications worldwide
+              {t('products.pneumaticSubtitle')}
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <div className="flex items-center bg-blue-50 px-4 py-2 rounded-lg">
                 <i className="fas fa-arrows-alt-h text-blue-600 mr-2"></i>
-                <span className="font-semibold">Torque: 10 Nm - 120,867 Nm</span>
+                <span className="font-semibold">{t('products.torqueLabel')}</span>
               </div>
               <div className="flex items-center bg-orange-50 px-4 py-2 rounded-lg">
                 <i className="fas fa-temperature-low text-orange-600 mr-2"></i>
-                <span className="font-semibold">Temp: -40°C to +80°C</span>
+                <span className="font-semibold">{t('products.tempLabel')}</span>
               </div>
               <div className="flex items-center bg-green-50 px-4 py-2 rounded-lg">
                 <i className="fas fa-shield-alt text-green-600 mr-2"></i>
-                <span className="font-semibold">ATEX/IECEx Certified</span>
+                <span className="font-semibold">{t('products.certsLabel')}</span>
               </div>
             </div>
           </div>
@@ -215,7 +217,7 @@ export default function Products() {
                   <p className="text-secondary-600 text-sm mb-4">{product.type}</p>
                   
                   <div className="mb-4">
-                    <h4 className="font-semibold text-secondary-800 mb-2 text-sm">Key Features:</h4>
+                    <h4 className="font-semibold text-secondary-800 mb-2 text-sm">{t('products.keyFeatures')}</h4>
                     <ul className="space-y-2">
                       {product.features.slice(0, 4).map((feature, i) => (
                         <li key={i} className="flex items-start text-sm text-secondary-700">
@@ -227,7 +229,7 @@ export default function Products() {
                   </div>
 
                   <div className="mb-4 pt-4 border-t border-secondary-100">
-                    <h4 className="font-semibold text-secondary-800 mb-2 text-sm">Applications:</h4>
+                    <h4 className="font-semibold text-secondary-800 mb-2 text-sm">{t('products.applications')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {product.applications.map((app, i) => (
                         <span key={i} className="bg-secondary-100 text-secondary-700 text-xs px-2 py-1 rounded-full">
@@ -241,7 +243,7 @@ export default function Products() {
                     to="/contact#quote" 
                     className="mt-4 inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 group-hover:translate-x-2 transition-transform"
                   >
-                    Request Quote 
+                    {t('products.requestQuote')} 
                     <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </div>
@@ -251,16 +253,16 @@ export default function Products() {
 
           {/* Technical Specifications CTA */}
           <div className="mt-16 bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 text-white text-center">
-            <h3 className="text-2xl font-bold mb-4">Need Detailed Technical Specifications?</h3>
-            <p className="mb-6 text-primary-100">Download our comprehensive product catalog with full datasheets, dimensions, and performance curves</p>
+            <h3 className="text-2xl font-bold mb-4">{t('products.techTitle')}</h3>
+            <p className="mb-6 text-primary-100">{t('products.techSubtitle')}</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact#quote" className="bg-white text-primary-700 hover:bg-secondary-50 px-8 py-3 rounded-xl font-bold inline-flex items-center transition-all">
                 <i className="fas fa-download mr-2"></i>
-                Download Catalog
+                {t('products.techDownload')}
               </Link>
               <Link to="/contact" className="bg-primary-800 hover:bg-primary-900 px-8 py-3 rounded-xl font-bold inline-flex items-center transition-all border-2 border-white/20">
                 <i className="fas fa-phone mr-2"></i>
-                Speak to Expert
+                {t('products.techSpeak')}
               </Link>
             </div>
           </div>
@@ -273,14 +275,14 @@ export default function Products() {
           <div className="text-center mb-16">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              ELECTRO-HYDRAULIC SOLUTIONS
+              {t('products.ehLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Electro-Hydraulic Actuators
+              {t('products.ehTitle')}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Extreme high-torque output with precision control for the most demanding heavy-duty applications
+              {t('products.ehSubtitle')}
             </p>
           </div>
 
@@ -340,14 +342,14 @@ export default function Products() {
           <div className="text-center mb-16">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              ELECTRICAL SOLUTIONS
+              {t('products.electricalLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Smart Electric Actuators
+              {t('products.electricalTitle')}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Industry 4.0 ready with IoT integration, remote monitoring, and intelligent control
+              {t('products.electricalSubtitle')}
             </p>
           </div>
 
@@ -419,14 +421,14 @@ export default function Products() {
           <div className="text-center mb-16">
             <span className="text-primary-400 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-400 mr-3"></div>
-              MOTION CONTROL
+              {t('products.gearLabel')}
               <div className="h-1 w-12 bg-primary-400 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold mb-6">
-              Manual & Power Gearboxes
+              {t('products.gearTitle')}
             </h2>
             <p className="text-xl text-secondary-300 max-w-3xl mx-auto">
-              Precision-engineered gearboxes for torque multiplication and manual override operations
+              {t('products.gearSubtitle')}
             </p>
           </div>
 
@@ -462,7 +464,7 @@ export default function Products() {
               className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-10 py-4 rounded-xl font-bold text-lg shadow-glow transition-all"
             >
               <i className="fas fa-calculator mr-3"></i>
-              Get Custom Gearbox Quote
+              {t('products.gearCta')}
               <i className="fas fa-arrow-right ml-3"></i>
             </Link>
           </div>
@@ -474,19 +476,19 @@ export default function Products() {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl lg:text-5xl font-heading font-bold mb-6">
-              Need Help Selecting the Right Actuator?
+              {t('products.needHelpTitle')}
             </h2>
             <p className="text-xl mb-10 text-primary-100">
-              Our application engineers will help you choose the optimal solution for your specific requirements
+              {t('products.needHelpSubtitle')}
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <Link to="/contact#quote" className="bg-white text-primary-700 hover:bg-secondary-50 px-10 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all inline-flex items-center">
                 <i className="fas fa-file-invoice mr-3"></i>
-                Request Technical Quote
+                {t('products.needHelpRequest')}
               </Link>
               <Link to="/contact" className="bg-primary-800 hover:bg-primary-900 px-10 py-4 rounded-xl font-bold text-lg border-2 border-white/30 transition-all inline-flex items-center">
                 <i className="fas fa-headset mr-3"></i>
-                Talk to Expert
+                {t('products.needHelpTalk')}
               </Link>
             </div>
           </div>

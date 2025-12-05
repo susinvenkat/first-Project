@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import Button from '../components/ui/Button';
+import Card from '../components/ui/Card';
+import Badge from '../components/ui/Badge';
+import GradientText from '../components/ui/GradientText';
 import SEO from '../components/common/SEO';
 import LazyImage from '../components/common/LazyImage';
 import { useLanguage } from '../context/LanguageContext';
@@ -150,15 +153,19 @@ export default function HomeAdvanced() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left - Text Content */}
               <div className="space-y-8">
-                <div className="inline-flex items-center space-x-2 bg-primary-600/20 backdrop-blur border border-primary-500/30 rounded-full px-6 py-2">
-                  <span className="w-3 h-3 bg-primary-500 rounded-full animate-pulse"></span>
-                  <span className="text-sm font-semibold text-primary-300">{t('home.badge')}</span>
-                </div>
+                <Badge variant="primary" size="lg" icon="fas fa-bolt" className="animate-pulse-ring">
+                  {t('home.badge')}
+                </Badge>
 
                 <h1 className="text-7xl lg:text-8xl font-bold leading-tight">
-                  <span className="bg-gradient-to-r from-primary-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  <GradientText 
+                    from="from-primary-400" 
+                    via="via-blue-400" 
+                    to="to-cyan-400"
+                    animate={true}
+                  >
                     {t('home.title1')}
-                  </span>
+                  </GradientText>
                   <br />
                   {t('home.title2')}
                 </h1>
@@ -166,7 +173,7 @@ export default function HomeAdvanced() {
                 <p className="text-xl text-slate-300 leading-relaxed max-w-xl">{t('home.subtitle')}</p>
 
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button as={Link} to="/products" variant="primary" size="lg" className="gap-2">
+                  <Button as={Link} to="/products" variant="primary" size="lg" className="gap-2 shadow-glow">
                     {t('home.ctaExplore')} <i className="fas fa-arrow-right"></i>
                   </Button>
                   <Button as={Link} to="/contact" variant="outline" size="lg" className="gap-2 border-slate-400 text-white hover:text-white/90">
@@ -223,19 +230,20 @@ export default function HomeAdvanced() {
 
         {/* FEATURES SECTION */}
         <section className="py-24 relative">
-          <div className="container mx-auto px-4 lg:px-6">
+          <Container>
             <div className="text-center mb-20">
               <h2 className="text-5xl lg:text-6xl font-bold mb-6">
-                {t('home.whyChoose')} <span className="bg-gradient-to-r from-primary-400 to-blue-400 bg-clip-text text-transparent">SUSIN iTORK</span>
+                {t('home.whyChoose')} <GradientText from="from-primary-400" to="to-blue-400">SUSIN iTORK</GradientText>
               </h2>
               <p className="text-xl text-slate-400 max-w-2xl mx-auto">{t('home.whySubtitle')}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, idx) => (
-                <div 
+                <Card 
                   key={idx}
-                  className="group relative bg-slate-800/50 backdrop-blur border border-slate-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all duration-300 hover:-translate-y-2"
+                  variant="dark"
+                  className="bg-slate-800/50 backdrop-blur border-slate-700 hover:border-primary-500/50 p-8 group"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity`}></div>
                   
@@ -249,15 +257,15 @@ export default function HomeAdvanced() {
                   <p className="text-slate-400 group-hover:text-slate-300 transition-colors">
                     {feature.description}
                   </p>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* PRODUCTS SHOWCASE */}
         <section className="py-24 relative">
-          <div className="container mx-auto px-4 lg:px-6">
+          <Container>
             <h2 className="text-5xl lg:text-6xl font-bold mb-20 text-center">
               {t('home.portfolio')}
             </h2>
@@ -269,10 +277,12 @@ export default function HomeAdvanced() {
                 { title: t('home.product.electrical'), range: t('home.product.electricalRange'), icon: "fa-bolt", color: "from-yellow-500 to-orange-600" },
                 { title: t('home.product.gearboxes'), range: t('home.product.gearboxesRange'), icon: "fa-cogs", color: "from-green-500 to-emerald-600" }
               ].map((prod, idx) => (
-                <Link 
+                <Card
                   key={idx}
+                  as={Link}
                   to="/products"
-                  className="group relative bg-slate-800/50 backdrop-blur border border-slate-700 rounded-2xl overflow-hidden hover:border-primary-500/50 transition-all duration-300 hover:-translate-y-2"
+                  variant="dark"
+                  className="bg-slate-800/50 backdrop-blur border-slate-700 hover:border-primary-500/50 overflow-hidden group"
                 >
                   <div className={`h-40 bg-gradient-to-br ${prod.color} flex items-center justify-center relative overflow-hidden`}>
                     <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500">
@@ -290,24 +300,25 @@ export default function HomeAdvanced() {
                       <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                     </div>
                   </div>
-                </Link>
+                </Card>
               ))}
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* TESTIMONIALS */}
         <section className="py-24 relative">
-          <div className="container mx-auto px-4 lg:px-6">
+          <Container>
             <h2 className="text-5xl lg:text-6xl font-bold mb-20 text-center">
               {t('home.trustedBy')}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((test, idx) => (
-                <div 
+                <Card
                   key={idx}
-                  className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all"
+                  variant="dark"
+                  className="bg-slate-800/50 backdrop-blur border-slate-700 hover:border-primary-500/50 p-8"
                 >
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(test.rating)].map((_, i) => (
@@ -319,24 +330,25 @@ export default function HomeAdvanced() {
                     <p className="font-bold text-primary-400">{test.name}</p>
                     <p className="text-slate-400 text-sm">{test.company}</p>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* CASE STUDIES */}
         <section className="py-24 relative">
-          <div className="container mx-auto px-4 lg:px-6">
+          <Container>
             <h2 className="text-5xl lg:text-6xl font-bold mb-20 text-center">
               {t('home.successStories')}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               {caseStudies.map((study, idx) => (
-                <div 
+                <Card
                   key={idx}
-                  className="group relative bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-2xl p-8 hover:border-primary-500/50 transition-all overflow-hidden"
+                  variant="dark"
+                  className="group bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700 hover:border-primary-500/50 p-8 overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-primary-600/0 to-blue-600/0 group-hover:from-primary-600/10 group-hover:to-blue-600/10 transition-all"></div>
                   
@@ -350,16 +362,19 @@ export default function HomeAdvanced() {
                       {study.result}
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* CTA SECTION */}
         <section className="py-24 relative">
-          <div className="container mx-auto px-4 lg:px-6">
-            <div className="bg-gradient-to-r from-primary-600 via-blue-600 to-purple-600 rounded-3xl p-16 text-center relative overflow-hidden">
+          <Container>
+            <Card 
+              variant="gradient"
+              className="bg-gradient-to-r from-primary-600 via-blue-600 to-purple-600 p-16 text-center relative overflow-hidden border-0"
+            >
               <div className="absolute inset-0 opacity-20">
                 <div className="absolute w-96 h-96 bg-white/20 rounded-full blur-3xl -top-40 -left-40"></div>
                 <div className="absolute w-96 h-96 bg-white/20 rounded-full blur-3xl -bottom-40 -right-40"></div>
@@ -370,40 +385,48 @@ export default function HomeAdvanced() {
                 <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">{t('home.ctaSubtitle')}</p>
 
                 <div className="flex flex-wrap justify-center gap-6">
-                  <Link 
+                  <Button
+                    as={Link}
                     to="/contact"
-                    className="px-10 py-4 bg-white text-primary-600 font-bold rounded-full hover:bg-slate-100 transition-all inline-flex items-center gap-2 group"
+                    size="lg"
+                    className="bg-white text-primary-600 hover:bg-slate-100 font-bold rounded-full gap-2 px-10 py-4 group shadow-glow"
                   >
                     {t('home.ctaSchedule')}
                     <i className="fas fa-calendar group-hover:scale-110 transition-transform"></i>
-                  </Link>
-                  <Link 
+                  </Button>
+                  <Button
+                    as={Link}
                     to="/products"
-                    className="px-10 py-4 bg-white/20 backdrop-blur text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all inline-flex items-center gap-2 group"
+                    variant="outline"
+                    size="lg"
+                    className="bg-white/20 backdrop-blur text-white border-white/30 hover:bg-white/30 font-bold rounded-full gap-2 px-10 py-4 group"
                   >
                     {t('home.ctaCatalog')}
                     <i className="fas fa-book group-hover:translate-x-1 transition-transform"></i>
-                  </Link>
+                  </Button>
                 </div>
               </div>
-            </div>
-          </div>
+            </Card>
+          </Container>
         </section>
 
         {/* FOOTER CTA */}
         <section className="py-16 border-t border-slate-700">
-          <div className="container mx-auto px-4 lg:px-6 text-center">
+          <Container className="text-center">
             <h3 className="text-3xl font-bold mb-4">{t('home.footerCtaTitle')}</h3>
             <p className="text-slate-400 mb-8">{t('home.footerCtaSubtitle')}</p>
-            <Link 
+            <Button
+              as={Link}
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-primary-600 hover:bg-primary-700 rounded-full font-bold transition-all group"
+              variant="primary"
+              size="lg"
+              className="gap-2 rounded-full group shadow-glow"
             >
               <i className="fas fa-phone"></i>
               {t('home.footerCtaButton')}
               <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-            </Link>
-          </div>
+            </Button>
+          </Container>
         </section>
       </div>
     </>

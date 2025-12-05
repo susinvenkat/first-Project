@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import Card from '../components/ui/Card';
+import Badge from '../components/ui/Badge';
+import GradientText from '../components/ui/GradientText';
+import Container from '../components/common/Container';
+import Button from '../components/ui/Button';
 
 export default function About() {
   const { t } = useLanguage();
@@ -69,27 +74,28 @@ export default function About() {
   return (
     <div className="min-h-screen bg-secondary-50">
       {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-5"></div>
-        <div className="container mx-auto px-4 lg:px-6 relative z-10">
+        <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
-              <i className="fas fa-building mr-2"></i>
+            <Badge variant="primary" size="lg" icon="fas fa-building" className="mb-6 animate-fade-in">
               {t('about.heroBadge')}
-            </span>
+            </Badge>
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
-              {t('about.heroTitle')}
+              <GradientText from="from-primary-400" via="via-blue-400" to="to-cyan-400" animate={true}>
+                {t('about.heroTitle')}
+              </GradientText>
             </h1>
-            <p className="text-xl lg:text-2xl mb-8 text-secondary-200 leading-relaxed animate-slide-up">
+            <p className="text-xl lg:text-2xl mb-8 text-slate-300 leading-relaxed animate-slide-up">
               {t('about.heroSubtitle')}
             </p>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Company Story */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-6">
+        <Container>
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
               <span className="text-primary-600 font-semibold text-lg mb-2 block flex items-center">
@@ -114,30 +120,30 @@ export default function About() {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
+              <Card variant="gradient" hoverable className="p-6 text-center">
                 <div className="text-5xl font-bold text-primary-600 mb-2">1992</div>
-                <div className="text-secondary-700 font-semibold">{t('about.kpiFounded')}</div>
-              </div>
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
+                <div className="text-slate-700 font-semibold">{t('about.kpiFounded')}</div>
+              </Card>
+              <Card variant="gradient" hoverable className="p-6 text-center">
                 <div className="text-5xl font-bold text-primary-600 mb-2">100+</div>
-                <div className="text-secondary-700 font-semibold">{t('about.kpiIndustries')}</div>
-              </div>
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
+                <div className="text-slate-700 font-semibold">{t('about.kpiIndustries')}</div>
+              </Card>
+              <Card variant="gradient" hoverable className="p-6 text-center">
                 <div className="text-5xl font-bold text-primary-600 mb-2">3</div>
-                <div className="text-secondary-700 font-semibold">{t('about.kpiCountries')}</div>
-              </div>
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
+                <div className="text-slate-700 font-semibold">{t('about.kpiCountries')}</div>
+              </Card>
+              <Card variant="gradient" hoverable className="p-6 text-center">
                 <div className="text-5xl font-bold text-primary-600 mb-2">15K+</div>
-                <div className="text-secondary-700 font-semibold">{t('about.kpiProjects')}</div>
-              </div>
+                <div className="text-slate-700 font-semibold">{t('about.kpiProjects')}</div>
+              </Card>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Company Timeline */}
-      <section className="py-20 bg-secondary-50">
-        <div className="container mx-auto px-4 lg:px-6">
+      <section className="py-20 bg-slate-50">
+        <Container>
           <div className="text-center mb-16">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
@@ -161,13 +167,13 @@ export default function About() {
                 <div key={index} className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* Content */}
                   <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-                    <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all border-2 border-secondary-100 hover:border-primary-500">
+                    <Card hoverable className="p-6">
                       <div className={`text-4xl font-bold text-primary-600 mb-2 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                         {milestone.year}
                       </div>
-                      <h4 className="text-xl font-bold text-secondary-900 mb-2">{milestone.title}</h4>
-                      <p className="text-secondary-600">{milestone.description}</p>
-                    </div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2">{milestone.title}</h4>
+                      <p className="text-slate-600">{milestone.description}</p>
+                    </Card>
                   </div>
 
                   {/* Center circle */}
