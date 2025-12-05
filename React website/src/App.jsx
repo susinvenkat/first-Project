@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { AuthProvider } from './context/AuthContext';
+import { LanguageProvider } from './context/LanguageContext';
 import Layout from './components/layout/Layout';
 
 // Eager load Home for better initial experience
@@ -47,11 +48,12 @@ const NotFound = () => (
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Layout>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
+    <LanguageProvider>
+      <AuthProvider>
+        <Router>
+          <Layout>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/products" element={<Products />} />
@@ -69,11 +71,12 @@ function App() {
               {/* Catch all 404 */}
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<Navigate to="/404" replace />} />
-            </Routes>
-          </Suspense>
-        </Layout>
-      </Router>
-    </AuthProvider>
+              </Routes>
+            </Suspense>
+          </Layout>
+        </Router>
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 

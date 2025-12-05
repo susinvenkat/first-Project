@@ -1,7 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { useLanguage } from '../../context/LanguageContext';
 import ProductSearch from '../common/ProductSearch';
+import LazyImage from '../common/LazyImage';
 import LanguageSelector from '../common/LanguageSelector';
 import FAQChatbot from '../common/FAQChatbot';
 
@@ -13,6 +15,7 @@ export default function Header() {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,11 +91,13 @@ export default function Header() {
             <div className="relative">
               {/* Glow effect background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full blur-md opacity-0 group-hover:opacity-60 transition-all duration-500 animate-pulse-slow"></div>
-              <img 
+              <LazyImage 
                 src="/assets/img/susin-logo.svg" 
                 alt="Susin Group Logo" 
                 className="h-14 w-14 relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 drop-shadow-lg group-hover:drop-shadow-2xl"
                 style={{ filter: 'drop-shadow(0 0 8px rgba(37, 99, 235, 0.3))' }}
+                loading="eager"
+                decoding="async"
               />
             </div>
             <div>
@@ -106,12 +111,12 @@ export default function Header() {
           {/* Desktop Menu */}
           <ul className="hidden lg:flex items-center space-x-6">
             <li><Link to="/" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              Home
+              {t('header.home')}
             </Link></li>
             
             <li className="relative group">
               <button className="text-gray-700 hover:text-primary-600 font-medium flex items-center transition-colors">
-                Products<i className="fas fa-chevron-down ml-1 text-xs"></i>
+                {t('header.products')}<i className="fas fa-chevron-down ml-1 text-xs"></i>
               </button>
               <div className="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-secondary-100 z-50">
                 <div className="p-5">
@@ -132,7 +137,7 @@ export default function Header() {
 
             <li className="relative group">
               <button className="text-gray-700 hover:text-primary-600 font-medium flex items-center transition-colors">
-                Solutions<i className="fas fa-chevron-down ml-1 text-xs"></i>
+                {t('header.solutions')}<i className="fas fa-chevron-down ml-1 text-xs"></i>
               </button>
               <div className="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-secondary-100 z-50">
                 <div className="p-5">
@@ -156,7 +161,7 @@ export default function Header() {
 
             <li className="relative group">
               <button className="text-gray-700 hover:text-primary-600 font-medium flex items-center transition-colors">
-                Services<i className="fas fa-chevron-down ml-1 text-xs"></i>
+                {t('header.services')}<i className="fas fa-chevron-down ml-1 text-xs"></i>
               </button>
               <div className="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-secondary-100 z-50">
                 <div className="p-5">
@@ -178,7 +183,7 @@ export default function Header() {
 
             <li className="relative group">
               <button className="text-gray-700 hover:text-primary-600 font-medium flex items-center transition-colors">
-                Resources<i className="fas fa-chevron-down ml-1 text-xs"></i>
+                {t('header.resources')}<i className="fas fa-chevron-down ml-1 text-xs"></i>
               </button>
               <div className="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-secondary-100 z-50">
                 <div className="p-5">
@@ -197,7 +202,7 @@ export default function Header() {
 
             <li className="relative group">
               <button className="text-gray-700 hover:text-primary-600 font-medium flex items-center transition-colors">
-                Company<i className="fas fa-chevron-down ml-1 text-xs"></i>
+                {t('header.company')}<i className="fas fa-chevron-down ml-1 text-xs"></i>
               </button>
               <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-secondary-100 z-50">
                 <div className="p-5">
@@ -255,7 +260,7 @@ export default function Header() {
                 title="Login"
               >
                 <i className="fas fa-user-circle text-xl"></i>
-                <span className="text-sm font-medium hidden xl:inline">Login</span>
+                <span className="text-sm font-medium hidden xl:inline">{t('header.login')}</span>
               </Link>
             )}
 
@@ -263,7 +268,7 @@ export default function Header() {
 
             <Link to="/contact#quote" className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-5 py-2.5 rounded-lg flex items-center shadow-md hover:shadow-lg transition-all font-semibold">
               <i className="fas fa-file-invoice-dollar mr-2"></i>
-              Get Quote
+              {t('header.getQuote')}
             </Link>
             <a href="tel:+917708097242" className="text-secondary-700 hover:text-primary-600 flex items-center font-medium transition-colors">
               <i className="fas fa-phone-alt mr-2"></i>
@@ -281,11 +286,11 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200">
             <ul className="space-y-2">
-              <li><Link to="/" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-home mr-2"></i>Home</Link></li>
-              <li><Link to="/products" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-cogs mr-2"></i>Products</Link></li>
-              <li><Link to="/industries" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-industry mr-2"></i>Industries</Link></li>
-              <li><Link to="/services" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-tools mr-2"></i>Services</Link></li>
-              <li><Link to="/resources" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-book mr-2"></i>Resources</Link></li>
+              <li><Link to="/" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-home mr-2"></i>{t('header.home')}</Link></li>
+              <li><Link to="/products" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-cogs mr-2"></i>{t('header.products')}</Link></li>
+              <li><Link to="/industries" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-industry mr-2"></i>{t('header.industries')}</Link></li>
+              <li><Link to="/services" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-tools mr-2"></i>{t('header.services')}</Link></li>
+              <li><Link to="/resources" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-book mr-2"></i>{t('header.resources')}</Link></li>
               <li><Link to="/global/india" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-map-marker-alt mr-2"></i>India</Link></li>
               <li><Link to="/global/uae" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-map-marker-alt mr-2"></i>UAE</Link></li>
               <li><Link to="/global/qatar" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-map-marker-alt mr-2"></i>Qatar</Link></li>
@@ -294,7 +299,7 @@ export default function Header() {
               <li><Link to="/careers" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-briefcase mr-2"></i>Careers</Link></li>
               <li><Link to="/contact" className="block py-2 text-gray-700" onClick={toggleMenu}><i className="fas fa-envelope mr-2"></i>Contact</Link></li>
               {!user && (
-                <li><Link to="/backend/auth/login.php" className="block py-2 text-primary-700 font-semibold" onClick={toggleMenu}><i className="fas fa-user-circle mr-2"></i>Login</Link></li>
+                <li><Link to="/backend/auth/login.php" className="block py-2 text-primary-700 font-semibold" onClick={toggleMenu}><i className="fas fa-user-circle mr-2"></i>{t('header.login')}</Link></li>
               )}
               {user && (
                 <>
