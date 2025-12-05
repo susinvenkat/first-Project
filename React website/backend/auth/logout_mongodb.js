@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Logout Handler - MongoDB Version
  */

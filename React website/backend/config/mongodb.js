@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * MongoDB Database Configuration
  * Replaces MySQL with MongoDB

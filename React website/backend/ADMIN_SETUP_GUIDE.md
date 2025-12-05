@@ -1,6 +1,7 @@
 # 🚀 Susin Group Admin System - Complete Guide
 
 ## Overview
+
 A complete admin authentication and control panel system for managing job applications, documents, users, and system settings.
 
 ---
@@ -8,6 +9,7 @@ A complete admin authentication and control panel system for managing job applic
 ## 🎯 Features
 
 ### ✅ User Authentication
+
 - Secure login with password hashing (bcrypt)
 - Account lockout after 5 failed attempts (30 minutes)
 - Session management
@@ -15,18 +17,21 @@ A complete admin authentication and control panel system for managing job applic
 - Login attempt tracking
 
 ### ✅ Role-Based Access Control
+
 - **Admin**: Full system access
 - **HR Manager**: Application and user management
 - **Manager**: View and edit applications
 - **Employee**: View-only access
 
 ### ✅ Admin Dashboard
+
 - Real-time statistics
 - Application overview
 - Recent activities
 - Status tracking
 
 ### ✅ Control Panel
+
 - User profile management
 - Password change
 - System settings
@@ -40,6 +45,7 @@ A complete admin authentication and control panel system for managing job applic
 ### Step 1: Setup Database
 
 1. **Access the setup page:**
+
    ```
    http://localhost/backend/setup_admin.php
    ```
@@ -78,6 +84,7 @@ define('DB_PASS', '');
 ### Step 3: File Permissions
 
 Ensure proper permissions for upload directory:
+
 ```bash
 chmod 755 backend/uploads/resumes/
 ```
@@ -87,16 +94,19 @@ chmod 755 backend/uploads/resumes/
 ## 🔐 Login & Access
 
 ### Login Page
+
 ```
 http://localhost/backend/auth/login_page.html
 ```
 
 ### Admin Dashboard
+
 ```
 http://localhost/backend/admin/dashboard.php
 ```
 
 ### Settings Panel
+
 ```
 http://localhost/backend/admin/settings.php
 ```
@@ -106,28 +116,36 @@ http://localhost/backend/admin/settings.php
 ## 📊 Database Tables
 
 ### 1. **users**
+
 Stores user account information
+
 - id, username, password, email, full_name
 - role, department, status
 - failed_login_attempts, locked_until
 - last_login, created_at
 
 ### 2. **login_attempts**
+
 Tracks all login attempts
+
 - username, user_id, success
 - ip_address, user_agent, failure_reason
 - attempt_time
 
 ### 3. **user_sessions**
+
 Manages active user sessions
+
 - user_id, session_id
 - ip_address, user_agent
 - created_at, expires_at, is_active
 
 ### 4. **applications**
+
 Job application data (from existing schema)
 
 ### 5. **documents**
+
 Application documents (from existing schema)
 
 ---
@@ -169,6 +187,7 @@ backend/
 ## 🎨 Dashboard Features
 
 ### Main Dashboard (dashboard.php)
+
 - **Statistics Cards:**
   - Total Applications
   - Shortlisted Candidates
@@ -184,6 +203,7 @@ backend/
   - Percentage breakdown
 
 ### Settings & Control Panel (settings.php)
+
 - **Profile Settings:**
   - Update name, email, phone
   - View role and department
@@ -205,12 +225,14 @@ backend/
 ## 🔒 Security Features
 
 ### Password Requirements
+
 - Minimum 8 characters
 - Uppercase and lowercase letters
 - At least one number
 - At least one special character
 
 ### Account Protection
+
 - Passwords hashed with bcrypt
 - 5 failed attempts = 30 minute lockout
 - Session timeout
@@ -218,6 +240,7 @@ backend/
 - User agent tracking
 
 ### Admin-Only Features
+
 - User management
 - Role assignments
 - System settings
@@ -229,21 +252,27 @@ backend/
 ## 🚨 Troubleshooting
 
 ### Issue: Cannot login
+
 **Solutions:**
+
 1. Verify credentials (case-sensitive)
 2. Check if account is locked (wait 30 minutes)
 3. Ensure database is setup correctly
 4. Check PHP session settings
 
 ### Issue: Setup page not working
+
 **Solutions:**
+
 1. Check database connection in `config/database.php`
 2. Ensure MySQL service is running
 3. Verify database name exists
 4. Check PHP error logs
 
 ### Issue: Permission denied
+
 **Solutions:**
+
 1. Check file permissions on upload directory
 2. Ensure web server user has write access
 3. Verify PHP `upload_max_filesize` setting
@@ -252,7 +281,7 @@ backend/
 
 ## 📝 Next Steps
 
-### Recommended Actions After Setup:
+### Recommended Actions After Setup
 
 1. **Change Default Passwords:**
    - Login as admin
@@ -276,6 +305,7 @@ backend/
    - Download files
 
 5. **Delete Setup File:**
+
    ```bash
    rm backend/setup_admin.php
    ```
@@ -285,6 +315,7 @@ backend/
 ## 🎯 User Roles & Permissions
 
 ### Super Admin
+
 - ✅ All permissions
 - ✅ User management
 - ✅ System settings
@@ -292,6 +323,7 @@ backend/
 - ✅ Activity logs
 
 ### Admin
+
 - ✅ Most permissions
 - ✅ User management
 - ✅ Application management
@@ -299,6 +331,7 @@ backend/
 - ❌ System backup
 
 ### HR Manager
+
 - ✅ View/Edit applications
 - ✅ Upload/Verify documents
 - ✅ View users
@@ -306,6 +339,7 @@ backend/
 - ❌ System settings
 
 ### Manager
+
 - ✅ View applications
 - ✅ Change status
 - ✅ View documents
@@ -313,6 +347,7 @@ backend/
 - ❌ Settings
 
 ### Employee
+
 - ✅ View applications
 - ✅ View documents
 - ❌ Edit anything
@@ -323,7 +358,8 @@ backend/
 ## 📞 Support
 
 For issues or questions:
-- Email: admin@susingroup.com
+
+- Email: <admin@susingroup.com>
 - Check PHP error logs
 - Review database connection settings
 - Verify file permissions
@@ -332,14 +368,16 @@ For issues or questions:
 
 ## 🔄 Updates & Maintenance
 
-### Regular Tasks:
+### Regular Tasks
+
 - Review login attempts weekly
 - Update passwords monthly
 - Backup database regularly
 - Monitor disk space for uploads
 - Review and clean old sessions
 
-### Database Cleanup:
+### Database Cleanup
+
 ```sql
 -- Clean old login attempts (older than 90 days)
 DELETE FROM login_attempts WHERE attempt_time < DATE_SUB(NOW(), INTERVAL 90 DAY);
@@ -369,8 +407,8 @@ DELETE FROM user_sessions WHERE expires_at < NOW();
 
 ---
 
-## 🎉 You're All Set!
+## 🎉 You're All Set
 
 The admin system is now ready to use. Login with the default credentials and start managing your applications!
 
-**Login URL:** http://localhost/backend/auth/login_page.html
+**Login URL:** <http://localhost/backend/auth/login_page.html>

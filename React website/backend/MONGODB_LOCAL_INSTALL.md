@@ -5,8 +5,8 @@
 ### 1. Download MongoDB Community Server
 
 1. **Visit the MongoDB download page:**
-   - URL: https://www.mongodb.com/try/download/community
-   - Or direct link: https://www.mongodb.com/try/download/community-edition
+   - URL: <https://www.mongodb.com/try/download/community>
+   - Or direct link: <https://www.mongodb.com/try/download/community-edition>
 
 2. **Select your options:**
    - Version: `7.0.x` (or latest stable)
@@ -50,6 +50,7 @@ Get-Service MongoDB
 ```
 
 Expected output:
+
 ```
 Status   Name               DisplayName
 ------   ----               -----------
@@ -70,6 +71,7 @@ mongosh
 ```
 
 You should see:
+
 ```
 Current Mongosh Log ID: ...
 Connecting to: mongodb://127.0.0.1:27017/?directConnection=true
@@ -99,6 +101,7 @@ npm run setup
 ```
 
 This will:
+
 - ✅ Create the `susin_careers` database
 - ✅ Create collections (users, sessions, etc.)
 - ✅ Create indexes for performance
@@ -111,6 +114,7 @@ npm run dev
 ```
 
 You should see:
+
 ```
 ==================================================
 🚀 MongoDB Backend Server Running
@@ -130,6 +134,7 @@ curl http://localhost:3000/api/health
 ```
 
 Expected response:
+
 ```json
 {"status":"OK","message":"MongoDB backend is running"}
 ```
@@ -145,7 +150,7 @@ npm run dev
 
 ### 10. Test Login
 
-1. Open browser: http://localhost:5173
+1. Open browser: <http://localhost:5173>
 2. Go to Login page
 3. Toggle to **"Backend Mode"**
 4. Login with:
@@ -176,6 +181,7 @@ net start "MongoDB Server"
 **Error: "Access is denied"**
 
 Run PowerShell as Administrator:
+
 1. Right-click PowerShell
 2. Select "Run as Administrator"
 3. Try again: `net start MongoDB`
@@ -198,6 +204,7 @@ netstat -an | findstr 27017
 ```
 
 Should show:
+
 ```
 TCP    0.0.0.0:27017          0.0.0.0:0              LISTENING
 ```
@@ -275,6 +282,7 @@ exit                      # Exit shell
 ## Uninstall MongoDB (if needed)
 
 1. **Stop the service:**
+
    ```powershell
    net stop MongoDB
    ```
@@ -298,10 +306,11 @@ exit                      # Exit shell
 
 1. Start backend: `cd backend && npm run dev`
 2. Start frontend: `npm run dev` (in root folder)
-3. Visit: http://localhost:5173
+3. Visit: <http://localhost:5173>
 4. Login with Backend Mode enabled
 
 **Default Credentials:**
+
 - Admin: `admin` / `Admin@2025`
 - HR Manager: `hr_manager` / `HR@2025`
 
@@ -311,9 +320,9 @@ exit                      # Exit shell
 
 ## Support Resources
 
-- MongoDB Documentation: https://docs.mongodb.com/
-- MongoDB Compass Guide: https://docs.mongodb.com/compass/
-- MongoDB Community: https://community.mongodb.com/
+- MongoDB Documentation: <https://docs.mongodb.com/>
+- MongoDB Compass Guide: <https://docs.mongodb.com/compass/>
+- MongoDB Community: <https://community.mongodb.com/>
 
 ---
 

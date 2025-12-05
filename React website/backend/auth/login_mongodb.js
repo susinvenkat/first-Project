@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Login Authentication Handler - MongoDB Version
  * Susin Group - Employee Login System

@@ -1,6 +1,7 @@
 # MongoDB Backend Setup Guide
 
 ## Overview
+
 This backend uses **Node.js**, **Express**, and **MongoDB** to handle authentication and user management for the Susin Group career portal.
 
 ---
@@ -12,6 +13,7 @@ This backend uses **Node.js**, **Express**, and **MongoDB** to handle authentica
 Choose one of these options:
 
 #### Option 1: MongoDB Atlas (Cloud - Recommended for Production)
+
 1. Visit [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
 2. Create a free account
 3. Create a new cluster (free tier available)
@@ -19,12 +21,15 @@ Choose one of these options:
 5. Update `.env` with your connection string
 
 #### Option 2: MongoDB Local Installation
+
 1. Download from [https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)
 2. Install MongoDB Community Server
 3. Start MongoDB service:
+
    ```powershell
    net start MongoDB
    ```
+
 4. Connection string will be: `mongodb://localhost:27017/susin_careers`
 
 ---
@@ -32,12 +37,14 @@ Choose one of these options:
 ## Installation Steps
 
 ### 1. Install Dependencies
+
 ```powershell
 cd backend
 npm install
 ```
 
 ### 2. Configure Environment
+
 Edit the `backend/.env` file with your settings:
 
 ```env
@@ -61,6 +68,7 @@ NODE_ENV=development
 ```
 
 ### 3. Initialize Database
+
 Run the setup script to create collections and default users:
 
 ```powershell
@@ -68,6 +76,7 @@ npm run setup
 ```
 
 This creates:
+
 - ✓ Database collections with indexes
 - ✓ Admin user: `admin` / `Admin@2025`
 - ✓ HR Manager: `hr_manager` / `HR@2025`
@@ -75,11 +84,13 @@ This creates:
 ### 4. Start the Server
 
 **Development mode** (auto-restart on changes):
+
 ```powershell
 npm run dev
 ```
 
 **Production mode**:
+
 ```powershell
 npm start
 ```
@@ -91,12 +102,15 @@ Server will run on: `http://localhost:3000`
 ## API Endpoints
 
 ### Health Check
+
 ```
 GET /api/health
 ```
+
 Returns: `{ "status": "OK", "message": "MongoDB backend is running" }`
 
 ### Login
+
 ```
 POST /api/auth/login
 Content-Type: application/json
@@ -108,11 +122,13 @@ Content-Type: application/json
 ```
 
 ### Check Session
+
 ```
 GET /api/auth/check-session
 ```
 
 ### Logout
+
 ```
 POST /api/auth/logout
 ```
@@ -122,11 +138,13 @@ POST /api/auth/logout
 ## Testing the Backend
 
 ### 1. Test Health Endpoint
+
 ```powershell
 curl http://localhost:3000/api/health
 ```
 
 Expected response:
+
 ```json
 {
   "status": "OK",
@@ -135,6 +153,7 @@ Expected response:
 ```
 
 ### 2. Test Login
+
 ```powershell
 curl -X POST http://localhost:3000/api/auth/login `
   -H "Content-Type: application/json" `
@@ -142,6 +161,7 @@ curl -X POST http://localhost:3000/api/auth/login `
 ```
 
 Expected response:
+
 ```json
 {
   "success": true,
@@ -174,6 +194,7 @@ This means frontend requests to `/api/*` will proxy to `http://localhost:3000/ap
 ### Update Login Page
 
 In `src/pages/Login.jsx`, switch from Mock Mode to Backend Mode:
+
 - Toggle the switch at the top of the login form
 - Use credentials: `admin` / `Admin@2025`
 
@@ -183,8 +204,8 @@ In `src/pages/Login.jsx`, switch from Mock Mode to Backend Mode:
 
 | Username | Password | Role | Email |
 |----------|----------|------|-------|
-| admin | Admin@2025 | admin | admin@susingroup.com |
-| hr_manager | HR@2025 | hr | hr@susingroup.com |
+| admin | Admin@2025 | admin | <admin@susingroup.com> |
+| hr_manager | HR@2025 | hr | <hr@susingroup.com> |
 
 **⚠️ IMPORTANT:** Change these default passwords after first login!
 
@@ -195,17 +216,20 @@ In `src/pages/Login.jsx`, switch from Mock Mode to Backend Mode:
 ### MongoDB Connection Issues
 
 **Error: Connection refused**
+
 - Check if MongoDB is running: `net start MongoDB`
 - Verify connection string in `.env`
 - For Atlas: check IP whitelist and database user permissions
 
 **Error: Authentication failed**
+
 - Verify username/password in connection string
 - Check database user permissions in MongoDB Atlas
 
 ### Server Won't Start
 
 **Port already in use**
+
 ```powershell
 # Find process using port 3000
 netstat -ano | findstr :3000
@@ -215,6 +239,7 @@ taskkill /PID <process_id> /F
 ```
 
 **Missing dependencies**
+
 ```powershell
 cd backend
 npm install
@@ -223,11 +248,13 @@ npm install
 ### Login Fails
 
 **Check if database is set up:**
+
 ```powershell
 npm run setup
 ```
 
 **Check server logs:**
+
 - Look for error messages in terminal
 - Verify MongoDB connection status
 - Check credentials match database
@@ -256,18 +283,23 @@ backend/
 ## Database Collections
 
 ### users
+
 Stores user accounts with authentication data
 
 ### user_sessions
+
 Tracks active user sessions
 
 ### login_attempts
+
 Records failed login attempts for security
 
 ### applications
+
 Stores job applications (for future use)
 
 ### activity_log
+
 Logs user activities (for future use)
 
 ---
@@ -300,9 +332,10 @@ Logs user activities (for future use)
 ## Support
 
 For issues or questions, refer to:
-- MongoDB Documentation: https://docs.mongodb.com/
-- Express Documentation: https://expressjs.com/
-- Node.js Documentation: https://nodejs.org/docs/
+
+- MongoDB Documentation: <https://docs.mongodb.com/>
+- Express Documentation: <https://expressjs.com/>
+- Node.js Documentation: <https://nodejs.org/docs/>
 
 ---
 

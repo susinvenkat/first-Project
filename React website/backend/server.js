@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Express Server for MongoDB Backend
  * Susin Group Authentication API
@@ -49,7 +50,7 @@ app.post('/api/auth/logout', logout);
 app.get('/api/auth/check-session', checkSession);
 
 // Error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(500).json({
     success: false,

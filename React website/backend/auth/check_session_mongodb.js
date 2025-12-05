@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Check Session Handler - MongoDB Version
  */

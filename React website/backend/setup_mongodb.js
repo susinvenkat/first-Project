@@ -4,8 +4,8 @@
  * Usage: node setup_mongodb.js
  */
 
-const bcrypt = require('bcryptjs');
-const { connectDB, getCollection, initializeDatabase, closeDB } = require('./config/mongodb');
+import { hash } from 'bcryptjs';
+import { connectDB, getCollection, initializeDatabase, closeDB } from './config/mongodb';
 
 const output = [];
 const errors = [];
@@ -32,7 +32,7 @@ async function setupDatabase() {
     
     if (!adminExists) {
       // Create default admin user
-      const adminPassword = await bcrypt.hash('Admin@2025', 10);
+      const adminPassword = await hash('Admin@2025', 10);
       
       await usersCollection.insertOne({
         username: 'admin',
@@ -64,7 +64,7 @@ async function setupDatabase() {
     
     if (!hrExists) {
       // Create HR manager user
-      const hrPassword = await bcrypt.hash('HR@2025', 10);
+      const hrPassword = await hash('HR@2025', 10);
       
       await usersCollection.insertOne({
         username: 'hr_manager',
