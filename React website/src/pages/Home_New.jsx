@@ -1,14 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState({});
-  const observerRefs = useRef([]);
+  
   
   const [stats, setStats] = useState([
     { value: 0, target: 100, label: 'Industries', icon: 'fa-industry', suffix: '+' },
@@ -93,7 +90,7 @@ export default function Home() {
     if (!isPlaying) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
   }, [isPlaying, slides.length]);
 
@@ -379,6 +376,8 @@ export default function Home() {
                   src="/assets/img/products/pneumatic/hd-actuator-main.png" 
                   alt="SUSIN iTORK Actuators" 
                   className="w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/60 to-transparent"></div>
               </div>

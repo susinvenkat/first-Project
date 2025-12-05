@@ -39,6 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 try {
+    // Initialize database connection
+    $pdo = getDBConnection();
+
     // Get application ID from POST data
     $application_id = isset($_POST['application_id']) ? intval($_POST['application_id']) : null;
     $document_type = isset($_POST['document_type']) ? $_POST['document_type'] : 'resume';
@@ -79,10 +82,19 @@ try {
         throw new Exception('Invalid file type. Only PDF, DOC, and DOCX files are allowed');
     }
     
-    // Validate MIME type
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $detected_mime = finfo_file($finfo, $file_tmp);
-    finfo_close($finfo);
+    // Validate MIME type with safe fallback if fileinfo is unavailable
+    $detected_mime = null;
+    if (function_exists('finfo_open')) {
+        $finfo = @finfo_open(FILEINFO_MIME_TYPE);
+        if ($finfo) {
+            $detected_mime = @finfo_file($finfo, $file_tmp) ?: null;
+            @finfo_close($finfo);
+        }
+    }
+    if (!$detected_mime) {
+        // Fallback to client-provided type if finfo is unavailable
+        $detected_mime = $file_type;
+    }
     
     if (!in_array($detected_mime, ALLOWED_MIME_TYPES)) {
         throw new Exception('Invalid file format detected');

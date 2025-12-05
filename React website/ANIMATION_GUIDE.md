@@ -8,7 +8,7 @@
 
 ### On Page Load
 
-```
+```text
 Badge (ISO Certified)
 ├─ Delay: 200ms
 ├─ Effect: Fade in + Slide up
@@ -62,7 +62,7 @@ CTA Buttons
 
 ### Trigger: Intersection Observer (30% visibility)
 
-```
+```text
 Stats Counter Animation (Per Number):
 ├─ Duration: 2500ms
 ├─ Steps: 80 increments
@@ -98,7 +98,7 @@ Glow Effect:
 
 ### 6 Feature Cards, Each With
 
-```
+```text
 Card Container:
 ├─ Base: White bg, secondary border
 ├─ Hover: Primary border + shadow-2xl + lift -8px
@@ -131,7 +131,7 @@ Decorative Corner:
 
 ### 4 Product Cards in Dark Section
 
-```
+```text
 Card Container:
 ├─ Base: Secondary-800/50 with border
 ├─ Hover: Border primary + shadow glow + lift -12px
@@ -169,7 +169,7 @@ Full Card Glow:
 
 ### 6 Industry Cards
 
-```
+```text
 Card Container:
 ├─ Base: h-96 with gradient background
 ├─ Hover: Shadow-2xl + lift -8px
@@ -207,7 +207,7 @@ Decorative Corner:
 
 ### Auto-Rotation
 
-```
+```text
 Testimonial Transition:
 ├─ Interval: 5000ms (5 seconds)
 ├─ Effect: Cross-fade
@@ -217,7 +217,7 @@ Testimonial Transition:
 
 ### Manual Control
 
-```
+```text
 Dot Indicators:
 ├─ Active: w-16 h-4, primary-500
 ├─ Inactive: w-4 h-4, white/30
@@ -231,7 +231,7 @@ Dot Indicators:
 
 ### Background Animation
 
-```
+```text
 Floating Blur Circles (2):
 ├─ Animation: Pulse
 ├─ Duration: Infinite
@@ -241,7 +241,7 @@ Floating Blur Circles (2):
 
 ### Button Animations
 
-```
+```text
 Primary CTA (White):
 ├─ Base: White bg, shadow-2xl
 ├─ Hover: Secondary-50 bg + shadow glow
@@ -261,7 +261,7 @@ Secondary CTA (Glass):
 
 ### 5 Certification Cards
 
-```
+```text
 Each Card:
 ├─ Base: Flex items with icon
 ├─ Hover: Scale 110%
@@ -298,7 +298,7 @@ Card Link:
 
 ### Scroll Behaviors
 
-```
+```text
 Parallax Elements:
 ├─ Background Images: 0.5x scroll speed
 ├─ Floating Particles: Independent float animation
