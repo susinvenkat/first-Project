@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import api from '../services/api';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Careers() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
@@ -138,7 +140,7 @@ export default function Careers() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.size > 5 * 1024 * 1024) {
-      setMessage('File size must be less than 5MB');
+      setMessage(t('careers.formResumeHint'));
       e.target.value = '';
       return;
     }
@@ -161,7 +163,7 @@ export default function Careers() {
 
       const response = await api.submitApplication(submitData);
       if (response.success) {
-        setMessage('Application submitted successfully! Our HR team will contact you soon.');
+        setMessage(t('careers.success'));
         setFormData({
           full_name: '',
           email: '',
@@ -175,7 +177,7 @@ export default function Careers() {
         document.getElementById('resume-input').value = '';
       }
     } catch (error) {
-      setMessage('Failed to submit application. Please try again or contact HR directly.');
+      setMessage(t('careers.fail'));
     } finally {
       setLoading(false);
     }
@@ -190,13 +192,13 @@ export default function Careers() {
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
               <i className="fas fa-briefcase mr-2"></i>
-              10+ Open Positions Available
+              {t('careers.heroBadge')}
             </span>
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
-              Career Advancement Opportunities
+              {t('careers.heroTitle')}
             </h1>
             <p className="text-xl lg:text-2xl mb-8 text-secondary-200 leading-relaxed animate-slide-up">
-              Join Susin Group's 32-year legacy in valve automation. Build your career with a global leader in industrial automation solutions.
+              {t('careers.heroSubtitle')}
             </p>
             <div className="flex flex-wrap justify-center gap-4 animate-scale-in">
               <a 
@@ -204,14 +206,14 @@ export default function Careers() {
                 className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-glow transition-all inline-flex items-center group"
               >
                 <i className="fas fa-search mr-2 group-hover:scale-110 transition-transform"></i>
-                View Open Positions
+                {t('careers.heroView')}
               </a>
               <a 
                 href="#apply" 
                 className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:bg-white hover:text-secondary-900 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all inline-flex items-center"
               >
                 <i className="fas fa-paper-plane mr-2"></i>
-                Apply Now
+                {t('careers.heroApply')}
               </a>
             </div>
           </div>
@@ -225,7 +227,7 @@ export default function Careers() {
             <div className="flex items-center">
               <i className="fas fa-phone-alt text-2xl mr-3"></i>
               <div>
-                <div className="text-sm text-primary-100">Contact HR Department</div>
+                <div className="text-sm text-primary-100">{t('careers.hrContact')}</div>
                 <div className="font-bold">+91 709 444 5352 / +91 709 444 5353</div>
               </div>
             </div>
@@ -233,7 +235,7 @@ export default function Careers() {
             <div className="flex items-center">
               <i className="fas fa-envelope text-2xl mr-3"></i>
               <div>
-                <div className="text-sm text-primary-100">Email Us</div>
+                <div className="text-sm text-primary-100">{t('careers.hrEmail')}</div>
                 <div className="font-bold">hr@susin.in</div>
               </div>
             </div>
@@ -247,14 +249,14 @@ export default function Careers() {
           <div className="text-center mb-16">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              EMPLOYEE BENEFITS
+              {t('careers.benefitsLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Why Work With Susin Group?
+              {t('careers.benefitsTitle')}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Be part of a pioneering team that's shaping the future of industrial automation
+              {t('careers.benefitsSubtitle')}
             </p>
           </div>
 
@@ -282,19 +284,19 @@ export default function Careers() {
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div className="group">
               <div className="text-5xl font-bold text-primary-400 mb-2 group-hover:scale-110 transition-transform">32+</div>
-              <div className="text-secondary-300">Years of Excellence</div>
+              <div className="text-secondary-300">{t('careers.statsYears')}</div>
             </div>
             <div className="group">
               <div className="text-5xl font-bold text-primary-400 mb-2 group-hover:scale-110 transition-transform">100+</div>
-              <div className="text-secondary-300">Team Members</div>
+              <div className="text-secondary-300">{t('careers.statsTeam')}</div>
             </div>
             <div className="group">
               <div className="text-5xl font-bold text-primary-400 mb-2 group-hover:scale-110 transition-transform">3</div>
-              <div className="text-secondary-300">Global Locations</div>
+              <div className="text-secondary-300">{t('careers.statsLocations')}</div>
             </div>
             <div className="group">
               <div className="text-5xl font-bold text-primary-400 mb-2 group-hover:scale-110 transition-transform">15K+</div>
-              <div className="text-secondary-300">Projects Completed</div>
+              <div className="text-secondary-300">{t('careers.statsProjects')}</div>
             </div>
           </div>
         </div>
@@ -306,14 +308,14 @@ export default function Careers() {
           <div className="text-center mb-16">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              CURRENT OPENINGS
+              {t('careers.openingsLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Explore Open Positions
+              {t('careers.openingsTitle')}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Find the perfect role that matches your skills and career aspirations
+              {t('careers.openingsSubtitle')}
             </p>
           </div>
 
@@ -352,7 +354,7 @@ export default function Careers() {
                   onClick={() => setFormData({ ...formData, position: job.title })}
                   className="block w-full bg-primary-600 hover:bg-primary-700 text-white text-center py-3 rounded-lg font-semibold transition-all group-hover:shadow-glow"
                 >
-                  Apply for this Position
+                  {t('careers.openingsApply')}
                 </a>
               </div>
             ))}
@@ -364,12 +366,8 @@ export default function Careers() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-6">
-              Application Process
-            </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Simple 4-step process from application to joining
-            </p>
+            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-6">{t('careers.processTitle')}</h2>
+            <p className="text-xl text-secondary-600 max-w-3xl mx-auto">{t('careers.processSubtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -401,14 +399,14 @@ export default function Careers() {
           <div className="text-center mb-12">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              JOIN OUR TEAM
+              {t('careers.openingsLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Submit Your Application
+              {t('careers.formTitle')}
             </h2>
             <p className="text-xl text-secondary-600">
-              Take the first step towards an exciting career with Susin Group
+              {t('careers.formSubtitle')}
             </p>
           </div>
           
@@ -425,7 +423,7 @@ export default function Careers() {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-secondary-900 font-semibold mb-2">
-                  Full Name <span className="text-red-500">*</span>
+                  {t('careers.formFullName')} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -433,13 +431,13 @@ export default function Careers() {
                   value={formData.full_name}
                   onChange={handleChange}
                   required
-                  placeholder="Enter your full name"
+                  placeholder={t('careers.formFullName')}
                   className="w-full px-4 py-3 border-2 border-secondary-200 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
                 />
               </div>
               <div>
                 <label className="block text-secondary-900 font-semibold mb-2">
-                  Email Address <span className="text-red-500">*</span>
+                  {t('careers.formEmail')} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -447,7 +445,7 @@ export default function Careers() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="your.email@example.com"
+                  placeholder={t('careers.formEmail')}
                   className="w-full px-4 py-3 border-2 border-secondary-200 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
                 />
               </div>
@@ -456,7 +454,7 @@ export default function Careers() {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-secondary-900 font-semibold mb-2">
-                  Phone Number <span className="text-red-500">*</span>
+                  {t('careers.formPhone')} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="tel"
@@ -464,13 +462,13 @@ export default function Careers() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  placeholder="+91 XXXXX XXXXX"
+                  placeholder={t('careers.formPhone')}
                   className="w-full px-4 py-3 border-2 border-secondary-200 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
                 />
               </div>
               <div>
                 <label className="block text-secondary-900 font-semibold mb-2">
-                  Years of Experience <span className="text-red-500">*</span>
+                  {t('careers.formExperience')} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="number"
@@ -479,7 +477,7 @@ export default function Careers() {
                   onChange={handleChange}
                   required
                   min="0"
-                  placeholder="Enter years of experience"
+                  placeholder={t('careers.formExperience')}
                   className="w-full px-4 py-3 border-2 border-secondary-200 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
                 />
               </div>
@@ -488,7 +486,7 @@ export default function Careers() {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-secondary-900 font-semibold mb-2">
-                  Position Applied For <span className="text-red-500">*</span>
+                  {t('careers.formPosition')} <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="position"
@@ -497,16 +495,16 @@ export default function Careers() {
                   required
                   className="w-full px-4 py-3 border-2 border-secondary-200 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
                 >
-                  <option value="">Select Position</option>
+                  <option value="">{t('careers.formSelectPosition')}</option>
                   {openPositions.map((job, i) => (
                     <option key={i} value={job.title}>{job.title} - {job.jobNum}</option>
                   ))}
-                  <option value="other">Other Position</option>
+                  <option value="other">{t('careers.formOtherPosition')}</option>
                 </select>
               </div>
               <div>
                 <label className="block text-secondary-900 font-semibold mb-2">
-                  Preferred Location <span className="text-red-500">*</span>
+                  {t('careers.formLocation')} <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="location"
@@ -515,33 +513,33 @@ export default function Careers() {
                   required
                   className="w-full px-4 py-3 border-2 border-secondary-200 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
                 >
-                  <option value="">Select Location</option>
+                  <option value="">{t('careers.formSelectLocation')}</option>
                   <option value="Coimbatore, India">Coimbatore, India</option>
                   <option value="Mumbai, India">Mumbai, India</option>
                   <option value="Dubai, UAE">Dubai, UAE</option>
                   <option value="Doha, Qatar">Doha, Qatar</option>
-                  <option value="Any Location">Open to Any Location</option>
+                  <option value="Any Location">{t('careers.formAnyLocation')}</option>
                 </select>
               </div>
             </div>
 
             <div className="mb-6">
               <label className="block text-secondary-900 font-semibold mb-2">
-                Cover Letter / Why do you want to join Susin?
+                {t('careers.formCoverLetter')}
               </label>
               <textarea
                 name="cover_letter"
                 value={formData.cover_letter}
                 onChange={handleChange}
                 rows="6"
-                placeholder="Tell us about your experience, skills, and why you'd be a great fit for Susin Group..."
+                placeholder={t('careers.formCoverLetter')}
                 className="w-full px-4 py-3 border-2 border-secondary-200 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
               ></textarea>
             </div>
 
             <div className="mb-8">
               <label className="block text-secondary-900 font-semibold mb-2">
-                Upload Resume/CV <span className="text-red-500">*</span>
+                {t('careers.formResume')} <span className="text-red-500">*</span>
               </label>
               <div className="relative">
                 <input
@@ -555,7 +553,7 @@ export default function Careers() {
               </div>
               <p className="text-sm text-secondary-500 mt-2 flex items-center">
                 <i className="fas fa-info-circle mr-2"></i>
-                Accepted formats: PDF, DOC, DOCX (Maximum size: 5MB)
+                {t('careers.formResumeHint')}
               </p>
             </div>
 
@@ -567,12 +565,12 @@ export default function Careers() {
               {loading ? (
                 <>
                   <i className="fas fa-spinner fa-spin mr-3"></i>
-                  Submitting Application...
+                  {t('careers.submitting')}
                 </>
               ) : (
                 <>
                   <i className="fas fa-paper-plane mr-3 group-hover:translate-x-1 transition-transform"></i>
-                  Submit Application
+                  {t('careers.submit')}
                 </>
               )}
             </button>
@@ -587,26 +585,22 @@ export default function Careers() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
         <div className="container mx-auto px-4 lg:px-6 text-center">
-          <h2 className="text-4xl font-heading font-bold mb-6">
-            Don't See the Right Position?
-          </h2>
-          <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">
-            We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities.
-          </p>
+            <h2 className="text-4xl font-heading font-bold mb-6">{t('careers.ctaTitle')}</h2>
+            <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">{t('careers.ctaSubtitle')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
               href="mailto:hr@susin.in" 
               className="bg-white text-primary-700 hover:bg-secondary-50 px-8 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all inline-flex items-center"
             >
               <i className="fas fa-envelope mr-2"></i>
-              Email Your Resume
+                {t('careers.ctaEmail')}
             </a>
             <a 
               href="tel:+917094445352" 
               className="bg-primary-800 hover:bg-primary-900 px-8 py-4 rounded-xl font-bold text-lg border-2 border-white/30 transition-all inline-flex items-center"
             >
               <i className="fas fa-phone mr-2"></i>
-              Call HR Department
+                {t('careers.ctaCall')}
             </a>
           </div>
         </div>

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Industries() {
+  const { t } = useLanguage();
   const [activeIndustry, setActiveIndustry] = useState(null);
 
   useEffect(() => {
@@ -229,13 +231,13 @@ export default function Industries() {
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
               <i className="fas fa-industry mr-2"></i>
-              Serving Critical Industries Worldwide
+              {t('industries.heroBadge')}
             </span>
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
-              Industries We Serve
+              {t('industries.heroTitle')}
             </h1>
             <p className="text-xl lg:text-2xl mb-8 text-secondary-200 leading-relaxed animate-slide-up">
-              Trusted valve automation solutions for the world's most demanding industrial applications
+              {t('industries.heroSubtitle')}
             </p>
           </div>
         </div>
@@ -247,14 +249,14 @@ export default function Industries() {
           <div className="text-center mb-16">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              GLOBAL REACH
+              {t('industries.gridLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Industry Expertise
+              {t('industries.gridTitle')}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Specialized solutions tailored to meet the unique challenges of each sector
+              {t('industries.gridSubtitle')}
             </p>
           </div>
 
@@ -275,7 +277,7 @@ export default function Industries() {
                   </h3>
                   <p className="text-secondary-600 text-sm mb-4">{industry.tagline}</p>
                   <div className="flex items-center text-primary-600 font-semibold group-hover:underline">
-                    Learn More <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    {t('industries.learnMore')} <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                   </div>
                 </div>
               </a>
@@ -312,7 +314,7 @@ export default function Industries() {
 
                   <h4 className="font-bold text-secondary-900 mb-4 text-lg flex items-center">
                     <i className="fas fa-list-check text-primary-600 mr-2"></i>
-                    Applications
+                    {t('industries.applications')}
                   </h4>
                   <div className="grid grid-cols-2 gap-3 mb-8">
                     {industry.applications.map((app, i) => (
@@ -325,7 +327,7 @@ export default function Industries() {
 
                   <h4 className="font-bold text-secondary-900 mb-4 text-lg flex items-center">
                     <i className="fas fa-shield-alt text-primary-600 mr-2"></i>
-                    Key Benefits
+                    {t('industries.benefits')}
                   </h4>
                   <ul className="space-y-2 mb-8">
                     {industry.benefits.map((benefit, i) => (
@@ -339,7 +341,7 @@ export default function Industries() {
                   <div className={`bg-gradient-to-br ${industry.bgGradient} rounded-2xl p-6 border-2 border-${industry.color}-200`}>
                     <h4 className="font-bold text-secondary-900 mb-4 flex items-center">
                       <i className="fas fa-certificate text-primary-600 mr-2"></i>
-                      Certifications & Approvals
+                      {t('industries.certs')}
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {industry.certifications.map((cert, i) => (
@@ -366,6 +368,7 @@ export default function Industries() {
 
                     <div className="mt-8 bg-white rounded-xl p-6 shadow-lg">
                       <h4 className="font-bold text-secondary-900 mb-4 text-center">Featured Products</h4>
+                      {/* products list remains as-is */}
                       <div className="space-y-3">
                         {['Pneumatic Actuators', 'Electrical Actuators', 'Control Accessories'].map((product, i) => (
                           <Link
@@ -386,7 +389,7 @@ export default function Industries() {
                         className={`inline-block bg-gradient-to-r ${industry.gradient} hover:opacity-90 text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all`}
                       >
                         <i className="fas fa-envelope mr-2"></i>
-                        Request Industry Solution
+                        {t('industries.requestSolution')}
                       </Link>
                     </div>
                   </div>
@@ -402,20 +405,16 @@ export default function Industries() {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-heading font-bold mb-6">
-                Cross-Industry Capabilities
-              </h2>
-              <p className="text-xl text-secondary-200">
-                Core competencies that serve all sectors
-              </p>
+              <h2 className="text-4xl font-heading font-bold mb-6">{t('industries.crossTitle')}</h2>
+              <p className="text-xl text-secondary-200">{t('industries.crossSubtitle')}</p>
             </div>
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { icon: 'fa-tools', title: 'Engineering', desc: 'Custom design & integration' },
-                { icon: 'fa-industry', title: 'Manufacturing', desc: 'ISO-certified facilities' },
-                { icon: 'fa-headset', title: 'Support', desc: '24/7 technical assistance' },
-                { icon: 'fa-shipping-fast', title: 'Logistics', desc: 'Global delivery network' }
+                { icon: 'fa-tools', title: t('industries.crossItems.engineering.title'), desc: t('industries.crossItems.engineering.desc') },
+                { icon: 'fa-industry', title: t('industries.crossItems.manufacturing.title'), desc: t('industries.crossItems.manufacturing.desc') },
+                { icon: 'fa-headset', title: t('industries.crossItems.support.title'), desc: t('industries.crossItems.support.desc') },
+                { icon: 'fa-shipping-fast', title: t('industries.crossItems.logistics.title'), desc: t('industries.crossItems.logistics.desc') }
               ].map((capability, index) => (
                 <div key={index} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center hover:bg-white/20 transition-all">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -433,26 +432,22 @@ export default function Industries() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
         <div className="container mx-auto px-4 lg:px-6 text-center">
-          <h2 className="text-4xl font-heading font-bold mb-6">
-            Don't See Your Industry?
-          </h2>
-          <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">
-            We provide customized valve automation solutions for diverse industrial applications. Contact our experts to discuss your specific requirements.
-          </p>
+          <h2 className="text-4xl font-heading font-bold mb-6">{t('industries.ctaTitle')}</h2>
+          <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">{t('industries.ctaSubtitle')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link 
               to="/contact" 
               className="bg-white text-primary-700 hover:bg-secondary-50 px-8 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all inline-flex items-center"
             >
               <i className="fas fa-envelope mr-2"></i>
-              Contact Our Team
+              {t('industries.ctaContact')}
             </Link>
             <Link 
               to="/products" 
               className="bg-primary-800 hover:bg-primary-900 px-8 py-4 rounded-xl font-bold text-lg border-2 border-white/30 transition-all inline-flex items-center"
             >
               <i className="fas fa-cogs mr-2"></i>
-              Explore Products
+              {t('industries.ctaExplore')}
             </Link>
           </div>
         </div>

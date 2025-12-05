@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import Container from '../components/ui/Container';
 import Button from '../components/ui/Button';
 import SEO from '../components/common/SEO';
+import LazyImage from '../components/common/LazyImage';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function HomeAdvanced() {
+  const { t } = useLanguage();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // SEO Structured Data
@@ -55,26 +58,26 @@ export default function HomeAdvanced() {
   const features = [
     {
       icon: "fa-bolt",
-      title: "Ultra-Fast Response",
-      description: "Millisecond-level actuation with zero latency",
+      title: t('home.features.fastTitle'),
+      description: t('home.features.fastDesc'),
       color: "from-yellow-400 to-orange-600"
     },
     {
       icon: "fa-shield",
-      title: "Military-Grade",
-      description: "ATEX & API certified for extreme conditions",
+      title: t('home.features.shieldTitle'),
+      description: t('home.features.shieldDesc'),
       color: "from-red-400 to-pink-600"
     },
     {
       icon: "fa-brain",
-      title: "AI-Powered",
-      description: "Intelligent predictive maintenance algorithms",
+      title: t('home.features.aiTitle'),
+      description: t('home.features.aiDesc'),
       color: "from-purple-400 to-indigo-600"
     },
     {
       icon: "fa-globe",
-      title: "Global Network",
-      description: "24/7 support across 3 continents",
+      title: t('home.features.globeTitle'),
+      description: t('home.features.globeDesc'),
       color: "from-blue-400 to-cyan-600"
     }
   ];
@@ -124,9 +127,9 @@ export default function HomeAdvanced() {
   return (
     <>
       <SEO
-        title="Industrial Actuators & Valve Automation - SUSIN iTORK"
-        description="Advanced valve automation solutions. 32+ years of excellence. ISO 9001:2015 & ATEX certified. Serving 100+ industries worldwide."
-        keywords="industrial actuators, pneumatic, electro-hydraulic, electrical, valve automation, FPSO, oil & gas"
+        title={t('home.seoTitle')}
+        description={t('home.seoDesc')}
+        keywords={t('home.seoKeywords')}
         image="/assets/img/products/pneumatic/hd-actuator-main.png"
         structuredData={homeStructuredData}
       />
@@ -149,27 +152,25 @@ export default function HomeAdvanced() {
               <div className="space-y-8">
                 <div className="inline-flex items-center space-x-2 bg-primary-600/20 backdrop-blur border border-primary-500/30 rounded-full px-6 py-2">
                   <span className="w-3 h-3 bg-primary-500 rounded-full animate-pulse"></span>
-                  <span className="text-sm font-semibold text-primary-300">Industry 4.0 Ready</span>
+                  <span className="text-sm font-semibold text-primary-300">{t('home.badge')}</span>
                 </div>
 
                 <h1 className="text-7xl lg:text-8xl font-bold leading-tight">
                   <span className="bg-gradient-to-r from-primary-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                    Next-Gen
+                    {t('home.title1')}
                   </span>
                   <br />
-                  Valve Automation
+                  {t('home.title2')}
                 </h1>
 
-                <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
-                  Revolutionary actuator technology powering critical infrastructure across 100+ industries. Precision. Reliability. Innovation.
-                </p>
+                <p className="text-xl text-slate-300 leading-relaxed max-w-xl">{t('home.subtitle')}</p>
 
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button as={Link} to="/products" variant="primary" size="lg" className="gap-2">
-                    Explore Products <i className="fas fa-arrow-right"></i>
+                    {t('home.ctaExplore')} <i className="fas fa-arrow-right"></i>
                   </Button>
                   <Button as={Link} to="/contact" variant="outline" size="lg" className="gap-2 border-slate-400 text-white hover:text-white/90">
-                    Get Consultation <i className="fas fa-phone"></i>
+                    {t('home.ctaConsult')} <i className="fas fa-phone"></i>
                   </Button>
                 </div>
 
@@ -177,15 +178,15 @@ export default function HomeAdvanced() {
                 <div className="grid grid-cols-3 gap-6 pt-12 border-t border-slate-700">
                   <div>
                     <div className="text-4xl font-bold text-primary-400">32+</div>
-                    <div className="text-sm text-slate-400">Years Proven</div>
+                    <div className="text-sm text-slate-400">{t('home.statYears')}</div>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-blue-400">100+</div>
-                    <div className="text-sm text-slate-400">Industries</div>
+                    <div className="text-sm text-slate-400">{t('home.statIndustries')}</div>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-cyan-400">99.8%</div>
-                    <div className="text-sm text-slate-400">Uptime</div>
+                    <div className="text-sm text-slate-400">{t('home.statUptime')}</div>
                   </div>
                 </div>
               </div>
@@ -200,7 +201,7 @@ export default function HomeAdvanced() {
                     transition: 'transform 0.1s ease-out'
                   }}
                 >
-                  <img 
+                  <LazyImage 
                     src="/assets/img/products/pneumatic/hd-actuator-main.png" 
                     alt="Advanced Actuator Technology"
                     className="w-full h-full object-cover"
@@ -214,7 +215,7 @@ export default function HomeAdvanced() {
           {/* Scroll Indicator */}
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
             <div className="flex flex-col items-center gap-3">
-              <span className="text-sm text-slate-400">Scroll to explore</span>
+              <span className="text-sm text-slate-400">{t('home.scroll')}</span>
               <i className="fas fa-chevron-down text-primary-400 text-2xl"></i>
             </div>
           </div>
@@ -225,11 +226,9 @@ export default function HomeAdvanced() {
           <div className="container mx-auto px-4 lg:px-6">
             <div className="text-center mb-20">
               <h2 className="text-5xl lg:text-6xl font-bold mb-6">
-                Why Choose <span className="bg-gradient-to-r from-primary-400 to-blue-400 bg-clip-text text-transparent">SUSIN iTORK</span>
+                {t('home.whyChoose')} <span className="bg-gradient-to-r from-primary-400 to-blue-400 bg-clip-text text-transparent">SUSIN iTORK</span>
               </h2>
-              <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-                Four decades of excellence delivered through cutting-edge technology and uncompromising quality
-              </p>
+              <p className="text-xl text-slate-400 max-w-2xl mx-auto">{t('home.whySubtitle')}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -260,15 +259,15 @@ export default function HomeAdvanced() {
         <section className="py-24 relative">
           <div className="container mx-auto px-4 lg:px-6">
             <h2 className="text-5xl lg:text-6xl font-bold mb-20 text-center">
-              Complete Product <span className="bg-gradient-to-r from-primary-400 to-blue-400 bg-clip-text text-transparent">Portfolio</span>
+              {t('home.portfolio')}
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: "Pneumatic", range: "10 - 120K Nm", icon: "fa-wind", color: "from-blue-500 to-cyan-600" },
-                { title: "Electro-Hydraulic", range: "Up to 500K Nm", icon: "fa-tint", color: "from-purple-500 to-pink-600" },
-                { title: "Electrical", range: "IoT Enabled", icon: "fa-bolt", color: "from-yellow-500 to-orange-600" },
-                { title: "Gearboxes", range: "10:1 to 120:1", icon: "fa-cogs", color: "from-green-500 to-emerald-600" }
+                { title: t('home.product.pneumatic'), range: t('home.product.pneumaticRange'), icon: "fa-wind", color: "from-blue-500 to-cyan-600" },
+                { title: t('home.product.electroHydraulic'), range: t('home.product.electroHydraulicRange'), icon: "fa-tint", color: "from-purple-500 to-pink-600" },
+                { title: t('home.product.electrical'), range: t('home.product.electricalRange'), icon: "fa-bolt", color: "from-yellow-500 to-orange-600" },
+                { title: t('home.product.gearboxes'), range: t('home.product.gearboxesRange'), icon: "fa-cogs", color: "from-green-500 to-emerald-600" }
               ].map((prod, idx) => (
                 <Link 
                   key={idx}
@@ -287,7 +286,7 @@ export default function HomeAdvanced() {
                     </h3>
                     <p className="text-primary-400 font-semibold mb-4">{prod.range}</p>
                     <div className="flex items-center text-slate-400 group-hover:text-slate-300 transition-colors">
-                      Explore
+                      {t('home.product.explore')}
                       <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                     </div>
                   </div>
@@ -301,7 +300,7 @@ export default function HomeAdvanced() {
         <section className="py-24 relative">
           <div className="container mx-auto px-4 lg:px-6">
             <h2 className="text-5xl lg:text-6xl font-bold mb-20 text-center">
-              Trusted by Industry <span className="bg-gradient-to-r from-primary-400 to-blue-400 bg-clip-text text-transparent">Leaders</span>
+              {t('home.trustedBy')}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -330,7 +329,7 @@ export default function HomeAdvanced() {
         <section className="py-24 relative">
           <div className="container mx-auto px-4 lg:px-6">
             <h2 className="text-5xl lg:text-6xl font-bold mb-20 text-center">
-              Success <span className="bg-gradient-to-r from-primary-400 to-blue-400 bg-clip-text text-transparent">Stories</span>
+              {t('home.successStories')}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -367,24 +366,22 @@ export default function HomeAdvanced() {
               </div>
 
               <div className="relative z-10">
-                <h2 className="text-5xl font-bold mb-6">Ready to Transform Your Operations?</h2>
-                <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                  Join hundreds of industry leaders who trust SUSIN iTORK for their mission-critical applications
-                </p>
+                <h2 className="text-5xl font-bold mb-6">{t('home.ctaTitle')}</h2>
+                <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">{t('home.ctaSubtitle')}</p>
 
                 <div className="flex flex-wrap justify-center gap-6">
                   <Link 
                     to="/contact"
                     className="px-10 py-4 bg-white text-primary-600 font-bold rounded-full hover:bg-slate-100 transition-all inline-flex items-center gap-2 group"
                   >
-                    Schedule Demo
+                    {t('home.ctaSchedule')}
                     <i className="fas fa-calendar group-hover:scale-110 transition-transform"></i>
                   </Link>
                   <Link 
                     to="/products"
                     className="px-10 py-4 bg-white/20 backdrop-blur text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all inline-flex items-center gap-2 group"
                   >
-                    View Catalog
+                    {t('home.ctaCatalog')}
                     <i className="fas fa-book group-hover:translate-x-1 transition-transform"></i>
                   </Link>
                 </div>
@@ -396,14 +393,14 @@ export default function HomeAdvanced() {
         {/* FOOTER CTA */}
         <section className="py-16 border-t border-slate-700">
           <div className="container mx-auto px-4 lg:px-6 text-center">
-            <h3 className="text-3xl font-bold mb-4">Questions? Let's Talk</h3>
-            <p className="text-slate-400 mb-8">Available 24/7 for technical support and consultation</p>
+            <h3 className="text-3xl font-bold mb-4">{t('home.footerCtaTitle')}</h3>
+            <p className="text-slate-400 mb-8">{t('home.footerCtaSubtitle')}</p>
             <Link 
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-3 bg-primary-600 hover:bg-primary-700 rounded-full font-bold transition-all group"
             >
               <i className="fas fa-phone"></i>
-              Contact Us Now
+              {t('home.footerCtaButton')}
               <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </Link>
           </div>

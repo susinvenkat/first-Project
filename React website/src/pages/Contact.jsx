@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import api from '../services/api';
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,10 +38,10 @@ export default function Contact() {
     setError('');
     try {
       await api.submitContact(formData);
-      setSuccess('Message sent successfully! We will contact you soon.');
+      setSuccess(t('contact.success'));
       setFormData({ name: '', email: '', phone: '', company: '', subject: '', message: '' });
     } catch (err) {
-      setError('Failed to send message. Please try again.');
+      setError(t('contact.fail'));
     } finally {
       setLoading(false);
     }
@@ -51,10 +53,10 @@ export default function Contact() {
     setError('');
     try {
       await api.submitContact({ ...quoteData, subject: 'Quote Request' });
-      setSuccess('Quote request submitted! Our team will contact you shortly.');
+      setSuccess(t('contact.quoteSuccess'));
       setQuoteData({ name: '', email: '', phone: '', company: '', product: '', quantity: '', specifications: '' });
     } catch (err) {
-      setError('Failed to submit quote request. Please try again.');
+      setError(t('contact.fail'));
     } finally {
       setLoading(false);
     }
@@ -65,8 +67,8 @@ export default function Contact() {
       {/* Hero */}
       <section className="bg-gradient-to-r from-primary to-red-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-xl max-w-3xl mx-auto">Get in touch with our team for expert valve automation solutions</p>
+          <h1 className="text-5xl font-bold mb-6">{t('contact.heroTitle')}</h1>
+          <p className="text-xl max-w-3xl mx-auto">{t('contact.heroSubtitle')}</p>
         </div>
       </section>
 
@@ -78,7 +80,7 @@ export default function Contact() {
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <i className="fas fa-phone text-4xl text-blue-600"></i>
               </div>
-              <h3 className="text-xl font-bold mb-4">Phone</h3>
+              <h3 className="text-xl font-bold mb-4">{t('contact.phone')}</h3>
               <p className="text-gray-600">India: +91 77080 97242</p>
               <p className="text-gray-600">UAE: +971 54 307 4131</p>
             </div>
@@ -86,7 +88,7 @@ export default function Contact() {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <i className="fas fa-envelope text-4xl text-green-600"></i>
               </div>
-              <h3 className="text-xl font-bold mb-4">Email</h3>
+              <h3 className="text-xl font-bold mb-4">{t('contact.email')}</h3>
               <p className="text-gray-600">info@susin.in</p>
               <p className="text-gray-600">sales@susin.in</p>
             </div>
@@ -94,16 +96,16 @@ export default function Contact() {
               <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <i className="fas fa-clock text-4xl text-purple-600"></i>
               </div>
-              <h3 className="text-xl font-bold mb-4">Business Hours</h3>
-              <p className="text-gray-600">Mon - Fri: 9:00 AM - 6:00 PM</p>
-              <p className="text-gray-600">Sat: 9:00 AM - 1:00 PM</p>
+              <h3 className="text-xl font-bold mb-4">{t('contact.hours')}</h3>
+              <p className="text-gray-600">{t('contact.hoursWeek')}</p>
+              <p className="text-gray-600">{t('contact.hoursSat')}</p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('contact.sendMessage')}</h2>
               {success && <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">{success}</div>}
               {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
               
@@ -111,7 +113,7 @@ export default function Contact() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <input
                     type="text"
-                    placeholder="Your Name *"
+                    placeholder={t('contact.namePh')}
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -119,7 +121,7 @@ export default function Contact() {
                   />
                   <input
                     type="email"
-                    placeholder="Email Address *"
+                    placeholder={t('contact.emailPh')}
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -129,7 +131,7 @@ export default function Contact() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <input
                     type="tel"
-                    placeholder="Phone Number *"
+                    placeholder={t('contact.phonePh')}
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -137,7 +139,7 @@ export default function Contact() {
                   />
                   <input
                     type="text"
-                    placeholder="Company Name"
+                    placeholder={t('contact.companyPh')}
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -145,14 +147,14 @@ export default function Contact() {
                 </div>
                 <input
                   type="text"
-                  placeholder="Subject *"
+                  placeholder={t('contact.subjectPh')}
                   required
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
                 <textarea
-                  placeholder="Your Message *"
+                  placeholder={t('contact.messagePh')}
                   required
                   rows="5"
                   value={formData.message}
@@ -164,19 +166,19 @@ export default function Contact() {
                   disabled={loading}
                   className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg disabled:opacity-50"
                 >
-                  {loading ? 'Sending...' : 'Send Message'}
+                  {loading ? 'Sending...' : t('contact.sendBtn')}
                 </button>
               </form>
             </div>
 
             {/* Office Locations */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Offices</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('contact.officesTitle')}</h2>
               <div className="space-y-6">
                 <div className="bg-gray-50 rounded-lg p-6">
                   <h4 className="font-bold text-gray-900 mb-3 flex items-center">
                     <i className="fas fa-map-marker-alt text-primary mr-2"></i>
-                    India Headquarters
+                    {t('contact.officesIndia')}
                   </h4>
                   <p className="text-gray-700 mb-2">Susin Group</p>
                   <p className="text-gray-600 text-sm">Coimbatore, Tamil Nadu, India</p>
@@ -186,7 +188,7 @@ export default function Contact() {
                 <div className="bg-gray-50 rounded-lg p-6">
                   <h4 className="font-bold text-gray-900 mb-3 flex items-center">
                     <i className="fas fa-map-marker-alt text-primary mr-2"></i>
-                    UAE Office
+                    {t('contact.officesUae')}
                   </h4>
                   <p className="text-gray-700 mb-2">SUSIN Middle East</p>
                   <p className="text-gray-600 text-sm">Dubai, United Arab Emirates</p>
@@ -196,7 +198,7 @@ export default function Contact() {
                 <div className="bg-gray-50 rounded-lg p-6">
                   <h4 className="font-bold text-gray-900 mb-3 flex items-center">
                     <i className="fas fa-map-marker-alt text-primary mr-2"></i>
-                    Qatar Office
+                    {t('contact.officesQatar')}
                   </h4>
                   <p className="text-gray-700 mb-2">SUSIN Qatar</p>
                   <p className="text-gray-600 text-sm">Doha, Qatar</p>
@@ -213,15 +215,15 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Request a Quote</h2>
-              <p className="text-xl text-gray-600">Get customized pricing for your valve automation requirements</p>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('contact.quoteTitle')}</h2>
+              <p className="text-xl text-gray-600">{t('contact.quoteSubtitle')}</p>
             </div>
             
             <form onSubmit={handleQuoteSubmit} className="bg-white rounded-xl p-8 shadow-lg space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <input
                   type="text"
-                  placeholder="Full Name *"
+                  placeholder={t('contact.quoteFullName')}
                   required
                   value={quoteData.name}
                   onChange={(e) => setQuoteData({ ...quoteData, name: e.target.value })}
@@ -229,7 +231,7 @@ export default function Contact() {
                 />
                 <input
                   type="email"
-                  placeholder="Email *"
+                  placeholder={t('contact.quoteEmail')}
                   required
                   value={quoteData.email}
                   onChange={(e) => setQuoteData({ ...quoteData, email: e.target.value })}
@@ -239,7 +241,7 @@ export default function Contact() {
               <div className="grid md:grid-cols-2 gap-6">
                 <input
                   type="tel"
-                  placeholder="Phone *"
+                  placeholder={t('contact.quotePhone')}
                   required
                   value={quoteData.phone}
                   onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
@@ -247,7 +249,7 @@ export default function Contact() {
                 />
                 <input
                   type="text"
-                  placeholder="Company *"
+                  placeholder={t('contact.quoteCompany')}
                   required
                   value={quoteData.company}
                   onChange={(e) => setQuoteData({ ...quoteData, company: e.target.value })}
@@ -260,7 +262,7 @@ export default function Contact() {
                 onChange={(e) => setQuoteData({ ...quoteData, product: e.target.value })}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
               >
-                <option value="">Select Product Type *</option>
+                <option value="">{t('contact.quoteProduct')}</option>
                 <option value="pneumatic">Pneumatic Actuators</option>
                 <option value="electro-hydraulic">Electro-Hydraulic Actuators</option>
                 <option value="electrical">Electrical Actuators</option>
@@ -270,13 +272,13 @@ export default function Contact() {
               </select>
               <input
                 type="text"
-                placeholder="Quantity Required"
+                placeholder={t('contact.quoteQty')}
                 value={quoteData.quantity}
                 onChange={(e) => setQuoteData({ ...quoteData, quantity: e.target.value })}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
               />
               <textarea
-                placeholder="Technical Specifications & Requirements *"
+                placeholder={t('contact.quoteSpecs')}
                 required
                 rows="5"
                 value={quoteData.specifications}
@@ -288,7 +290,7 @@ export default function Contact() {
                 disabled={loading}
                 className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-6 rounded-lg text-lg disabled:opacity-50"
               >
-                {loading ? 'Submitting...' : 'Request Quote'}
+                {loading ? t('contact.quoteSubmitting') : t('contact.quoteBtn')}
               </button>
             </form>
           </div>

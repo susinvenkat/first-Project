@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function About() {
+  const { t } = useLanguage();
   const milestones = [
     { year: '1992', title: 'Company Founded', description: 'SUSIN India established in Coimbatore', icon: 'fa-flag-checkered' },
     { year: '2000', title: 'ISO Certification', description: 'Awarded ISO 9001:2000 quality certification', icon: 'fa-certificate' },
@@ -73,13 +75,13 @@ export default function About() {
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
               <i className="fas fa-building mr-2"></i>
-              Established 1992
+              {t('about.heroBadge')}
             </span>
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
-              About Susin Group
+              {t('about.heroTitle')}
             </h1>
             <p className="text-xl lg:text-2xl mb-8 text-secondary-200 leading-relaxed animate-slide-up">
-              32+ Years of Engineering Excellence in Valve Automation
+              {t('about.heroSubtitle')}
             </p>
           </div>
         </div>
@@ -92,10 +94,10 @@ export default function About() {
             <div>
               <span className="text-primary-600 font-semibold text-lg mb-2 block flex items-center">
                 <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-                OUR STORY
+                {t('about.storyLabel')}
               </span>
               <h2 id="history" className="text-4xl font-heading font-bold text-secondary-900 mb-6">
-                Engineering the Future Since 1992
+                {t('about.storyTitle')}
               </h2>
               <p className="text-lg text-secondary-700 mb-4 leading-relaxed">
                 Susin Group (formerly known as SUSIN INDIA) was established in 1992, bringing 
@@ -114,19 +116,19 @@ export default function About() {
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
                 <div className="text-5xl font-bold text-primary-600 mb-2">1992</div>
-                <div className="text-secondary-700 font-semibold">Founded</div>
+                <div className="text-secondary-700 font-semibold">{t('about.kpiFounded')}</div>
               </div>
               <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
                 <div className="text-5xl font-bold text-primary-600 mb-2">100+</div>
-                <div className="text-secondary-700 font-semibold">Industries Served</div>
+                <div className="text-secondary-700 font-semibold">{t('about.kpiIndustries')}</div>
               </div>
               <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
                 <div className="text-5xl font-bold text-primary-600 mb-2">3</div>
-                <div className="text-secondary-700 font-semibold">Countries</div>
+                <div className="text-secondary-700 font-semibold">{t('about.kpiCountries')}</div>
               </div>
               <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 text-center hover:shadow-xl transition-all">
                 <div className="text-5xl font-bold text-primary-600 mb-2">15K+</div>
-                <div className="text-secondary-700 font-semibold">Projects Delivered</div>
+                <div className="text-secondary-700 font-semibold">{t('about.kpiProjects')}</div>
               </div>
             </div>
           </div>
@@ -139,14 +141,14 @@ export default function About() {
           <div className="text-center mb-16">
             <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
               <div className="h-1 w-12 bg-primary-600 mr-3"></div>
-              OUR JOURNEY
+              {t('about.journeyLabel')}
               <div className="h-1 w-12 bg-primary-600 ml-3"></div>
             </span>
             <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              Key Milestones
+              {t('about.milestonesTitle')}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Three decades of innovation, growth, and excellence
+              {t('about.milestonesSubtitle')}
             </p>
           </div>
 
@@ -191,6 +193,7 @@ export default function About() {
                 <i className="fas fa-bullseye text-4xl text-white"></i>
               </div>
               <h3 className="text-3xl font-heading font-bold text-secondary-900 mb-4">Our Mission</h3>
+              {/* Keep mission content as-is for now */}
               <p className="text-secondary-700 text-lg leading-relaxed">
                 To provide world-class valve automation solutions that ensure safe, reliable, and efficient 
                 operations for our clients across critical industries. We are committed to continuous innovation, 
@@ -216,9 +219,7 @@ export default function About() {
       <section id="leadership" className="py-20 bg-secondary-50">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">
-              Leadership Team
-            </h2>
+            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.leadershipTitle')}</h2>
             <p className="text-xl text-secondary-600">
               Experienced professionals driving innovation and growth
             </p>
@@ -247,12 +248,8 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">
-              Manufacturing Capabilities
-            </h2>
-            <p className="text-xl text-secondary-600">
-              Advanced facilities and expertise delivering superior quality
-            </p>
+            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.mfgTitle')}</h2>
+            <p className="text-xl text-secondary-600">{t('about.mfgSubtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -281,12 +278,8 @@ export default function About() {
       <section className="py-20 bg-gradient-to-br from-secondary-900 to-secondary-800 text-white">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-bold mb-4">
-              Awards & Recognition
-            </h2>
-            <p className="text-xl text-secondary-200">
-              Celebrating excellence and innovation
-            </p>
+            <h2 className="text-4xl font-heading font-bold mb-4">{t('about.awardsTitle')}</h2>
+            <p className="text-xl text-secondary-200">{t('about.awardsSubtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -307,8 +300,8 @@ export default function About() {
       <section id="certifications" className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">Certifications & Approvals</h2>
-            <p className="text-xl text-secondary-600">Certified excellence in manufacturing and quality</p>
+            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.certsTitle')}</h2>
+            <p className="text-xl text-secondary-600">{t('about.certsSubtitle')}</p>
           </div>
           <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
@@ -337,8 +330,8 @@ export default function About() {
       <section className="py-20 bg-secondary-50">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">Global Presence</h2>
-            <p className="text-xl text-secondary-600">Strategic locations serving clients worldwide</p>
+            <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.globalTitle')}</h2>
+            <p className="text-xl text-secondary-600">{t('about.globalSubtitle')}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Link to="/global/india" className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-secondary-100 hover:border-primary-500 group">
@@ -348,7 +341,7 @@ export default function About() {
               <h3 className="text-2xl font-bold text-secondary-900 mb-2 group-hover:text-primary-600 transition-colors">India</h3>
               <p className="text-primary-600 font-semibold mb-4">Headquarters - Coimbatore</p>
               <p className="text-sm text-secondary-600 mb-4">Manufacturing facility and engineering center</p>
-              <div className="text-primary-600 font-semibold group-hover:underline">View Details <i className="fas fa-arrow-right ml-2"></i></div>
+              <div className="text-primary-600 font-semibold group-hover:underline">{t('about.viewDetails')} <i className="fas fa-arrow-right ml-2"></i></div>
             </Link>
             <Link to="/global/uae" className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-secondary-100 hover:border-primary-500 group">
               <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center mb-6">
@@ -357,7 +350,7 @@ export default function About() {
               <h3 className="text-2xl font-bold text-secondary-900 mb-2 group-hover:text-primary-600 transition-colors">UAE</h3>
               <p className="text-primary-600 font-semibold mb-4">Regional Office - Dubai</p>
               <p className="text-sm text-secondary-600 mb-4">Sales and service center for Middle East</p>
-              <div className="text-primary-600 font-semibold group-hover:underline">View Details <i className="fas fa-arrow-right ml-2"></i></div>
+              <div className="text-primary-600 font-semibold group-hover:underline">{t('about.viewDetails')} <i className="fas fa-arrow-right ml-2"></i></div>
             </Link>
             <Link to="/global/qatar" className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-secondary-100 hover:border-primary-500 group">
               <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-full flex items-center justify-center mb-6">
@@ -366,7 +359,7 @@ export default function About() {
               <h3 className="text-2xl font-bold text-secondary-900 mb-2 group-hover:text-primary-600 transition-colors">Qatar</h3>
               <p className="text-primary-600 font-semibold mb-4">Branch Office - Doha</p>
               <p className="text-sm text-secondary-600 mb-4">Local support and technical services</p>
-              <div className="text-primary-600 font-semibold group-hover:underline">View Details <i className="fas fa-arrow-right ml-2"></i></div>
+              <div className="text-primary-600 font-semibold group-hover:underline">{t('about.viewDetails')} <i className="fas fa-arrow-right ml-2"></i></div>
             </Link>
           </div>
         </div>
@@ -375,26 +368,22 @@ export default function About() {
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
         <div className="container mx-auto px-4 lg:px-6 text-center">
-          <h2 className="text-4xl font-heading font-bold mb-6">
-            Partner With Industry Leaders
-          </h2>
-          <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">
-            Experience the Susin difference - reliability, innovation, and 32+ years of engineering excellence
-          </p>
+          <h2 className="text-4xl font-heading font-bold mb-6">{t('about.ctaTitle')}</h2>
+          <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">{t('about.ctaSubtitle')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link 
               to="/contact" 
               className="bg-white text-primary-700 hover:bg-secondary-50 px-8 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all inline-flex items-center"
             >
               <i className="fas fa-envelope mr-2"></i>
-              Contact Us
+              {t('about.ctaContact')}
             </Link>
             <Link 
               to="/products" 
               className="bg-primary-800 hover:bg-primary-900 px-8 py-4 rounded-xl font-bold text-lg border-2 border-white/30 transition-all inline-flex items-center"
             >
               <i className="fas fa-cogs mr-2"></i>
-              Explore Products
+              {t('about.ctaExplore')}
             </Link>
           </div>
         </div>

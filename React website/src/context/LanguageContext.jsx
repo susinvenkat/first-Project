@@ -23,18 +23,33 @@ export function LanguageProvider({ children }) {
   }, [lang]);
 
   const dict = translations[lang] || translations[defaultLang];
+  const defaultDict = translations[defaultLang];
 
   const t = useMemo(() => {
     return (path) => {
       const parts = path.split('.');
       let node = dict;
       for (const p of parts) {
-        if (!node || typeof node !== 'object') return path;
+        if (!node || typeof node !== 'object') {
+          node = undefined;
+          break;
+        }
         node = node[p];
       }
-      return typeof node === 'string' ? node : path;
+      if (typeof node === 'string') return node;
+
+      // Fallback to default language (English) when key missing
+      let fallback = defaultDict;
+      for (const p of parts) {
+        if (!fallback || typeof fallback !== 'object') {
+          fallback = undefined;
+          break;
+        }
+        fallback = fallback[p];
+      }
+      return typeof fallback === 'string' ? fallback : path;
     };
-  }, [dict]);
+  }, [dict, defaultDict]);
 
   const value = useMemo(() => ({ lang, setLang, t, dict }), [lang, t, dict]);
 
