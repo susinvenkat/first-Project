@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /**
  * Express Server for MongoDB Backend
  * Susin Group Authentication API
