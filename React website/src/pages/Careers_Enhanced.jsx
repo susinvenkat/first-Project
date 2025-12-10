@@ -197,7 +197,7 @@ export default function Careers() {
           <div className="max-w-4xl mx-auto text-center">
             <Badge variant="primary" size="lg" icon="fas fa-briefcase" className="mb-6 animate-fade-in">
               {t('careers.heroBadge')}
-            </span>
+            </Badge>
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
               {t('careers.heroTitle')}
             </h1>
