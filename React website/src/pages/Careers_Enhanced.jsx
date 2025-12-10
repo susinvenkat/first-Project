@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import api from '../services/api';
 import { useLanguage } from '../context/LanguageContext';
+import Card from '../components/ui/Card';
+import Badge from '../components/ui/Badge';
+import GradientText from '../components/ui/GradientText';
+import Container from '../components/common/Container';
+import Button from '../components/ui/Button';
 
 export default function Careers() {
   const { t } = useLanguage();

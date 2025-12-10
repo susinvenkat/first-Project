@@ -114,38 +114,39 @@ export default function Products() {
   ];
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-slate-900">
       {/* Hero Section with Gradient */}
-      <section className="relative py-24 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-5"></div>
-        <div className="container mx-auto px-4 lg:px-6 relative z-10">
+        <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
-              <i className="fas fa-certificate mr-2"></i>
+            <Badge variant="primary" size="lg" icon="fas fa-certificate" className="mb-6 animate-fade-in">
               {t('products.heroBadge')}
-            </span>
-            <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
-              {t('products.heroTitle')}
+            </Badge>
+            <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+              <GradientText from="from-primary-400" via="via-purple-400" to="to-cyan-400" animate={true}>
+                {t('products.heroTitle')}
+              </GradientText>
             </h1>
-            <p className="text-xl lg:text-2xl mb-8 text-secondary-200 leading-relaxed animate-slide-up">
+            <p className="text-xl lg:text-2xl mb-8 text-slate-300 leading-relaxed">
               {t('products.heroSubtitle')}
             </p>
-            <div className="flex flex-wrap justify-center gap-6 animate-scale-in">
-              <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
+            <div className="flex flex-wrap justify-center gap-6">
+              <Card variant="dark" className="bg-slate-800/50 backdrop-blur px-6 py-4 border-slate-700">
                 <div className="text-3xl font-bold text-primary-400">10 - 120,867 Nm</div>
-                <div className="text-sm text-secondary-300">{t('products.statsTorque')}</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
+                <div className="text-sm text-slate-400">{t('products.statsTorque')}</div>
+              </Card>
+              <Card variant="dark" className="bg-slate-800/50 backdrop-blur px-6 py-4 border-slate-700">
                 <div className="text-3xl font-bold text-primary-400">32+ Years</div>
-                <div className="text-sm text-secondary-300">{t('products.statsExperience')}</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20">
+                <div className="text-sm text-slate-400">{t('products.statsExperience')}</div>
+              </Card>
+              <Card variant="dark" className="bg-slate-800/50 backdrop-blur px-6 py-4 border-slate-700">
                 <div className="text-3xl font-bold text-primary-400">100+</div>
-                <div className="text-sm text-secondary-300">{t('products.statsIndustries')}</div>
-              </div>
+                <div className="text-sm text-slate-400">{t('products.statsIndustries')}</div>
+              </Card>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Quick Navigation */}
