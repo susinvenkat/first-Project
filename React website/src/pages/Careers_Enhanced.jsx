@@ -189,9 +189,9 @@ export default function Careers() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-secondary-900">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-secondary-900 via-primary-900 to-secondary-800 text-white overflow-hidden rounded-b-[32px] shadow-2xl shadow-primary-200/40">
         <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-5"></div>
         <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">

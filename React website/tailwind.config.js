@@ -8,16 +8,16 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#fef2f3',
-          100: '#fde6e8',
-          200: '#fbd0d5',
-          300: '#f7aab2',
-          400: '#f27a8a',
-          500: '#e63950',
-          600: '#c41e3a',
-          700: '#a5152e',
-          800: '#8b1428',
-          900: '#771426',
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+          800: '#3730a3',
+          900: '#312e81',
         },
         secondary: {
           50: '#f8fafc',
@@ -32,9 +32,9 @@ export default {
           900: '#0f172a',
         },
         accent: {
-          DEFAULT: '#3b82f6',
-          dark: '#1d4ed8',
-          light: '#60a5fa',
+          DEFAULT: '#0ea5e9',
+          dark: '#0284c7',
+          light: '#38bdf8',
         },
       },
       fontFamily: {

@@ -7,11 +7,11 @@ import Button from '../../components/ui/Button';
 
 export default function UAE() {
   return (
-    <div className="min-h-screen">
-      <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-20">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-secondary-900">
+      <section className="bg-gradient-to-r from-secondary-900 via-primary-900 to-secondary-800 text-white py-20 rounded-b-[32px] shadow-2xl shadow-primary-200/40">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">UAE Operations</h1>
-          <p className="text-xl">Middle East Regional Office</p>
+          <p className="text-xl text-primary-100">Middle East Regional Office</p>
         </div>
       </section>
 

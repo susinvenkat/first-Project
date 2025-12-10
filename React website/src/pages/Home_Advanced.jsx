@@ -137,10 +137,10 @@ export default function HomeAdvanced() {
         structuredData={homeStructuredData}
       />
 
-      <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      <div className="bg-gradient-to-b from-slate-50 via-white to-slate-100 text-secondary-900 overflow-hidden">
         
         {/* HERO SECTION - Advanced Parallax */}
-        <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+        <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-gradient-to-br from-secondary-900 via-secondary-800 to-primary-900 text-white rounded-b-[32px] shadow-2xl shadow-primary-200/40">
           {/* Animated background */}
           <div className="absolute inset-0">
             <div className="absolute w-96 h-96 bg-primary-600/20 rounded-full blur-3xl -top-40 -left-40 animate-float"></div>

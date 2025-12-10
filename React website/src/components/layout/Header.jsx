@@ -44,40 +44,48 @@ export default function Header() {
   };
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-primary-100/50' : 'bg-white shadow-md'
-    }`} style={isScrolled ? { 
-      backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(255,255,255,0.95))',
-      backdropFilter: 'blur(20px) saturate(180%)'
-    } : {}}>      
+    <header
+      className={`sticky top-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-2xl border-b border-secondary-100 shadow-xl'
+          : 'bg-white/80 backdrop-blur-xl border-b border-transparent shadow-md'
+      }`}
+      style={
+        isScrolled
+          ? {
+              backgroundImage:
+                'linear-gradient(120deg, rgba(99,102,241,0.14), rgba(14,165,233,0.08), rgba(255,255,255,0.95))',
+            }
+          : {}
+      }
+    >
       {/* Top Bar */}
-      <div className="relative bg-gradient-to-r from-secondary-900 via-secondary-800 to-secondary-900 text-white text-sm overflow-hidden">
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-primary-500/20 to-primary-600/10 animate-gradient-x"></div>
+      <div className="relative bg-gradient-to-r from-primary-600 via-accent to-primary-700 text-white text-sm overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/10 opacity-40"></div>
         <div className="container mx-auto px-4 lg:px-6 relative z-10">
           <div className="flex items-center justify-between py-2.5">
             <div className="flex items-center space-x-6">
               <span className="flex items-center group cursor-default">
-                <i className="fas fa-certificate mr-2 text-primary-400 group-hover:rotate-12 transition-transform"></i>
-                <span className="hidden sm:inline">ISO 9001:2015 Certified</span>
+                <i className="fas fa-certificate mr-2 text-white group-hover:rotate-12 transition-transform"></i>
+                <span className="hidden sm:inline font-semibold">ISO 9001:2015 Certified</span>
               </span>
               <span className="hidden md:flex items-center group cursor-default">
-                <i className="fas fa-award mr-2 text-primary-400 group-hover:scale-110 transition-transform"></i>
+                <i className="fas fa-award mr-2 text-white group-hover:scale-110 transition-transform"></i>
                 32+ Years of Excellence
               </span>
               <span className="hidden lg:flex items-center group cursor-default">
-                <i className="fas fa-globe mr-2 text-primary-400 group-hover:rotate-12 transition-transform"></i>
+                <i className="fas fa-globe mr-2 text-white group-hover:rotate-12 transition-transform"></i>
                 Global Presence: India • UAE • Qatar
               </span>
             </div>
             <div className="flex items-center space-x-4">
-              <a href="tel:+917708097242" className="hover:text-primary-300 transition-colors flex items-center group">
+              <a href="tel:+917708097242" className="hover:text-white transition-colors flex items-center group">
                 <i className="fas fa-phone mr-2 group-hover:animate-pulse"></i>
-                <span className="hidden sm:inline font-medium">+91 77080 97242</span>
+                <span className="hidden sm:inline font-semibold">+91 77080 97242</span>
               </a>
-              <a href="mailto:info@susin.in" className="hover:text-primary-300 transition-colors flex items-center group">
+              <a href="mailto:info@susin.in" className="hover:text-white transition-colors flex items-center group">
                 <i className="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
-                <span className="hidden sm:inline font-medium">info@susin.in</span>
+                <span className="hidden sm:inline font-semibold">info@susin.in</span>
               </a>
             </div>
           </div>
@@ -109,16 +117,16 @@ export default function Header() {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden lg:flex items-center space-x-6">
-            <li><Link to="/" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+          <ul className="hidden lg:flex items-center space-x-2 rounded-full bg-secondary-50 px-3 py-2 border border-secondary-100 shadow-inner">
+            <li><Link to="/" className="text-secondary-700 hover:text-primary-600 font-semibold transition-colors px-3 py-2 rounded-full hover:bg-primary-50">
               {t('header.home')}
             </Link></li>
             
             <li className="relative group">
-              <button className="text-gray-700 hover:text-primary-600 font-medium flex items-center transition-colors">
+              <button className="text-secondary-700 hover:text-primary-600 font-semibold flex items-center transition-colors px-3 py-2 rounded-full hover:bg-primary-50">
                 {t('header.products')}<i className="fas fa-chevron-down ml-1 text-xs"></i>
               </button>
-              <div className="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-secondary-100 z-50">
+              <div className="absolute left-0 mt-2 w-80 bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-secondary-100 z-50">
                 <div className="p-5">
                   <h4 className="font-bold text-secondary-900 mb-3 text-sm uppercase tracking-wide border-b pb-2">Actuators</h4>
                   <ul className="space-y-1">
