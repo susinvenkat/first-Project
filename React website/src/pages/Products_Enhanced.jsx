@@ -207,7 +207,7 @@ export default function Products() {
             {pneumaticProducts.map((product, index) => (
               <div key={index} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-secondary-100 hover:border-primary-500">
                 <div className="h-56 overflow-hidden bg-gradient-to-br from-secondary-50 to-secondary-100 relative">
-                  <img 
+                  <LazyImage 
                     src={product.image} 
                     alt={product.series}
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 p-4"
@@ -332,7 +332,7 @@ export default function Products() {
             <div className="order-1 md:order-2">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary-600 to-primary-700 rounded-3xl opacity-20 blur-xl"></div>
-                <img 
+                <LazyImage 
                   src="/assets/img/products/electro-hydraulic/actuator.jpg" 
                   alt="Electro-Hydraulic Actuator"
                   className="relative rounded-2xl shadow-2xl"
@@ -443,7 +443,7 @@ export default function Products() {
             {gearboxProducts.map((product, index) => (
               <div key={index} className="bg-secondary-800 rounded-2xl overflow-hidden shadow-2xl hover:shadow-glow transition-all">
                 <div className="h-64 bg-secondary-700">
-                  <img 
+                  <LazyImage 
                     src={product.image} 
                     alt={product.series}
                     className="w-full h-full object-contain p-6"

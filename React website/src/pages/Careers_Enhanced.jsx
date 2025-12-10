@@ -189,14 +189,13 @@ export default function Careers() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-slate-900">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-5"></div>
-        <div className="container mx-auto px-4 lg:px-6 relative z-10">
+        <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
-              <i className="fas fa-briefcase mr-2"></i>
+            <Badge variant="primary" size="lg" icon="fas fa-briefcase" className="mb-6 animate-fade-in">
               {t('careers.heroBadge')}
             </span>
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">

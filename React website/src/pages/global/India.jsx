@@ -1,13 +1,26 @@
 import { Link } from 'react-router-dom';
+import Card from '../../components/ui/Card';
+import Badge from '../../components/ui/Badge';
+import GradientText from '../../components/ui/GradientText';
+import Container from '../../components/common/Container';
+import Button from '../../components/ui/Button';
 
 export default function India() {
   return (
-    <div className="min-h-screen">
-      <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">India Operations</h1>
-          <p className="text-xl">Headquarters & Manufacturing Facility</p>
-        </div>
+    <div className="min-h-screen bg-slate-900">
+      <section className="relative py-24 bg-gradient-to-br from-orange-900 via-orange-800 to-red-900 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-5"></div>
+        <Container className="relative z-10 text-center">
+          <Badge variant="warning" size="lg" icon="fas fa-flag" className="mb-6">
+            Headquarters
+          </Badge>
+          <h1 className="text-5xl font-bold mb-6">
+            <GradientText from="from-orange-400" via="via-red-400" to="to-pink-400" animate={true}>
+              India Operations
+            </GradientText>
+          </h1>
+          <p className="text-xl text-orange-100">Headquarters & Manufacturing Facility</p>
+        </Container>
       </section>
 
       <section className="py-20 bg-white">

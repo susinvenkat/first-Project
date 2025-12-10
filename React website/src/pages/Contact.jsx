@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import api from '../services/api';
+import Card from '../components/ui/Card';
+import Badge from '../components/ui/Badge';
+import GradientText from '../components/ui/GradientText';
+import Container from '../components/common/Container';
+import Button from '../components/ui/Button';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -63,21 +68,29 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-900">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-primary to-red-700 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">{t('contact.heroTitle')}</h1>
-          <p className="text-xl max-w-3xl mx-auto">{t('contact.heroSubtitle')}</p>
-        </div>
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-5"></div>
+        <Container className="relative z-10 text-center">
+          <Badge variant="primary" size="lg" icon="fas fa-envelope" className="mb-6">
+            {t('contact.heroBadge') || 'Get in Touch'}
+          </Badge>
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+            <GradientText from="from-primary-400" via="via-blue-400" to="to-cyan-400" animate={true}>
+              {t('contact.heroTitle')}
+            </GradientText>
+          </h1>
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">{t('contact.heroSubtitle')}</p>
+        </Container>
       </section>
 
       {/* Contact Info */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-slate-900">
+        <Container>
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Card variant="dark" className="text-center bg-slate-800/50 backdrop-blur border-slate-700 p-8 hover:border-primary-500/50" hoverable>
+              <div className="w-20 h-20 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <i className="fas fa-phone text-4xl text-blue-600"></i>
               </div>
               <h3 className="text-xl font-bold mb-4">{t('contact.phone')}</h3>
