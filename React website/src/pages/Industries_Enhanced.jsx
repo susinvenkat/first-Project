@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import Card from '../components/ui/Card';
+import Badge from '../components/ui/Badge';
+import GradientText from '../components/ui/GradientText';
+import Container from '../components/common/Container';
+import Button from '../components/ui/Button';
 
 export default function Industries() {
   const { t } = useLanguage();
@@ -223,67 +228,71 @@ export default function Industries() {
   ];
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-slate-900">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-5"></div>
-        <div className="container mx-auto px-4 lg:px-6 relative z-10">
+        <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center bg-primary-600/20 backdrop-blur-md border border-primary-400/30 px-5 py-2 rounded-full text-sm font-medium mb-6 text-primary-200 animate-fade-in">
-              <i className="fas fa-industry mr-2"></i>
+            <Badge variant="primary" size="lg" icon="fas fa-industry" className="mb-6 animate-fade-in">
               {t('industries.heroBadge')}
-            </span>
-            <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-slide-up">
-              {t('industries.heroTitle')}
+            </Badge>
+            <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+              <GradientText from="from-primary-400" via="via-blue-400" to="to-cyan-400" animate={true}>
+                {t('industries.heroTitle')}
+              </GradientText>
             </h1>
-            <p className="text-xl lg:text-2xl mb-8 text-secondary-200 leading-relaxed animate-slide-up">
+            <p className="text-xl lg:text-2xl mb-8 text-slate-300 leading-relaxed">
               {t('industries.heroSubtitle')}
             </p>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Industry Grid Overview */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-6">
+      <section className="py-20 bg-slate-900">
+        <Container>
           <div className="text-center mb-16">
-            <span className="text-primary-600 font-semibold text-lg flex items-center justify-center mb-4">
-              <div className="h-1 w-12 bg-primary-600 mr-3"></div>
+            <Badge variant="primary" className="mb-4">
               {t('industries.gridLabel')}
-              <div className="h-1 w-12 bg-primary-600 ml-3"></div>
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-900 mb-6">
-              {t('industries.gridTitle')}
+            </Badge>
+            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-white mb-6">
+              <GradientText from="from-primary-400" via="via-purple-400" to="to-cyan-400">
+                {t('industries.gridTitle')}
+              </GradientText>
             </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
               {t('industries.gridSubtitle')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry, index) => (
-              <a
+              <Card
                 key={index}
+                as="a"
                 href={`#${industry.id}`}
                 onClick={() => setActiveIndustry(industry.id)}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-secondary-100 hover:border-primary-500"
+                variant="dark"
+                hoverable
+                className="overflow-hidden bg-slate-800/50 backdrop-blur border-slate-700 hover:border-primary-500/50"
               >
                 <div className={`h-48 bg-gradient-to-br ${industry.gradient} flex items-center justify-center relative overflow-hidden`}>
                   <i className={`fas ${industry.icon} text-9xl text-white opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-300`}></i>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-secondary-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">
                     {industry.name}
                   </h3>
-                  <p className="text-secondary-600 text-sm mb-4">{industry.tagline}</p>
-                  <div className="flex items-center text-primary-600 font-semibold group-hover:underline">
+                  <p className="text-slate-400 text-sm mb-4">{industry.tagline}</p>
+                  <div className="flex items-center text-primary-400 font-semibold group-hover:underline">
                     {t('industries.learnMore')} <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                   </div>
                 </div>
-              </a>
+              </Card>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Detailed Industry Sections */}

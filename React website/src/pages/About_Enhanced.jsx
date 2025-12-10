@@ -187,12 +187,12 @@ export default function About() {
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Mission & Vision */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-6">
+        <Container>
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-lg border-2 border-blue-200 hover:shadow-2xl transition-all">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6">
@@ -218,12 +218,12 @@ export default function About() {
               </p>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Leadership Team */}
       <section id="leadership" className="py-20 bg-secondary-50">
-        <div className="container mx-auto px-4 lg:px-6">
+        <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.leadershipTitle')}</h2>
             <p className="text-xl text-secondary-600">
@@ -247,12 +247,12 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Manufacturing Capabilities */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-6">
+        <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.mfgTitle')}</h2>
             <p className="text-xl text-secondary-600">{t('about.mfgSubtitle')}</p>
@@ -277,12 +277,12 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Awards & Recognition */}
       <section className="py-20 bg-gradient-to-br from-secondary-900 to-secondary-800 text-white">
-        <div className="container mx-auto px-4 lg:px-6">
+        <Container>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-heading font-bold mb-4">{t('about.awardsTitle')}</h2>
             <p className="text-xl text-secondary-200">{t('about.awardsSubtitle')}</p>
@@ -299,12 +299,12 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Certifications */}
       <section id="certifications" className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-6">
+        <Container>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.certsTitle')}</h2>
             <p className="text-xl text-secondary-600">{t('about.certsSubtitle')}</p>
@@ -329,12 +329,12 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Global Presence */}
       <section className="py-20 bg-secondary-50">
-        <div className="container mx-auto px-4 lg:px-6">
+        <Container>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-heading font-bold text-secondary-900 mb-4">{t('about.globalTitle')}</h2>
             <p className="text-xl text-secondary-600">{t('about.globalSubtitle')}</p>
@@ -368,12 +368,12 @@ export default function About() {
               <div className="text-primary-600 font-semibold group-hover:underline">{t('about.viewDetails')} <i className="fas fa-arrow-right ml-2"></i></div>
             </Link>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
-        <div className="container mx-auto px-4 lg:px-6 text-center">
+        <Container className="text-center">
           <h2 className="text-4xl font-heading font-bold mb-6">{t('about.ctaTitle')}</h2>
           <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">{t('about.ctaSubtitle')}</p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -392,7 +392,7 @@ export default function About() {
               {t('about.ctaExplore')}
             </Link>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   );

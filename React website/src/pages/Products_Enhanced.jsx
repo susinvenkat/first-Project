@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import Card from '../components/ui/Card';
+import Badge from '../components/ui/Badge';
+import GradientText from '../components/ui/GradientText';
+import Container from '../components/common/Container';
+import Button from '../components/ui/Button';
+import LazyImage from '../components/common/LazyImage';
 
 export default function Products() {
   const { t } = useLanguage();

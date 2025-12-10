@@ -14,9 +14,6 @@ const Industries = lazy(() => import('./pages/Industries_Enhanced'));
 const About = lazy(() => import('./pages/About_Enhanced'));
 const Careers = lazy(() => import('./pages/Careers_Enhanced'));
 const Contact = lazy(() => import('./pages/Contact'));
-const Services = lazy(() => import('./pages/Services'));
-const Resources = lazy(() => import('./pages/Resources'));
-const Sustainability = lazy(() => import('./pages/Sustainability'));
 const India = lazy(() => import('./pages/global/India'));
 const UAE = lazy(() => import('./pages/global/UAE'));
 const Qatar = lazy(() => import('./pages/global/Qatar'));
@@ -58,10 +55,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/products" element={<Products />} />
               <Route path="/industries" element={<Industries />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/resources" element={<Resources />} />
               <Route path="/about" element={<About />} />
-              <Route path="/sustainability" element={<Sustainability />} />
               <Route path="/careers" element={<Careers />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/global/india" element={<India />} />
