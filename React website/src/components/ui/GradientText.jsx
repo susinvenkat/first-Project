@@ -1,7 +1,7 @@
 export default function GradientText({ 
   children, 
   from = 'from-primary-500',
-  via = 'via-accent',
+  via = 'via-primary-400',
   to = 'to-secondary-900',
   className = '',
   animate = false,

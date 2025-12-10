@@ -96,7 +96,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold mb-4 text-white">{t('contact.phone')}</h3>
               <p className="text-slate-300">India: +91 77080 97242</p>
               <p className="text-slate-300">UAE: +971 54 307 4131</p>
-            </div>
+            </Card>
             <Card variant="dark" className="text-center bg-slate-800/50 backdrop-blur border-slate-700 p-8 hover:border-primary-500/50" hoverable>
               <div className="w-20 h-20 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <i className="fas fa-envelope text-4xl text-white"></i>
