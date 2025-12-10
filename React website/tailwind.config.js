@@ -8,16 +8,16 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+          50: '#fef2f3',
+          100: '#fde6e8',
+          200: '#fbd0d5',
+          300: '#f7aab2',
+          400: '#f27a8a',
+          500: '#e63950',
+          600: '#c41e3a',  // Main SUSIN red from susinworld.in
+          700: '#a5152e',
+          800: '#8b1428',
+          900: '#771426',
         },
         secondary: {
           50: '#f8fafc',
@@ -32,9 +32,13 @@ export default {
           900: '#0f172a',
         },
         accent: {
-          DEFAULT: '#0ea5e9',
-          dark: '#0284c7',
-          light: '#38bdf8',
+          DEFAULT: '#fbbf24',  // Yellow accent from susinworld.in
+          dark: '#f59e0b',
+          light: '#fcd34d',
+        },
+        industrial: {
+          blue: '#1e3a5f',  // Dark blue-gray for industrial scenes
+          gray: '#4b5563',
         },
       },
       fontFamily: {
@@ -100,8 +104,9 @@ export default {
       },
       boxShadow: {
         'inner-lg': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.15)',
-        'glow': '0 0 20px rgba(196, 30, 58, 0.3)',
-        'glow-lg': '0 0 30px rgba(196, 30, 58, 0.4)',
+        'glow': '0 0 20px rgba(196, 30, 58, 0.3)',  // SUSIN red glow
+        'glow-lg': '0 0 30px rgba(196, 30, 58, 0.4)',  // SUSIN red glow large
+        'glow-red': '0 0 25px rgba(196, 30, 58, 0.5)',  // Strong red glow
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

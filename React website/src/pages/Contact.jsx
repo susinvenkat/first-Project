@@ -93,33 +93,34 @@ export default function Contact() {
               <div className="w-20 h-20 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <i className="fas fa-phone text-4xl text-blue-600"></i>
               </div>
-              <h3 className="text-xl font-bold mb-4">{t('contact.phone')}</h3>
-              <p className="text-gray-600">India: +91 77080 97242</p>
-              <p className="text-gray-600">UAE: +971 54 307 4131</p>
+              <h3 className="text-xl font-bold mb-4 text-white">{t('contact.phone')}</h3>
+              <p className="text-slate-300">India: +91 77080 97242</p>
+              <p className="text-slate-300">UAE: +971 54 307 4131</p>
             </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i className="fas fa-envelope text-4xl text-green-600"></i>
+            <Card variant="dark" className="text-center bg-slate-800/50 backdrop-blur border-slate-700 p-8 hover:border-primary-500/50" hoverable>
+              <div className="w-20 h-20 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-envelope text-4xl text-white"></i>
               </div>
-              <h3 className="text-xl font-bold mb-4">{t('contact.email')}</h3>
-              <p className="text-gray-600">info@susin.in</p>
-              <p className="text-gray-600">sales@susin.in</p>
-            </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i className="fas fa-clock text-4xl text-purple-600"></i>
+              <h3 className="text-xl font-bold mb-4 text-white">{t('contact.email')}</h3>
+              <p className="text-slate-300">info@susin.in</p>
+              <p className="text-slate-300">sales@susin.in</p>
+            </Card>
+            <Card variant="dark" className="text-center bg-slate-800/50 backdrop-blur border-slate-700 p-8 hover:border-primary-500/50" hoverable>
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i className="fas fa-clock text-4xl text-white"></i>
               </div>
-              <h3 className="text-xl font-bold mb-4">{t('contact.hours')}</h3>
-              <p className="text-gray-600">{t('contact.hoursWeek')}</p>
-              <p className="text-gray-600">{t('contact.hoursSat')}</p>
+              <h3 className="text-xl font-bold mb-4 text-white">{t('contact.hours')}</h3>
+              <p className="text-slate-300">{t('contact.hoursWeek')}</p>
+              <p className="text-slate-300">{t('contact.hoursSat')}</p>
+            </Card>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('contact.sendMessage')}</h2>
-              {success && <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">{success}</div>}
+            <Card className="bg-white p-8">
+              <h2 className="text-3xl font-bold text-secondary-900 mb-6">{t('contact.sendMessage')}</h2>
+              {success && <div className="bg-emerald-100 border border-emerald-400 text-emerald-700 px-4 py-3 rounded mb-4">{success}</div>}
               {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
               
               <form onSubmit={handleContactSubmit} className="space-y-4">
@@ -130,7 +131,7 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
                   />
                   <input
                     type="email"
@@ -138,7 +139,7 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
                   />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -148,14 +149,14 @@ export default function Contact() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
                   />
                   <input
                     type="text"
                     placeholder={t('contact.companyPh')}
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
                   />
                 </div>
                 <input
@@ -164,7 +165,7 @@ export default function Contact() {
                   required
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
                 />
                 <textarea
                   placeholder={t('contact.messagePh')}
@@ -172,51 +173,51 @@ export default function Contact() {
                   rows="5"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
                 ></textarea>
-                <button
+                <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg disabled:opacity-50"
+                  className="w-full"
                 >
                   {loading ? 'Sending...' : t('contact.sendBtn')}
-                </button>
+                </Button>
               </form>
-            </div>
+            </Card>
 
             {/* Office Locations */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('contact.officesTitle')}</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">{t('contact.officesTitle')}</h2>
               <div className="space-y-6">
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                    <i className="fas fa-map-marker-alt text-primary mr-2"></i>
+                <Card className="bg-slate-800/50 backdrop-blur border-slate-700 p-6">
+                  <h4 className="font-bold text-white mb-3 flex items-center">
+                    <i className="fas fa-map-marker-alt text-primary-400 mr-2"></i>
                     {t('contact.officesIndia')}
                   </h4>
-                  <p className="text-gray-700 mb-2">Susin Group</p>
-                  <p className="text-gray-600 text-sm">Coimbatore, Tamil Nadu, India</p>
-                  <p className="text-gray-600 text-sm mt-2">Phone: +91 77080 97242</p>
-                  <p className="text-gray-600 text-sm">Email: info@susin.in</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                    <i className="fas fa-map-marker-alt text-primary mr-2"></i>
+                  <p className="text-slate-200 mb-2">Susin Group</p>
+                  <p className="text-slate-400 text-sm">Coimbatore, Tamil Nadu, India</p>
+                  <p className="text-slate-400 text-sm mt-2">Phone: +91 77080 97242</p>
+                  <p className="text-slate-400 text-sm">Email: info@susin.in</p>
+                </Card>
+                <Card className="bg-slate-800/50 backdrop-blur border-slate-700 p-6">
+                  <h4 className="font-bold text-white mb-3 flex items-center">
+                    <i className="fas fa-map-marker-alt text-primary-400 mr-2"></i>
                     {t('contact.officesUae')}
                   </h4>
-                  <p className="text-gray-700 mb-2">SUSIN Middle East</p>
-                  <p className="text-gray-600 text-sm">Dubai, United Arab Emirates</p>
-                  <p className="text-gray-600 text-sm mt-2">Phone: +971 54 307 4131</p>
-                  <p className="text-gray-600 text-sm">Email: dubai@susin.in</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                    <i className="fas fa-map-marker-alt text-primary mr-2"></i>
+                  <p className="text-slate-200 mb-2">SUSIN Middle East</p>
+                  <p className="text-slate-400 text-sm">Dubai, United Arab Emirates</p>
+                  <p className="text-slate-400 text-sm mt-2">Phone: +971 54 307 4131</p>
+                  <p className="text-slate-400 text-sm">Email: dubai@susin.in</p>
+                </Card>
+                <Card className="bg-slate-800/50 backdrop-blur border-slate-700 p-6">
+                  <h4 className="font-bold text-white mb-3 flex items-center">
+                    <i className="fas fa-map-marker-alt text-primary-400 mr-2"></i>
                     {t('contact.officesQatar')}
                   </h4>
-                  <p className="text-gray-700 mb-2">SUSIN Qatar</p>
-                  <p className="text-gray-600 text-sm">Doha, Qatar</p>
-                  <p className="text-gray-600 text-sm mt-2">Email: qatar@susin.in</p>
-                </div>
+                  <p className="text-slate-200 mb-2">SUSIN Qatar</p>
+                  <p className="text-slate-400 text-sm">Doha, Qatar</p>
+                  <p className="text-slate-400 text-sm mt-2">Email: qatar@susin.in</p>
+                </Card>
               </div>
             </div>
           </div>
@@ -224,90 +225,93 @@ export default function Contact() {
       </section>
 
       {/* Quote Request */}
-      <section id="quote" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section id="quote" className="py-20 bg-secondary-50">
+        <Container>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('contact.quoteTitle')}</h2>
-              <p className="text-xl text-gray-600">{t('contact.quoteSubtitle')}</p>
+              <h2 className="text-4xl font-bold text-secondary-900 mb-4">{t('contact.quoteTitle')}</h2>
+              <p className="text-xl text-secondary-600">{t('contact.quoteSubtitle')}</p>
             </div>
             
-            <form onSubmit={handleQuoteSubmit} className="bg-white rounded-xl p-8 shadow-lg space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <Card className="p-8">
+              <form onSubmit={handleQuoteSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <input
+                    type="text"
+                    placeholder={t('contact.quoteFullName')}
+                    required
+                    value={quoteData.name}
+                    onChange={(e) => setQuoteData({ ...quoteData, name: e.target.value })}
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
+                  />
+                  <input
+                    type="email"
+                    placeholder={t('contact.quoteEmail')}
+                    required
+                    value={quoteData.email}
+                    onChange={(e) => setQuoteData({ ...quoteData, email: e.target.value })}
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
+                  />
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <input
+                    type="tel"
+                    placeholder={t('contact.quotePhone')}
+                    required
+                    value={quoteData.phone}
+                    onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
+                  />
+                  <input
+                    type="text"
+                    placeholder={t('contact.quoteCompany')}
+                    required
+                    value={quoteData.company}
+                    onChange={(e) => setQuoteData({ ...quoteData, company: e.target.value })}
+                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
+                  />
+                </div>
+                <select
+                  required
+                  value={quoteData.product}
+                  onChange={(e) => setQuoteData({ ...quoteData, product: e.target.value })}
+                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
+                >
+                  <option value="">{t('contact.quoteProduct')}</option>
+                  <option value="pneumatic">Pneumatic Actuators</option>
+                  <option value="electro-hydraulic">Electro-Hydraulic Actuators</option>
+                  <option value="electrical">Electrical Actuators</option>
+                  <option value="gearboxes">Gearboxes</option>
+                  <option value="accessories">Accessories</option>
+                  <option value="custom">Custom Solution</option>
+                </select>
                 <input
                   type="text"
-                  placeholder={t('contact.quoteFullName')}
-                  required
-                  value={quoteData.name}
-                  onChange={(e) => setQuoteData({ ...quoteData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+                  placeholder={t('contact.quoteQty')}
+                  value={quoteData.quantity}
+                  onChange={(e) => setQuoteData({ ...quoteData, quantity: e.target.value })}
+                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
                 />
-                <input
-                  type="email"
-                  placeholder={t('contact.quoteEmail')}
+                <textarea
+                  placeholder={t('contact.quoteSpecs')}
                   required
-                  value={quoteData.email}
-                  onChange={(e) => setQuoteData({ ...quoteData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
-                />
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <input
-                  type="tel"
-                  placeholder={t('contact.quotePhone')}
-                  required
-                  value={quoteData.phone}
-                  onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
-                />
-                <input
-                  type="text"
-                  placeholder={t('contact.quoteCompany')}
-                  required
-                  value={quoteData.company}
-                  onChange={(e) => setQuoteData({ ...quoteData, company: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
-                />
-              </div>
-              <select
-                required
-                value={quoteData.product}
-                onChange={(e) => setQuoteData({ ...quoteData, product: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
-              >
-                <option value="">{t('contact.quoteProduct')}</option>
-                <option value="pneumatic">Pneumatic Actuators</option>
-                <option value="electro-hydraulic">Electro-Hydraulic Actuators</option>
-                <option value="electrical">Electrical Actuators</option>
-                <option value="gearboxes">Gearboxes</option>
-                <option value="accessories">Accessories</option>
-                <option value="custom">Custom Solution</option>
-              </select>
-              <input
-                type="text"
-                placeholder={t('contact.quoteQty')}
-                value={quoteData.quantity}
-                onChange={(e) => setQuoteData({ ...quoteData, quantity: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
-              />
-              <textarea
-                placeholder={t('contact.quoteSpecs')}
-                required
-                rows="5"
-                value={quoteData.specifications}
-                onChange={(e) => setQuoteData({ ...quoteData, specifications: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
-              ></textarea>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-6 rounded-lg text-lg disabled:opacity-50"
-              >
-                {loading ? t('contact.quoteSubmitting') : t('contact.quoteBtn')}
-              </button>
-            </form>
+                  rows="5"
+                  value={quoteData.specifications}
+                  onChange={(e) => setQuoteData({ ...quoteData, specifications: e.target.value })}
+                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-secondary-900"
+                ></textarea>
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  size="lg"
+                  className="w-full"
+                >
+                  {loading ? t('contact.quoteSubmitting') : t('contact.quoteBtn')}
+                </Button>
+              </form>
+            </Card>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   );

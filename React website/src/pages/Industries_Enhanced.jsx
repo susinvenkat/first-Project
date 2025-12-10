@@ -29,7 +29,7 @@ export default function Industries() {
       gradient: 'from-orange-600 to-orange-700',
       bgGradient: 'from-orange-50 to-orange-100',
       tagline: 'Critical Flow Control for Energy Infrastructure',
-      description: 'Providing mission-critical valve automation solutions for upstream, midstream, and downstream operations in the oil and gas sector for over three decades.',
+      description: 'Providing mission-critical valve automation solutions for upstream, midstream, and downstream operations in the oil and gas sector for over three decades. Trusted partner for FPSO projects and offshore platforms.',
       applications: [
         'FPSO & Offshore Platforms',
         'Refineries & Petrochemical Plants',
@@ -57,7 +57,7 @@ export default function Industries() {
     },
     {
       id: 'water',
-      name: 'Water & Wastewater',
+      name: 'Water Treatment',
       icon: 'fa-water',
       color: 'blue',
       gradient: 'from-blue-600 to-blue-700',
@@ -91,13 +91,13 @@ export default function Industries() {
     },
     {
       id: 'power',
-      name: 'Power Generation',
+      name: 'Power Industry',
       icon: 'fa-plug',
       color: 'yellow',
       gradient: 'from-yellow-600 to-yellow-700',
       bgGradient: 'from-yellow-50 to-yellow-100',
       tagline: 'Powering the Future with Reliable Automation',
-      description: 'Precision flow control solutions for thermal, nuclear, hydro, and renewable energy power generation facilities worldwide.',
+      description: 'Precision flow control solutions for thermal, nuclear, hydro, and renewable energy power generation facilities worldwide. Trusted partner for critical infrastructure.',
       applications: [
         'Thermal Power Plants',
         'Combined Cycle Plants',
@@ -125,7 +125,7 @@ export default function Industries() {
     },
     {
       id: 'chemical',
-      name: 'Chemical & Petrochemical',
+      name: 'Chemical Process',
       icon: 'fa-flask',
       color: 'purple',
       gradient: 'from-purple-600 to-purple-700',
@@ -159,13 +159,13 @@ export default function Industries() {
     },
     {
       id: 'marine',
-      name: 'Marine & Offshore',
+      name: 'Marine & Defense',
       icon: 'fa-ship',
       color: 'teal',
       gradient: 'from-teal-600 to-teal-700',
       bgGradient: 'from-teal-50 to-teal-100',
       tagline: 'Engineered for Harsh Marine Environments',
-      description: 'Rugged valve automation systems designed for marine vessels, offshore platforms, and subsea applications in the harshest environments.',
+      description: 'Rugged valve automation systems designed for marine vessels, offshore platforms, defense applications, and subsea systems in the harshest environments.',
       applications: [
         'Offshore Oil Platforms',
         'FPSO Vessels',
@@ -193,22 +193,22 @@ export default function Industries() {
     },
     {
       id: 'mining',
-      name: 'Mining & Minerals',
+      name: 'Mining & Metals',
       icon: 'fa-gem',
       color: 'red',
       gradient: 'from-red-600 to-red-700',
       bgGradient: 'from-red-50 to-red-100',
       tagline: 'Robust Solutions for Extreme Conditions',
-      description: 'Heavy-duty valve automation for mineral processing, mining operations, and cement manufacturing in abrasive and demanding conditions.',
+      description: 'Heavy-duty valve automation for mineral processing, mining operations, and metal production in abrasive and demanding conditions.',
       applications: [
         'Mineral Processing',
         'Slurry Handling',
         'Tailings Management',
         'Ore Processing',
-        'Cement Manufacturing',
         'Quarrying Operations',
         'Coal Handling',
-        'Metal & Steel Production'
+        'Metal & Steel Production',
+        'Smelting Operations'
       ],
       certifications: ['CMRI Approved', 'MSHA', 'ISO 9001', 'Abrasion Resistant'],
       stats: [
@@ -223,6 +223,72 @@ export default function Industries() {
         'High torque capabilities',
         'Extended service life',
         'Minimal downtime'
+      ]
+    },
+    {
+      id: 'cement',
+      name: 'Cement Industry',
+      icon: 'fa-building',
+      color: 'gray',
+      gradient: 'from-gray-600 to-gray-700',
+      bgGradient: 'from-gray-50 to-gray-100',
+      tagline: 'Durable Solutions for Cement Manufacturing',
+      description: 'Heavy-duty valve automation systems designed for cement production, handling abrasive materials and high-temperature processes.',
+      applications: [
+        'Cement Manufacturing',
+        'Clinker Production',
+        'Raw Material Handling',
+        'Kiln Operations',
+        'Dust Collection Systems',
+        'Material Transport',
+        'Packaging & Distribution'
+      ],
+      certifications: ['ISO 9001', 'CE', 'Abrasion Resistant', 'High Temperature Rated'],
+      stats: [
+        { value: '30+', label: 'Cement Plants', icon: 'fa-industry' },
+        { value: '24/7', label: 'Continuous Operation', icon: 'fa-clock' },
+        { value: '100%', label: 'Reliability', icon: 'fa-check-circle' }
+      ],
+      benefits: [
+        'Abrasion-resistant construction',
+        'High-temperature capability',
+        'Dust-proof designs',
+        'Heavy-duty operation',
+        'Low maintenance requirements',
+        'Extended service intervals'
+      ]
+    },
+    {
+      id: 'aerospace',
+      name: 'Aerospace',
+      icon: 'fa-plane',
+      color: 'indigo',
+      gradient: 'from-indigo-600 to-indigo-700',
+      bgGradient: 'from-indigo-50 to-indigo-100',
+      tagline: 'Precision Solutions for Aerospace Applications',
+      description: 'High-precision valve automation systems for aerospace applications, meeting stringent quality and performance standards.',
+      applications: [
+        'Aircraft Systems',
+        'Spacecraft Applications',
+        'Fuel Management',
+        'Environmental Control',
+        'Hydraulic Systems',
+        'Pneumatic Controls',
+        'Ground Support Equipment'
+      ],
+      certifications: ['AS9100', 'ISO 9001', 'NADCAP', 'FAA Approved'],
+      stats: [
+        { value: '50+', label: 'Aerospace Projects', icon: 'fa-plane' },
+        { value: '100%', label: 'Quality Standards', icon: 'fa-certificate' },
+        { value: 'Zero', label: 'Defects', icon: 'fa-check-double' }
+      ],
+      benefits: [
+        'Precision engineering',
+        'Lightweight designs',
+        'Extreme temperature operation',
+        'Vibration resistant',
+        'Certified quality systems',
+        'Traceability compliance'
       ]
     }
   ];

@@ -28,16 +28,16 @@ export default function India() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-3xl font-bold mb-6">Susin Group - India</h2>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg text-secondary-700 mb-6">
                 Our Indian facility serves as the global headquarters and main manufacturing center, 
                 equipped with state-of-the-art production lines and quality control systems.
               </p>
-              <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                <h4 className="font-bold text-gray-900 mb-4">Contact Information</h4>
-                <p className="mb-2"><i className="fas fa-map-marker-alt text-primary mr-2"></i>Coimbatore, Tamil Nadu, India</p>
-                <p className="mb-2"><i className="fas fa-phone text-primary mr-2"></i>+91 77080 97242</p>
-                <p className="mb-2"><i className="fas fa-envelope text-primary mr-2"></i>info@susin.in</p>
-              </div>
+              <Card className="bg-secondary-50 p-6 mb-6">
+                <h4 className="font-bold text-secondary-900 mb-4">Contact Information</h4>
+                <p className="mb-2 text-secondary-700"><i className="fas fa-map-marker-alt text-primary-600 mr-2"></i>Coimbatore, Tamil Nadu, India</p>
+                <p className="mb-2 text-secondary-700"><i className="fas fa-phone text-primary-600 mr-2"></i>+91 77080 97242</p>
+                <p className="mb-2 text-secondary-700"><i className="fas fa-envelope text-primary-600 mr-2"></i>info@susin.in</p>
+              </Card>
               <Link to="/contact" className="btn-primary inline-flex items-center">
                 <i className="fas fa-envelope mr-2"></i>Contact India Office
               </Link>

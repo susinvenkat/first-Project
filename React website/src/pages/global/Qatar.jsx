@@ -20,15 +20,15 @@ export default function Qatar() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-3xl font-bold mb-6">SUSIN Qatar</h2>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg text-secondary-700 mb-6">
                 Our Qatar office provides local support and technical services for 
                 oil & gas, power, and industrial projects across the country.
               </p>
-              <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                <h4 className="font-bold text-gray-900 mb-4">Contact Information</h4>
-                <p className="mb-2"><i className="fas fa-map-marker-alt text-primary mr-2"></i>Doha, Qatar</p>
-                <p className="mb-2"><i className="fas fa-envelope text-primary mr-2"></i>qatar@susin.in</p>
-              </div>
+              <Card className="bg-secondary-50 p-6 mb-6">
+                <h4 className="font-bold text-secondary-900 mb-4">Contact Information</h4>
+                <p className="mb-2 text-secondary-700"><i className="fas fa-map-marker-alt text-primary-600 mr-2"></i>Doha, Qatar</p>
+                <p className="mb-2 text-secondary-700"><i className="fas fa-envelope text-primary-600 mr-2"></i>qatar@susin.in</p>
+              </Card>
               <Link to="/contact" className="btn-primary inline-flex items-center">
                 <i className="fas fa-envelope mr-2"></i>Contact Qatar Office
               </Link>

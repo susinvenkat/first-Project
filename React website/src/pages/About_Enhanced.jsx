@@ -105,18 +105,15 @@ export default function About() {
               <h2 id="history" className="text-4xl font-heading font-bold text-secondary-900 mb-6">
                 {t('about.storyTitle')}
               </h2>
-              <p className="text-lg text-secondary-700 mb-4 leading-relaxed">
-                Susin Group (formerly known as SUSIN INDIA) was established in 1992, bringing 
-                advanced valve automation technology to the Asian market. Over three decades, we have grown from 
-                a regional supplier to a globally recognized manufacturer of industrial actuators and motion control systems.
+              <p className="text-lg text-secondary-700 mb-4 leading-relaxed italic">
+                "Founded by Muthukumar Sunderrajan, a visionary first-generation entrepreneur. From humble beginnings as 'SUMKA SONS' in 1992, we have evolved into a trusted partner for valve automation across Asia."
               </p>
               <p className="text-lg text-secondary-700 mb-4 leading-relaxed">
-                Our commitment to engineering excellence and customer satisfaction has made us the preferred 
-                partner for over 100 power plants, refineries, and industrial facilities across India, UAE, and Qatar.
+                With over 32 years of experience, SUSIN Group has established itself as a leader in manufacturing precision measurement instruments. We combine traditional engineering wisdom with cutting-edge technology to serve critical sectors like Oil & Gas, Power, and Marine industries.
               </p>
               <p className="text-lg text-secondary-700 leading-relaxed">
                 Today, SUSIN continues to innovate with smart digital actuators, IoT integration, and Industry 4.0 
-                solutions while maintaining our core values of reliability, quality, and service.
+                solutions while maintaining our core values of reliability, quality, and service. Our global presence spans India, UAE, Qatar, Germany, and serves all of Asia.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-6">
@@ -312,13 +309,15 @@ export default function About() {
           <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
               { name: "ISO 9001:2015", desc: "Quality Management System", icon: "fa-certificate", color: "from-blue-600 to-blue-700" },
-              { name: "ISO 14001:2015", desc: "Environmental Management", icon: "fa-leaf", color: "from-green-600 to-green-700" },
-              { name: "API 609", desc: "Butterfly Valves & Operators", icon: "fa-cog", color: "from-purple-600 to-purple-700" },
-              { name: "ATEX / IECEx", desc: "Explosion Proof Certification", icon: "fa-shield-alt", color: "from-orange-600 to-orange-700" },
-              { name: "CE Marking", desc: "European Conformity Standards", icon: "fa-check-circle", color: "from-indigo-600 to-indigo-700" },
-              { name: "SIL 2/3", desc: "Safety Integrity Level", icon: "fa-lock", color: "from-red-600 to-red-700" },
-              { name: "CMRI Approval", desc: "Coal Mines Regulations", icon: "fa-hard-hat", color: "from-yellow-600 to-yellow-700" },
-              { name: "BHEL/NTPC", desc: "Power Sector Approved", icon: "fa-plug", color: "from-teal-600 to-teal-700" }
+              { name: "ATEX Zone 1 & 2", desc: "Explosion-Proof Certification", icon: "fa-shield-alt", color: "from-orange-600 to-orange-700" },
+              { name: "SIL 2 & SIL 3", desc: "Safety Integrity Level", icon: "fa-lock", color: "from-red-600 to-red-700" },
+              { name: "ISO 5211", desc: "Mounting Interface Standard", icon: "fa-cog", color: "from-purple-600 to-purple-700" },
+              { name: "API 60 & API 609", desc: "Petroleum Industry Standards", icon: "fa-industry", color: "from-indigo-600 to-indigo-700" },
+              { name: "IP67 / IP68", desc: "Ingress Protection Rating", icon: "fa-water", color: "from-cyan-600 to-cyan-700" },
+              { name: "PED Certified", desc: "Pressure Equipment Directive", icon: "fa-compress", color: "from-teal-600 to-teal-700" },
+              { name: "CE Marked", desc: "European Conformity", icon: "fa-check-circle", color: "from-green-600 to-green-700" },
+              { name: "RoHS Compliant", desc: "Restriction of Hazardous Substances", icon: "fa-leaf", color: "from-emerald-600 to-emerald-700" },
+              { name: "NACE MR0175", desc: "Corrosion Resistance Standard", icon: "fa-shield", color: "from-slate-600 to-slate-700" }
             ].map((cert, i) => (
               <div key={i} className="bg-secondary-50 rounded-2xl p-6 text-center hover:shadow-xl transition-all border-2 border-secondary-200 hover:border-primary-500 group">
                 <div className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
