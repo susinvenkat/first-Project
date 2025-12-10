@@ -60,7 +60,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-white via-secondary-50 to-white text-secondary-700 border-t border-secondary-100">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-white via-secondary-50 to-white text-secondary-700 border-t border-secondary-100">
       {/* Newsletter Subscription */}
       <div className="border-b border-secondary-100 bg-white/70 backdrop-blur-xl">
         <div className="container mx-auto px-4 py-12">
